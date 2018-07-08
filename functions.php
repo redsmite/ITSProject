@@ -290,8 +290,6 @@ function search_function(){
 			<i class="fas fa-search"></i>
 			<label>Search</label>
 			<select name="criteria" id="criteria">
-				<option value="3">Post</option>
-				<option value="1">Market</option>
 				<option value="2">User</option>
 			</select>
 			<input type="text" onkeyup="searchdropdown()" required name="search-text" placeholder="Search..." id="search-text" autocomplete="off">
@@ -383,93 +381,6 @@ function reportuser(){
 	</div>
 	';
 	}
-}
-
-function forumcontrols(){
-	if(!isset($_SESSION['id'])){
-		echo'<div id="sidebar-blank"></div>';
-	}else{
-		$forums = $_GET['id'];
-		$id = $_SESSION['id'];
-
-		$conn = new mysqli('localhost','root','','itsproject');
-		$sql = "SELECT subid FROM tblsubscribe WHERE subscriber='$id' AND forum='$forums'";
-
-		$result= $conn->query($sql);
-		$count =$result->num_rows;
-		
-		echo'<div id="create-new-post" class="sidebar-button" onclick="createNewPost()">
-				<h3><i class="fas fa-plus-square"></i> Create New Post</h3>
-			</div>
-			<div id="create-new-forum" class="sidebar-button" onclick="createNewForum()">
-				<h3><i class="fas fa-plus-square"></i> Create Your Own Market</h3>
-			</div>
-			<div id="subscribe" value="'.$forums.'" onclick="subscribeForum(this)">';
-				
-				if($count==0){
-					echo'<h3><i class="far fa-heart"></i> Subscribe</h3>';
-				}else{
-					echo'<h3><i class="fas fa-heart"></i> Unsubscribe</h3>';
-				}
-			echo'</div>
-			<div id="new-forum-modal" onclick="closeNewForum()"></div>
-			<div id="new-forum-form">
-				<form id="create-forum-form">
-					<div>
-						<p>Market Name:</p>
-						<small><i>*Must not contain spaces or special characters</i></small><br>
-						<small><i>*Must not exceed 25 characters</i></small><br>
-						<small><i>*You cannot changed the name of this market once submitted.</i></small><br>
-						<small><i><b>*Please be related to agricultural products or services.</b></i></small><br>
-						<input id="forum-name" required type="text">
-					</div>
-					<div>
-						<p>Title:</p>
-						<small><i>*This will appear on the browser toolbar.</i></small>
-						<input id="forum-title" required type="text">
-					</div>
-					<div>
-						<p>Market Description:</p>
-						<small><i>*Brief description about this market or set some rules here.</i></small>
-						<textarea id="forum-desc" required></textarea>
-					</div>
-					<div>
-						<input type="submit" value="Submit">
-					</div>
-					<div id="error-message2"></div>
-				</form>
-			</div>
-			<div id="new-post-modal" onclick="closeNewPost()"></div>
-			<div id="new-post-form">
-				<form id="create-post-form" enctype="multipart/form-data">
-					<div>
-						<p>Title</p>
-						<input type="text" id="post-title" required>
-					</div>
-					<div>
-						<p>Text</p>
-						<small><i>*Required 30 characters.<i></small>
-						<textarea id="post-text" required></textarea>
-
-					</div>
-					<div>
-						<p>Price per unit (php)</p>
-						<input type="number" required step="any" id="post-price">
-					</div>
-					<div>
-						<p>Attach Image <font style="color:red">(Under construction)</font></p>
-						<input type="file" id="post-image"><br>
-						<progress id="progressBar" value="0" max="100">
-					</div>
-					<div>
-						<input type="submit" value="Submit">
-					</div>
-					<input type="hidden" id="post-forum" value="'. $forums .'">
-					<input type="hidden" id="post-user" value="'.$_SESSION["id"] .'">
-					<div id="error-message3"></div>	
-				</form>
-			</div>';
-		}
 }
 
 function starsystem($percent){

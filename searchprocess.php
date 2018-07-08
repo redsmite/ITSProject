@@ -23,53 +23,6 @@ if(isset($_POST['search'])){
 	echo $data;
 }
 
-if(isset($_POST['search2'])){
-	$search = $conn->real_escape_string($_POST['search2']);
-
-	$data='';
-
-	$sql = "SELECT forumid,name,(views+subscriber) AS popular FROM tblforum WHERE name LIKE '%$search%' ORDER BY popular DESC LIMIT 10";
-	$result = $conn->query($sql);
-	while($row = $result->fetch_object()){
-		$id = $row->forumid;
-		$name = $row->name;
-
-		$data.= '<ul class="drop-ul2">
-		<a href="forums.php?id='.$id.'"><li>
-		<div class="drop-tn">
-			<img src="img/marketicon.png">
-		</div>
-		'.$name.'</li></a></ul>';
-	}
-	echo $data;
-}
-
-if(isset($_POST['search3'])){
-	$search = $conn->real_escape_string($_POST['search3']);
-
-	$data='';
-
-	$sql = "SELECT postid,forumid,title,img,(((views*0.2) + (score*0.8))/((NOW()-datecreated)/331536000)) AS trending FROM tblpost WHERE title LIKE '%$search%' ORDER BY trending DESC LIMIT 10";
-	$result = $conn->query($sql);
-	while($row = $result->fetch_object()){
-		$id = $row->postid;
-		$forumid = $row->forumid;
-		$title = $row->title;
-		$img = $row->img;
-		if(!$img){
-			$img='img/noimage.png';
-		}
-
-		$data.= '<ul class="drop-ul2">
-		<a href="reply.php?id='.$forumid.'&thread='.$id.'"><li>
-		<div class="drop-tn">
-			<img src="'.$img.'">
-		</div>
-		'.$title.'</li></a></ul>';
-	}
-	echo $data;
-}
-
 if(isset($_POST['chatsearch'])){
 	$search = $_POST['chatsearch'];
 	$id = $_SESSION['id'];

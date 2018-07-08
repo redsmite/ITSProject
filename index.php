@@ -69,164 +69,6 @@ while($row=$result->fetch_object()){
 					</div>
 				</div>
 				<div class="content-body">
-					<div class="tab-control">
-						<a id="tab1" onclick="showallforum()">All</a>
-						<?php
-						if(isset($_SESSION['id'])){
-							echo'<a id="tab2" onclick="showsubforum()">Subscribed</a>';
-							}else{
-							echo'<a id="tab2" onclick="showlogin()">Subscribed</a>';
-							}
-						?>
-					</div><br>
-					<div id="list-container">
-						<h2>Trending Posts</h2>
-						<ul id="forum-list">
-<?php
-$sql = "SELECT postid,tblpost.forumid,upvoteid,downvoteid,name,img,tblpost.title,tblpost.datecreated,username,imgpath,price,comments,score,(((tblpost.views*0.2) + (score*0.8))/((NOW()-tblpost.datecreated)/331536000)) AS trending FROM tblpost
-	LEFT JOIN tblforum
-		ON tblpost.forumid = tblforum.forumid
-	LEFT JOIN tbluser
-		ON userid = starter
-	LEFT JOIN tblupvotepost
-		ON postid = tblupvotepost.post
-	LEFT JOIN tbldownvotepost
-		ON postid = tbldownvotepost.post
-	GROUP BY postid
-	ORDER BY trending DESC
-	LIMIT 25";
-	$result = $conn->query($sql);
-	while($row=$result->fetch_object()){
-		$id = $row->postid;
-		$forumid = $row->forumid;
-		$forum = $row->name;
-		$ptitle = $row->title;
-		$name = $row->username;
-		$comments = $row->comments;
-		$date = $row->datecreated;
-		$score = $row->score;
-		$upvote = $row->upvoteid;
-		$downvote = $row->downvoteid;
-		$flair= $row->imgpath;
-		if(!$flair){
-			$flair='img/default.png';
-		}
-		$pimg=$row->img;
-		if(!$pimg){
-			$pimg='img/noimage.png';
-		}
-		$price = $row->price;
-
-		echo '<li value="'.$id.'">
- 		<div class="forum-post-grid">';
-//login'd user can only vote
- 		if(isset($_SESSION['id'])){
- 		$sql2 = "SELECT upvoteid FROM tblupvotepost WHERE user='$uid' and post='$id'";
-		$result2 = $conn->query($sql2);
-		$upvote = $result2->num_rows;
-
-		$sql3 = "SELECT downvoteid FROM tbldownvotepost WHERE user='$uid' and post='$id'";
-		$result3 = $conn->query($sql3);
-		$downvote = $result3->num_rows;
- 		echo'
- 		<div class="vote">';
- 			
- 			if(!$upvote){
- 			echo'<div id="up-'.$id.'" style="color:gray;" value="'.$id.'" onclick="upvotepost(this)" class="upvote"><i class="far fa-thumbs-up"></i></div>';
- 			}else{
- 			echo'<div id="up-'.$id.'" style="color:orangered;" value="'.$id.'" onclick="upvotepost(this)" class="upvote"><i class="far fa-thumbs-up"></i></div>';
- 			}
-			
- 			if($score<0){
- 				$score=0;
- 			}
-			echo'
-			<div id="score-'.$id.'">'.$score.'</div>';
-			
-
-			if(!$downvote){
-			echo'
-			<div id="down-'.$id.'" style="color:gray;" value="'.$id.'" onclick="downvotepost(this)" class="downvote"><i class="far fa-thumbs-down"></i>
-			</div>';
-			}else{
-			echo'
-			<div id="down-'.$id.'" style="color:blue;" value="'.$id.'" onclick="downvotepost(this)" class="downvote"><i class="far fa-thumbs-down"></i>
-			</div>';
-			}
-
-			echo'
-		</div>';
-
-		}else{
-			echo'
-		<div class="vote">
- 			<div class="upvote" style="color:gray;" onclick="showlogin()">
-			<i class="far fa-thumbs-up"></i>
-			</div>';
-			
- 			if($score<0){
- 				$score=0;
- 			}
-			echo'<div>'.$score.'</div>
-			<div class="downvote" style="color:gray;" onclick="showlogin()">
-			<i class="far fa-thumbs-down"></i>
-		</div>
-		</div>';
-		}
-		echo '<div class="post-image">
-			<img src='.$pimg.'>
-		</div>';
-
-		echo'<div class="post-right">
-		<p class="main-forum-title"><a href="reply.php?id='.$forumid.'&thread='.$id.'">'.$ptitle.'</a></p>';
-		
-			$sql3 = "SELECT upvoteid FROM tblupvotepost WHERE post='$id'";
-			$result3 = $conn->query($sql3);
-			$upvotecount = $result3->num_rows;
-
-			$sql4 = "SELECT downvoteid FROM tbldownvotepost WHERE post='$id'";
-			$result4 = $conn->query($sql4);
-			$downvotecount = $result4->num_rows;
-			
-			$total = $upvotecount + $downvotecount;
-			if ($total==0){
-				$upvotecount = 1;
-				$total = 2;
-			}
-			$percent = round($upvotecount/$total * 100);
-
-			starsystem($percent);
-
-		echo'<div class="price">PHP: '.number_format($price,2).'</div>';
-		echo'<div class="second-line">
-
-			<div class="from">
-				From: <a href="forums.php?id='.$forumid.'">
-				'.$forum.'</a> By: 
-			</div>
-
-			<div class="by">
-				<a href="profile.php?name='.$name.'">
-				<p><div class="flair">
-					<img src="'.$flair.'">
-				</div>'.$name.'</a> 
-			</div>
-
-			<div class="when">
-				'.time_elapsed_string($date).'
-			</div>
-
-		</div>
-		<div class="com">
-			<p>(<a href="reply.php?id='.$forumid.'&thread='.$id.'">'.$comments.' Comments</a>)</p>
-		</div>
-		</div>
-		</div>
-		</li>';
-	}
-?>
-					</ul>
-				</div>
 				</div>
 				<div class="sidebar">
 					<h3>Newest Users</h3>
@@ -255,20 +97,7 @@ $sql = "SELECT postid,tblpost.forumid,upvoteid,downvoteid,name,img,tblpost.title
 ?>
 				</div>
 				<div class="sidebar2">
-					<h3>Popular Market</h3>
-					<ul id="forum-list">
-<?php
-//Popular Forums
-	$sql = "SELECT forumid,name, (views+subscriber) AS popular FROM tblforum ORDER BY popular DESC LIMIT 15";
-	$result = $conn->query($sql);
-	while($row=$result->fetch_object()){
-		$id = $row->forumid;
-		$name = $row->name;
-
-		echo'<li><a href="forums.php?id='.$id.'">'. $name.'</a></li>';
-	}
-?>
-				</ul>
+					<h3>Browse Category</h3>
 				</div>
 				<div class="sidebar3">
 					<h3>Popular Users</h3>
@@ -318,9 +147,6 @@ $sql = "SELECT postid,tblpost.forumid,upvoteid,downvoteid,name,img,tblpost.title
 	</div>
 	<script src="js/main.js"></script>
 	<script>
-		let tab1 = document.getElementById('tab1');
-		tab1.classList.add('style-tab');
-
 		modal();
 		ajaxLogin();
 	</script>
