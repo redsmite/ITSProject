@@ -123,6 +123,7 @@ if(isset($_GET['search-text'])){
 }else if($crit==3){
 
 }
+}
 mysqli_close($conn);
 ?>
 		</ul>

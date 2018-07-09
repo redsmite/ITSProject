@@ -2,7 +2,7 @@
 date_default_timezone_set('Asia/Manila');
 
 function companytitle(){
-	echo'BahayKubo';
+	echo'CropRotation';
 }
 
 function updateStatus(){
@@ -19,7 +19,7 @@ function addheader(){
 	echo'<header id="main-header">
 			<div class="grid-header">
 				<div class="box1">
-					<h1 id="header-text"><a href="index.php"><span id="first-text">Bahay</span><span id="second-text">Kubo</span></a></h1>
+					<h1 id="header-text"><a href="index.php"><span id="first-text">Crop</span><span id="second-text">Rotation</span></a></h1>
 				</div>
 				<div class="box2">';
 					
@@ -38,11 +38,7 @@ function addheader(){
 			<div class="subgrid">
 				<div class="svg">
 					<p class="open-slide" onclick="openSlideMenu()">
-						<svg width="30" height="30">
-							<path d="M0,5 30,5" stroke="#fafafa" stroke-width="5"/>
-							<path d="M0,14 30,14" stroke="#fafafa" stroke-width="5"/>
-							<path d="M0,23 30,23" stroke="#fafafa" stroke-width="5"/>	
-						</svg>
+						<i class="fas fa-bars"></i>	
 					</p>
 				</div>
 				<div class="profile-grid">';
@@ -61,7 +57,7 @@ function addfooter(){
 				<a target="_blank" title="Like us on Facebook" href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
 				<a target="_blank" title="Follow us on Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
 				<a target="_blank" title="Follow us on Instagram" href="https://www.instagram.com/?hl=ens"><i class="fab fa-instagram"></i></a>
-				<p>Copyright &copy; <span id="company">BahayKubo</span> | 2018</p>
+				<p>Copyright &copy; <span id="company">CropRotation</span> | 2018</p>
 			</div>
 		</footer>';
 }
@@ -166,6 +162,14 @@ function addLogin(){
 
 function session_button(){
 	$conn = mysqli_connect ("localhost", "root", "", "itsproject");
+
+// Shopping Cart
+	echo'<div id="cart-panel">
+		<h1>Shopping Cart</h1>
+	</div>
+	<div id="cart-modal" onclick="hideCartPanel()"></div>';
+
+
 	if(isset($_SESSION['id'])){
 
 	$id=$_SESSION['id'];
@@ -176,11 +180,7 @@ function session_button(){
 		if($tn_image==''){
 			$tn_image='img/default.png';
 		}
-echo'<i class="fas fa-shopping-cart button" onclick="showCartPanel()"></i>
-	<div id="cart-panel">
-		<h1>Shopping Cart</h1>
-	</div>
-	<div id="cart-modal" onclick="hideCartPanel()"></div>';
+echo'<i class="fas fa-shopping-cart button" onclick="showCartPanel()"></i>';
 //PM Count
 $sql="SELECT pmid FROM tblpm WHERE receiverid='$id' AND checked=0 GROUP BY senderid";
 $result=$conn->query($sql);
@@ -277,7 +277,9 @@ if($type==1){
 		</ul>
 		</div>';
 	}else{
-		echo'<a href ="register.php" class="button"><i class="fas fa-pencil-alt"></i></i>Sign Up</a>
+		echo'<div id="notifnum"></div><div id="pmnum"></div>
+		<i class="fas fa-shopping-cart button" onclick="showCartPanel()"></i>
+		<a href ="register.php" class="button"><i class="fas fa-pencil-alt"></i></i>Sign Up</a>
 		<a id="modalBtn" class="button"><i class="fas fa-sign-in-alt"></i>Login</a>';
 	}
 	echo'<div id="modal3" onclick="toggleNotif()">

@@ -28,16 +28,19 @@
 		addheader();
 	?>
 	<!-- Showcase -->
-		<div class="showcase">
-			<div class="container">
-				<div class="showcase-content">
-					<div class="showcase-container">
-						<h1>Welcome to BahayKubo</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa eveniet omnis ut qui, aspernatur neque unde velit officia molestias nostrum?</p><br>
-						<p><a href="about.php">Read More</a></p>
-					</div>
+		<div class="main-search">
+			<div class="browse-category">Browse Category</div>
+			<form id="main-search-form">
+				<div>
+					<input type="text" placeholder="Search for Products...">
+					<select>
+						<option disabled selected>Select Category</option>
+						<option>Fruits</option>
+						<option>Vegetables</option>
+					</select>
+					<i class="fas fa-search"></i>
 				</div>
-			</div>
+			</form>
 		</div>
 	<!-- Content -->
 		<div class="main-content">
@@ -69,75 +72,17 @@ while($row=$result->fetch_object()){
 					</div>
 				</div>
 				<div class="content-body">
+					<h3>Products</h3>
+					<div class="product"></div>
+					<div class="product"></div>
+					<div class="product"></div>
+					<div class="product"></div>
+					<div class="product"></div>
+					<div class="product"></div>
 				</div>
 				<div class="sidebar">
-					<h3>Newest Users</h3>
-<?php
-//newest users
-	$sql="SELECT username,imgpath,datecreated FROM tbluser ORDER BY userid DESC LIMIT 10";
-	$result=$conn->query($sql);
-	while($row=$result->fetch_object()){
-
-		$name=$row->username;
-		$img=$row->imgpath;
-		if(!$img){
-			$img='img/default.png';
-		}
-		$date = date("M j, Y", strtotime($row->datecreated));
-		$time = date("g:i:s A", strtotime($row->datecreated));
-
-		echo'
-		<div>
-		<ul class="drop-ul"><li><a href="profile.php?name='.$name.'"><div class="drop-tn"><img src="'.$img.'"></div><p>'.$name.'</a></p><small>Joined: '.$date.'</small><br>
-			<small>'.$time.'</small>
-		<li></ul>
-		</div>';
-	}
-
-?>
+					<h3>Sidebar</h3>
 				</div>
-				<div class="sidebar2">
-					<h3>Browse Category</h3>
-				</div>
-				<div class="sidebar3">
-					<h3>Popular Users</h3>
-<?php
-//Popular Users
-	$count=1;
-	$sql="SELECT username,imgpath,datecreated FROM tbluser ORDER BY profileviews DESC LIMIT 10";
-	$result=$conn->query($sql);
-	while($row=$result->fetch_object()){
-
-		$name=$row->username;
-		$img=$row->imgpath;
-		if(!$img){
-			$img='img/default.png';
-		}
-		$date = date("M j, Y", strtotime($row->datecreated));
-		$time = date("g:i:s A", strtotime($row->datecreated));
-
-		echo'
-		<div>
-		<ul class="drop-ul"><li><a href="profile.php?name='.$name.'"><div class="drop-tn"><img src="'.$img.'"></div><p>';
-		if ($count==1){
-			echo'<i class="fas fa-trophy gold"></i>';
-		}else if ($count==2){
-			echo'<i class="fas fa-trophy silver"></i>';
-		}else if ($count==3){
-			echo'<i class="fas fa-trophy bronze"></i>';
-		}else{
-			echo '#'.$count.' ';
-		}
-		echo ' '.$name.'</a></p><small>Joined: '.$date.'</small><br>
-			<small>'.$time.'</small>
-		<li></ul>
-		</div>';
-		$count++;
-	}
-
-?>		
-				</div>
-			</div>
 		</div>
 	<!-- Footer -->
 		<?php
