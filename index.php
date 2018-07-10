@@ -32,7 +32,7 @@
 			<div class="browse-category">Browse Category</div>
 			<form id="main-search-form">
 				<div>
-					<input type="text" placeholder="Search for Products...">
+					<input type="text" id="main-search" placeholder="Search for Products...">
 					<select>
 						<option disabled selected>Select Category</option>
 						<option>Fruits</option>
@@ -92,6 +92,8 @@ while($row=$result->fetch_object()){
 	</div>
 	<script src="js/main.js"></script>
 	<script>
+		let search= document.getElementById('main-search');
+		search.focus();
 		modal();
 		ajaxLogin();
 	</script>

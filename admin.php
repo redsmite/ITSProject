@@ -19,13 +19,9 @@ chattab();
 <body>
 	<div class="container">
 		<!-- Header -->
-		<header id="main-header">
-			<div class="grid-header">
-				<div class="box1">
-					<h1 id="header-text"><a href="index.php"><span id="first-text">Crop</span><span id="second-text">Rotation</span></a></h1>
-				</div>
-			</div>
-		</header>
+		<?php
+			addheader();
+		?>
 	<!-- Login Form -->
 		<div class="other-content">
 			<h1>Site Admin</h1>

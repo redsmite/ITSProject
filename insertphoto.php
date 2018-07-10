@@ -59,11 +59,14 @@
 						?>
 					</div>
 
-					<form id="profile-pic-form" method="POST" enctype="multipart/form-data">
-
+					<form id="profile-pic-form"
+					method="POST" enctype="multipart/form-data">
+					<progress id="progressBar"></progress>
+					<h3 id="status"></h3>
+					<p id="loaded_n_total"></p>
 						<div>Select Picture:
 							<br>
-							<input type="file" name="img" value="Choose Image" name="img"/>
+							<input type="file" id="img" value="Choose Image" name="img"/>
 						</div>
 						<div>
 							<button type="submit" name="submit">
@@ -71,19 +74,13 @@
 							</button><br><br> 
 
 							<button type="
-							submit" name="remove">
+							submit" name="remove" onclick="removePhoto()">
 								<i class="fas fa-trash-alt"></i> Remove
 							</button>
 						</div>
+						<div id="error-message2"></div>
 <?php
 
-$id=$_SESSION['id'];
-
-if(isset($_POST['remove'])){
-		$sql = "UPDATE tbluser SET imgname='',imgtype='',imgpath='' WHERE userid='$id'";  
-		$conn->query($sql);
-		echo("<script>window.location.href = 'profile.php?name=".$_SESSION['name']."';</script>");	
-}
 
 //upload photo
 if(isset($_POST['submit'])){

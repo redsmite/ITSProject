@@ -2,7 +2,7 @@
 date_default_timezone_set('Asia/Manila');
 
 function companytitle(){
-	echo'CropRotation';
+	echo'BahayKubo';
 }
 
 function updateStatus(){
@@ -19,7 +19,7 @@ function addheader(){
 	echo'<header id="main-header">
 			<div class="grid-header">
 				<div class="box1">
-					<h1 id="header-text"><a href="index.php"><span id="first-text">Crop</span><span id="second-text">Rotation</span></a></h1>
+					<h1 id="header-text"><a href="index.php"><span id="first-text">Bahay</span><span id="second-text">Kubo</span></a></h1>
 				</div>
 				<div class="box2">';
 					
@@ -57,7 +57,7 @@ function addfooter(){
 				<a target="_blank" title="Like us on Facebook" href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
 				<a target="_blank" title="Follow us on Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
 				<a target="_blank" title="Follow us on Instagram" href="https://www.instagram.com/?hl=ens"><i class="fab fa-instagram"></i></a>
-				<p>Copyright &copy; <span id="company">CropRotation</span> | 2018</p>
+				<p>Copyright &copy; <span id="company">BahayKubo</span> | 2018</p>
 			</div>
 		</footer>';
 }
@@ -110,7 +110,11 @@ function addSidebar(){
 					echo'<li><a title="Admin Panel" href="admin.php"><i class="fas fa-unlock-alt"></i></a></li>';
 				}
 				
-				echo'<li><a title="Change your profile picture" href="insertphoto.php"><i class="fas fa-camera"></i></i></a></li>
+				echo'
+				<li>
+				<a title="About us" href="about.php"><i class="fas fa-info-circle"></i></a></li>
+				<li>
+				<a title="Change your profile picture" href="insertphoto.php"><i class="fas fa-camera"></i></i></a></li>
 				<li><a title="Edit your personal info" href="editinfo.php"><i class="fas fa-pen-square"></i></a></li>
 				<li><a title="Change your account settings" href="accountsetting.php"><i class="fas fa-cog"></i></a></li>
 				<li><a title="Logout" href="logout.php"><i class="fas fa-power-off"></i></a></li>
@@ -121,6 +125,9 @@ function addSidebar(){
 		<div class="side-nav" id="side-menu">
 			<ul>
 				<li><p href="#" class="btn-close" onclick="closeSlideMenu()">&times;</p></li>
+				<li>
+				<a title="About us" href="about.php"><i class="fas fa-info-circle"></i></a></li>
+				<li>
 				<li><a target="_blank" title="Like us on Facebook" href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a></li>
 				<li><a target="_blank" title="Follow us on Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
 				<li><a target="_blank" title="Follow us on Instagram" href="https://www.instagram.com/?hl=ens"><i class="fab fa-instagram"></i></a></li>

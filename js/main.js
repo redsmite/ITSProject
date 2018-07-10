@@ -1210,13 +1210,14 @@ function sendAnnounce(){
 
 		myRequest.onload = function(){
 			var response= this.responseText;
-			console.log(response);
 			form.reset();
 			alert('Your announcement has been sent to the home page');
 		}
 		myRequest.send(formData);		
 	}
 }
+
+// Cart
 
 function showCartPanel(){
 	let panel = document.getElementById('cart-panel');
@@ -1233,6 +1234,96 @@ function hideCartPanel(){
 	
 	panel.style.display='none';
 	modal.style.display='none';	
+}
+
+// Photo
+
+function removePhoto(){
+	let form = document.getElementById('profile-pic-form');
+
+	form.addEventListener('submit',remove);
+
+	function remove(e){
+		e.preventDefault();
+
+		addSpinners();
+
+		var myRequest = new XMLHttpRequest();
+
+		var url = 'photoprocess.php';
+
+		let remove = 'remove';
+
+		var formData = "remove="+remove;
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			removeSpinners();
+			let profile = "profile.php?name="+response;
+			let profile2 = profile.split('<');			
+			window.location.replace(profile2[0]);
+		}
+		myRequest.send(formData);		
+	}		
+}
+
+function submitPhoto(){
+	let form = document.getElementById('profile-pic-form');
+
+	form.addEventListener('submit',insert);
+
+	function insert(e){
+		e.preventDefault();
+		
+		var myRequest = new XMLHttpRequest();
+
+		var url = 'photoprocess.php';
+
+		var upload = document.getElementById('img');
+		var property = upload.files[0];
+		var image_name = property.name;
+		var image_extension = image_name.split('.').pop().toLowerCase();
+
+		console.log(property);
+		
+		var formData = 'img='+property;
+
+		myRequest.upload.addEventListener("progress", progressHandler, false);
+		myRequest.addEventListener("load", completeHandler, false);
+		myRequest.addEventListener("error", errorHandler, false);
+		myRequest.addEventListener("abort", abortHandler, false);
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			console.log(response);
+			document.getElementById('error-message2').innerHTML=response;
+			removeSpinners();			
+			//window.location.replace("profile.php?name="+response);
+		}
+		myRequest.send(formData);		
+	}
+}
+
+function progressHandler(event){
+	document.getElementById("loaded_n_total").innerHTML = "Uploaded "+event.loaded+" bytes of "+event.total;
+	var percent = (event.loaded / event.total) * 100;
+	document.getElementById("progressBar").value = Math.round(percent);
+	document.getElementById("status").innerHTML = Math.round(percent)+"% uploaded... please wait";
+}
+function completeHandler(event){
+	document.getElementById("status").innerHTML = event.target.responseText;
+	document.getElementById("progressBar").value = 100;
+}
+function errorHandler(event){
+	document.getElementById("status").innerHTML = "Upload Failed";
+}
+function abortHandler(event){
+	document.getElementById("status").innerHTML = "Upload Aborted";
 }
 
 //Redirect Page
