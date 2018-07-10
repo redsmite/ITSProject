@@ -939,16 +939,48 @@ function searchChat(){
 
 // Admin Panel
 
+function adminLogin(){
+	let form = document.getElementById('admin-login');
+	form.addEventListener('submit',login);
+
+	function login(e){
+		e.preventDefault();
+
+		var myRequest = new XMLHttpRequest();
+		var url = 'adminprocess.php';
+
+		let name = document.getElementById('admin-name').value;
+		let password = document.getElementById('admin-password').value;
+
+		var formData = "login="+name+"&password="+password;
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			if(response=='success'){
+				window.location.replace('adminpanel.php');
+			}else{
+				document.getElementById('error-message3').innerHTML=response;
+			}
+
+		}
+		myRequest.send(formData);
+
+	}
+}
+
 function showReportTab(){
 	let tab1 = document.getElementById('report-tab');
 	let tab2 = document.getElementById('announcement-tab');
-	let tab3 = document.getElementById('sendall-tab');
+	let tab3 = document.getElementById('monitoring-tab');
 
 	let body1 = document.getElementById('admin-reports');
 	let body1a = document.getElementById('get-users-div');
 	let body1b = document.getElementById('fetch');
 	let body2 = document.getElementById('announcement-div');
-	let body3 = document.getElementById('sendall-div');
+	let body3 = document.getElementById('monitoring');
 
 
 	tab1.classList.add('style-tab');
@@ -965,13 +997,13 @@ function showReportTab(){
 function showAnnouncementTab(){
 	let tab1 = document.getElementById('report-tab');
 	let tab2 = document.getElementById('announcement-tab');
-	let tab3 = document.getElementById('sendall-tab');
+	let tab3 = document.getElementById('monitoring-tab');
 
 	let body1 = document.getElementById('admin-reports');
 	let body1a = document.getElementById('get-users-div');
 	let body1b = document.getElementById('fetch');
 	let body2 = document.getElementById('announcement-div');
-	let body3 = document.getElementById('sendall-div');
+	let body3 = document.getElementById('monitoring');
 
 
 	tab1.classList.remove('style-tab');
@@ -985,16 +1017,16 @@ function showAnnouncementTab(){
 	body3.style.display='none';
 }
 
-function showSendAllTab(){
+function showMonitoringTab(){
 	let tab1 = document.getElementById('report-tab');
 	let tab2 = document.getElementById('announcement-tab');
-	let tab3 = document.getElementById('sendall-tab');
+	let tab3 = document.getElementById('monitoring-tab');
 
 	let body1 = document.getElementById('admin-reports');
 	let body1a = document.getElementById('get-users-div');
 	let body1b = document.getElementById('fetch');
 	let body2 = document.getElementById('announcement-div');
-	let body3 = document.getElementById('sendall-div');
+	let body3 = document.getElementById('monitoring');
 
 
 	tab1.classList.remove('style-tab');
@@ -1006,7 +1038,7 @@ function showSendAllTab(){
 	body1a.style.display='none';
 	body1b.style.display='none';
 	body2.style.display='none';
-	body3.style.display='block';
+	body3.style.display='grid';
 }
 
 function sendAllUser(){
@@ -1114,6 +1146,36 @@ function removephoto(clickedid){
 	myRequest.send(formData);
 }
 
+function addNewCategory(){
+	let body1= document.getElementById('add-category');
+	let body2= document.getElementById('set-price');
+	let body3= document.getElementById('history');
+
+	body1.style.display ='block';
+	body2.style.display ='none';
+	body3.style.display ='none';	
+}
+
+function setPrice(){
+	let body1= document.getElementById('add-category');
+	let body2= document.getElementById('set-price');
+	let body3= document.getElementById('history');
+
+	body1.style.display ='none';
+	body2.style.display ='block';
+	body3.style.display ='none';	
+}
+
+function priceHistory(){
+	let body1= document.getElementById('add-category');
+	let body2= document.getElementById('set-price');
+	let body3= document.getElementById('history');
+
+	body1.style.display ='none';
+	body2.style.display ='none';
+	body3.style.display ='block';	
+}
+
 // Report User
 
 function showreport(){
@@ -1160,6 +1222,7 @@ function reportuser(){
 				alert('Your report has been sent for review, thank you.');
 				removeSpinners();
 				hidereport();
+				form.reset();
 			}
 		}
 		myRequest.send(formData);

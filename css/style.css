@@ -475,7 +475,8 @@ body{
 	float:left;
 	border: var(--darkgray);
 	cursor: pointer;
-	box-shadow: 0 0 20px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border-radius: 8px;
 }
 
 #main-search-form{
@@ -677,7 +678,7 @@ body{
 	display: inline-block;
 	background: var(--secondary-color);
 	border: var(--darkgray);
-	transition-duration: 1000ms;
+	transition-duration: 250ms;
 	transition-property: background,width,box-shadow;
 	transition-timing-function: ease-in-out;
 }
@@ -1556,7 +1557,7 @@ body{
 	display: none;
 	margin-left: auto;
 	margin-right: auto;
-	background: var(--lime);
+	background: var(--secondary-color);
 	border: 1px solid var(--darkgray);
 	text-align: center;
 	padding-bottom: 20px;
@@ -1574,7 +1575,7 @@ body{
 	display: none;
 	margin-left: auto;
 	margin-right: auto;
-	background: var(--facebookblue);
+	background: var(--primary-color);
 	padding: 30px;
 	width: 80%;
 	line-height: 1.5em;
@@ -1648,6 +1649,10 @@ body{
 	background: var(--gray);
 	border: 1px solid var(--darkgray);
 	width: 80%;
+	transition-duration: 250ms;
+	transition-property: width;
+	transition-timing-function: ease-out;
+	cursor: pointer;
 }
 
 .reportlist li a{
@@ -1657,19 +1662,18 @@ body{
 
 .newreport{
 	float: right;
-	color: var(--primary-color);
+	color: var(--darkgray);
 	margin-right: 5px;
 }
 
 .checkreport{
 	float: right;
-	color: var(--lime);
+	color: var(--primary-color);
 	margin-right: 5px;
 }
 
 .reportlist li:hover{
-	background: var(--darkgray);
-	color: var(--light-color);
+	width: 85%;
 }
 
 #announcement-div{
@@ -1679,6 +1683,58 @@ body{
 #announce-content{
 	width:80%;
 	height:300px;
+}
+
+#monitoring{
+	display:grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-areas: 
+	"pdf pdf"
+	"leftmon rightmon";
+}
+
+.top-pdf{
+	grid-area:pdf;
+}
+
+.get-pdf{
+	padding:1em 2em;
+	background: var(--primary-color);
+	color: var(--light-color);
+	border: 1px solid var(--darkgray);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border-radius: 8px;
+	display: block;
+	margin: 0 auto;
+	width: 150px;
+}
+
+.left-monitoring{
+	grid-area:leftmon;
+}
+
+.monitoring-option{
+	padding:1em 2em;
+	border: 1px solid var(--darkgray);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border-radius: 8px;
+	width: 150px;
+	cursor: pointer;
+}
+
+.right-monitoring{
+	grid-area:rightmon;
+	padding: 5px;
+	border: 1px solid var(--darkgray);
+	border-radius: 8px;
+}
+
+.right-monitoring h1{
+	color: var(--primary-color);
+}
+
+#add-category,#set-price,#history{
+	display: none;
 }
 
 /* Report User */

@@ -30,22 +30,30 @@ chattab();
 			<div id="admin-tab">
 				<a id="report-tab" onclick="showReportTab()">Reports</a>
 				<a id="announcement-tab" onclick="showAnnouncementTab()">Announcement</a>
-				<a id="sendall-tab" onclick="showSendAllTab()">Message</a>
+				<a id="monitoring-tab" onclick="showMonitoringTab()">Monitoring</a>
 			</div>
 			<div id="admin-body">
-			<div id="sendall-div">
-				<div class="edit-form">
-				<form id='sendtoallform'>
-					<center>
-					<h3>Send message to all users</h3>
-					<div>
-						<textarea id="sendtoallmessage"  required placeholder="enter message..."></textarea>
+			<div id="monitoring">
+				<div class="top-pdf">
+					<a href="https://psa.gov.ph/content/psa-media-service-market-prices-selected-commodities-metro-manila" class="get-pdf" target="_blank"><i class="fas fa-file-pdf"></i> Get PDF Here!</a>
+				</div>
+				<div class="left-monitoring">
+					<div class="monitoring-option" onclick="addNewCategory()"><i class="fas fa-plus"></i> Add New Category</div>
+
+					<div class="monitoring-option" onclick="setPrice()"><i class="far fa-money-bill-alt"></i> Set Price</div>
+
+					<div class="monitoring-option" onclick="priceHistory()"><i class="fas fa-chart-bar"></i> History</div>
+				</div>
+				<div class="right-monitoring">
+					<div id="add-category">
+						<h1>Add Category</h1>
 					</div>
-					<div>
-						<input type="submit" value="submit">
+					<div id="set-price">
+						<h1>Set Price</h1>
 					</div>
-					</center>
-				</form>
+					<div id="history">
+						<h1>History</h1>
+					</div>
 				</div>
 			</div>
 			<div id="admin-reports">
@@ -125,7 +133,7 @@ if($last != 1){
 			echo '<p class="checkreport">Checked</p>';
 		}
 
-		echo'<p>Reported User: <a href="profile.php?name='.$username.'"><font color="orangered">'.$username.'</font></a></p>
+		echo'<p>Reported User: <a href="profile.php?name='.$username.'"><font color="magenta">'.$username.'</font></a></p>
 		<p>Reported by: <a href="profile.php?name='.$reporter.'">'.$reporter.'</a></p>';
 		
 		if($reason==1){
@@ -172,6 +180,20 @@ if($last != 1){
 						</div>
 						<input type="hidden" id="announce-author" value="<?php echo $_SESSION['id']?>">
 					</form>
+				</div>
+
+				<div class="edit-form">
+				<form id='sendtoallform'>
+					<center>
+					<h3>Send message to all users</h3>
+					<div>
+						<textarea id="sendtoallmessage"  required placeholder="enter message..."></textarea>
+					</div>
+					<div>
+						<input type="submit" value="submit">
+					</div>
+					</center>
+				</form>
 				</div>
 			</div>
 			</div>

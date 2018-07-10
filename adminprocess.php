@@ -4,6 +4,20 @@ require_once'connection.php';
 include'functions.php';
 user_access();
 
+if(isset($_POST['login'])){
+	$name=$conn->real_escape_string($_POST['login']);
+	$password=$conn->real_escape_string($_POST['password']);
+
+	$sql="SELECT name,password FROM tbladmin WHERE name='$name' and password='$password'";
+	$result=$conn->query($sql);
+	if($result->num_rows==0){
+		echo'<div id="error-message"><i class="fas fa-exclamation-circle"></i>Admin login failed.</div>';
+	} else {
+		$_SESSION['admin']='IchigoParfait';
+		echo 'success';
+	}
+}
+
 if(isset($_POST['fetch'])){
 	$fetch = $_POST['fetch'];
 

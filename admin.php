@@ -30,31 +30,17 @@ chattab();
 					<h2><span id="highlight-text">Admin</span> Login</h2>
 					<div class="form">
 						<center>
-							<form action="#" method="post">
+							<form id="admin-login" method="post">
 								<div>
 									<label for="name">Name</label><br>
-									<input type="text" autocomplete="off" name="admin-name">
+									<input type="text" autocomplete="off" id="admin-name">
 								</div>
 								<div>
 									<label for="email">Password</label><br>
-									<input type="password" name="admin-password">
+									<input type="password" id="admin-password">
 								</div>
 								<button type="submit" name="submit">Submit</button>
-								<?php
-if(isset($_POST['submit'])){
-	$name=$conn->real_escape_string($_POST['admin-name']);
-	$password=$conn->real_escape_string($_POST['admin-password']);
-
-	$sql="SELECT name,password FROM tbladmin WHERE name='$name' and password='$password'";
-	$result=$conn->query($sql);
-	if($result->num_rows==0){
-		echo'<div id="error-message"><i class="fas fa-exclamation-circle"></i>Admin login failed.</div>';
-	} else {
-		$_SESSION['admin']='IchigoParfait';
-		header('Location: adminpanel.php');
-	}
-}
-?>
+								<div id="error-message3"></div>
 							</form>
 						</center>	
 					</div>
@@ -68,5 +54,8 @@ if(isset($_POST['submit'])){
 	<!-- End of Container -->
 	</div>
 	<script src="js/main.js"></script>
+	<script>
+		adminLogin();
+	</script>
 </body>
 </html>
