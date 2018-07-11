@@ -1176,6 +1176,39 @@ function priceHistory(){
 	body3.style.display ='block';	
 }
 
+function addCategoryAjax(){
+	let form = document.getElementById('add-category-form');
+
+	form.addEventListener('submit',add);
+
+	function add(e){
+		e.preventDefault();
+
+		var myRequest = new XMLHttpRequest();
+
+		var url = 'adminprocess.php';
+
+		let add = document.getElementById('category-name').value;
+
+		var formData = "addCat="+add;
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			if(response=='success'){
+				alert(add+' Added!');
+				form.reset();
+			}else if(response=='Already exist'){
+				document.getElementById('error-message2').innerHTML=add+ ' Already exist';
+				form.reset();
+			}
+		}
+		myRequest.send(formData);		
+	}
+}
+
 // Report User
 
 function showreport(){

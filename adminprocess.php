@@ -134,4 +134,25 @@ if(isset($_POST['title'])){
 	echo $sql;
 
 }
+
+if(isset($_POST['addCat'])){
+	$category = $conn->real_escape_string($_POST['addCat']);
+
+	$sql="SELECT categoryid FROM tblcategory WHERE category='$category'";
+	$result=$conn->query($sql);
+	if($result->num_rows==0){
+
+	$sql="INSERT INTO tblcategory (category,status) VALUES('$category',1)";
+	$result=$conn->query($sql);
+	echo 'success';
+
+	$log = 'Add '.$category.' category to the database';
+
+	$sql="INSERT INTO tblchangelog (log,datecreated) VALUES ('$log',NOW())";
+	$result= $conn->query($sql);
+
+	}else{
+		echo 'Already exist';
+	}
+}
 ?>

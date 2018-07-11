@@ -38,21 +38,54 @@ chattab();
 					<a href="https://psa.gov.ph/content/psa-media-service-market-prices-selected-commodities-metro-manila" class="get-pdf" target="_blank"><i class="fas fa-file-pdf"></i> Get PDF Here!</a>
 				</div>
 				<div class="left-monitoring">
-					<div class="monitoring-option" onclick="addNewCategory()"><i class="fas fa-plus"></i> Add New Category</div>
+					<div class="monitoring-option" onclick="addNewCategory()"><i class="fas fa-plus"></i> Add / Remove Category</div>
 
 					<div class="monitoring-option" onclick="setPrice()"><i class="far fa-money-bill-alt"></i> Set Price</div>
 
-					<div class="monitoring-option" onclick="priceHistory()"><i class="fas fa-chart-bar"></i> History</div>
+					<div class="monitoring-option" onclick="priceHistory()"><i class="fas fa-book"></i> Change Log</div>
 				</div>
+				<div class="empty"></div>
 				<div class="right-monitoring">
 					<div id="add-category">
-						<h1>Add Category</h1>
+						<h1>Add / Remove Category</h1>
+						<div class="edit-form">
+							<form id="add-category-form">
+								<div>
+									<h2>Add Category</h2>
+									<input id="category-name" type="text">
+								</div>
+								<div>
+									<button onclick="addCategoryAjax()"><i class="fas fa-plus"></i> Add</button>
+								</div>
+								<div id="error-message2">
+								</div>
+							</form>
+						</div>
+						<div id="get-category">
+							<h2>Get Category</h2>
+							<input type="text" onkeyup="fetchUser()" id="gc-input">
+						</div>
+						<div id="fetch-category">
+							<div onclick="resetfetch()" class="closethis"><a><i class="fas fa-times"></i></a></div>
+						</div>
 					</div>
 					<div id="set-price">
 						<h1>Set Price</h1>
 					</div>
 					<div id="history">
-						<h1>History</h1>
+						<h1>Changelog</h1>
+						<div class="whitepaper">
+<?php
+	$sql="SELECT log,datecreated FROM tblchangelog ORDER BY logid DESC";
+	$result=$conn->query($sql);
+	while($row=$result->fetch_object()){
+		$log = $row->log;
+		$date = date('D, F j Y g:i A',strtotime($row->datecreated));
+
+		echo'<p>'.$date.': '.$log.'</p>';
+	}
+?>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -181,11 +214,10 @@ if($last != 1){
 						<input type="hidden" id="announce-author" value="<?php echo $_SESSION['id']?>">
 					</form>
 				</div>
-
+				<h3>Send message to all users</h3>
 				<div class="edit-form">
 				<form id='sendtoallform'>
 					<center>
-					<h3>Send message to all users</h3>
 					<div>
 						<textarea id="sendtoallmessage"  required placeholder="enter message..."></textarea>
 					</div>
