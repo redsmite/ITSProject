@@ -38,9 +38,9 @@ chattab();
 					<a href="https://psa.gov.ph/content/psa-media-service-market-prices-selected-commodities-metro-manila" class="get-pdf" target="_blank"><i class="fas fa-file-pdf"></i> Get PDF Here!</a>
 				</div>
 				<div class="left-monitoring">
-					<div class="monitoring-option" onclick="addNewCategory()"><i class="fas fa-plus"></i> Add / Remove Category</div>
+					<div class="monitoring-option" onclick="setPrice()"><i class="far fa-money-bill-alt"></i> Price Monitoring</div>
 
-					<div class="monitoring-option" onclick="setPrice()"><i class="far fa-money-bill-alt"></i> Set Price</div>
+					<div class="monitoring-option" onclick="addNewCategory()"><i class="fas fa-plus"></i> Add / Remove Category</div>
 
 					<div class="monitoring-option" onclick="priceHistory()"><i class="fas fa-book"></i> Change Log</div>
 				</div>
@@ -62,29 +62,48 @@ chattab();
 							</form>
 						</div>
 						<div id="get-category">
-							<h2>Get Category</h2>
-							<input type="text" onkeyup="fetchUser()" id="gc-input">
+							<h2>Show/Hide Category</h2>
+							<input type="text" onkeyup="fetchCategory()" id="gc-input">
 						</div>
 						<div id="fetch-category">
-							<div onclick="resetfetch()" class="closethis"><a><i class="fas fa-times"></i></a></div>
+							<div onclick="resetthis()" class="closethis"><a><i class="fas fa-times"></i></a></div>
 						</div>
 					</div>
 					<div id="set-price">
-						<h1>Set Price</h1>
+						<h1>Price Monitoring</h1>
+						<ul class="price-ul">
+<?php
+	$sql = "SELECT categoryid, category, low ,high, prevailing FROM tblcategory";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_object()){
+		$id = $row->categoryid;
+		$category = $row->category;
+		$low = $row->low;
+		$high = $row->high;
+		$prevailing = $row->prevailing;
+
+		echo '<li id="li-'.$id.'">
+		<h3>'.$category.'</h3> 
+			<div class="price-input">
+				Low:<input type="number" id="low-'.$id.'" value="'.$low.'">
+			</div>
+			<div class="price-input">
+				High:<input type="number" id="high-'.$id.'" value="'.$high.'">
+			</div>
+			<div class="price-input">
+				Prevailing:<input type="number" id="prev-'.$id.'" value="'.$prevailing.'">
+			</div>
+			<div class="price-input">
+				<button class="price-button" onclick="updatePrice(this)" value="'.$id.'">Update</button>
+			</div>
+		</li>';
+	}
+?>
+						</ul>
 					</div>
 					<div id="history">
 						<h1>Changelog</h1>
-						<div class="whitepaper">
-<?php
-	$sql="SELECT log,datecreated FROM tblchangelog ORDER BY logid DESC";
-	$result=$conn->query($sql);
-	while($row=$result->fetch_object()){
-		$log = $row->log;
-		$date = date('D, F j Y g:i A',strtotime($row->datecreated));
-
-		echo'<p>'.$date.': '.$log.'</p>';
-	}
-?>
+						<div id="whitepaper">
 						</div>
 					</div>
 				</div>

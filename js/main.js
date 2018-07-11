@@ -91,6 +91,24 @@ function toggleNotif(){
 
 }
 
+// Index Page
+
+function showCategory(){
+	document.getElementById('category-slide').style.display='block';
+	document.getElementById('category-slide').style.width='20%';
+	document.getElementById('category-slide').marginleft='20%';
+	document.getElementById('category-modal').style.display='block';
+}
+
+function hideCategory(){
+	document.getElementById('category-slide').style.display='none';
+	document.getElementById('category-slide').style.width='0';
+	document.getElementById('category-slide').marginleft='0';
+	document.getElementById('category-modal').style.display='none';
+}
+
+// Search
+
 function searchdropdown(){
 	var crit = document.getElementById('criteria').value;
 	var src = document.getElementById('search-dropdown');
@@ -178,6 +196,8 @@ function searchdropdown(){
 		src.style.display='none';
 	}
 }
+
+// friend
 
 function friendprocess(){
 	var fr=document.getElementById("fr-btn");
@@ -341,44 +361,44 @@ function friendremove(){
 function ajaxLogin(){
 	document.getElementById('log-form').addEventListener('submit', postName);
 
-		function postName(e){
-			e.preventDefault();
+	function postName(e){
+		e.preventDefault();
 
-			addSpinners();
+		addSpinners();
 
-			var myRequest = new XMLHttpRequest();
-			var url = 'loginprocess.php';
+		var myRequest = new XMLHttpRequest();
+		var url = 'loginprocess.php';
 
-			//form data variables
-			var username = document.getElementById('log-user').value;
-			var password = document.getElementById('log-pass').value;
-			var remember = document.getElementById('log-remember');
+		//form data variables
+		var username = document.getElementById('log-user').value;
+		var password = document.getElementById('log-pass').value;
+		var remember = document.getElementById('log-remember');
 
-			if(remember.checked==true){
-				remember=1;
-			}else{
-				remember=0;
-			}
-
-			var formData = "username="+username+"&password="+password+"&remember="+remember;
-			
-			myRequest.open('POST', url ,true);
-			myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-
-			myRequest.onload = function(){
-				var response= JSON.parse(this.responseText);
-				
-				if(response[0]==0){
-					
-					window.location.href = "loginsuccess.html";
-				
-				} else {
-					removeSpinners();
-					document.getElementById('error-message').innerHTML=response[1];
-				}
-			}
-			myRequest.send(formData);
+		if(remember.checked==true){
+			remember=1;
+		}else{
+			remember=0;
 		}
+
+		var formData = "username="+username+"&password="+password+"&remember="+remember;
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= JSON.parse(this.responseText);
+			
+			if(response[0]==0){
+				
+				window.location.href = "loginsuccess.html";
+			
+			} else {
+				removeSpinners();
+				document.getElementById('error-message').innerHTML=response[1];
+			}
+		}
+		myRequest.send(formData);
+	}
 }
 
 // Register AJAX
@@ -982,7 +1002,6 @@ function showReportTab(){
 	let body2 = document.getElementById('announcement-div');
 	let body3 = document.getElementById('monitoring');
 
-
 	tab1.classList.add('style-tab');
 	tab2.classList.remove('style-tab');	
 	tab3.classList.remove('style-tab');
@@ -1004,7 +1023,6 @@ function showAnnouncementTab(){
 	let body1b = document.getElementById('fetch');
 	let body2 = document.getElementById('announcement-div');
 	let body3 = document.getElementById('monitoring');
-
 
 	tab1.classList.remove('style-tab');
 	tab2.classList.add('style-tab');	
@@ -1028,72 +1046,72 @@ function showMonitoringTab(){
 	let body2 = document.getElementById('announcement-div');
 	let body3 = document.getElementById('monitoring');
 
-
 	tab1.classList.remove('style-tab');
 	tab2.classList.remove('style-tab');	
 	tab3.classList.add('style-tab');
-
 
 	body1.style.display='none';
 	body1a.style.display='none';
 	body1b.style.display='none';
 	body2.style.display='none';
 	body3.style.display='grid';
+
+	setPrice();
 }
 
 function sendAllUser(){
 	var form = document.getElementById('sendtoallform');
 	form.addEventListener('submit', postName);
 
-		function postName(e){
-			e.preventDefault();
+	function postName(e){
+		e.preventDefault();
 
-			addSpinners();
+		addSpinners();
 
-			var myRequest = new XMLHttpRequest();
-			var url = 'inboxprocess.php';
+		var myRequest = new XMLHttpRequest();
+		var url = 'inboxprocess.php';
 
-			//form data variables
-			var sendall = document.getElementById('sendtoallmessage').value;
+		//form data variables
+		var sendall = document.getElementById('sendtoallmessage').value;
 
-			var formData = "sendall="+sendall;
-			
-			myRequest.open('POST', url ,true);
-			myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-
-			myRequest.onload = function(){
-
-				var response= this.responseText;
-				
-				if(response){
-					removeSpinners();
-					form.reset();
-					alert('Message has been sent to all users');
-				}
-			}
-			myRequest.send(formData);
-		}
-}
-
-function fetchUser(){
-	var myRequest = new XMLHttpRequest();
-		var url = 'adminprocess.php';
-
-		var fetch = document.getElementById('get-user').value;
-
-		var formData = "fetch="+fetch;
+		var formData = "sendall="+sendall;
 		
 		myRequest.open('POST', url ,true);
 		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
 		myRequest.onload = function(){
+
 			var response= this.responseText;
-				
-			document.getElementById('fetch').innerHTML = response;
 			
-			
+			if(response){
+				removeSpinners();
+				form.reset();
+				alert('Message has been sent to all users');
+			}
 		}
 		myRequest.send(formData);
+	}
+}
+
+function fetchUser(){
+	var myRequest = new XMLHttpRequest();
+	var url = 'adminprocess.php';
+
+	var fetch = document.getElementById('get-user').value;
+
+	var formData = "fetch="+fetch;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+			
+		document.getElementById('fetch').innerHTML = response;
+		
+		
+	}
+	myRequest.send(formData);
 }
 
 function resetfetch(){
@@ -1173,7 +1191,25 @@ function priceHistory(){
 
 	body1.style.display ='none';
 	body2.style.display ='none';
-	body3.style.display ='block';	
+	body3.style.display ='block';
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'adminprocess.php';
+
+	let log = 'log';
+
+	var formData = "log="+log;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		let div = document.getElementById('whitepaper');
+		div.innerHTML = response;
+	}
+	myRequest.send(formData);				
 }
 
 function addCategoryAjax(){
@@ -1207,6 +1243,115 @@ function addCategoryAjax(){
 		}
 		myRequest.send(formData);		
 	}
+}
+
+function fetchCategory(){
+	var myRequest = new XMLHttpRequest();
+	var url = 'adminprocess.php';
+
+	var fetch = document.getElementById('gc-input').value;
+
+	var formData = "fetchb="+fetch;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+			
+		document.getElementById('fetch-category').innerHTML = response;
+		
+		
+	}
+	myRequest.send(formData);	
+}
+
+function resetthis(){	
+	var input = document.getElementById('gc-input');
+	var form = document.getElementById('fetch-category');
+	input.value='';
+	form.innerHTML ='<div onclick="resetthis()" class="closethis"><a><i class="fas fa-times"></i></a></div>'; 
+}
+
+function showCat(clicked){
+	let id = clicked.getAttribute('value');
+	let thid = 'cat-'+id;
+	let th = document.getElementById(thid);
+	th.innerHTML='<font style="color:green">Showing...</font>';
+
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'adminprocess.php';
+
+	var formData = "showcat="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+			
+		console.log(response);
+	}
+	myRequest.send(formData);	
+}
+
+function hideCat(clicked){
+	let id = clicked.getAttribute('value');
+	let thid = 'cat-'+id;
+	let th = document.getElementById(thid);
+	th.innerHTML='<font style="color:red">Hiding...</font>';
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'adminprocess.php';
+
+	var formData = "hidecat="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+			
+		console.log(response);
+	}
+	myRequest.send(formData);	
+}
+
+function updatePrice(clicked){
+	addSpinners();
+
+	let id = clicked.getAttribute('value');
+
+	let liid = 'li-'+id;
+	let lowid = 'low-'+id;
+	let highid = 'high-'+id;
+	let previd = 'prev-'+id;
+
+	let li = document.getElementById(liid);
+	let low = document.getElementById(lowid).value;
+	let high = document.getElementById(highid).value;
+	let prev = document.getElementById(previd).value;
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'adminprocess.php';
+
+	var formData = "low="+low+"&high="+high+"&prev="+prev+"&pid="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+		console.log(response);
+		if(response=='success'){
+			li.style.background='green';
+		}else{
+			li.style.background='red';
+		}
+	}
+	myRequest.send(formData);	
 }
 
 // Report User

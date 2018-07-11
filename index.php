@@ -29,7 +29,20 @@
 	?>
 	<!-- Showcase -->
 		<div class="main-search">
-			<div class="browse-category">Browse Category</div>
+			<div id="browse-category" onclick="showCategory()">Browse Category
+			</div>
+			<div id="category-modal" onclick="hideCategory()"></div>
+			<div id="category-slide">
+<?php
+	$sql = "SELECT category FROM tblcategory WHERE status =1";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_object()){
+		$category = $row->category;
+
+		echo '<p>'.$category.'</p>';
+	}
+?>
+			</div>
 			<form id="main-search-form">
 				<div>
 					<input type="text" id="main-search" placeholder="Search for Products...">

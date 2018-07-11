@@ -155,4 +155,89 @@ if(isset($_POST['addCat'])){
 		echo 'Already exist';
 	}
 }
+
+if(isset($_POST['log'])){
+
+	$sql="SELECT log,datecreated FROM tblchangelog ORDER BY logid DESC";
+	$result=$conn->query($sql);
+	while($row=$result->fetch_object()){
+		$log = $row->log;
+		$date = date('D, F j Y g:i A',strtotime($row->datecreated));
+
+		echo'<p>'.$date.': '.$log.'</p>';
+	}
+}
+
+if(isset($_POST['fetchb'])){
+	$category = $conn->real_escape_string($_POST['fetchb']);
+	$sql = "SELECT categoryid,status,category FROM tblcategory WHERE category LIKE '%$category%' LIMIT 10";
+	echo '<div onclick="resetthis()" class="closethis"><a><i class="fas fa-times"></i></a></div>
+		<table>
+		<tr>
+		<th>Category</th>
+		<th>Show/Hide</th>
+		</tr>';
+	$result = $conn->query($sql);
+	while($row = $result->fetch_object()){
+		$id = $row->categoryid;
+		$category = $row->category;
+		$status = $row->status;
+
+		echo '<tr>
+		<th>'.$category.'</th>';
+		
+		if($status==0){
+		echo'<th id="cat-'.$id.'" class="cathover" value='.$id.' onclick="showCat(this)"><span class="banned">Hide</span></th>';
+		}else if($status==1){
+		echo'<th id="cat-'.$id.'" class="cathover" value='.$id.' onclick="hideCat(this)"><span class="notbanned">Show</span></th>';
+		}
+		echo'</tr>';
+	}
+	echo '</table>';
+}
+
+if(isset($_POST['showcat'])){
+	$id = $_POST['showcat'];
+
+
+	$sql = "UPDATE tblcategory SET status=1 WHERE categoryid='$id'";
+	$result = $conn->query($sql);
+	echo 'oke-oke-okay';
+}
+
+
+if(isset($_POST['hidecat'])){
+	$id = $_POST['hidecat'];
+
+	$sql = "UPDATE tblcategory SET status=0 WHERE categoryid='$id'";
+	$result = $conn->query($sql);
+	echo 'oke-oke-okay';
+}
+
+if(isset($_POST['low'])){
+	$id= $_POST['pid'];
+	$low = $_POST['low'];
+	$high = $_POST['high'];
+	$prev = $_POST['prev'];
+
+	if($low<0 or $high<0 or $prev<0){
+		echo' Can\'t set price to negative';
+	}else{
+
+		$sql = "UPDATE tblcategory SET low='$low',high='$high',prevailing='$prev' WHERE categoryid='$id'";
+		$result = $conn->query($sql);
+
+		$sql = "SELECT category FROM tblcategory WHERE categoryid='$id'";
+		$result= $conn->query($sql);
+		$fetch = $result->fetch_object();
+		$category=$fetch->category;
+
+		$log = 'Update price of '.$category;
+
+		$sql = "INSERT INTO tblchangelog (log,datecreated) VALUES ('$log',NOW())";
+		$result= $conn->query($sql);
+
+		echo 'success';
+	}
+}
 ?>
