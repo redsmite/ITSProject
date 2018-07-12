@@ -109,11 +109,11 @@
 							}
 
 							if($usertype==1){
-								//Nothing
+								echo'<p id="user-default">User</p>';
 							}else if ($usertype==2){
 								echo'<p id="user-bot">Bot</p>';
 							}else if ($usertype==3){
-								echo'<p id="user-dbadmin">DB Admin</p>';
+								echo'<p id="user-seller">Seller</p>';
 							}else if ($usertype==4){
 								echo'<p id="user-siteadmin">Site Admin</p>';
 							}

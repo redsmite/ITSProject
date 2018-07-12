@@ -27,6 +27,7 @@ if(isset($_POST['fetch'])){
 	<th>Profile</th>
 	<th>Ban/Allow</th>
 	<th>Remove Photo</th>
+	<th>Change User Type</th>
 	</tr>';
 
 	$sql="SELECT userid,username,access,usertypeid FROM tbluser WHERE username LIKE '%$fetch%' LIMIT 10";
@@ -52,8 +53,19 @@ if(isset($_POST['fetch'])){
 		}
 
 		$data.='</a></th>
-		<th id="photo-'.$id.'"><a value="'.$id.'" onclick="removephoto(this)">Remove Photo</a></th>
-		</tr>';
+		<th id="photo-'.$id.'"><a value="'.$id.'" onclick="removephoto(this)">Remove Photo</a></th>';
+
+		if($type==1){
+			$data.='<th id="type-'.$id.'" class="cathover" value="'.$id.'" onclick="settoSeller(this)"><u>User</u></th>';
+		}else if ($type==2){
+			$data.='<th>Bot</th>';
+		}else if ($type==3){
+			$data.='<th id="type-'.$id.'" class="cathover" value="'.$id.'" onclick="settoUser(this)"><u>Seller</u></th>';
+		}else if ($type==4){
+			$data.='<th>Admin</th>';
+		}
+
+			$data.='</tr>';
 	}
 	echo $data;
 }
@@ -85,6 +97,24 @@ if(isset($_POST['photo'])){
 
 	$sql = "INSERT INTO tblnotif(receiverid,notifdate,notiftype) VALUES('$id',NOW(),3)";
 	$result = $conn->query($sql);
+}
+
+if(isset($_POST['seller'])){
+	$id = $_POST['seller'];
+
+	$sql = "UPDATE tbluser SET usertypeid = 3 WHERE userid = '$id'";
+	$result = $conn->query($sql);
+
+	echo 'oke-oke-okay';
+}
+
+if(isset($_POST['notseller'])){
+	$id = $_POST['notseller'];
+
+	$sql = "UPDATE tbluser SET usertypeid = 1 WHERE userid = '$id'";
+	$result = $conn->query($sql);
+
+	echo 'oke-oke-okay';
 }
 
 if(isset($_POST['select'])){
@@ -220,17 +250,42 @@ if(isset($_POST['low'])){
 	$high = $_POST['high'];
 	$prev = $_POST['prev'];
 
-	if($low<0 or $high<0 or $prev<0){
-		echo' Can\'t set price to negative';
-	}else{
+	// Price Validation
+	$sql = "SELECT category,low,high,prevailing FROM tblcategory WHERE categoryid='$id'";
+	$result= $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$category=$fetch->category;
+	$Clow = $fetch->low;
+	$Chigh = $fetch->high;
+	$Cprevailing = $fetch->prevailing;
+
+	$error='';
+
+	if($low==$Clow and $Chigh == $high and $prev == $Cprevailing){
+		$error.=' No changes are made<br>';
+
+	}
+
+	if($low>$prev){
+		$error.= 'Prevailing price can\'t be lower than low price<br>';
+	}
+
+	if($prev>$high){
+		$error.= 'Prevailing price can\'t be higher than high price<br>';
+	}
+
+	if($high<$low){
+		$error.= 'Low price can\'t be higher than high price<br>';
+	}
+
+	if ($low<0 or $high<0 or $prev<0){
+		$error.=' Can\'t set price to negative<br>';
+	}
+
+	if(!$error){
 
 		$sql = "UPDATE tblcategory SET low='$low',high='$high',prevailing='$prev' WHERE categoryid='$id'";
 		$result = $conn->query($sql);
-
-		$sql = "SELECT category FROM tblcategory WHERE categoryid='$id'";
-		$result= $conn->query($sql);
-		$fetch = $result->fetch_object();
-		$category=$fetch->category;
 
 		$log = 'Update price of '.$category;
 
@@ -238,6 +293,8 @@ if(isset($_POST['low'])){
 		$result= $conn->query($sql);
 
 		echo 'success';
+	}else{
+		echo $error;
 	}
 }
 ?>

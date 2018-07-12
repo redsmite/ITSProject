@@ -995,68 +995,108 @@ function showReportTab(){
 	let tab1 = document.getElementById('report-tab');
 	let tab2 = document.getElementById('announcement-tab');
 	let tab3 = document.getElementById('monitoring-tab');
+	let tab4 = document.getElementById('sales-tab');
 
 	let body1 = document.getElementById('admin-reports');
 	let body1a = document.getElementById('get-users-div');
 	let body1b = document.getElementById('fetch');
 	let body2 = document.getElementById('announcement-div');
 	let body3 = document.getElementById('monitoring');
+	let body4 = document.getElementById('sales');
 
 	tab1.classList.add('style-tab');
 	tab2.classList.remove('style-tab');	
-	tab3.classList.remove('style-tab');
+	tab3.classList.remove('style-tab');	
+	tab4.classList.remove('style-tab');
 
 	body1.style.display='block';
 	body1a.style.display='block';
 	body1b.style.display='block';
 	body2.style.display='none';
 	body3.style.display='none';
+	body4.style.display='none';
 }
 
 function showAnnouncementTab(){
 	let tab1 = document.getElementById('report-tab');
 	let tab2 = document.getElementById('announcement-tab');
 	let tab3 = document.getElementById('monitoring-tab');
+	let tab4 = document.getElementById('sales-tab');
 
 	let body1 = document.getElementById('admin-reports');
 	let body1a = document.getElementById('get-users-div');
 	let body1b = document.getElementById('fetch');
 	let body2 = document.getElementById('announcement-div');
 	let body3 = document.getElementById('monitoring');
+	let body4 = document.getElementById('sales');
 
 	tab1.classList.remove('style-tab');
 	tab2.classList.add('style-tab');	
-	tab3.classList.remove('style-tab');
+	tab3.classList.remove('style-tab');	
+	tab4.classList.remove('style-tab');
 
 	body1.style.display='none';
 	body1a.style.display='none';
 	body1b.style.display='none';
 	body2.style.display='block';
 	body3.style.display='none';
+	body4.style.display='none';
 }
 
 function showMonitoringTab(){
 	let tab1 = document.getElementById('report-tab');
 	let tab2 = document.getElementById('announcement-tab');
 	let tab3 = document.getElementById('monitoring-tab');
+	let tab4 = document.getElementById('sales-tab');
 
 	let body1 = document.getElementById('admin-reports');
 	let body1a = document.getElementById('get-users-div');
 	let body1b = document.getElementById('fetch');
 	let body2 = document.getElementById('announcement-div');
 	let body3 = document.getElementById('monitoring');
+	let body4 = document.getElementById('sales');
 
 	tab1.classList.remove('style-tab');
 	tab2.classList.remove('style-tab');	
-	tab3.classList.add('style-tab');
+	tab3.classList.add('style-tab');	
+	tab4.classList.remove('style-tab');
 
 	body1.style.display='none';
 	body1a.style.display='none';
 	body1b.style.display='none';
 	body2.style.display='none';
 	body3.style.display='grid';
+	body4.style.display='none';
 
 	setPrice();
+}
+
+function showSalesTab(){
+	let tab1 = document.getElementById('report-tab');
+	let tab2 = document.getElementById('announcement-tab');
+	let tab3 = document.getElementById('monitoring-tab');
+	let tab4 = document.getElementById('sales-tab');
+
+	let body1 = document.getElementById('admin-reports');
+	let body1a = document.getElementById('get-users-div');
+	let body1b = document.getElementById('fetch');
+	let body2 = document.getElementById('announcement-div');
+	let body3 = document.getElementById('monitoring');
+	let body4 = document.getElementById('sales');
+
+	tab1.classList.remove('style-tab');
+	tab2.classList.remove('style-tab');	
+	tab3.classList.remove('style-tab');
+	tab4.classList.add('style-tab');
+
+	body1.style.display='none';
+	body1a.style.display='none';
+	body1b.style.display='none';
+	body2.style.display='none';
+	body3.style.display='none';
+	body4.style.display='grid';
+
+	setPrice();	
 }
 
 function sendAllUser(){
@@ -1160,6 +1200,50 @@ function removephoto(clickedid){
 
 	myRequest.onload = function(){
 		var response= this.responseText;
+	}
+	myRequest.send(formData);
+}
+
+function settoSeller(clickedid){
+	var userid = clickedid.getAttribute('value');
+	var divid='type-'+userid;
+	var div= document.getElementById(divid);
+	div.innerHTML="Change to Seller...";
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'adminprocess.php';
+
+	var formData = "seller="+userid;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		console.log(response);
+	}
+	myRequest.send(formData);
+}
+
+function settoUser(clickedid){
+	var userid = clickedid.getAttribute('value');
+	var divid='type-'+userid;
+	var div= document.getElementById(divid);
+	div.innerHTML="Change to User...";
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'adminprocess.php';
+
+	var formData = "notseller="+userid;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		console.log(response);
 	}
 	myRequest.send(formData);
 }
@@ -1347,8 +1431,10 @@ function updatePrice(clicked){
 		console.log(response);
 		if(response=='success'){
 			li.style.background='green';
+			document.getElementById('error-message3').innerHTML='';
 		}else{
 			li.style.background='red';
+			document.getElementById('error-message3').innerHTML=response;
 		}
 	}
 	myRequest.send(formData);	

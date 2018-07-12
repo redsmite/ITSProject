@@ -34,22 +34,32 @@
 			<div id="category-modal" onclick="hideCategory()"></div>
 			<div id="category-slide">
 <?php
-	$sql = "SELECT category FROM tblcategory WHERE status =1";
+	$sql = "SELECT categoryid,category FROM tblcategory WHERE status =1";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_object()){
 		$category = $row->category;
+		$id = $row->categoryid;
 
-		echo '<p>'.$category.'</p>';
+		echo '<p value="'.$id.'">'.$category.'</p>';
 	}
 ?>
 			</div>
 			<form id="main-search-form">
 				<div>
 					<input type="text" id="main-search" placeholder="Search for Products...">
-					<select>
+					<select  id="main-select" >
 						<option disabled selected>Select Category</option>
-						<option>Fruits</option>
-						<option>Vegetables</option>
+<?php
+// Select Category
+	$sql = "SELECT categoryid,category FROM tblcategory WHERE status =1";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_object()){
+		$category = $row->category;
+		$id = $row->categoryid;
+
+		echo '<option value="'.$id.'">'.$category.'</option>';
+	}
+?>
 					</select>
 					<i class="fas fa-search"></i>
 				</div>
@@ -94,7 +104,7 @@ while($row=$result->fetch_object()){
 					<div class="product"></div>
 				</div>
 				<div class="sidebar">
-					<h3>Sidebar</h3>
+					<h3>Blogs</h3>
 				</div>
 		</div>
 	<!-- Footer -->

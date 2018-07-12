@@ -26,11 +26,12 @@ chattab();
 	?>
 	<!-- Admin Panel -->
 		<div class="other-content">
-			<h1><i class="fas fa-unlock-alt"></i> Hello <?php echo $_SESSION['name']?></h1>
+			<h1><i class="fas fa-unlock-alt"></i> Hello <?php echo $_SESSION['name']?>! - Admin Panel</h1>
 			<div id="admin-tab">
-				<a id="report-tab" onclick="showReportTab()">Reports</a>
-				<a id="announcement-tab" onclick="showAnnouncementTab()">Announcement</a>
 				<a id="monitoring-tab" onclick="showMonitoringTab()">Monitoring</a>
+				<a id="sales-tab" onclick="showSalesTab()">Sales</a>
+				<a id="report-tab" onclick="showReportTab()">Users</a>
+				<a id="announcement-tab" onclick="showAnnouncementTab()">Announcement</a>
 			</div>
 			<div id="admin-body">
 			<div id="monitoring">
@@ -71,6 +72,7 @@ chattab();
 					</div>
 					<div id="set-price">
 						<h1>Price Monitoring</h1>
+						<div id="error-message3"></div>
 						<ul class="price-ul">
 <?php
 	$sql = "SELECT categoryid, category, low ,high, prevailing FROM tblcategory";
@@ -138,7 +140,7 @@ chattab();
 		ON user2.userid = reporter
 	ORDER BY reportid DESC $limit";
 
-$textline1 = "<i class='far fa-flag'></i> Reports (<b>$rows</b>)";
+$textline1 = "<i class='far fa-flag'></i> User Reports (<b>$rows</b>)";
 $textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
 $paginationCtrls = '';
 if($last != 1){
@@ -247,7 +249,11 @@ if($last != 1){
 				</form>
 				</div>
 			</div>
+			<div id="sales">
+				<h1><i class="fas fa-chart-bar"></i> Sales</h1>
 			</div>
+			</div>
+			<!-- End of Admin Body Panel-->
 		</div>
 	<!-- Footer -->
 		<?php
@@ -258,7 +264,7 @@ if($last != 1){
 	<script src="js/main.js"></script>
 	<script>
 		sendAllUser();
-		showReportTab();
+		showMonitoringTab()
 		sendAnnounce();
 	</script>
 </body>
