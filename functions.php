@@ -19,7 +19,12 @@ function addheader(){
 	echo'<header id="main-header">
 			<div class="grid-header">
 				<div class="box1">
-					<h1 id="header-text"><a href="index.php"><span id="first-text">Bahay</span><span id="second-text">Kubo</span></a></h1>
+					<div class="logo">
+						<img src="img/logo.jpg">
+					</div>
+					<div id="header-text"><a href="index.php"><h1 id="first-text">Bahay Kubo</h1><br>
+						<h2 id="second-text"> ni Mang Celso</h2></a>
+						</div>
 				</div>
 				<div class="box2">';
 					

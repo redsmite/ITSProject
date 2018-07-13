@@ -67,10 +67,11 @@
 	--gray:#eee;
 	--darkgray:#999;*/
 
+	/*Twitterblue-brown*/
 	--primary-color:#00aced;
 	--secondary-color:#c0deed;
-	--contrast:	#ff00ff;
-	--secondary-contrast:#ff69b4;
+	--contrast:	#91684a;
+	--secondary-contrast:#313d4b;
 	--light-color:#fafafa;
 	--dark-color:#222;
 	--gray:#eee;
@@ -78,9 +79,12 @@
 }
 
 body{
-	font-family:Lora,'MS Sans Serif',Geneva,sans-serif;;
+	font-family: Lora,'MS Sans Serif',Geneva,sans-serif;
 	font-size: 17px;
 	background:var(--light-color);
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: Lora,serif,Geneva,serif;
 }
 
 /* Scrollbar */
@@ -97,7 +101,7 @@ body{
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: var(--secondary-color); 
+    background: var(--darkgray); 
     border-radius: 10px;
 }
 
@@ -293,6 +297,10 @@ body{
 	color:var(--contrast);
 }
 
+#first-text,#second-text{
+	display: inline;
+}
+
 
 #header-text a{
 	text-decoration: none;
@@ -301,14 +309,24 @@ body{
 
 .grid-header{
 	display:grid;
-	grid-template-columns: 2fr 3fr 1fr;
-	grid-template-areas: "title nav login";
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "title login";
 	align-items:center;
 	padding: 10px 0;
 }
 
 .box1{
 	grid-area:title;
+}
+
+.logo{
+	float: left;
+	width: 60px;
+	height: 60px;
+}
+
+.logo img{
+	max-width: 100%;
 }
 
 .box2{
@@ -489,9 +507,9 @@ body{
 	padding: 5px;
 	left: 0;
 	top: 0;
-	background: var(--lime);
+	background: var(--light-color);
 	overflow: auto;
-	color: var(--light-color);
+	color: var(--primary-color);
 	height:100%;
 	box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	animation-name:modalopen;
@@ -499,14 +517,14 @@ body{
 }
 
 #category-slide p{
-	font-size: 25px;
+	font-size: 20px;
 	line-height: 1.5em;
 	cursor: pointer;
-	box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 #category-slide p:hover{
-	background: var(--primary-color);
+	background: var(--darkgray);
+	color: var(--light-color);
 }
 
 #category-modal{
@@ -653,7 +671,7 @@ body{
 	text-align: center;
 	background: var(--primary-color);
 	color: var(--light-color);
-	border: 1px solid var(--light-color);
+	border: 1px solid var(--dark-color);
 	margin: 20px 5px 20px 5px;
 	border-radius: 8px;
 	display: block;
@@ -676,7 +694,7 @@ body{
 	margin: 0 auto;
 	width: 95%;
 	min-height: 100px;
-	border: 1px solid var(--light-color);
+	border: 1px solid var(--secondary-color);
 	border-radius: 8px;
 	padding:5px;
 }
@@ -731,7 +749,7 @@ body{
 
 .product:hover{
 	cursor: pointer;
-	box-shadow: 0 0 35px rgba(0,0,0,0.75);
+	box-shadow: 0 0 20px rgba(0,0,0,0.75);
 }
 
 .tab-control a{
@@ -836,8 +854,8 @@ body{
 }
 
 .edit-form{
-	background:var(--lightblue) ;
-	color: var(--dark-color);
+	background:var(--primary-color) ;
+	color: var(--light-color);
 	width:50%;
 	display:block;
 	margin-left: auto;
@@ -953,16 +971,7 @@ body{
 	background: var(--secondary-color);
 	border:1px solid var(--dark-color);
 	overflow:hidden;
-	box-shadow: 0 0 10px rgba(0,0,0,0.4);
-	transition-duration: 3000ms;
-	transition-property: transform,box-shadow,margin;
-	transition-timing-function: ease-in-out;
-}
-
-.profile-pic-wrap:hover{
-	margin:10px auto;
-	transform:rotate(1080deg);
-	box-shadow: 0 0 15px 5px rgba(0,0,0,0.8);
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .profile-pic-wrap img{
@@ -1614,7 +1623,6 @@ body{
 	padding:5px 10px;
 	border: 1px solid var(--dark-color);
 	font-weight: bold;
-	margin: 5px;
 	cursor: pointer;
 	display:inline-block;
 }
@@ -1637,7 +1645,7 @@ body{
 	display: none;
 	margin-left: auto;
 	margin-right: auto;
-	background: var(--secondary-color);
+	background: var(--primary-color);
 	border: 1px solid var(--darkgray);
 	text-align: center;
 	padding-bottom: 20px;

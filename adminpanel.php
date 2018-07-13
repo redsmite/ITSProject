@@ -187,7 +187,7 @@ if($last != 1){
 			echo '<p class="checkreport">Checked</p>';
 		}
 
-		echo'<p>Reported User: <a href="profile.php?name='.$username.'"><font color="magenta">'.$username.'</font></a></p>
+		echo'<p>Reported User: <a href="profile.php?name='.$username.'"><font color="#00c07f">'.$username.'</font></a></p>
 		<p>Reported by: <a href="profile.php?name='.$reporter.'">'.$reporter.'</a></p>';
 		
 		if($reason==1){
