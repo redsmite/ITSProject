@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2018 at 05:26 PM
+-- Generation Time: Jul 14, 2018 at 05:06 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -62,7 +62,97 @@ CREATE TABLE `tblannouncement` (
 INSERT INTO `tblannouncement` (`announceid`, `title`, `content`, `datecreated`, `author`) VALUES
 (1, 'xzxccc czxxc ccx', 'zxczxc zxc zx vzxc zx vzxvzx zxv zxv zx z\nzxvz zx zxv zx zxv \nz xzxvzxvzx vzx z vzx \n zx zxvz xzvxv zxvx zx\nzxvzvzv zxv zx  vx', '2018-07-04 20:52:35', 1),
 (2, 'Rainbow Dream has expanded.', 'The merger of Shoes and Booties and Rainbow Dream in the second quarter of 2018 has given us more working assets, and has made the company one of the largest privately held mortgage companies in the nation, while keeping us small enough to meet your individual needs. Starting June, we will be known as Rainbow Dream. Our rates are among the lowest in the industry, as noted in the June paper. You can still reach us at the same location.\r\n\r\nPlease remember I am still available to help you and your friends with your financial needs. Feel free to call or stop by. You will find us eager to give the same professional service that you have come to expect from Rainbow Dream.', '2018-07-05 17:45:55', 1),
-(3, 'Name changed', 'Name changed to CropRotation.', '2018-07-06 12:10:59', 1);
+(3, 'Name changed', 'Name changed to CropRotation.', '2018-07-06 12:10:59', 1),
+(4, 'Changed name', 'Change name to BahayKubo', '2018-07-10 22:53:54', 1),
+(5, 'Change layout', 'change layout', '2018-07-14 10:58:35', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblcategory`
+--
+
+CREATE TABLE `tblcategory` (
+  `categoryid` int(11) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL,
+  `low` decimal(10,2) NOT NULL,
+  `high` decimal(10,2) NOT NULL,
+  `prevailing` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblcategory`
+--
+
+INSERT INTO `tblcategory` (`categoryid`, `category`, `status`, `low`, `high`, `prevailing`) VALUES
+(1, 'Amargoso', 1, '70.00', '85.00', '70.00'),
+(2, 'Sitao', 1, '50.00', '62.86', '55.55'),
+(3, 'Cabbage', 1, '48.33', '53.33', '53.33'),
+(4, 'Carrots', 1, '28.00', '45.00', '40.00'),
+(5, 'Habitchuelas', 1, '58.00', '80.00', '65.00'),
+(6, 'Tomato', 1, '44.00', '60.00', '56.52'),
+(7, 'Onion Red', 1, '63.33', '70.00', '65.00'),
+(8, 'White Potato', 1, '26.32', '31.05', '29.00'),
+(9, 'Eggplant', 1, '55.00', '65.00', '60.00'),
+(10, 'Pechay', 1, '35.00', '40.00', '40.00'),
+(11, 'Banana, Lakatan', 1, '35.00', '43.00', '40.00'),
+(12, 'Banana, Latundan', 1, '20.00', '32.00', '30.00'),
+(13, 'Calamansi', 1, '15.00', '25.00', '20.00'),
+(14, 'Papaya', 1, '20.00', '30.00', '25.00'),
+(15, 'Mango', 1, '55.88', '94.11', '72.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblchangelog`
+--
+
+CREATE TABLE `tblchangelog` (
+  `logid` int(11) NOT NULL,
+  `log` varchar(100) NOT NULL,
+  `datecreated` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblchangelog`
+--
+
+INSERT INTO `tblchangelog` (`logid`, `log`, `datecreated`) VALUES
+(1, 'Add Amargoso category to the database', '2018-07-11 14:21:43'),
+(2, 'Add Sitao category to the database', '2018-07-11 14:24:41'),
+(3, 'Add Cabbage category to the database', '2018-07-11 14:26:00'),
+(4, 'Add Carrots category to the database', '2018-07-11 14:26:52'),
+(5, 'Add Habitchuelas category to the database', '2018-07-11 14:31:50'),
+(6, 'Add Tomato category to the database', '2018-07-11 14:32:12'),
+(7, 'Add Onion Red category to the database', '2018-07-11 14:32:23'),
+(8, 'Add White Potato category to the database', '2018-07-11 14:32:35'),
+(9, 'Add Eggplant category to the database', '2018-07-11 14:32:48'),
+(10, 'Add Pechay category to the database', '2018-07-11 14:33:01'),
+(11, 'Add Banana, Lakatan category to the database', '2018-07-11 14:33:20'),
+(12, 'Add Banana, Latundan category to the database', '2018-07-11 14:33:44'),
+(13, 'Add Calamansi category to the database', '2018-07-11 14:33:57'),
+(14, 'Add Papaya category to the database', '2018-07-11 14:36:40'),
+(15, 'Add Mango category to the database', '2018-07-11 14:37:29'),
+(16, 'Update price of Amargoso', '2018-07-11 23:45:34'),
+(17, 'Update price of Sitao', '2018-07-11 23:47:39'),
+(18, 'Update price of Cabbage', '2018-07-11 23:48:24'),
+(19, 'Update price of Carrots', '2018-07-11 23:49:01'),
+(20, 'Update price of Habitchuelas', '2018-07-11 23:49:39'),
+(21, 'Update price of Tomato', '2018-07-11 23:50:16'),
+(22, 'Update price of Onion Red', '2018-07-11 23:50:43'),
+(23, 'Update price of White Potato', '2018-07-11 23:51:11'),
+(24, 'Update price of Eggplant', '2018-07-11 23:51:35'),
+(25, 'Update price of Pechay', '2018-07-11 23:51:47'),
+(26, 'Update price of Banana, Lakatan', '2018-07-11 23:52:07'),
+(27, 'Update price of Banana, Latundan', '2018-07-11 23:52:24'),
+(28, 'Update price of Calamansi', '2018-07-11 23:52:43'),
+(29, 'Update price of Papaya', '2018-07-11 23:52:56'),
+(30, 'Update price of Mango', '2018-07-11 23:53:28'),
+(31, 'Update price of Amargoso', '2018-07-12 11:47:20'),
+(32, 'Update price of Amargoso', '2018-07-12 11:51:00'),
+(33, 'Update price of Cabbage', '2018-07-12 12:08:12'),
+(34, 'Update price of Cabbage', '2018-07-12 12:08:23');
 
 -- --------------------------------------------------------
 
@@ -220,75 +310,6 @@ INSERT INTO `tblcomment` (`commentid`, `userid`, `receiver`, `comment`, `datepos
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbldownvotepost`
---
-
-CREATE TABLE `tbldownvotepost` (
-  `downvoteid` int(11) NOT NULL,
-  `user` int(11) NOT NULL,
-  `post` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbldownvotepost`
---
-
-INSERT INTO `tbldownvotepost` (`downvoteid`, `user`, `post`) VALUES
-(3, 2, 3),
-(4, 10, 3),
-(24, 8, 3),
-(25, 8, 9),
-(26, 2, 18),
-(28, 14, 18),
-(32, 2, 15),
-(34, 14, 16),
-(35, 14, 15),
-(36, 14, 12),
-(42, 54, 31),
-(43, 37, 23);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tblforum`
---
-
-CREATE TABLE `tblforum` (
-  `forumid` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `datecreated` datetime DEFAULT NULL,
-  `description` varchar(255) NOT NULL,
-  `creator` int(11) NOT NULL,
-  `views` int(11) NOT NULL,
-  `subscriber` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tblforum`
---
-
-INSERT INTO `tblforum` (`forumid`, `title`, `name`, `datecreated`, `description`, `creator`, `views`, `subscriber`) VALUES
-(2, 'Fish', 'Fish', '2018-06-28 17:59:03', 'We sell fish here\r\nRules.\r\nOnly Post Fish here.', 1, 59, 3),
-(3, 'Vegetable', 'Vegetable', '2018-06-28 18:19:53', 'We sell vegetables here.\r\nRules:\r\nOnly Post about Vegetables here.', 1, 29, 2),
-(4, 'Pigs', 'Pigs', '2018-06-28 18:22:38', 'We sell porks/pigs here\r\nRules.\r\nOnly Post porks/pigs here.', 1, 23, 0),
-(5, 'Chicken', 'Chicken', '2018-06-28 18:24:46', 'We sell chicken here.\r\nRules\r\nOnly Post Chicken here.', 1, 11, 1),
-(6, 'Pineapple', 'Pineapple', '2018-06-28 18:28:34', 'We sell Pineapple here.\r\nRules\r\nOnly Post Pineapple here.', 1, 1, 0),
-(7, 'Tomato', 'Tomato', '2018-06-28 18:31:56', 'We sell tomatoes here.\r\nRules\r\nOnly Post about tomotoes here.', 1, 7, 0),
-(8, 'Apple', 'Apple', '2018-06-28 18:32:27', 'We Sell Apples here.\r\nRules\r\nOnly sell about apples here.\r\n', 1, 71, 3),
-(9, 'Cabbage', 'Cabbage', '2018-06-28 18:40:56', 'We Sell Apples here.\r\nRules\r\nOnly sell about apples here.', 1, 57, 0),
-(10, 'Orange', 'Orange', '2018-06-28 18:43:30', 'We sell oranges here.We Sell Apples here.\r\nRules\r\nOnly sell about orange here.', 1, 44, 0),
-(11, 'Cow', 'Cow', '2018-06-28 18:44:42', 'We sell cow here.\r\nRules\r\nOnly sell about cow here.', 1, 103, 1),
-(12, 'Fireworks', 'Fireworks', '2018-06-28 18:45:53', 'We sell fireworks here.\r\nRules\r\nOnly sell about fireworks here.', 1, 4, 1),
-(13, 'Clock', 'Clock', '2018-06-28 19:54:42', 'We sell clocks here.\r\nRules\r\nOnly sell about clocks here.', 1, 7, 0),
-(14, 'Corn', 'Corn', '2018-06-29 18:52:38', 'We sell corns here\r\nRules\r\nBe friendly.\r\nOnly post about corns here.', 80, 164, 5),
-(15, 'Chocolate', 'Chocolate', '2018-07-02 18:23:27', 'We sell cocoa here.\r\nRules.\r\n1. Be friendly.\r\n2. Be honest.', 2, 87, 3),
-(16, 'Rice', 'Rice', '2018-07-06 12:19:03', 'We sell rice here.\n\nRules.\n1. Only sell rice here.', 54, 72, 4),
-(17, 'Flowers', 'Flowers', '2018-07-06 19:27:28', 'Rules\nPost about flowers here.', 13, 2, 0);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tblfriend`
 --
 
@@ -379,7 +400,8 @@ INSERT INTO `tblfriend` (`friendid`, `user1`, `user2`, `accepted`, `friendsince`
 (152, 76, 75, 2, '2018-06-24'),
 (153, 76, 74, 2, '2018-06-24'),
 (154, 8, 7, 2, '2018-06-25'),
-(155, 79, 1, 1, NULL);
+(155, 79, 1, 1, NULL),
+(156, 73, 81, 2, '2018-07-10');
 
 -- --------------------------------------------------------
 
@@ -718,7 +740,9 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (313, 0, 54, '2018-06-27 14:12:36', 1, 3, 0, 0),
 (314, 0, 76, '2018-06-27 14:12:47', 1, 3, 0, 0),
 (315, 79, 1, '2018-06-28 13:10:33', 1, 2, 155, 1),
-(316, 0, 14, '2018-07-05 11:32:45', 1, 3, 0, 0);
+(316, 0, 14, '2018-07-05 11:32:45', 1, 3, 0, 0),
+(317, 73, 81, '2018-07-08 19:57:23', 1, 2, 156, 2),
+(318, 1, 81, '2018-07-10 21:53:35', 1, 2, 157, 2);
 
 -- --------------------------------------------------------
 
@@ -2144,79 +2168,106 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1409, 71, 1, '(â™ª Jazz music playing...)', '2018-07-04 20:28:44', 1),
 (1410, 2, 1, 'hello', '2018-07-05 12:51:49', 1),
 (1411, 12, 71, '!music', '2018-07-07 22:12:46', 0),
-(1412, 71, 12, '(â™ª Jazz music playing...)', '2018-07-07 22:12:47', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tblpost`
---
-
-CREATE TABLE `tblpost` (
-  `postid` int(11) NOT NULL,
-  `forumid` int(11) NOT NULL,
-  `title` varchar(150) NOT NULL,
-  `datecreated` datetime DEFAULT NULL,
-  `description` text NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `img` varchar(150) NOT NULL,
-  `starter` int(11) NOT NULL,
-  `score` int(11) NOT NULL,
-  `views` int(11) NOT NULL,
-  `comments` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tblpost`
---
-
-INSERT INTO `tblpost` (`postid`, `forumid`, `title`, `datecreated`, `description`, `price`, `img`, `starter`, `score`, `views`, `comments`) VALUES
-(1, 11, 'Cow', '2018-06-28 21:25:56', 'Cow for sale!\r\n\r\nCow for sale!\r\n\r\nCow for sale!', '100000.00', 'post/pexels-photo-422218.jpeg', 1, 0, 7, 0),
-(2, 2, 'Tilapia', '2018-06-28 22:03:56', 'Tilapia for sale!', '125.00', 'post/pexels-photo-1058295.jpeg', 1, 0, 28, 0),
-(3, 9, 'Baguio Cabbage', '2018-06-28 22:07:54', 'Cabbage for Sale', '45.50', 'post/pexels-photo-209482.jpeg', 1, -1, 2, 0),
-(4, 5, 'Chickens', '2018-06-28 22:14:20', 'Chickens for Sale', '6000.00', 'post/pexels-photo-375510.jpeg', 1, 2, 4, 0),
-(7, 10, 'Yuzu Orange', '2018-06-29 15:05:22', 'Orange for sale.\r\nhttps://en.wikipedia.org/wiki/Citrus_junos', '20.00', 'post/citrus-diet-food-fresh-42059.jpeg', 10, 1, 0, 0),
-(8, 14, 'Corns', '2018-06-29 20:04:37', 'Corns for sale!\r\n\r\nCorns for sale!\r\n\r\nCorns for sale!', '20.50', 'post/pexels-photo-547263.jpeg', 80, 2, 0, 0),
-(9, 14, 'Corns', '2018-06-30 09:57:55', 'Corns for sale!\r\n\r\nCorns for sale!\r\n\r\nCorns for sale!', '18.00', 'post/pexels-photo-547263.jpeg', 2, 7, 11, 0),
-(10, 14, 'Corns', '2018-06-30 14:56:48', 'Corns for sale!\r\n\r\nCorns for sale!\r\n\r\nCorns for sale!', '27.50', 'post/pexels-photo-547263.jpeg', 10, 4, 3, 0),
-(11, 14, 'Corns', '2018-06-30 15:10:39', 'Corns for sale!\r\n\r\nCorns for sale!\r\n\r\nCorns for sale!', '20.00', 'post/pexels-photo-547263.jpeg', 6, 8, 11, 0),
-(12, 8, 'Apples', '2018-06-30 16:53:36', 'Apples for sale\n\nApples for sale\n\nApples for sale\n\nApples for sale', '22.00', 'post/pexels-photo-39803.jpeg', 8, 1, 13, 0),
-(13, 2, 'Fish', '2018-06-30 16:55:16', 'Fish for sale!\n\nFish for sale!\n\nFish for sale!', '50.00', 'post/pexels-photo-1058295.jpeg', 8, 1, 0, 0),
-(14, 2, 'Eel', '2018-06-30 17:21:06', 'Another fish for sale!\n\nAnother fish for sale!\n\nAnother fish for sale!', '75.00', 'post/pexels-photo-1058295.jpeg', 1, 1, 35, 0),
-(15, 2, 'Bangus', '2018-06-30 17:24:19', 'Bangus for sale\n\nBangus for sale\n\nBangus for sale\n', '150.75', 'post/pexels-photo-1058295.jpeg', 1, -2, 72, 0),
-(16, 11, 'Imported Cow', '2018-06-30 17:29:10', 'Imported Cow\r\n\r\nImported Cow\r\n\r\nImported Cow', '75000.00', 'post/pexels-photo-422218.jpeg', 13, 2, 23, 0),
-(17, 14, 'Corn', '2018-07-01 20:54:06', 'Corn for sale!\r\n\r\nCorn for sale!\r\n\r\nCorn for sale!', '32.00', 'post/pexels-photo-547263.jpeg', 76, 6, 0, 0),
-(18, 14, 'Corn', '2018-07-02 08:04:01', 'Corns for sale!\r\n\r\nCorns for sale!\r\n\r\nCorns for sale!', '22.00', 'post/pexels-photo-547263.jpeg', 75, -2, 0, 0),
-(19, 15, 'Chocolate Bar', '2018-07-02 18:23:51', 'Cocoa for sale\n\nCocoa for sale\n\nCocoa for sale', '80.00', 'post/pexels-photo-209331.jpeg', 2, 3, 0, 0),
-(20, 15, 'Belgian Chocolate', '2018-07-05 12:14:21', 'Belgian Chocolate for sale!\r\n\r\nBelgian Chocolate for sale!\r\n\r\nBelgian Chocolate for sale!', '150.00', 'post/pexels-photo-209331.jpeg', 2, 3, 0, 0),
-(21, 12, 'Pyrotechnic', '2018-07-05 16:56:00', 'Fireworks for sale!\r\n\r\nFireworks for sale!\r\n\r\nFireworks for sale!', '3000.00', 'post/pexels-photo-949592.jpeg', 2, 1, 0, 0),
-(22, 4, 'Pig', '2018-07-06 09:36:57', 'Pig for sale!\n\nPig for sale!\n\nPig for sale!', '20000.00', 'post/pexels-photo-110820.jpeg', 14, 0, 0, 0),
-(23, 16, 'Rice', '2018-07-06 12:20:57', 'Rice for sale!\n\nRice for sale!\n\nRice for sale!', '45.00', 'post/pexels-photo-236474.jpeg', 54, 4, 0, 0),
-(24, 16, 'Rice', '2018-07-06 13:21:21', 'Another Rice for sale!\n\nAnother Rice for sale!\n\nAnother Rice for sale!', '47.50', 'post/pexels-photo-236474.jpeg', 2, 3, 0, 0),
-(25, 14, 'High Quality Corn', '2018-07-06 13:25:20', 'High Quality Corn\r\n\r\nHigh Quality Corn\r\n\r\nHigh Quality Corn', '40.00', 'post/pexels-photo-547263.jpeg', 1, 1, 0, 0),
-(26, 16, 'Imported Rice', '2018-07-06 19:25:22', 'Rice for sale!\n\nRice for sale!\n\nRice for sale!\n\nRice for sale!', '50.00', 'post/pexels-photo-236474.jpeg', 12, 1, 0, 0),
-(27, 14, 'Corn', '2018-07-06 19:26:15', 'Corn for sale!\n\nCorn for sale!\n\nCorn for sale!', '50.00', 'post/pexels-photo-547263.jpeg', 12, 1, 0, 0),
-(28, 2, 'Tuna', '2018-07-06 19:32:21', 'Tuna\nTuna\nTuna\nTuna\nTuna\nTuna\nTuna', '575.00', 'post/pexels-photo-1058295.jpeg', 12, 1, 0, 0),
-(29, 10, 'Orange', '2018-07-06 19:48:17', 'Orange\nOrange\nOrange\nOrange\nOrange\nOrange', '25.00', 'post/citrus-diet-food-fresh-42059.jpeg', 12, 0, 0, 0),
-(30, 8, 'Apple', '2018-07-06 19:48:42', 'Apple\nApple\nApple\nApple\nApple', '30.50', 'post/pexels-photo-39803.jpeg', 12, 0, 0, 0),
-(31, 3, 'Baguio Beans', '2018-07-07 18:58:33', 'Baguio Beans\n\nBaguio Beans\n\nBaguio Beans', '35.50', 'post/food-healthy-summer-green.jpeg', 12, 6, 0, 0),
-(32, 11, 'Holstein Cow', '2018-07-07 19:04:31', 'Holstein Cow\n\nHolstein Cow\n\nHolstein Cow\n', '125000.00', 'post/pexels-photo-422218.jpeg', 7, 2, 0, 0),
-(33, 15, 'Chocolate Bar', '2018-07-02 18:23:51', 'Chocolate for sale\r\n\r\nChocolate for sale\r\n\r\nChocolate for sale', '80.00', 'post/pexels-photo-209331.jpeg', 2, 3, 0, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tblreply`
---
-
-CREATE TABLE `tblreply` (
-  `replyid` int(11) NOT NULL,
-  `threadid` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
-  `datecreated` datetime DEFAULT NULL,
-  `reply` text NOT NULL,
-  `score` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(1412, 71, 12, '(â™ª Jazz music playing...)', '2018-07-07 22:12:47', 0),
+(1413, 71, 81, 'Hello Lala! \n Welcome to CropRotation. \n Thanks for joining us.', '2018-07-08 08:59:09', 1),
+(1414, 13, 71, '!chat', '2018-07-08 17:34:27', 0),
+(1415, 71, 13, 'How are you feeling? I\'m of course feeling perfectly fine.', '2018-07-08 17:34:27', 0),
+(1416, 13, 71, '!bye', '2018-07-08 17:34:43', 0),
+(1417, 71, 13, 'Goodbye Nico-san see you later!', '2018-07-08 17:34:43', 0),
+(1418, 1, 71, '!chat', '2018-07-08 19:33:05', 0),
+(1419, 71, 1, 'What would you like me to do next?', '2018-07-08 19:33:06', 1),
+(1420, 81, 71, '!chat', '2018-07-10 14:25:58', 0),
+(1421, 71, 81, 'I could never handle a sea cucumber, but I don\'t mind touching penguins and dolphins.', '2018-07-10 14:25:58', 1),
+(1422, 81, 71, '!chat', '2018-07-10 14:26:00', 0),
+(1423, 71, 81, 'Sunflower is the only flower with flower in its name!', '2018-07-10 14:26:01', 1),
+(1424, 81, 71, '!music', '2018-07-10 14:26:09', 0),
+(1425, 71, 81, '(â™ª Jazz music playing...)', '2018-07-10 14:26:09', 1),
+(1426, 81, 71, '!stop', '2018-07-10 14:26:28', 0),
+(1427, 81, 73, 'hello', '2018-07-10 14:26:51', 0),
+(1428, 71, 0, 'This website has changed quite drastically.', '2018-07-10 22:54:43', 0),
+(1429, 71, 1, 'This website has changed quite drastically.', '2018-07-10 22:54:43', 1),
+(1430, 71, 2, 'This website has changed quite drastically.', '2018-07-10 22:54:43', 0),
+(1431, 71, 3, 'This website has changed quite drastically.', '2018-07-10 22:54:43', 0),
+(1432, 71, 4, 'This website has changed quite drastically.', '2018-07-10 22:54:43', 0),
+(1433, 71, 5, 'This website has changed quite drastically.', '2018-07-10 22:54:43', 0),
+(1434, 71, 6, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1435, 71, 7, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1436, 71, 8, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1437, 71, 9, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1438, 71, 10, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1439, 71, 11, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1440, 71, 12, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1441, 71, 13, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1442, 71, 14, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1443, 71, 15, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1444, 71, 16, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1445, 71, 17, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1446, 71, 18, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1447, 71, 19, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1448, 71, 20, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1449, 71, 21, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1450, 71, 22, 'This website has changed quite drastically.', '2018-07-10 22:54:44', 0),
+(1451, 71, 23, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1452, 71, 24, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1453, 71, 25, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1454, 71, 26, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1455, 71, 27, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1456, 71, 28, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1457, 71, 29, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1458, 71, 30, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1459, 71, 31, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1460, 71, 32, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1461, 71, 33, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1462, 71, 34, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1463, 71, 35, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1464, 71, 36, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1465, 71, 37, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1466, 71, 38, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1467, 71, 39, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1468, 71, 40, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1469, 71, 41, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1470, 71, 42, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1471, 71, 43, 'This website has changed quite drastically.', '2018-07-10 22:54:45', 0),
+(1472, 71, 44, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1473, 71, 45, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1474, 71, 46, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1475, 71, 47, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1476, 71, 48, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1477, 71, 49, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1478, 71, 50, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1479, 71, 51, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1480, 71, 52, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1481, 71, 53, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1482, 71, 54, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1483, 71, 55, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1484, 71, 56, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1485, 71, 57, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1486, 71, 58, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1487, 71, 59, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1488, 71, 60, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1489, 71, 61, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1490, 71, 62, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1491, 71, 63, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1492, 71, 64, 'This website has changed quite drastically.', '2018-07-10 22:54:46', 0),
+(1493, 71, 65, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1494, 71, 66, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1495, 71, 67, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1496, 71, 68, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1497, 71, 69, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1498, 71, 70, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1499, 71, 71, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1500, 71, 72, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1501, 71, 73, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1502, 71, 74, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1503, 71, 75, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1504, 71, 76, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1505, 71, 77, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1506, 71, 78, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1507, 71, 79, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1508, 71, 80, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 0),
+(1509, 71, 81, 'This website has changed quite drastically.', '2018-07-10 22:54:47', 1),
+(1510, 81, 71, '!music', '2018-07-12 13:28:13', 0),
+(1511, 71, 81, '(â™ª Jazz music playing...)', '2018-07-12 13:28:13', 0);
 
 -- --------------------------------------------------------
 
@@ -2226,10 +2277,10 @@ CREATE TABLE `tblreply` (
 
 CREATE TABLE `tblreport` (
   `reportid` int(11) NOT NULL,
-  `reason` varchar(255) NOT NULL,
-  `datecreated` datetime DEFAULT NULL,
   `userid` int(11) NOT NULL,
   `reporter` int(11) NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  `datecreated` datetime DEFAULT NULL,
   `checked` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -2237,146 +2288,9 @@ CREATE TABLE `tblreport` (
 -- Dumping data for table `tblreport`
 --
 
-INSERT INTO `tblreport` (`reportid`, `reason`, `datecreated`, `userid`, `reporter`, `checked`) VALUES
-(1, 'test', '2018-06-26 19:55:14', 2, 1, 0),
-(2, '1', '2018-06-26 19:55:39', 2, 1, 0),
-(3, '2', '2018-06-27 12:26:41', 8, 9, 1),
-(4, '4', '2018-06-27 13:02:27', 76, 1, 1),
-(5, '4', '2018-06-27 13:03:55', 75, 1, 1),
-(6, '5', '2018-06-28 13:23:42', 79, 1, 1),
-(7, '3', '2018-07-01 19:28:42', 7, 14, 0),
-(8, 'lewd photo', '2018-07-04 16:59:38', 14, 11, 0),
-(9, 'lewd photo', '2018-07-04 17:00:37', 14, 54, 0),
-(10, 'lewd photo', '2018-07-04 17:01:03', 14, 13, 0),
-(11, 'lewd photo.', '2018-07-04 17:01:32', 14, 16, 1),
-(12, '5', '2018-07-05 11:48:38', 1, 12, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tblsubscribe`
---
-
-CREATE TABLE `tblsubscribe` (
-  `subid` int(11) NOT NULL,
-  `subscriber` int(11) NOT NULL,
-  `forum` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tblsubscribe`
---
-
-INSERT INTO `tblsubscribe` (`subid`, `subscriber`, `forum`) VALUES
-(2, 80, 2),
-(5, 80, 5),
-(6, 80, 14),
-(7, 7, 14),
-(12, 8, 8),
-(14, 1, 2),
-(15, 1, 8),
-(17, 75, 14),
-(24, 1, 15),
-(26, 2, 15),
-(27, 2, 14),
-(28, 2, 8),
-(29, 2, 2),
-(30, 14, 11),
-(31, 14, 12),
-(32, 2, 16),
-(33, 1, 16),
-(34, 12, 16),
-(35, 12, 15),
-(36, 4, 16),
-(37, 12, 14),
-(38, 57, 3),
-(39, 12, 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tblupvotepost`
---
-
-CREATE TABLE `tblupvotepost` (
-  `upvoteid` int(11) NOT NULL,
-  `user` int(11) NOT NULL,
-  `post` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tblupvotepost`
---
-
-INSERT INTO `tblupvotepost` (`upvoteid`, `user`, `post`) VALUES
-(5, 14, 4),
-(6, 14, 9),
-(7, 14, 8),
-(9, 2, 8),
-(36, 10, 9),
-(49, 10, 10),
-(58, 6, 11),
-(60, 6, 10),
-(90, 10, 11),
-(91, 8, 12),
-(92, 8, 13),
-(93, 5, 9),
-(94, 1, 9),
-(95, 1, 12),
-(96, 1, 3),
-(97, 1, 11),
-(98, 1, 14),
-(105, 13, 16),
-(106, 1, 4),
-(108, 1, 16),
-(109, 2, 11),
-(110, 76, 11),
-(111, 76, 9),
-(112, 75, 17),
-(113, 75, 11),
-(114, 75, 9),
-(115, 80, 9),
-(116, 80, 11),
-(118, 80, 16),
-(119, 80, 17),
-(120, 2, 19),
-(122, 14, 17),
-(128, 12, 10),
-(129, 12, 7),
-(130, 2, 20),
-(131, 2, 9),
-(132, 2, 21),
-(133, 2, 17),
-(134, 2, 10),
-(136, 14, 19),
-(144, 14, 3),
-(147, 54, 23),
-(148, 54, 20),
-(149, 2, 23),
-(151, 2, 24),
-(152, 1, 24),
-(153, 1, 23),
-(155, 1, 20),
-(156, 1, 17),
-(158, 12, 24),
-(161, 12, 27),
-(162, 12, 26),
-(164, 12, 11),
-(165, 12, 19),
-(166, 12, 28),
-(167, 4, 25),
-(168, 12, 23),
-(169, 12, 17),
-(170, 12, 31),
-(171, 57, 23),
-(173, 7, 31),
-(174, 7, 32),
-(175, 8, 31),
-(176, 13, 31),
-(177, 14, 31),
-(178, 57, 31),
-(179, 37, 31),
-(180, 12, 32);
+INSERT INTO `tblreport` (`reportid`, `userid`, `reporter`, `reason`, `datecreated`, `checked`) VALUES
+(1, 2, 1, 'hello', '2018-07-10 22:38:01', 1),
+(2, 2, 1, '3', '2018-07-10 22:38:12', 1);
 
 -- --------------------------------------------------------
 
@@ -2414,19 +2328,19 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `website`, `location`, `usertypeid`, `access`, `imgname`, `imgtype`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'Rize', '5f4dcc3b5aa765d61d8327deb882cf99', 'Rize', 'ThÃ© des AlizÃ©s', ' Tedeza', '2000-02-14', '2018-06-07 04:44:35', 'rizetedeza@gmail.com', 'http://gochiusa.wikia.com/wiki/Rize_Tedeza', 'Rabbit House Cafe', 4, 1, '__tedeza_rize_gochuumon_wa_usagi_desu_ka_drawn_by_nanakusa_amane__sample-09319d4ece90f17bf0472e57ca2', 'image/jpeg', 'upload/__tedeza_rize_gochuumon_wa_usagi_desu_ka_drawn_by_nanakusa_amane__sample-09319d4ece90f17bf0472e57ca2c9226.jpg', 'Appearance\r\nRize has long dark purple hair pulled up into twin-tails with loose bangs and violet Tsurime eyes. She is the tallest of the main group and has a shapely figure, causing the others and herself to picture her modeling various outfits.\r\n\r\nShe wears a purple variant of the Rabbit House CafÃ©\'s uniform: a long ankle-length black skirt, white blouse, waistcoat and bow tie. Her school uniform consists of a black blouse with a white blazer, a white and grey plaid skirt and matching plaid tie.\r\n\r\nPersonality\r\nRize is a tough, cool, and headstrong girl who holds reasonable maturity over the others. She is bluntly opinionated but kind and wise, often offering advice towards the others. She can be a little bit of a tsundere at times, and she has a vivid active imagination that can get carried away. Deep down she loves cute things, cosplay, and fears that she may not fit in, but she gets flustered if others see her vulnerable side. As a result she may try to act like a \"normal\" teenage girl to appear more relate-able.\r\n\r\nAs her dad was a member of the military, Rize is very independent and physically strong. She is talented in many fields and admired by friends and peers alike. However, she has become paranoid enough to carry a Glock and Combat Knife on person at all times.', 1, 2, '2018-06-08 04:16:51', '2018-07-06 10:37:37', 84),
-(2, 'HotChoco', '5f4dcc3b5aa765d61d8327deb882cf99', 'Cocoa', '', 'Hoto', '2000-04-10', '2018-06-07 04:47:31', 'hotokokoa@gmail.com', 'http://gochiusa.wikia.com/wiki/Cocoa_Hoto', 'Rabbit House Cafe      ', 1, 1, 'cocoa-hoto-59699.jpg', 'image/jpeg', 'upload/cocoa-hoto-59699.jpg', 'Appearance:\r\n\r\nCocoa has strawberry blonde shoulder-length hair with loose bangs, decorated with a cherry blossom hair clip on the side of her head. She has purple Tareme-style (downward slanted) eyes.\r\n\r\nHer work outfit is a pink and red variant of the Rabbit House Cafe\'s uniform: a long ankle-length black skirt, white blouse, waistcoat and bow tie. Her school uniform consists of a white skirt and a pink cardigan sweater.\r\n\r\nPersonality:\r\n\r\nCocoa is an optimistic girl full of excitement with a bubbly disposition and unbridled enthusiasm. Her behavior is seen as infectious by others and often convinces them to join her. She is also determined to be seen as a mature, older-sister type by others, but her highly clumsy nature usually discredits her attempts when she has to rely on someone else for help.\r\n\r\nNot helping is the fact she is somewhat air-headed, usually causing incidents for her or those surrounding her. She is extremely clumsy and struggles to stay focused unless the subject interests her- or involves food. But despite her shortcomings and unwillingness to give up, she seems to have no confidence when it comes to what type of talent or skill she may possess. It is so low that she considers her rare ability to mentally calculate all arithmetic instantly as \"nothing much\".', 1, 2, '2018-06-08 04:45:05', '2018-07-06 05:23:24', 121),
+(1, 'Rize', '5f4dcc3b5aa765d61d8327deb882cf99', 'Rize', 'ThÃ© des AlizÃ©s', ' Tedeza', '2000-02-14', '2018-06-07 04:44:35', 'rizetedeza@gmail.com', 'http://gochiusa.wikia.com/wiki/Rize_Tedeza', 'Rabbit House Cafe', 4, 1, '__tedeza_rize_gochuumon_wa_usagi_desu_ka_drawn_by_nanakusa_amane__sample-09319d4ece90f17bf0472e57ca2', 'image/jpeg', 'upload/__tedeza_rize_gochuumon_wa_usagi_desu_ka_drawn_by_nanakusa_amane__sample-09319d4ece90f17bf0472e57ca2c9226.jpg', 'Appearance\r\nRize has long dark purple hair pulled up into twin-tails with loose bangs and violet Tsurime eyes. She is the tallest of the main group and has a shapely figure, causing the others and herself to picture her modeling various outfits.\r\n\r\nShe wears a purple variant of the Rabbit House CafÃ©\'s uniform: a long ankle-length black skirt, white blouse, waistcoat and bow tie. Her school uniform consists of a black blouse with a white blazer, a white and grey plaid skirt and matching plaid tie.\r\n\r\nPersonality\r\nRize is a tough, cool, and headstrong girl who holds reasonable maturity over the others. She is bluntly opinionated but kind and wise, often offering advice towards the others. She can be a little bit of a tsundere at times, and she has a vivid active imagination that can get carried away. Deep down she loves cute things, cosplay, and fears that she may not fit in, but she gets flustered if others see her vulnerable side. As a result she may try to act like a \"normal\" teenage girl to appear more relate-able.\r\n\r\nAs her dad was a member of the military, Rize is very independent and physically strong. She is talented in many fields and admired by friends and peers alike. However, she has become paranoid enough to carry a Glock and Combat Knife on person at all times.', 1, 2, '2018-06-08 04:16:51', '2018-07-14 03:02:46', 93),
+(2, 'Cocoa', '5f4dcc3b5aa765d61d8327deb882cf99', 'Cocoa', '', 'Hoto', '2000-04-10', '2018-06-07 04:47:31', 'hotokokoa@gmail.com', 'http://gochiusa.wikia.com/wiki/Cocoa_Hoto', 'Rabbit House Cafe      ', 1, 1, 'cocoa-hoto-59699.jpg', 'image/jpeg', 'upload/cocoa-hoto-59699.jpg', 'Appearance:\r\n\r\nCocoa has strawberry blonde shoulder-length hair with loose bangs, decorated with a cherry blossom hair clip on the side of her head. She has purple Tareme-style (downward slanted) eyes.\r\n\r\nHer work outfit is a pink and red variant of the Rabbit House Cafe\'s uniform: a long ankle-length black skirt, white blouse, waistcoat and bow tie. Her school uniform consists of a white skirt and a pink cardigan sweater.\r\n\r\nPersonality:\r\n\r\nCocoa is an optimistic girl full of excitement with a bubbly disposition and unbridled enthusiasm. Her behavior is seen as infectious by others and often convinces them to join her. She is also determined to be seen as a mature, older-sister type by others, but her highly clumsy nature usually discredits her attempts when she has to rely on someone else for help.\r\n\r\nNot helping is the fact she is somewhat air-headed, usually causing incidents for her or those surrounding her. She is extremely clumsy and struggles to stay focused unless the subject interests her- or involves food. But despite her shortcomings and unwillingness to give up, she seems to have no confidence when it comes to what type of talent or skill she may possess. It is so low that she considers her rare ability to mentally calculate all arithmetic instantly as \"nothing much\".', 1, 2, '2018-07-11 04:43:33', '2018-07-11 04:43:48', 138),
 (3, 'Sharo', '5488d6d6f37a311a1085daf41f2e990c', 'Sharo', 'Maaya', 'Kirima', '2000-07-15', '2018-06-07 01:56:37', 'kirima-sharo@gmail.com', '09090909090', 'Ama Usa An', 1, 1, '', '', '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (4, 'Chino', '5f4dcc3b5aa765d61d8327deb882cf99', 'Chino', '', 'Kafuu', '2000-12-04', '2018-06-07 01:56:37', 'kafuuchino@gmail.com', 'http://gochiusa.wikia.com/wiki/Chino_Kaf%C5%AB', 'Rabbit House Cafe   ', 1, 1, 'chino-kafuu-59652.jpg', 'image/jpeg', 'upload/chino-kafuu-59652.jpg', 'Appearance\r\nChino has long, periwinkle colored hair with horizontal bangs held by black crossing bands on each side of her head. She has relaxed blue eyes and is the shortest character in the maincast.\r\n\r\nHer work outfit is a blue variant of the Rabbit House CafÃ©\'s uniform: a long ankle-length black skirt, white blouse, waistcoat, and bow tie. Her school uniform is a royal blue sailor-style ensemble with a matching sailor hat.\r\n\r\nPersonality\r\nChino acts far more maturely than her age, and is normally the most responsible and organized member of the Rabbit House CafÃ©. She takes her work very seriously and gets annoyed when people act recklessly or loudly around her. Due to this, she resents being treated like a child; although there are times when she can appear childish mentally.\r\n\r\nShe has a reserved and emotionless disposition, rarely smiling even when happy, and she speaks in a flat monotone voice with polite vocabulary and grammar. She cares for her friends and feels comfortable around them.\r\n\r\nWhenever Cocoa is away from work at the Rabbit House, she gets very absent-minded, which usually leads to her unconsciously making a lot of Hot Cocoas.[1]', 1, 2, '0000-00-00 00:00:00', '2018-07-07 10:51:26', 23),
-(5, 'Chiya', '5f4dcc3b5aa765d61d8327deb882cf99', 'Chiya', '', 'Ujimatsu', '2000-09-19', '2018-06-07 01:56:37', 'chiya_ujimatsu@gmail.com', 'http://gochiusa.wikia.com/wiki/Chiya_Ujimatsu', 'Ama Usa An          ', 1, 1, 'chiya-ujimatsu-59650.jpg', 'image/jpeg', 'upload/chiya-ujimatsu-59650.jpg', 'Appearance\r\nChiya has long, straightened dark brown hair vaguely reminiscent of a hime cut, but with the forelocks longer and shaped differently. On the side of her head she wears a flower ornament with a ribbon. She has fair skin and green downward curving eyes.\r\n\r\nNormally Chiya wears her work outfit, which is a dark green kimono with vertical stripes and a long white frilly apron over it.\r\n\r\nPersonality\r\nA gentle and calming young girl, Chiya is formal and soft-spoken. She always appears to be in a light, airy mood and focuses on keeping the peace, although she can be a little air-headed. Even when she might be upset, she always keeps smiling.\r\n\r\nDespite her ladylike behavior, Chiya has many surprising quirks one may not see at first. She finds pleasure in giving the sweets of Ama Usa An overly fancy names, such as \"Red Jewel in a Snowy Field\" and \"Moon and Stars Reflected Upon the Sea\". She also enjoys scary stories and disturbing others at times, and she dreams of becoming a samurai. She is genuinely kind, but at times she can be very teasing.', 1, 4, '0000-00-00 00:00:00', '2018-07-04 12:17:36', 4),
-(6, 'Ichigo', '5f4dcc3b5aa765d61d8327deb882cf99', 'Ichigo', 'Starmiya', 'Hoshimiya', '2000-03-15', '2018-06-07 15:32:53', 'hoshimiya_ichigo@gmail.com', 'http://aikatsu.wikia.com/wiki/Ichigo_Hoshimiya', 'Starlight Academy   ', 1, 1, '__hoshimiya_ichigo_aikatsu_drawn_by_peko__c3dce95aabe13b99a7c468dadc31be62.jpg', 'image/jpeg', 'upload/__hoshimiya_ichigo_aikatsu_drawn_by_peko__c3dce95aabe13b99a7c468dadc31be62.jpg', 'Ichigo Hoshimiya (æ˜Ÿå®® ã„ã¡ã” Hoshimiya Ichigo) is the main protagonist of the first and second season of the Aikatsu! series and is a student of Starlight School. Ichigo cute-type idol whose primary brand is Angely Sugar. Along with Aoi Kiriya and Ran Shibuki, the three are a part of the unit Soleil (ã‚½ãƒ¬ã‚¤ãƒ¦ Soreiyu). Later in Episode 93, she and Seira Otoshiro also forned the duo unit 2wingS. As of Aikatsu! The Movie, Ichigo is now the top ranked idol, replacing Mizuki Kanzaki and breaking her three-year streak.', 1, 2, '0000-00-00 00:00:00', '2018-07-04 08:07:37', 20),
-(7, 'Syaro', '5f4dcc3b5aa765d61d8327deb882cf99', 'Syaro', 'Sharo', 'Kirima', '2000-07-15', '2018-06-07 14:08:15', 'kirima_sharo@gmail.com', 'http://gochiusa.wikia.com/wiki/Sharo_Kirima', 'Ama Usa An ', 1, 1, 'sharo-kirima-59653.jpg', 'image/jpeg', 'upload/sharo-kirima-59653.jpg', 'Appearance:\r\n\r\nSharo is a short girl with fluffy blonde hair covering her ears and straightened bangs worn with a thin black headband accent by a bow. She has turquoise eyes shaped with an upward point and fair skin.\r\n\r\nHer work uniform is a black and white maid-style dress with black frilly wrist cuffs, white over-the-knee socks and a frilled headdress with white lop-ear rabbit ears. Her school uniform consists of a black blouse with a white blazer, a white and grey plaid skirt and matching plaid tie.\r\n\r\nPersonality:\r\n\r\nSharo is a sensitive and bashful girl who has insecurities when it comes to her image. She is easily flustered and worries that her friends think she is a rich and sophisticated lady when in actuality she is a poor girl living in a humble home- but with fancy interests and hobbies. She is kind and somewhat withdrawn, but she can be sarcastic and blunt at times. She is quite jumpy and easily frightened, for example, when her friends tell ghost stories she covers her ears because she doesn\'t want to hear them, and she also has leporiphobia due to her not being able to walk home from school because a small wild rabbit was standing in her path and feared that it would attack her.\r\n\r\nSharo becomes very hyper and playful when under the influence of caffeine. She also admires Rize and has a crush on her, and shows a very respectful side towards her.', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:18:27', 30),
+(5, 'Chiya', '5f4dcc3b5aa765d61d8327deb882cf99', 'Chiya', '', 'Ujimatsu', '2000-09-19', '2018-06-07 01:56:37', 'chiya_ujimatsu@gmail.com', 'http://gochiusa.wikia.com/wiki/Chiya_Ujimatsu', 'Ama Usa An          ', 1, 1, 'chiya-ujimatsu-59650.jpg', 'image/jpeg', 'upload/chiya-ujimatsu-59650.jpg', 'Appearance\r\nChiya has long, straightened dark brown hair vaguely reminiscent of a hime cut, but with the forelocks longer and shaped differently. On the side of her head she wears a flower ornament with a ribbon. She has fair skin and green downward curving eyes.\r\n\r\nNormally Chiya wears her work outfit, which is a dark green kimono with vertical stripes and a long white frilly apron over it.\r\n\r\nPersonality\r\nA gentle and calming young girl, Chiya is formal and soft-spoken. She always appears to be in a light, airy mood and focuses on keeping the peace, although she can be a little air-headed. Even when she might be upset, she always keeps smiling.\r\n\r\nDespite her ladylike behavior, Chiya has many surprising quirks one may not see at first. She finds pleasure in giving the sweets of Ama Usa An overly fancy names, such as \"Red Jewel in a Snowy Field\" and \"Moon and Stars Reflected Upon the Sea\". She also enjoys scary stories and disturbing others at times, and she dreams of becoming a samurai. She is genuinely kind, but at times she can be very teasing.', 1, 4, '0000-00-00 00:00:00', '2018-07-04 12:17:36', 5),
+(6, 'Ichigo', '5f4dcc3b5aa765d61d8327deb882cf99', 'Ichigo', 'Starmiya', 'Hoshimiya', '2000-03-15', '2018-06-07 15:32:53', 'hoshimiya_ichigo@gmail.com', 'http://aikatsu.wikia.com/wiki/Ichigo_Hoshimiya', 'Starlight Academy   ', 1, 1, '__hoshimiya_ichigo_aikatsu_drawn_by_peko__c3dce95aabe13b99a7c468dadc31be62.jpg', 'image/jpeg', 'upload/__hoshimiya_ichigo_aikatsu_drawn_by_peko__c3dce95aabe13b99a7c468dadc31be62.jpg', 'Ichigo Hoshimiya (æ˜Ÿå®® ã„ã¡ã” Hoshimiya Ichigo) is the main protagonist of the first and second season of the Aikatsu! series and is a student of Starlight School. Ichigo cute-type idol whose primary brand is Angely Sugar. Along with Aoi Kiriya and Ran Shibuki, the three are a part of the unit Soleil (ã‚½ãƒ¬ã‚¤ãƒ¦ Soreiyu). Later in Episode 93, she and Seira Otoshiro also forned the duo unit 2wingS. As of Aikatsu! The Movie, Ichigo is now the top ranked idol, replacing Mizuki Kanzaki and breaking her three-year streak.', 1, 2, '0000-00-00 00:00:00', '2018-07-04 08:07:37', 21),
+(7, 'Syaro', '5f4dcc3b5aa765d61d8327deb882cf99', 'Syaro', 'Sharo', 'Kirima', '2000-07-15', '2018-06-07 14:08:15', 'kirima_sharo@gmail.com', 'http://gochiusa.wikia.com/wiki/Sharo_Kirima', 'Ama Usa An ', 1, 1, 'sharo-kirima-59653.jpg', 'image/jpeg', 'upload/sharo-kirima-59653.jpg', 'Appearance:\r\n\r\nSharo is a short girl with fluffy blonde hair covering her ears and straightened bangs worn with a thin black headband accent by a bow. She has turquoise eyes shaped with an upward point and fair skin.\r\n\r\nHer work uniform is a black and white maid-style dress with black frilly wrist cuffs, white over-the-knee socks and a frilled headdress with white lop-ear rabbit ears. Her school uniform consists of a black blouse with a white blazer, a white and grey plaid skirt and matching plaid tie.\r\n\r\nPersonality:\r\n\r\nSharo is a sensitive and bashful girl who has insecurities when it comes to her image. She is easily flustered and worries that her friends think she is a rich and sophisticated lady when in actuality she is a poor girl living in a humble home- but with fancy interests and hobbies. She is kind and somewhat withdrawn, but she can be sarcastic and blunt at times. She is quite jumpy and easily frightened, for example, when her friends tell ghost stories she covers her ears because she doesn\'t want to hear them, and she also has leporiphobia due to her not being able to walk home from school because a small wild rabbit was standing in her path and feared that it would attack her.\r\n\r\nSharo becomes very hyper and playful when under the influence of caffeine. She also admires Rize and has a crush on her, and shows a very respectful side towards her.', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:18:27', 44),
 (8, 'Aoi', '5f4dcc3b5aa765d61d8327deb882cf99', 'Aoi', 'Idol Professor', 'Kiriya', '2000-01-31', '2018-06-07 15:31:06', 'kiriya-aoi@gmail.com', 'http://aikatsu.wikia.com/wiki/Aoi_Kiriya', 'Starlight Academy ', 1, 1, '__kiriya_aoi_aikatsu_and_aikatsu_series_drawn_by_tokunou_shoutarou__002ba659be0de05b5ebc6d5c1f84f4e2', 'image/jpeg', 'upload/__kiriya_aoi_aikatsu_and_aikatsu_series_drawn_by_tokunou_shoutarou__002ba659be0de05b5ebc6d5c1f84f4e2.jpg', 'Aoi is a calm and bright girl. She is very intelligent, possessing an encyclopedic knowledge and excellent analytical skills. She is highly determined towards her goals and approaches them very seriously. Aoi makes sure to plan ahead and research as much as she can for a situation. She is hard-working and has a bit of a perfectionist streak.\r\n\r\nAs a child, Aoi quickly became interested in idols after discovering the freedom and excitement of it, which was a strict contrast to the traditional arts she partook in. Since then, she has dedicated herself to idols and has studied idols ever since. She appears to be quite lucky as she is seen throughout the series meeting several idols she is a fan of. \r\n\r\nShe is known for being much more mature than Ichigo and tends to keep her on the right track, but has times when she can get very excited. While normally she seems confident and in good spirits, deep down Aoi is afraid of the fact that she knows it\'s possible she and Ichigo won\'t both rise to stardom together as planned.', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:01', 39),
 (9, 'Ran', '5f4dcc3b5aa765d61d8327deb882cf99', 'Ran', 'Beautiful Blade', 'Shibuki', '2000-08-03', '2018-06-07 01:56:37', 'shibukiranganbarimasu@gmail.com', 'http://aikatsu.wikia.com/wiki/Ran_Shibuki', 'Starlight Academy', 1, 1, '9ec6bde697e049015430f33c4144271f.jpg', 'image/jpeg', 'upload/9ec6bde697e049015430f33c4144271f.jpg', 'Ran is a quiet, independent girl with a professional air about her. She is multi-talented and mature but she has a short tether and does not like being pestered. Despite this, Ran is a kind person. She is humble about who she is as a person and idol, despite her popularity. She dislikes being nicknamed \"Ran-chan\" (è˜­ã¡ã‚ƒã‚“) and prefers to just be known as \"Ran.\" She doesn\'t eat sweets as she is concerned they will ruin her image.', 1, 2, '0000-00-00 00:00:00', '2018-06-27 06:08:30', 2),
-(10, 'Akari', '5f4dcc3b5aa765d61d8327deb882cf99', 'Akari', 'Shino', 'Oozora', '2004-04-01', '2018-06-07 15:29:14', 'akarioozora@gmail.com', 'http://aikatsu.wikia.com/wiki/Akari_%C5%8Czora', 'Starlight Academy ', 1, 1, '09318d25046e70dcb16a546a4bcc665a.jpg', 'image/jpeg', 'upload/09318d25046e70dcb16a546a4bcc665a.jpg', 'Akari is a clumsy, somewhat nervous, yet cheerful girl. She highly admires Ichigo to the point of wanting to be an idol like her. She appears to cry and get frustrated easily, but is determined nonetheless. Akari is also quite resilient and is able to quickly recover from her mistakes.\r\n\r\nIn Episode 96, Akari has grown into someone who wants to shine with her own light. She has become a hard-working and an even more determined idol who no longer aspires to be like Ichigo. She is no longer clumsy and is still energetic and cheerful, but can be prone comedic antics from time to time, much like her mentor and predecessor.', 1, 2, '0000-00-00 00:00:00', '2018-06-30 08:48:26', 6),
+(10, 'Akari', '5f4dcc3b5aa765d61d8327deb882cf99', 'Akari', 'Shino', 'Oozora', '2004-04-01', '2018-06-07 15:29:14', 'akarioozora@gmail.com', 'http://aikatsu.wikia.com/wiki/Akari_%C5%8Czora', 'Starlight Academy ', 1, 1, '09318d25046e70dcb16a546a4bcc665a.jpg', 'image/jpeg', 'upload/09318d25046e70dcb16a546a4bcc665a.jpg', 'Akari is a clumsy, somewhat nervous, yet cheerful girl. She highly admires Ichigo to the point of wanting to be an idol like her. She appears to cry and get frustrated easily, but is determined nonetheless. Akari is also quite resilient and is able to quickly recover from her mistakes.\r\n\r\nIn Episode 96, Akari has grown into someone who wants to shine with her own light. She has become a hard-working and an even more determined idol who no longer aspires to be like Ichigo. She is no longer clumsy and is still energetic and cheerful, but can be prone comedic antics from time to time, much like her mentor and predecessor.', 1, 2, '0000-00-00 00:00:00', '2018-06-30 08:48:26', 10),
 (11, 'Umimori', '5f4dcc3b5aa765d61d8327deb882cf99', 'Umi', 'Mimori', 'Sonoda', '1998-03-15', '2018-06-07 15:24:03', 'sonodaumi@gmail.com', 'http://love-live.wikia.com/wiki/Umi_Sonoda', 'Otonokizaka Gakuen ', 1, 1, '17807279_1124621264330204_5581380540949475648_o.jpg', 'image/jpeg', 'upload/17807279_1124621264330204_5581380540949475648_o.jpg', 'Umi is normally a shy girl, but she has a strong will and some qualities of a leader. Despite this, she is content to stay reserved and always thinks logically. Umi is uncomfortable with wearing short skirts but gets used to it after their first live. Although Umi tends to be hard on others, as seen in Season 2 Episode 7 when she forces Honoka and Hanayo to do long training hours after they gain a bit of weight, she is especially hard on herself. She doesn\'t do anything remotely criminal and despises laziness.\r\n\r\nUmi gets angry when her sleep is disrupted, as seen in Season 1 Episode 10. However, despite her calm and collected appearance, when it comes to playing Old Maid or something that requires the player to stay calm, she cannot hold back emotions: She panics out when her opponent takes the non-Joker, according to Season 2 Episode 5.\r\n\r\nUmi always speaks politely, using \"ã§ã™\" (desu), \"ã¾ã™\" (masu), and other polite forms of speaking in her speech.', 1, 2, '2018-06-10 00:36:50', '2018-07-04 08:59:25', 12),
-(12, 'Yume', '5f4dcc3b5aa765d61d8327deb882cf99', 'Yume', 'Miyu', 'Nijino', '2002-03-03', '2018-06-07 15:21:12', 'nijinoyume@gmail.com', 'http://aikatsustars.wikia.com/wiki/Yume_Nijino', 'Four Star Academy ', 1, 1, '__nijino_yume_aikatsu_series_and_aikatsu_stars_drawn_by_sekina__sample-6116b266b664c8e006fdab518a60a', 'image/jpeg', 'upload/__nijino_yume_aikatsu_series_and_aikatsu_stars_drawn_by_sekina__sample-6116b266b664c8e006fdab518a60a0e0.jpg', 'Appearance\r\nYume is a fair-skinned girl with gradient orange eyes. She has long blonde hair with a pink ombre coloring towards the end, and is tied into curled pigtails, its tie-off section wrapped with hair. She also has forelocks and parted bangs, and is often seen with her pink ribbon worn on her left-side.\r\n\r\nIn Season 2, Yume\'s hair has grown longer and wavier, with an increase in pink ombre at her hair\'s ends. Her pigtails are now tied higher from the back of her head. As a student at Four Star Academy and a member of S4, she wears a specialized uniform for the S4 members.\r\n\r\nPersonality\r\nYume is known to be cheerful and full of curiosity but cries easily when touched. She is also a person with a strong will and can be impulsive with a mischievous streak.She wants everyone will be happy of her song. At times she can be bold but is slightly oblivious and gets embarrassed really easily. She never gives up no matter what happens and is always determined to help her friends or those she cares about. When Koharu moved to Italy, she volunteered to put on a show for her so that Koharu wouldn\'t be sad about leaving. She also never gave up on her dream of joining S4, and when she did it, she felt as if she had to work harder, as she said in Episode 51', 1, 2, '0000-00-00 00:00:00', '2018-07-07 15:24:22', 13),
-(13, 'Nico', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nico', 'Nico-Nico-Nii', 'Yazawa', '1998-07-22', '2018-06-07 14:51:46', 'niconiconii@gmail.com', 'http://love-live.wikia.com/wiki/Nico_Yazawa', 'Otonokizaka Gakuen', 1, 1, '__yazawa_nico_love_live_and_love_live_school_idol_project_drawn_by_eileen_artist__880017fa6a925e1850', 'image/png', 'upload/__yazawa_nico_love_live_and_love_live_school_idol_project_drawn_by_eileen_artist__880017fa6a925e18509d1b7ca29b9549.png', 'Normally, Nico has quite an abrasive personality, but when she takes on her alternate personality, she becomes a happy, upbeat character who is always smiling, often saying her catchphrase, \"Nico Nico Nii!\" (ã«ã£ã“ã«ã£ã“ã«ãƒ¼), accompanied with a pose. She usually thinks a bit highly of herself but, despite that, she is also caring.\r\n\r\nA common joke in the series is that she\'s often ignored by the other members of Î¼\'s when she claims that she is the better idol. An example of her trying to make the others believe she is the better idol is in Season 1 Episode 10, when Nico claims that she has a personal chef like Maki and has never cooked before. Kotori falls for the lie unknowingly. However, she accidentally forgot about her lie when it was dinner time, and ended up cooking for everyone to reveal the truth.\r\n\r\nNico often gets annoyed with the former student council president, Eli Ayase, for taking away the spotlight from her with her beauty and maturity.', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:22', 21),
+(12, 'Yume', '5f4dcc3b5aa765d61d8327deb882cf99', 'Yume', 'Miyu', 'Nijino', '2002-03-03', '2018-06-07 15:21:12', 'nijinoyume@gmail.com', 'http://aikatsustars.wikia.com/wiki/Yume_Nijino', 'Four Star Academy ', 1, 1, '__nijino_yume_aikatsu_series_and_aikatsu_stars_drawn_by_sekina__sample-6116b266b664c8e006fdab518a60a', 'image/jpeg', 'upload/__nijino_yume_aikatsu_series_and_aikatsu_stars_drawn_by_sekina__sample-6116b266b664c8e006fdab518a60a0e0.jpg', 'Appearance\r\nYume is a fair-skinned girl with gradient orange eyes. She has long blonde hair with a pink ombre coloring towards the end, and is tied into curled pigtails, its tie-off section wrapped with hair. She also has forelocks and parted bangs, and is often seen with her pink ribbon worn on her left-side.\r\n\r\nIn Season 2, Yume\'s hair has grown longer and wavier, with an increase in pink ombre at her hair\'s ends. Her pigtails are now tied higher from the back of her head. As a student at Four Star Academy and a member of S4, she wears a specialized uniform for the S4 members.\r\n\r\nPersonality\r\nYume is known to be cheerful and full of curiosity but cries easily when touched. She is also a person with a strong will and can be impulsive with a mischievous streak.She wants everyone will be happy of her song. At times she can be bold but is slightly oblivious and gets embarrassed really easily. She never gives up no matter what happens and is always determined to help her friends or those she cares about. When Koharu moved to Italy, she volunteered to put on a show for her so that Koharu wouldn\'t be sad about leaving. She also never gave up on her dream of joining S4, and when she did it, she felt as if she had to work harder, as she said in Episode 51', 1, 2, '0000-00-00 00:00:00', '2018-07-09 12:38:45', 13),
+(13, 'Nico', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nico', 'Nico-Nico-Nii', 'Yazawa', '1998-07-22', '2018-06-07 14:51:46', 'niconiconii@gmail.com', 'http://love-live.wikia.com/wiki/Nico_Yazawa', 'Otonokizaka Gakuen', 1, 1, '__yazawa_nico_love_live_and_love_live_school_idol_project_drawn_by_eileen_artist__880017fa6a925e1850', 'image/png', 'upload/__yazawa_nico_love_live_and_love_live_school_idol_project_drawn_by_eileen_artist__880017fa6a925e18509d1b7ca29b9549.png', 'Normally, Nico has quite an abrasive personality, but when she takes on her alternate personality, she becomes a happy, upbeat character who is always smiling, often saying her catchphrase, \"Nico Nico Nii!\" (ã«ã£ã“ã«ã£ã“ã«ãƒ¼), accompanied with a pose. She usually thinks a bit highly of herself but, despite that, she is also caring.\r\n\r\nA common joke in the series is that she\'s often ignored by the other members of Î¼\'s when she claims that she is the better idol. An example of her trying to make the others believe she is the better idol is in Season 1 Episode 10, when Nico claims that she has a personal chef like Maki and has never cooked before. Kotori falls for the lie unknowingly. However, she accidentally forgot about her lie when it was dinner time, and ended up cooking for everyone to reveal the truth.\r\n\r\nNico often gets annoyed with the former student council president, Eli Ayase, for taking away the spotlight from her with her beauty and maturity.', 1, 2, '0000-00-00 00:00:00', '2018-07-08 09:34:46', 21),
 (14, 'Honoka', '5f4dcc3b5aa765d61d8327deb882cf99', 'Honoka', 'Honk', 'Kousaka', '1998-08-03', '2018-06-07 15:12:55', 'kousaka-honoka@gmail.com', 'http://love-live.wikia.com/wiki/Honoka_Kosaka', 'Otonokizaka Gakuen ', 1, 1, '36224265_1714157965337956_2929014387014369280_n.jpg', 'image/jpeg', 'upload/36224265_1714157965337956_2929014387014369280_n.jpg', 'Honoka\'s family owns a Japanese sweets shop named Homura. She lives at the back of the shop with her mother, father, and little sister.\r\n\r\nSince she was young, she has been friends with Kotori Minami, and she befriended Umi Sonoda after inviting her to a game of hide-and-seek. She is also friends with Fumiko, Hideko and Mika at school. Her grandmother and her mother are both graduates from Otonokizaka.\r\n\r\nHonoka is an optimist who is never afraid to take risks. She is always in a good mood and likes to look at the bright side of things. She is determined and once her mind is set on something, nothing can stop her. This is believed to be the driving force behind Î¼\'s formation and success. But because of her persistent personality, she often overexerts herself.\r\n\r\nHer personality is similar to Rin Hoshizora\'s because they are both determined and hard-working. For example, in Season 1 Episode 7, Honoka, Rin and Nico Yazawa had to work hard to pass exams in order to enter Love Live!, and are known as the \'Three Idiots\'.\r\n\r\nShe likes to eat bread, but she does not enjoy eating red bean paste or white bean paste despite working at her family\'s Japanese sweets shop.', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:43', 47),
 (15, 'Maki', '5f4dcc3b5aa765d61d8327deb882cf99', 'Maki', 'Tomato', 'Nishikino', '1999-04-19', '2018-06-07 15:20:30', 'nishikino-maki@gmail.com', 'http://love-live.wikia.com/wiki/Maki_Nishikino', 'Otonokizaka Gakuen  ', 1, 1, 'Nishikino.Maki.600.2043577.jpg', 'image/jpeg', 'upload/Nishikino.Maki.600.2043577.jpg', 'Maki has the qualities of a tsundere, and she has a hard time admitting her true feelings to her peers. She also has somewhat childish beliefs, as demonstrated by the group finding out that she still believes in Santa Claus.\r\n\r\nMaki is also quite stubborn. This was shown when she was invited to play at the beach, as she was withdrawn from the group and not interested in playing with them.\r\n\r\nMaki was initially portrayed as a loner in the first few episodes, and spent her time alone in the music room.\r\n\r\nHer personality often clashes with Nico Yazawa, such as when she called Nico stubborn during Season 2 Episode 4. Rin, however, tells her \"You\'re one to talk\", implying that Maki is stubborn as well.', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:18:43', 6),
 (16, 'Elichika', '5f4dcc3b5aa765d61d8327deb882cf99', 'Eli', 'Elichika', 'Ayase', '1997-10-21', '2018-06-07 15:22:29', 'elichika@gmail.com', 'http://love-live.wikia.com/wiki/Eli_Ayase', 'Otonokizaka Gakuen ', 1, 1, 'Ayase.Eri.600.1936882.jpg', 'image/jpeg', 'upload/Ayase.Eri.600.1936882.jpg', 'Eli is shown to be a perfect role model to the students in Otonokizaka High School. As the former student council president, she is often portrayed as a cold and strict character due to her responsibilities, and being against the idea of Honoka Kosaka and her friends forming an idol group to get more attention from the public. However, ironically, Nozomi Tojo reveals that Eli was also trying to save the school, but was denied permission to take action by the chairwoman.\r\n\r\nEli is highly respected and well-known among the students, especially among her juniors. Unlike Nozomi, she appears rather stoic and skeptical in the early episodes, but it is shown that Eli is actually very kind and caring towards people who are close to her, like her little sister. She is also dependable as her grandmother entrusted her the responsibility of preventing the school from being shut down. Other than being admirable, Eli also has a lot of fans in the school. After she joined the group, their popularity rose and their ranking among the school idols increased, achieving more fame.\r\n\r\nHonoka also complimented her beauty, saying that she is beautiful, tall, and has a great body shape. On top of that, she is also very mature and level-headed and acts as a strategist in promoting their group, as she planned to introduce Î¼\'s in Akihabara by having a street performance.\r\n\r\nDespite being portrayed as level-headed, Eli can sometimes have an unexpected side to her and it was revealed by Nozomi that she almost ate a plastic chocolate once, thinking it was real. Other source material such as the Love Live! School idol diary and animated shorts also show her with a more playful personality. She is also afraid of the dark and haunted-house monsters, as seen in Season 2 Episode 11.\r\n\r\n', 1, 2, '0000-00-00 00:00:00', '2018-07-04 13:03:15', 3),
@@ -2487,14 +2401,15 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (70, 'Senjougahara', '5f4dcc3b5aa765d61d8327deb882cf99', 'Hitagi', 'Crab', 'Senjougahara', '1993-07-07', '2018-06-22 04:45:25', 'senjougaharahitagi@gmail.com', 'http://bakemonogatari.wikia.com/wiki/Hitagi_Senjougahara', 'Monogatari Series', 1, 1, '3f9850ebde5f8c65f94020bc751217c6.jpg', 'image/jpeg', 'upload/3f9850ebde5f8c65f94020bc751217c6.jpg', 'Hitagi, the main female character of Bakemonogatari, is a weak-looking girl with an \"incurable disease.\" She is in the same class as Koyomi, but he has almost never heard her speak. When she was in the first year of high school, she encountered a mysterious crab, after which she became nearly weightless. Ever since then, she has avoided contact with everyone else, threatening everyone who discovers her secret. She called herself a tsundere and always speaks in an abusive style.', 1, 2, '0000-00-00 00:00:00', '2018-06-22 22:48:59', 2),
 (71, 'TuturuBot', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-06-22 20:41:16', 'tuturumayushidesu@gmail.com', '', '', 2, 1, 'mayuri-shiina-23975.jpg', 'image/jpeg', 'upload/mayuri-shiina-23975.jpg', 'I\'m a bot.\r\n\r\nBasic Commands\r\n\r\n!hello - I\'ll say my greetings to you,\r\n!thanks - I\'ll say you\'re welcome,\r\n!time - I\'ll tell you the time,\r\n!music - I\'ll play a song for you,\r\n!stop - I\'ll stop the music,\r\n!chat - I\'ll say something to you,\r\n!bye - I\'ll say goodbye and exit.', 0, 4, '0000-00-00 00:00:00', '2018-07-04 13:56:51', 29),
 (72, 'madoka', '5f4dcc3b5aa765d61d8327deb882cf99', 'Madoka', '', 'Kaname', '1995-10-03', '2018-06-22 21:19:59', 'kaname_madoka@gmail.com', 'https://wiki.puella-magi.net/Madoka_Kaname', 'Puella Magi Madoka Magica', 1, 1, 'madoka-kaname-19490.jpg', 'image/jpeg', 'upload/madoka-kaname-19490.jpg', 'Physical features\r\nBirthday:October 3\r\nHeight: Slightly less than 150cm (4\'11\"). Production Note shows a height revision to 152cm (5\'0\").\r\nEye colour: Pink\r\nHair colour: Pink\r\nBlood type: A\r\nShoe size: 22 JP (Women\'s 5.5 US, Children\'s 4 US, 36 EU, 3 UK)\r\nOther\r\nSoul Gem: Pink Teardrop located at base of her neck\r\nWeapon: Bow\r\nWitch form: Kriemhild Gretchen\r\nJapanese pronoun: watashi (ã‚ãŸã—)\r\nKnown relatives: Tomohisa Kaname (Father), Junko Kaname (Mother), Tatsuya Kaname (Younger brother)\r\nSchool: Mitakihara Middle School, Second Year\r\nFor further details, a 100 Question Survey has been published revealing details about Madoka such as her likes, dislikes, hobbies, and physical attributes.\r\nWish\r\nIn episode 10, it is revealed that this Madoka is one of many, each one before her having died in their respective timelines. Due to the changing timeline, Madoka\'s wish that makes her into a magical girl is different depending on which timeline she is from. However her wishes have always stemmed from her kindness.\r\n\r\nFrom what we know until now, she contracted with Kyubey in order to:\r\n\r\nSave a cat who had just died in front of her in the first timeline (exact wording unknown)\r\nEither save Homura from Walpurgisnacht or obtain the power to defeat Walpurgisnacht in the fourth timeline (exact wording unknown)\r\nSave Sayaka in the timeline from The Different Story (exact wording unknown)\r\nIn the penultimate timeline before the new world:', 1, 2, '0000-00-00 00:00:00', '2018-06-23 20:11:44', 1),
-(73, 'Mirei', '5f4dcc3b5aa765d61d8327deb882cf99', 'Mirei', 'Pri', 'Minami', '2002-10-01', '2018-06-24 03:17:01', 'minami_mirei_pri@gmail.com', 'http://pripara.wikia.com/wiki/Mirei_Minami', 'Paprika Private Academy', 1, 1, 'Minami.Mirei.600.1974681.jpg', 'image/jpeg', 'upload/Minami.Mirei.600.1974681.jpg', 'Mirei is a smart and studious girl who happens to be very good at puzzles. She is very serious and can be strict with rules, even if they don\'t make much sense to others. Her catchphrases are \"Keisandouri\" (è¨ˆç®—ã©ãŠã‚Š), meaning \"Just as calculated\",\"Keisangai\" (è¨ˆç®—å¤–), meaning \"miscalculated.\" and Poppu Steppu Getchu!!\r\n\r\nDue to her analytical and stern personality, she is the captain of Paprika Private Academy\'s disciplinary committee. She appears to have a great admiration for things \"pop\".\r\n\r\nAs her idol character, she usually ends her sentences with\" -pri\", and her idol catchphrase is \"A pop and a step and I\'ve got you~!\". She is easy-going and perky here, but still shows a bossy personality when things don\'t go right. ', 1, 2, '0000-00-00 00:00:00', '2018-06-24 10:51:48', 2),
+(73, 'Mirei', '5f4dcc3b5aa765d61d8327deb882cf99', 'Mirei', 'Pri', 'Minami', '2002-10-01', '2018-06-24 03:17:01', 'minami_mirei_pri@gmail.com', 'http://pripara.wikia.com/wiki/Mirei_Minami', 'Paprika Private Academy', 1, 1, 'Minami.Mirei.600.1974681.jpg', 'image/jpeg', 'upload/Minami.Mirei.600.1974681.jpg', 'Mirei is a smart and studious girl who happens to be very good at puzzles. She is very serious and can be strict with rules, even if they don\'t make much sense to others. Her catchphrases are \"Keisandouri\" (è¨ˆç®—ã©ãŠã‚Š), meaning \"Just as calculated\",\"Keisangai\" (è¨ˆç®—å¤–), meaning \"miscalculated.\" and Poppu Steppu Getchu!!\r\n\r\nDue to her analytical and stern personality, she is the captain of Paprika Private Academy\'s disciplinary committee. She appears to have a great admiration for things \"pop\".\r\n\r\nAs her idol character, she usually ends her sentences with\" -pri\", and her idol catchphrase is \"A pop and a step and I\'ve got you~!\". She is easy-going and perky here, but still shows a bossy personality when things don\'t go right. ', 1, 2, '0000-00-00 00:00:00', '2018-07-08 11:57:19', 4),
 (74, 'Riko', '5f4dcc3b5aa765d61d8327deb882cf99', 'Riko', '', 'Sakurauichi', '2003-09-19', '2018-06-24 08:08:28', 'rikosakurauchi@gmail.com', 'http://decaf.kouhi.me/lovelive/index.php?title=Sakurauchi_Riko', 'Uranohoshi Girls\' High School', 1, 1, 'IBalaNJ.jpg', 'image/jpeg', 'upload/IBalaNJ.jpg', 'A second-year from Akihabara who transferred into Chika\'s class. An average girl with a reserved personality who would rather stay indoors than go out. While she seems mature and collected, she is actually quite careless, frequently jumping to conclusions and making mistakes.', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:34:51', 8),
 (75, 'Yohane', '5f4dcc3b5aa765d61d8327deb882cf99', 'Yoshiko', 'Yohane', 'Tsushima', '2004-07-13', '2018-06-24 08:19:39', 'yohanedatenshi@gmail.com', 'http://love-live.wikia.com/wiki/Yoshiko_Tsushima', 'Uranohoshi Girls\' High School', 1, 1, 'e0d19d7ea9c0b8532e7cb0928cb51caf5096879b_hq.jpg', 'image/jpeg', 'upload/e0d19d7ea9c0b8532e7cb0928cb51caf5096879b_hq.jpg', 'Yoshiko is a bit of a Chuunibyou, a person who holds delusions of grandeur. She\'s bright, self-assured, smart, and thoughtful. She hates to be called \"Yoshiko\" and refers to herself as \"Yohane\" instead, going as far as to cross out her real name in her introduction and replace it as such.\r\n\r\nShe describes herself as a fallen angel who has angered God, because she is cursed by extreme bad luck: She runs into all kinds of unforeseen trouble wherever she goes, such as when she goes on trips it\'s bound to rain, whenever it snows she\'s bound to fall, she has never won anything from lucky draws in convenience stores, and she always falls sick with influenza right before her final exams. Through her delusional persona, she acts innocent but cunning and a bit devious.\r\n\r\nBecause of her delusional persona, she is often teased by Ruby and Hanamaru as seen in the anime which is annoying for her, but she really treasures her friendship (which is decribed as contract while in her fallen angel persona) with the two of them so much, as shown in Season 1 Episode 13.\r\n\r\nYoshiko likes extremely spicy food, as shown in Season 1 Episode 10 where she ate a takoyaki filled with Tabasco. She dislikes coffee', 1, 2, '0000-00-00 00:00:00', '2018-07-02 00:34:28', 8),
 (76, 'Hanamaru', '5f4dcc3b5aa765d61d8327deb882cf99', 'Hanamaru', 'Zura', 'Kunikida', '2004-03-04', '2018-06-24 08:24:31', 'hanamarukunikida@gmail.com', 'http://love-live.wikia.com/wiki/Hanamaru_Kunikida', 'Uranohoshi Girls\' High School', 1, 1, '299828.jpg', 'image/jpeg', 'upload/299828.jpg', 'Hanamaru, known as \"Maru\" for short, is a hardworking girl who diligently works at her family\'s temple. She spends a lot of time reading alone and is easily distracted. Because of how she was raised as a temple girl, she does not watch the television much nor does she use the internet, making her outdated. She was often teased due to this, but was usually defended by her best friend Ruby; however, Ruby ended up crying at first, causing Hanamaru to comfort her instead. She is gentle and caring for those around her, but often finds herself going in circles anyway. She aspires to be like Ruby, whom she sees as \"beautiful, cute and dazzling\".\r\n\r\nHanamaru seems to be quite self-depreciating, calling herself a \"chibi procrastinator\" and \"neither cute nor interesting\". Due to how she sees herself, Hanamaru didn\'t think she was fit to become a school idol. However, after learning about Rin Hoshizora and how she once felt the same, she was inspired, then decides to be a school idol by supporting Ruby in her endeavor.\r\n\r\nIn the anime, Hanamaru is also shown to have a playful and mischievous side of her when she teases Yoshiko\'s Fallen Angel behavior and her embarassing moments (often alongside her best friend Ruby), which annoys Yoshiko all the time. She is also shown to have a large appetite, able to eat a food helping quickly and often asking for another one immediatly after, and is usually seen eating a roll of noppo bread.\r\n\r\nHanamaru has a distinctive verbal tic and dialect, tending to end her sentences with \"zura\", as well as using \"ora\" as a first-person pronoun referring to herself.\r\n\r\nIn Season 1 Episode 4, Hanamaru stated that since she was little, she was a quiet girl who played off to the side.', 1, 2, '0000-00-00 00:00:00', '2018-07-01 12:56:59', 8),
 (77, 'Iroha', '5f4dcc3b5aa765d61d8327deb882cf99', 'Iroha', 'Irohasu', 'Isshiki', '1999-04-16', '2018-06-27 06:25:50', 'irohaisshiki@gmail.com', 'http://yahari.wikia.com/wiki/Iroha_Isshiki', 'Oregairu', 1, 1, '__isshiki_iroha_yahari_ore_no_seishun_lovecome_wa_machigatteiru_drawn_by_inanaki_shiki__sample-0a4c1', 'image/jpeg', 'upload/__isshiki_iroha_yahari_ore_no_seishun_lovecome_wa_machigatteiru_drawn_by_inanaki_shiki__sample-0a4c12433f0ba3076e9a8e99cd0a72bd.jpg', 'She acts like an air-head or \"clumsy girl\" in front of most people to maintain her â€œcute appearanceâ€. She maintains her image of an innocent girl in order to make everyone like her and make it easier to manipulate others.\r\n\r\nIn reality she is much smarter than she lets on, and rarely shows her sly and calculating personality to others. Hachiman and Hayato see through he facade while others remain clueless.\r\n\r\nAs pointed out by Hayato, she worries about her public image. She didn\'t want to lose the student council election in a way that would make her look bad. Although she has no issue with being seen around Hachiman who is \"hated\" in the school.\r\n\r\nAccording to Hachiman\'s observations, Iroha is an uncute Komachi, better Sagami, phony Meguri, different Kaori and inferior Haruno. He later deems her the \"the second most rotten person in the world\", the first obviously being himself. Hachiman feels that she is the type to be hated by other girls for her cuteness and her closeness to Hayama.\r\n\r\nShe lacks self confidence but this starts to change when she overhears Hachiman\'s request for \"something genuine\". And after the Christmas play is completed successfully.', 1, 2, '0000-00-00 00:00:00', '2018-06-27 06:41:55', 1),
-(78, 'Gabriel', '5f4dcc3b5aa765d61d8327deb882cf99', 'Gabriel White', 'Fallen Angel', 'Tenma', '2001-04-20', '2018-06-27 06:43:22', 'gabriel@gmail.com', 'http://gabdro.wikia.com/wiki/Gabriel', 'Heaven and Earth', 1, 1, 'fa4e56b178e980dd1e964875b0dbb1cf.jpg', 'image/jpeg', 'upload/fa4e56b178e980dd1e964875b0dbb1cf.jpg', 'Gabriel has long blonde hair with a slight pink ombre to it. Her hair was neat and straight in her time on Heaven, but has become unruly and wild in her time on Earth. She also has an ahoge, like Raphi. She ties her hair into a high ponytail on some occasions. She has baby blue eyes. Due to her adorable and childlike appearance, many characters say that she is very cute, and Vigne says that she\'s (the first time they met) like a doll, while Raphi stated that she is always cute no matter how, and her classmates who are in the cooking club say that she is adorable, and they even gave her a twintail hairstyle.', 1, 2, '2018-06-27 06:43:30', '2018-06-27 06:47:50', 1),
+(78, 'Gabriel', '5f4dcc3b5aa765d61d8327deb882cf99', 'Gabriel White', 'Fallen Angel', 'Tenma', '2001-04-20', '2018-06-27 06:43:22', 'gabriel@gmail.com', 'http://gabdro.wikia.com/wiki/Gabriel', 'Heaven and Earth', 1, 1, 'fa4e56b178e980dd1e964875b0dbb1cf.jpg', 'image/jpeg', 'upload/fa4e56b178e980dd1e964875b0dbb1cf.jpg', 'Gabriel has long blonde hair with a slight pink ombre to it. Her hair was neat and straight in her time on Heaven, but has become unruly and wild in her time on Earth. She also has an ahoge, like Raphi. She ties her hair into a high ponytail on some occasions. She has baby blue eyes. Due to her adorable and childlike appearance, many characters say that she is very cute, and Vigne says that she\'s (the first time they met) like a doll, while Raphi stated that she is always cute no matter how, and her classmates who are in the cooking club say that she is adorable, and they even gave her a twintail hairstyle.', 1, 2, '2018-06-27 06:43:30', '2018-07-08 13:17:23', 1),
 (79, 'Thorin', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-06-28 05:06:19', 'thor@gmail.com', '', '', 1, 1, '__hoshimiya_ichigo_aikatsu_drawn_by_peko__c3dce95aabe13b99a7c468dadc31be62.jpg', 'image/jpeg', 'upload/__hoshimiya_ichigo_aikatsu_drawn_by_peko__c3dce95aabe13b99a7c468dadc31be62.jpg', '', 1, 0, '2018-06-28 05:18:06', '2018-06-28 05:41:35', 2),
-(80, 'Shana', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-06-29 10:43:10', 'flamehaze@gmail.com', '', '', 1, 1, '', '', '', '', 1, 0, '2018-06-29 10:45:44', '2018-07-02 10:22:28', 2);
+(80, 'Shana', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-06-29 10:43:10', 'flamehaze@gmail.com', '', '', 1, 1, '', '', '', '', 1, 0, '2018-06-29 10:45:44', '2018-07-02 10:22:28', 2),
+(81, 'Lala', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-08 00:59:09', 'manakalala@gmail.com', '', '', 1, 1, 'lala-manaka-60688.jpg', 'image/jpeg', 'upload/lala-manaka-60688.jpg', '', 1, 0, '0000-00-00 00:00:00', '2018-07-12 05:32:03', 7);
 
 --
 -- Indexes for dumped tables
@@ -2513,22 +2428,22 @@ ALTER TABLE `tblannouncement`
   ADD PRIMARY KEY (`announceid`);
 
 --
+-- Indexes for table `tblcategory`
+--
+ALTER TABLE `tblcategory`
+  ADD PRIMARY KEY (`categoryid`);
+
+--
+-- Indexes for table `tblchangelog`
+--
+ALTER TABLE `tblchangelog`
+  ADD PRIMARY KEY (`logid`);
+
+--
 -- Indexes for table `tblcomment`
 --
 ALTER TABLE `tblcomment`
   ADD PRIMARY KEY (`commentid`);
-
---
--- Indexes for table `tbldownvotepost`
---
-ALTER TABLE `tbldownvotepost`
-  ADD PRIMARY KEY (`downvoteid`);
-
---
--- Indexes for table `tblforum`
---
-ALTER TABLE `tblforum`
-  ADD PRIMARY KEY (`forumid`);
 
 --
 -- Indexes for table `tblfriend`
@@ -2549,34 +2464,10 @@ ALTER TABLE `tblpm`
   ADD PRIMARY KEY (`pmid`);
 
 --
--- Indexes for table `tblpost`
---
-ALTER TABLE `tblpost`
-  ADD PRIMARY KEY (`postid`);
-
---
--- Indexes for table `tblreply`
---
-ALTER TABLE `tblreply`
-  ADD PRIMARY KEY (`replyid`);
-
---
 -- Indexes for table `tblreport`
 --
 ALTER TABLE `tblreport`
   ADD PRIMARY KEY (`reportid`);
-
---
--- Indexes for table `tblsubscribe`
---
-ALTER TABLE `tblsubscribe`
-  ADD PRIMARY KEY (`subid`);
-
---
--- Indexes for table `tblupvotepost`
---
-ALTER TABLE `tblupvotepost`
-  ADD PRIMARY KEY (`upvoteid`);
 
 --
 -- Indexes for table `tbluser`
@@ -2598,7 +2489,19 @@ ALTER TABLE `tbladmin`
 -- AUTO_INCREMENT for table `tblannouncement`
 --
 ALTER TABLE `tblannouncement`
-  MODIFY `announceid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `announceid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tblcategory`
+--
+ALTER TABLE `tblcategory`
+  MODIFY `categoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `tblchangelog`
+--
+ALTER TABLE `tblchangelog`
+  MODIFY `logid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tblcomment`
@@ -2607,70 +2510,34 @@ ALTER TABLE `tblcomment`
   MODIFY `commentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
--- AUTO_INCREMENT for table `tbldownvotepost`
---
-ALTER TABLE `tbldownvotepost`
-  MODIFY `downvoteid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
-
---
--- AUTO_INCREMENT for table `tblforum`
---
-ALTER TABLE `tblforum`
-  MODIFY `forumid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
 -- AUTO_INCREMENT for table `tblfriend`
 --
 ALTER TABLE `tblfriend`
-  MODIFY `friendid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `friendid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=317;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=319;
 
 --
 -- AUTO_INCREMENT for table `tblpm`
 --
 ALTER TABLE `tblpm`
-  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1413;
-
---
--- AUTO_INCREMENT for table `tblpost`
---
-ALTER TABLE `tblpost`
-  MODIFY `postid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
---
--- AUTO_INCREMENT for table `tblreply`
---
-ALTER TABLE `tblreply`
-  MODIFY `replyid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1512;
 
 --
 -- AUTO_INCREMENT for table `tblreport`
 --
 ALTER TABLE `tblreport`
-  MODIFY `reportid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `tblsubscribe`
---
-ALTER TABLE `tblsubscribe`
-  MODIFY `subid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-
---
--- AUTO_INCREMENT for table `tblupvotepost`
---
-ALTER TABLE `tblupvotepost`
-  MODIFY `upvoteid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
+  MODIFY `reportid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

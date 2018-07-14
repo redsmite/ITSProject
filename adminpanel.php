@@ -264,7 +264,7 @@ if($last != 1){
 	<script src="js/main.js"></script>
 	<script>
 		sendAllUser();
-		showMonitoringTab()
+		showMonitoringTab();
 		sendAnnounce();
 	</script>
 </body>
