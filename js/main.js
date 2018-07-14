@@ -1096,7 +1096,7 @@ function showSalesTab(){
 	body3.style.display='none';
 	body4.style.display='grid';
 
-	setPrice();	
+	showFarmTab();
 }
 
 function sendAllUser(){
@@ -1329,34 +1329,6 @@ function addCategoryAjax(){
 	}
 }
 
-function fetchCategory(){
-	var myRequest = new XMLHttpRequest();
-	var url = 'adminprocess.php';
-
-	var fetch = document.getElementById('gc-input').value;
-
-	var formData = "fetchb="+fetch;
-	
-	myRequest.open('POST', url ,true);
-	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-
-	myRequest.onload = function(){
-		var response= this.responseText;
-			
-		document.getElementById('fetch-category').innerHTML = response;
-		
-		
-	}
-	myRequest.send(formData);	
-}
-
-function resetthis(){	
-	var input = document.getElementById('gc-input');
-	var form = document.getElementById('fetch-category');
-	input.value='';
-	form.innerHTML ='<div onclick="resetthis()" class="closethis"><a><i class="fas fa-times"></i></a></div>'; 
-}
-
 function showCat(clicked){
 	let id = clicked.getAttribute('value');
 	let thid = 'cat-'+id;
@@ -1439,6 +1411,73 @@ function updatePrice(clicked){
 	}
 	myRequest.send(formData);	
 }
+
+// Sales
+
+function showFarmTab(){
+	let body1 = document.getElementById('farms');
+	let body2 = document.getElementById('weekly-report');
+	let body3 = document.getElementById('monthly-report');
+
+	body1.style.display = 'block';
+	body2.style.display = 'none';
+	body3.style.display = 'none';
+}
+
+function showDailyTab(){
+	let body1 = document.getElementById('farms');
+	let body2 = document.getElementById('weekly-report');
+	let body3 = document.getElementById('monthly-report');
+
+	body1.style.display = 'none';
+	body2.style.display = 'block';
+	body3.style.display = 'none';
+
+}
+
+function showMonthlyTab(){
+	let body1 = document.getElementById('farms');
+	let body2 = document.getElementById('weekly-report');
+	let body3 = document.getElementById('monthly-report');
+
+	body1.style.display = 'none';
+	body2.style.display = 'none';
+	body3.style.display = 'block';
+}
+
+function addFarm(){
+	let form = document.getElementById('add-farm-form');
+	form.addEventListener('submit',add);
+
+	function add(e){
+		e.preventDefault();
+
+		var myRequest = new XMLHttpRequest();
+
+		var url = 'adminprocess.php';
+
+		let farm = document.getElementById('farm-name').value;
+		let address = document.getElementById('farm-address').value;
+
+
+		var formData = "farm="+farm+"&address="+address;
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			if(response=='success'){
+				alert(farm+' is added to the database');
+				form.reset();
+			}else{
+				alert(response);
+			}
+		}
+		myRequest.send(formData);		
+	}
+}
+
 
 // Report User
 

@@ -62,7 +62,7 @@ function addheader(){
 function addfooter(){
 	echo'<footer id="main-footer">
 			<div class="container">
-				<a target="_blank" title="Like us on Facebook" href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+				<a target="_blank" title="Like us on Facebook" href="https://www.facebook.com/BahayKuboniMangCelso/?ref=page_internal"><i class="fab fa-facebook-square"></i></a>
 				<a target="_blank" title="Follow us on Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
 				<a target="_blank" title="Follow us on Instagram" href="https://www.instagram.com/?hl=ens"><i class="fab fa-instagram"></i></a>
 				<p>Copyright &copy; <span id="company">BahayKubo</span> | 2018</p>
@@ -136,7 +136,7 @@ function addSidebar(){
 				<li>
 				<a title="About us" href="about.php"><i class="fas fa-info-circle"></i></a></li>
 				<li>
-				<li><a target="_blank" title="Like us on Facebook" href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a></li>
+				<li><a target="_blank" title="Like us on Facebook" href="https://www.facebook.com/BahayKuboniMangCelso/?ref=page_internal"><i class="fab fa-facebook-square"></i></a></li>
 				<li><a target="_blank" title="Follow us on Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
 				<li><a target="_blank" title="Follow us on Instagram" href="https://www.instagram.com/?hl=ens"><i class="fab fa-instagram"></i></a></li>
 			</ul>

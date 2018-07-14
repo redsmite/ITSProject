@@ -198,34 +198,6 @@ if(isset($_POST['log'])){
 	}
 }
 
-if(isset($_POST['fetchb'])){
-	$category = $conn->real_escape_string($_POST['fetchb']);
-	$sql = "SELECT categoryid,status,category FROM tblcategory WHERE category LIKE '%$category%' LIMIT 10";
-	echo '<div onclick="resetthis()" class="closethis"><a><i class="fas fa-times"></i></a></div>
-		<table>
-		<tr>
-		<th>Category</th>
-		<th>Show/Hide</th>
-		</tr>';
-	$result = $conn->query($sql);
-	while($row = $result->fetch_object()){
-		$id = $row->categoryid;
-		$category = $row->category;
-		$status = $row->status;
-
-		echo '<tr>
-		<th>'.$category.'</th>';
-		
-		if($status==0){
-		echo'<th id="cat-'.$id.'" class="cathover" value='.$id.' onclick="showCat(this)"><span class="banned">Hide</span></th>';
-		}else if($status==1){
-		echo'<th id="cat-'.$id.'" class="cathover" value='.$id.' onclick="hideCat(this)"><span class="notbanned">Show</span></th>';
-		}
-		echo'</tr>';
-	}
-	echo '</table>';
-}
-
 if(isset($_POST['showcat'])){
 	$id = $_POST['showcat'];
 
@@ -295,6 +267,22 @@ if(isset($_POST['low'])){
 		echo 'success';
 	}else{
 		echo $error;
+	}
+}
+
+if(isset($_POST['farm'])){
+	$farm = $conn->real_escape_string($_POST['farm']);
+	$address = $conn->real_escape_string($_POST['address']);
+
+	$sql = "SELECT farmid FROM tblfarm WHERE farmname = '$farm'";
+	$result = $conn->query($sql);
+	$count = $result->num_rows;
+	if($count != 0){
+		echo'Farm name already exist';
+	}else{
+		$sql = "INSERT INTO tblfarm (farmname, address) VALUES('$farm','$address')";
+		$result = $conn->query($sql);
+		echo 'success';
 	}
 }
 ?>

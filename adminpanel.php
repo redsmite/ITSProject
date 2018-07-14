@@ -62,12 +62,34 @@ chattab();
 								</div>
 							</form>
 						</div>
-						<div id="get-category">
-							<h2>Show/Hide Category</h2>
-							<input type="text" onkeyup="fetchCategory()" id="gc-input">
-						</div>
 						<div id="fetch-category">
-							<div onclick="resetthis()" class="closethis"><a><i class="fas fa-times"></i></a></div>
+<?php
+
+$sql = "SELECT categoryid,status,category FROM tblcategory";
+	echo '
+		<table>
+		<tr>
+		<th>Category</th>
+		<th>Show/Hide</th>
+		</tr>';
+	$result = $conn->query($sql);
+	while($row = $result->fetch_object()){
+		$id = $row->categoryid;
+		$category = $row->category;
+		$status = $row->status;
+
+		echo '<tr>
+		<th>'.$category.'</th>';
+		
+		if($status==0){
+		echo'<th id="cat-'.$id.'" class="cathover" value='.$id.' onclick="showCat(this)"><span class="banned">Hide</span></th>';
+		}else if($status==1){
+		echo'<th id="cat-'.$id.'" class="cathover" value='.$id.' onclick="hideCat(this)"><span class="notbanned">Show</span></th>';
+		}
+		echo'</tr>';
+	}
+	echo '</table>';
+?>
 						</div>
 					</div>
 					<div id="set-price">
@@ -250,7 +272,48 @@ if($last != 1){
 				</div>
 			</div>
 			<div id="sales">
-				<h1><i class="fas fa-chart-bar"></i> Sales</h1>
+<div id="sales-left">
+	<div class="monitoring-option" onclick="showFarmTab()">
+		<i class="fab fa-pagelines"></i> Farms
+	</div>
+	<div class="monitoring-option" onclick="showDailyTab()">
+		<i class="fas fa-chart-bar"></i> Daily Report
+	</div>
+	<div class="monitoring-option" onclick="showMonthlyTab()">
+		<i class="fas fa-chart-bar"></i> Monthly Report
+	</div>	
+</div>
+<div class="empty"></div>
+
+<div id="sales-body">
+	<div id="farms">
+		<h1><i class="fab fa-pagelines"></i> Farms</h1>
+		<div class="edit-form">
+			<form id="add-farm-form">
+				<h1><i class="fas fa-plus"></i> Add Farm</h1>
+				<div>
+					<p>Farm Name</p>
+					<input type="text" id="farm-name">
+				</div>
+				<div>
+					<p>Address</p>
+					<textarea id="farm-address"></textarea>
+				</div>
+
+				<div>
+					<br>
+					<button>Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div id="weekly-report">
+		<h1><i class="fas fa-chart-bar"></i> Weekly Report</h1>
+	</div>
+	<div id="monthly-report">
+		<h1><i class="fas fa-chart-bar"></i> Monthly Report</h1>
+	</div>
+</div>
 			</div>
 			</div>
 			<!-- End of Admin Body Panel-->
@@ -266,6 +329,7 @@ if($last != 1){
 		sendAllUser();
 		showMonitoringTab();
 		sendAnnounce();
+		addFarm();
 	</script>
 </body>
 </html>

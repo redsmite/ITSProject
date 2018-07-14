@@ -69,7 +69,7 @@
 		<div class="main-content">
 			<div class="main-content-grid">
 				<div class="announcement">
-					<h2><i class="fas fa-bullhorn"></i> Announcement</h2>
+					<h2><i class="far fa-newspaper"></i> Announcement</h2>
 <?php
 $sql="SELECT title,content,t1.datecreated,username FROM tblannouncement AS t1
 LEFT JOIN tbluser
