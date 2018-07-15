@@ -117,7 +117,7 @@ li{
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--contrast); 
+    background: var(--secondary-contrast); 
 }
 
 .main-container{
@@ -151,7 +151,7 @@ li{
 	border-radius: 50%;
 	border: 2px solid transparent;
 	border-top-color: var(--primary-color);
-	border-bottom-color: var(--cyan);
+	border-bottom-color: var(--secondary-contrast);
 	animation: spinner 0.7s ease infinite;
 }
 
@@ -623,7 +623,7 @@ li{
 }
 
 .modal-footer{
-	background:var(--contrast);
+	background:var(--secondary-contrast);
 	padding:10px;
 	text-align:center;
 	border-top: 2px solid var(--darkgray);
@@ -642,7 +642,7 @@ li{
 }
 
 #closeBtn:hover,.closeBtn:focus{
-	color:var(--primary-color);
+	color:var(--secondary-contrast);
 	cursor:pointer;
 }
 
@@ -1521,7 +1521,7 @@ li{
 }
 
 .closethis a:hover{
-	color:var(--primary-color);
+	color:var(--secondary-contrast);
 }
 
 #chat-tab{

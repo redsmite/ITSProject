@@ -299,16 +299,47 @@ if($last != 1){
 					<p>Address</p>
 					<textarea id="farm-address"></textarea>
 				</div>
-
 				<div>
 					<br>
 					<button>Submit</button>
 				</div>
 			</form>
 		</div>
+		<div id="fetch-category">
+			<h1>Farms</h1>
+			<table>
+				<tr>
+					<th>Farm</th>
+					<th>Address</th>
+					<th>Status</th>
+					<th>Update</th>
+				</tr>
+<?php
+	$sql = "SELECT farmid,farmname,address,status FROM tblfarm";
+	$result = $conn->query($sql);
+	while($row=$result->fetch_object()){
+		$id = $row->farmid;
+		$name = $row->farmname;
+		$address = $row->address;
+		$status = $row->status;
+
+		echo '<tr>
+		<th>'.$name.'</th>
+		<th>'.$address.'</th>';
+		if($status==1){
+			echo '<th><font style="color:green">Active</font></th>';
+		}else{
+			echo '<th><font style="color:red">Inactive</font></th>';
+		}
+		echo'<th><a href="updatefarm.php?id='.$id.'">Update</a></th>
+		</tr>';
+	}
+?>
+			</table>
+		</div>
 	</div>
 	<div id="weekly-report">
-		<h1><i class="fas fa-chart-bar"></i> Weekly Report</h1>
+		<h1><i class="fas fa-chart-bar"></i> Daily Report</h1>
 	</div>
 	<div id="monthly-report">
 		<h1><i class="fas fa-chart-bar"></i> Monthly Report</h1>

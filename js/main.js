@@ -1478,6 +1478,46 @@ function addFarm(){
 	}
 }
 
+function updateFarm(){
+	let form = document.getElementById('update-farm-form');
+	form.addEventListener('submit',update);
+
+	function update(e){
+		e.preventDefault();
+		addSpinners();
+
+		var myRequest = new XMLHttpRequest();
+
+		var url = 'adminprocess.php';
+
+		let id = document.getElementById('farm-id').value;
+		let farm = document.getElementById('farm-name').value;
+		let address = document.getElementById('farm-address').value;
+		let status = document.getElementById('status');
+
+		if(status.checked==true){
+			status=1;
+		}else{
+			status=0;
+		}
+
+		var formData = "updatefarm="+farm+"&address="+address+"&fstatus="+status+"&id="+id;
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			if(response=='success'){
+				window.location.replace("adminpanel.php");
+			}else{
+				removeSpinners();
+				document.getElementById('error-message2').innerHTML=response;
+			}
+		}
+		myRequest.send(formData);		
+	}
+}
 
 // Report User
 

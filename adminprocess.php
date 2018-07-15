@@ -278,11 +278,22 @@ if(isset($_POST['farm'])){
 	$result = $conn->query($sql);
 	$count = $result->num_rows;
 	if($count != 0){
-		echo'Farm name already exist';
+		echo'Farm name is already taken';
 	}else{
-		$sql = "INSERT INTO tblfarm (farmname, address) VALUES('$farm','$address')";
+		$sql = "INSERT INTO tblfarm (farmname, address,status) VALUES('$farm','$address',1)";
 		$result = $conn->query($sql);
 		echo 'success';
 	}
+}
+
+if(isset($_POST['updatefarm'])){
+	$name = $conn->real_escape_string($_POST['updatefarm']);
+	$address = $conn->real_escape_string($_POST['address']);
+	$status = $_POST['fstatus'];
+	$id = $_POST['id'];
+
+	$sql = "UPDATE tblfarm SET farmname='$name', address='$address', status='$status' WHERE farmid = '$id'";
+	$result = $conn->query($sql);
+	echo 'success';
 }
 ?>

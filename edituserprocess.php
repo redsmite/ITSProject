@@ -17,7 +17,7 @@ if(isset($_POST['username'])){
 		$sql="SELECT username FROM tbluser WHERE username='$username'";
 		$res_u=$conn->query($sql);
 		$row=$res_u->fetch_object();
-		if ($res_u->num_rows != 0 && $row->username !=$username) {
+		if ($res_u->num_rows != 0 or $row->username !=$username) {
 			array_push($error,'<i class="fas fa-exclamation-circle"></i>Username is already taken');
 		}
 
