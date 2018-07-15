@@ -17,7 +17,7 @@ chattab();
   	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<title><?php companytitle()?></title>
 <body>
-	<div class="container">
+	<div class="main-container">
 		<!-- Header -->
 		<?php
 			addheader();

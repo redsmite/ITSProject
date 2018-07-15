@@ -184,6 +184,13 @@ li{
 	color: var(--light-color);
 }
 
+#how-to{
+	padding: 0.7em;
+	background: var(--secondary-contrast);
+	font-size: 1.5em;
+	color: var(--light-color);
+}
+
 .profile-grid{
 	grid-area: profile;
 	grid-column-start: right;
@@ -732,7 +739,7 @@ li{
 	width: 220px;
 	margin: 10px;
 	display: inline-block;
-	background: var(--secondary-color);
+	background: var(--light-color);
 	border: var(--darkgray);
 	transition-duration: 250ms;
 	transition-property: box-shadow;
@@ -803,21 +810,13 @@ li{
 .other-content h1{
 	float:center;
 	font-size: 25px;
+	color: var(--secondary-contrast);
 }
 
 .other-content h2,.other-content h3{
 	text-align: center;
 	margin-top: 5px;
-}
-
-.content-box{
-	margin:12px;
-}
-
-.content-box p{
-	padding: 18px;
-	line-height: 1.5em;
-	font-size: 1.5em;
+	color: var(--secondary-contrast);
 }
 
 /* Forms */
@@ -1178,7 +1177,6 @@ li{
 .left-grid li{
 	border-bottom:1px solid var(--darkgray);
 	padding:5px;
-	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 #profilestats{
@@ -1415,6 +1413,7 @@ li{
 .right-inbox{
 	grid-area: right-inbox;
 	background: var(--light-color);
+	border-top: 1px solid var(--dark-color);
 	border-left: 1px solid var(--dark-color);
 	border-right: 1px solid var(--dark-color);
 	padding: 20px 0 20px 5px;
@@ -1441,8 +1440,8 @@ li{
 
 .inbox-new{
 	width:95%;
-	background: var(--contrast);
-	color: var(--darkcolor);
+	background: var(--cyan);
+	color: var(--dark-color);
 	padding:5px;
 	padding-left: 10px;
 	border:1px solid var(--darkgray);
@@ -1465,7 +1464,7 @@ li{
 
 .chat-notme{
 	width:75%;
-	background: var(--contrast);
+	background: var(--cyan);
 	color: var(--dark-color);
 	padding:5px;
 	padding-left: 10px;
@@ -2081,6 +2080,53 @@ li{
 	color:var(--cyan);
 	height: 50px;
 }
+
+/* About */
+
+.content-box{
+	margin:12px;
+	background: var(--light-color);
+	border: 1px solid var(--dark-color);
+	padding: 5px;
+	border-radius: 12px;
+}
+
+.content-box p{
+	padding: 18px;
+	line-height: 1.5em;
+	font-size: 1.5em;
+}
+
+
+.blogpic1{
+	width: 40%;
+	height: auto;
+	overflow: hidden;
+	float: left;
+	margin-right: 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.blogpic1 img{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.blogpic2{
+	width: 40%;
+	height: auto;
+	overflow: hidden;
+	float: right;
+	margin-right: 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.blogpic2 img{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* Footer */
 
 #main-footer a{
 	font-size: 20px;

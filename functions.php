@@ -49,6 +49,9 @@ function addheader(){
 						<i class="fas fa-bars"></i>	
 					</p>
 				</div>
+				<div class="nav">
+					<a id="How-to" href="about.php#how-to-order">How to Order?</a>
+				</div>
 				<div class="profile-grid">';
 					
 						session_button();
