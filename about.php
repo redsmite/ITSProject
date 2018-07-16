@@ -97,7 +97,7 @@
 					<p>Wait for our trucks to unload the fresh fruit or vegetables you ordered to your location. We don't deliver at places outside Manila unfortunately.</p>
 					<hr>
 					<center><h1>Feedbacks</h1></center>
-					<p>Please go <a href="contact.php" target="_blank">here</a> for feedbacks, or chat the admin <a href="http://localhost/project/inbox.php?name=<?php echo $admin ?>" target="_blank">here</a> (you need to login / create an account for the chat).</p>
+					<p>Please go <a class="black" href="contact.php" target="_blank">here</a> for feedbacks, or chat the admin <a class="black" href="http://localhost/project/inbox.php?name=<?php echo $admin ?>" target="_blank">here</a> (you need to login / create an account for the chat).</p>
 					<hr>
 					<center><h1>Developers</h1></center>
 					<p>Carabeo, Kym</p>

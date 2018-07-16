@@ -1409,7 +1409,45 @@ function updatePrice(clicked){
 			document.getElementById('error-message3').innerHTML=response;
 		}
 	}
-	myRequest.send(formData);	
+	myRequest.send(formData);
+}
+
+function adminSetting(){
+	let form = document.getElementById('update-admin');
+
+	form.addEventListener('submit',update);
+
+	function update(e){
+		e.preventDefault();
+		addSpinners();
+
+		var myRequest = new XMLHttpRequest();
+		var url = 'adminprocess.php';
+
+		let name = document.getElementById('admin-name').value;
+		let old = document.getElementById('old-pass').value;
+		let newpass = document.getElementById('new-pass').value;
+		let confirm = document.getElementById('confirm-pass').value;
+
+		var formData = "changeadmin="+name+"&old="+old+"&new="+newpass+"&confirm="+confirm;
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			removeSpinners();
+
+			if(response=='success'){
+				form.reset();
+				alert('admin name and/or password changed');
+				window.location.replace("adminpanel.php");
+			}else{
+				document.getElementById('error-message2').innerHTML=response;
+			}
+		}
+		myRequest.send(formData);
+	}
 }
 
 // Sales

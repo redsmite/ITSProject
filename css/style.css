@@ -93,6 +93,15 @@ a{
 	text-decoration: none;
 }
 
+.black{
+	color:var(--dark-color);
+	text-decoration: underline;
+}
+
+.center{
+	text-align: center;
+}
+
 li{
 	list-style: none;
 }

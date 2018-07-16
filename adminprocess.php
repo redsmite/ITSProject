@@ -6,7 +6,7 @@ user_access();
 
 if(isset($_POST['login'])){
 	$name=$conn->real_escape_string($_POST['login']);
-	$password=$conn->real_escape_string($_POST['password']);
+	$password=md5($_POST['password']);
 
 	$sql="SELECT name,password FROM tbladmin WHERE name='$name' and password='$password'";
 	$result=$conn->query($sql);
@@ -295,5 +295,36 @@ if(isset($_POST['updatefarm'])){
 	$sql = "UPDATE tblfarm SET farmname='$name', address='$address', status='$status' WHERE farmid = '$id'";
 	$result = $conn->query($sql);
 	echo 'success';
+}
+
+if(isset($_POST['changeadmin'])){
+	$name = $conn->real_escape_string($_POST['changeadmin']);
+	$old = md5($_POST['old']);
+	$new = md5($_POST['new']);
+	$confirm = md5($_POST['confirm']);
+
+	$sql = "SELECT password FROM tbladmin";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$password = $fetch->password;
+	
+
+	$error = '';
+	
+	if($old != $password){
+		$error .= '<i class="fas fa-exclamation-circle"></i> Old password doesn\'t match<br>';
+	}
+
+	if($confirm != $new){
+		$error .= '<i class="fas fa-exclamation-circle"></i> New password doesn\'t match<br>';	
+	}
+
+	if(!$error){
+		$sql = "UPDATE tbladmin SET name='$name',password='$new'";
+		$result = $conn->query($sql);
+		echo 'success';		
+	}else{
+		echo $error;
+	}
 }
 ?>
