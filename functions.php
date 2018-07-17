@@ -2,7 +2,7 @@
 date_default_timezone_set('Asia/Manila');
 
 function companytitle(){
-	echo'BahayKubo';
+	echo'Bahay Kubo';
 }
 
 function updateStatus(){
@@ -50,7 +50,7 @@ function addheader(){
 					</p>
 				</div>
 				<div class="nav">
-					<a id="How-to" href="about.php#how-to-order">How to Order?</a>
+					<a id="How-to" target="_blank" href="about.php#how-to-order">How to Order?</a>
 				</div>
 				<div class="profile-grid">';
 					
@@ -68,7 +68,7 @@ function addfooter(){
 				<a target="_blank" title="Like us on Facebook" href="https://www.facebook.com/BahayKuboniMangCelso/?ref=page_internal"><i class="fab fa-facebook-square"></i></a>
 				<a target="_blank" title="Follow us on Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
 				<a target="_blank" title="Follow us on Instagram" href="https://www.instagram.com/?hl=ens"><i class="fab fa-instagram"></i></a>
-				<p>Copyright &copy; <span id="company">BahayKubo</span> | 2018</p>
+				<p>Copyright &copy; <span id="company">Bahay Kubo ni Mang Celso</span> | 2018</p>
 			</div>
 		</footer>';
 }

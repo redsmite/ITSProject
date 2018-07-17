@@ -14,10 +14,11 @@
 	--magenta:#ff00ff;
 	--lime:#32CD32;
 	--palegreen:#98fb98;
-	--maroon:#800000;
+	--dark-red:#590000;
 	--blood-red:#8B0000;
 	--cyan:#00ffff;
 	--bluegreen:#21c36f;
+	--canvas:#F3ECE2;
 
 	/*	Blue-Orangered	*/
 	/*--primary-color:#FF4500;
@@ -175,8 +176,8 @@ li{
 .subheader{
 	grid-area:subheader;
 	padding-bottom: 4px;
-	background: var(--primary-color);
-	color: var(--dark-color);
+	background: var(--dark-color);
+	color: var(--light-color);
 	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
@@ -194,9 +195,9 @@ li{
 }
 
 #how-to{
-	padding: 0.7em;
+	padding: 0.5em;
 	background: var(--secondary-contrast);
-	font-size: 1.5em;
+	font-size: 1.2em;
 	color: var(--light-color);
 }
 
@@ -316,7 +317,7 @@ li{
 
 #second-text{
 	color:var(--contrast);
-	font-family: "Lucida Console", Monaco, monospace;
+	font-family: "Courier New", Courier, monospace;
 	font-size: 24px;
 }
 
@@ -591,7 +592,7 @@ li{
 }
 
 .modal-header{
-	background:var(--primary-color);
+	background:var(--dark-color);
 	padding:15px;
 	color:var(--light-color);
 	border-bottom: 2px solid var(--darkgray);
@@ -658,7 +659,7 @@ li{
 }
 
 #closeBtn:hover,.closeBtn:focus{
-	color:var(--secondary-contrast);
+	color:var(--cyan);
 	cursor:pointer;
 }
 
@@ -686,8 +687,11 @@ li{
 	display: block;
 	padding:10px;
 	max-height: 280px;
-	overflow-y: auto;
 	box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+#announcement-title{
+	font-family: "Times New Roman", Times, sans-serif;
 }
 
 .announcement a{
@@ -697,7 +701,16 @@ li{
 	font-weight: bold;
 }
 
+#announcement-comment{
+	background: var(--light-color);
+	color: var(--dark-color);
+	padding: 0;
+	margin: 5px;
+	text-decoration: underline;
+}
+
 .announce-content{
+	background: var(--light-color);
 	display: block;
 	margin: 0 auto;
 	width: 95%;
@@ -705,6 +718,12 @@ li{
 	border: 1px solid var(--dark-color);
 	border-radius: 8px;
 	padding:5px;
+	line-height: 1.2em;
+}
+
+#announcement-text{
+	width:95%;
+	height:100px;
 }
 
 .advertisement{
@@ -792,40 +811,20 @@ li{
 .other-content{
 	box-sizing: border-box;
 	border-radius: 8px;
-	padding:25px;
+	padding:5px;
 	background: var(--gray);
 	min-height:85vh;
 	position: relative;
 }
 
-.other-content::before{
-	content:url(../img/corner-border.png);
-	position: absolute;
-	top:0
-	left:0;
-	z-index: 1;
-	margin-top:-30px;
-	margin-left: -30px;
-}
-
-.other-content::after{
-	position: absolute;
-	content:url(../img/corner-border2.png);
-	right: 0;
-	bottom:0;
-	z-index: 1;
-}
-
 .other-content h1{
 	float:center;
 	font-size: 25px;
-	color: var(--secondary-contrast);
 }
 
 .other-content h2,.other-content h3{
 	text-align: center;
 	margin-top: 5px;
-	color: var(--secondary-contrast);
 }
 
 /* Forms */
@@ -1094,7 +1093,7 @@ li{
 	border: 1px solid var(--dark-color);
 	cursor: pointer;
 	color: blue;
-	background: var(--contrast);
+	background: var(--secondary-contrast);
 	color:var(--light-color);
 }
 
@@ -1135,7 +1134,7 @@ li{
 	background: var(--dark-color);
 	color: var(--light-color);
 	padding:10px;
-	border: 1px solid var(--contrast);
+	border: 1px solid var(--cyan);
 	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 	text-align: center;
 }
@@ -1152,7 +1151,7 @@ li{
 	width:125px;
 	border-radius: 50%;
 	overflow:hidden;
-	border: 1px solid var(--contrast);
+	border: 1px solid var(--cyan);
 }
 
 .showfr-tn img{
@@ -2094,7 +2093,8 @@ li{
 
 .content-box{
 	margin:12px;
-	background: var(--light-color);
+	background: var(--canvas);
+	font-family: "Verdana", sans-serif;
 	border: 1px solid var(--dark-color);
 	padding: 5px;
 	border-radius: 12px;
@@ -2102,8 +2102,8 @@ li{
 
 .content-box p{
 	padding: 18px;
-	line-height: 1.5em;
-	font-size: 1.5em;
+	line-height: 1.2em;
+	font-size: 1.2em;
 }
 
 
@@ -2156,6 +2156,11 @@ li{
 }
 
 @media(max-width: 800px){
+	#search-dropdown{
+		top:170px;
+		left:10px;
+	}
+
 	#browse-category{
 		float:none;
 		margin: 10px auto;
@@ -2251,18 +2256,15 @@ li{
 		"empty";
 		grid-template-columns: 1fr;
 	}
-
-	.other-content::before,.other-content::after{
-		display:none;
-	}
 }
 
 
 @media(max-width: 568px){
 	#search-dropdown{
-		top:180px;
+		top:230px;
 		left:10px;
 	}
+
 	#notifbtn{
 		margin-right: 16px;
 	}
@@ -2273,7 +2275,7 @@ li{
 
 	#notifdrop{
 		width:auto;
-		top:73px;
+		top:108px;
 		left:15px;
 	}
 	.subgrid{

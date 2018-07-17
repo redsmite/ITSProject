@@ -7,9 +7,6 @@
 	setupCookie();
 	updateStatus();
 	chattab();
-	if(isset($_SESSION['id'])){
-		$uid = $_SESSION['id'];
-	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +66,6 @@
 		<div class="main-content">
 			<div class="main-content-grid">
 				<div class="announcement">
-					<h2><i class="far fa-newspaper"></i> Announcement</h2>
 <?php
 $sql="SELECT title,content,t1.datecreated,username FROM tblannouncement AS t1
 LEFT JOIN tbluser
@@ -83,9 +79,15 @@ while($row=$result->fetch_object()){
 	$date = date('D, F j Y g:i A',strtotime($row->datecreated));
 	$author = $row->username;
 
-	echo '<h2>'.$title.'</h2>
+	echo '<h2 id="announcement-title">'.$title.'</h2>
 	<p>Posted on: '.$date.' by: <a href="profile.php?name='.$author.'">'.$author.'</a></p>
-	<div class="announce-content">'.nl2br($content).'</div>';
+	<div class="announce-content">'.substr(nl2br($content), 0, 450);
+	if(strlen($content) > 450 ){
+		echo'...<br>
+		<a class="center" id="announcement-comment" href="announcement.php">Read More</a>';
+	}
+
+	echo'</div>';
 }
 ?>
 				</div>
@@ -104,7 +106,7 @@ while($row=$result->fetch_object()){
 					<div class="product"></div>
 				</div>
 				<div class="sidebar">
-					<h3>Blogs</h3>
+					<h3>Articles</h3>
 				</div>
 		</div>
 	<!-- Footer -->

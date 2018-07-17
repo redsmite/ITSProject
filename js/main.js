@@ -47,6 +47,12 @@ function modal(){
 	}
 }
 
+function showLogin(){
+	let modal = document.getElementById('simpleModal');
+
+	modal.style.display='block';
+}
+
 //No display if count is zero
 var y = document.getElementById("notifnum");
 var z = document.getElementById("pmnum");

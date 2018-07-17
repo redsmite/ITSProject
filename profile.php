@@ -273,77 +273,77 @@ if($testR->num_rows!=0){
 							</div>';
 							}
 							?>
-								<?php
-									$sql2="SELECT userid FROM tbluser WHERE username='$name'";
-									$result2=$conn->query($sql2);
-									$row=$result2->fetch_object();
-									$rid=$row->userid;
+<?php
+	$sql2="SELECT userid FROM tbluser WHERE username='$name'";
+	$result2=$conn->query($sql2);
+	$row=$result2->fetch_object();
+	$rid=$row->userid;
 
-									$sql3="SELECT commentid,tblcomment.userid,username,comment,dateposted,imgpath,modified FROM tblcomment
-									LEFT JOIN tbluser
-										ON tblcomment.userid = tbluser.userid
-									WHERE receiver='$rid'
-									ORDER BY commentid DESC
-									LIMIT 15";
+	$sql3="SELECT commentid,tblcomment.userid,username,comment,dateposted,imgpath,modified FROM tblcomment
+	LEFT JOIN tbluser
+		ON tblcomment.userid = tbluser.userid
+	WHERE receiver='$rid'
+	ORDER BY commentid DESC
+	LIMIT 15";
 
-									$result3=$conn->query($sql3);
-									while($rows2=$result3->fetch_object()){
-										$Cid=$rows2->commentid;
-										$Cuid=$rows2->userid;
-										$Cuser=$rows2->username;
-										$Ccomment=$rows2->comment;
-										$dateposted=$rows2->dateposted;
-										$Cimg=$rows2->imgpath;
-										$modified=$rows2->modified;
-										if($Cimg==''){
-											$Cimg='img/default.png';
-										}
-										if($modified==0){
-											$modified='';
-										}else{
-											$modified='<i>Modified: '.time_elapsed_string($modified).'</i>';
-										}
+	$result3=$conn->query($sql3);
+	while($rows2=$result3->fetch_object()){
+		$Cid=$rows2->commentid;
+		$Cuid=$rows2->userid;
+		$Cuser=$rows2->username;
+		$Ccomment=$rows2->comment;
+		$dateposted=$rows2->dateposted;
+		$Cimg=$rows2->imgpath;
+		$modified=$rows2->modified;
+		if($Cimg==''){
+			$Cimg='img/default.png';
+		}
+		if($modified==0){
+			$modified='';
+		}else{
+			$modified='<i>Modified: '.time_elapsed_string($modified).'</i>';
+		}
 
-										echo'<div id="comment'.$Cid.'" class="comment-box">
-										<div class="comment-header">
-										<a class="cm-user" href="profile.php?name='.$Cuser.'">
-										<div class="comment-tn">
-										<img src="'.$Cimg.'">
-										</div>
-										'.$Cuser.'</a>
-										<small>'.time_elapsed_string($dateposted).'</small>
-										</div>
-										<div class="comment-body">
-										<div class="com-container"><p class="comment-cm">'.createlink(nl2br($Ccomment)).'</p>
-										</div>
-											<p class="modified">'.$modified.'</p>';
-						//Delete / Edit Comment
-						if(!isset($_SESSION['name'])|| !isset($_SESSION['id']))
-						{
+		echo'<div id="comment'.$Cid.'" class="comment-box">
+		<div class="comment-header">
+		<a class="cm-user" href="profile.php?name='.$Cuser.'">
+		<div class="comment-tn">
+		<img src="'.$Cimg.'">
+		</div>
+		'.$Cuser.'</a>
+		<small>'.time_elapsed_string($dateposted).'</small>
+		</div>
+		<div class="comment-body">
+		<div class="com-container"><p class="comment-cm">'.createlink(nl2br($Ccomment)).'</p>
+		</div>
+			<p class="modified">'.$modified.'</p>';
+//Delete / Edit Comment
+if(!isset($_SESSION['name'])|| !isset($_SESSION['id']))
+{
 
-						}else if($name==$_SESSION['name']||$Cuid==$_SESSION['id']){
-							echo'
-							<form align="right" action="commentprocess.php" method="post">
-							<input type="hidden" name="hidden4" value="'.$_GET["name"].'" />
-								<input type="hidden" name="hidden3" value="'.$Cid.'">'; 
-								if($Cuid==$_SESSION['id']){
-									echo'<a class="profile-edit" href="editcomment.php?id='.$Cid.'&name='.$name.'&this='.$Cuid.'">edit</a>';
-								}
-							echo'	<input type="submit" value="delete" name="deletebtn">   
+}else if($name==$_SESSION['name']||$Cuid==$_SESSION['id']){
+echo'
+<form align="right" action="commentprocess.php" method="post">
+<input type="hidden" name="hidden4" value="'.$_GET["name"].'" />
+<input type="hidden" name="hidden3" value="'.$Cid.'">'; 
+if($Cuid==$_SESSION['id']){
+	echo'<a class="profile-edit" href="editcomment.php?id='.$Cid.'&name='.$name.'&this='.$Cuid.'">edit</a>';
+}
+echo'	<input type="submit" value="delete" name="deletebtn">   
 
-							</form>';
-				
-						}				
+</form>';
 
-						
-										
+}				
 
-										echo'
-										</div>
-										</div>';
-									}
-									mysqli_close($conn);	
-								?>
+
+		
+
+		echo'
+		</div>
+		</div>';
+	}
+	mysqli_close($conn);	
+?>
 					</div>			
 				</div>
 				</div>

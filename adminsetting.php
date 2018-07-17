@@ -39,6 +39,7 @@ $name = $fetch->name;
 		<div class="edit-form">
 			<form id="update-admin">
 				<div>
+					<h1>Admin Account Settings</h1>
 					<p>Admin Name</p>
 					<input type="text" required value="<?php if(!$result){}else{echo $name;}?>" id="admin-name">
 				</div>
