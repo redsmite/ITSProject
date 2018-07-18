@@ -120,7 +120,10 @@ function addSidebar(){
 				if($_SESSION['type']==4){
 					echo'<li><a title="Admin Panel" href="admin.php"><i class="fas fa-unlock-alt"></i></a></li>';
 				}
-				
+
+				if($_SESSION['type']== 3 OR $_SESSION['type']==4){
+					echo'<li><a title="Add Product" href="addproduct.php"><i class="fas fa-plus-circle"></i></a></li>';
+				}
 				echo'
 				<li>
 				<a title="About us" href="about.php"><i class="fas fa-info-circle"></i></a></li>
@@ -534,7 +537,8 @@ function user_nonAccess(){
 
 function adminAccess(){
 	if(isset($_SESSION['id'])){
-		if($_SESSION['type']!=4){
+		if($_SESSION['type']== 3 OR $_SESSION['type']== 4){
+		}else{
 			header('Location: index.php');
 		}
 	}
@@ -554,4 +558,12 @@ function admingoback(){
 			header('Location: adminpanel.php');
 		}
 	}
+}
+
+function seller_Access(){
+	if(isset($_SESSION['id'])){
+		if($_SESSION['type']!=3 AND $_SESSION['type']!=4){
+			header('Location: index.php');
+		}
+	}	
 }

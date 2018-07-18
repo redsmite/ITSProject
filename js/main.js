@@ -113,6 +113,46 @@ function hideCategory(){
 	document.getElementById('category-modal').style.display='none';
 }
 
+// Announcement
+
+function addAnnounceComment(){
+	let form = document.getElementById('comment-form');
+	form.addEventListener('submit',add);
+
+	function add(e){
+		e.preventDefault();
+		addSpinners();
+
+		var myRequest = new XMLHttpRequest();
+		var url = 'commentprocess.php';
+
+		let announce = document.getElementById('announcement-text').value;
+		let Auserid = document.getElementById('user-id').value;
+		let announceid = document.getElementById('announce-id').value;
+		if (!Auserid){
+			showLogin();
+			removeSpinners();
+		}else{
+		var formData = "announce="+announce+"&Auserid="+Auserid+"&announceid="+announceid;
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			if(response){
+				form.reset();
+				removeSpinners();
+				let body = document.getElementById('announcement-comments');
+				body.innerHTML=response;
+			}
+		}
+		myRequest.send(formData);
+		}
+
+	}
+}
+
 // Search
 
 function searchdropdown(){
@@ -1665,6 +1705,79 @@ function sendAnnounce(){
 		}
 		myRequest.send(formData);		
 	}
+}
+
+// Product
+
+function getPrice(){
+	var e = document.getElementById("category");
+	var value = e.options[e.selectedIndex].value;
+	var text = e.options[e.selectedIndex].text;
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'productprocess.php';
+
+	var formData = "select="+value;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+
+		let array = response.split('|');
+
+		let low = document.getElementById('low');
+		let prev = document.getElementById('prev');
+		let high = document.getElementById('high');
+		let priceinput = document.getElementById('price');
+
+		low.innerHTML = array[0];
+		prev.innerHTML = array[1];
+		high.innerHTML = array[2];
+		priceinput.value = array[1];
+	}
+	myRequest.send(formData);		
+	
+}
+
+function addProductAjax(){
+	let form = document.getElementById('add-product-form');
+	form.addEventListener('submit',add);
+
+	function add(e){
+		e.preventDefault();
+		var myRequest = new XMLHttpRequest();
+
+		var url = 'productprocess.php';
+
+		let add = document.getElementById('category').value;
+		let name = document.getElementById('name').value;
+		let desc = document.getElementById('desc').value;
+		let farm = document.getElementById('farm').value;
+		let price = document.getElementById('price').value;
+		let Alow = document.getElementById('low').innerHTML;
+		let Ahigh = document.getElementById('high').innerHTML;
+
+		var formData = "add="+add+"&name="+name+"&desc="+desc+"&farm="+farm+"&price="+price+"&Alow="+Alow+"&Ahigh="+Ahigh;
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			removeSpinners();
+			console.log(response);
+			if(response=='success'){
+				form.reset();
+				alert(name + ' has been added to the database');
+			}else{
+				document.getElementById('error-message2').innerHTML=response;
+			}
+		}
+		myRequest.send(formData);		
+	}	
 }
 
 // Cart

@@ -50,55 +50,61 @@ echo '<h2 id="announcement-title">'.$title.'</h2>
 
 echo'</div>
 <br><hr>
-<p>Comments ('.$comments.')</p>';
+<p>Comments ('.$comments.')</p>
+';
 
-?>
-<form action="#" method="post">
-	<textarea id="announcement-text" required name="comment"></textarea>
+
+if(isset($_SESSION['id'])){
+echo'<form id="comment-form">
+	<textarea id="announcement-text" required></textarea>
 	<br>
-	<input type="submit" value="submit" id="comment-submit" name="submit">
+	<input type="hidden" value="'.$_SESSION['id'].'" id="user-id">
+	<input type="hidden" value="'.$id.'" id="announce-id">
+	<center><input type="submit" value="submit"></center>
 </form>
 <hr><br>
-<?php
-	if(isset($_POST['submit'])){
-		$comment = $conn->real_escape_string($_POST['comment']);
-		$userid = $_SESSION['id'];
-		$announceid = $id;
-		
-		$sql = "INSERT INTO tblcommentann (announceid,comment,userid,dateposted) VALUES('$announceid','$comment','$userid',NOW())";
-		$result = $conn->query($sql);
+';
+}else{
+	echo'<form id="comment-form">
+	<textarea id="announcement-text" required></textarea>
+	<br>
+	<input type="hidden" id="user-id">
+	<input type="hidden" id="announce-id">
+	<center><input type="submit" value="submit"></center>
+</form>
+<hr><br>
+';
+}
 
-		$sql = "UPDATE tblannouncement SET comments = comments+1 WHERE announceid = '$announceid'";
-		$result = $conn->query($sql);	
-	}
-
-	$sql = "SELECT comment,t1.userid,username,imgpath,dateposted FROM tblcommentann AS t1
-		LEFT JOIN tbluser AS t2
-			ON t1.userid = t2.userid
-		WHERE announceid = '$id'
-		ORDER BY dateposted DESC";
-	$result = $conn->query($sql);
-	while($row = $result->fetch_object()){
-		$comment = $row->comment;
-		$user = $row->username;
-		$userid = $row->userid;
-		$img = $row->imgpath;
-		$date = $row->dateposted;
-
-		echo'<div class="comment-box">
-	<div class="comment-header">
-	<a class="cm-user" href="profile.php?name='.$user.'">
-	<div class="comment-tn">
-	<img src="'.$img.'">
-	</div>
-	'.$user.'</a>
-	<small>'.time_elapsed_string($date).'</small>
-	</div>
-	<div class="comment-body">
-	<div class="com-container"><p class="comment-cm">'.nl2br($comment).'</p></div>
-	</div>
-	</div>';
-	}
+// Display Comments
+echo '<div id="announcement-comments">';
+$sql = "SELECT comment,t1.userid,username,imgpath,dateposted FROM tblcommentann AS t1
+	LEFT JOIN tbluser AS t2
+		ON t1.userid = t2.userid
+	WHERE announceid = '$id'
+	ORDER BY dateposted DESC";
+$result = $conn->query($sql);
+while($row = $result->fetch_object()){
+	$comment = $row->comment;
+	$user = $row->username;
+	$userid = $row->userid;
+	$img = $row->imgpath;
+	$date = $row->dateposted;
+	echo'<div class="comment-box">
+<div class="comment-header">
+<a class="cm-user" href="profile.php?name='.$user.'">
+<div class="comment-tn">
+<img src="'.$img.'">
+</div>
+'.$user.'</a>
+<small>'.time_elapsed_string($date).'</small>
+</div>
+<div class="comment-body">
+<div class="com-container"><p class="comment-cm">'.nl2br($comment).'</p></div>
+</div>
+</div>
+';
+}
 ?>
 	</div>
 	<!-- Footer -->
@@ -109,6 +115,7 @@ echo'</div>
 	</div>
 	<script src="js/main.js"></script>
 	<script>
+		addAnnounceComment();
 		modal();
 		ajaxLogin();
 	</script>

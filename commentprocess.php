@@ -77,4 +77,45 @@ if(isset($_POST['back'])){
 	header("Location:profile.php?name=".$name."#profile-comments");
 }
 
+if(isset($_POST['announce'])){
+	$comment = $conn->real_escape_string($_POST['announce']);
+	$userid = $_POST['Auserid'];
+	$announceid = $_POST['announceid'];
+
+	
+	$sql = "INSERT INTO tblcommentann (announceid,comment,userid,dateposted) VALUES('$announceid','$comment','$userid',NOW())";
+	$result = $conn->query($sql);
+
+	$sql = "UPDATE tblannouncement SET comments = comments+1 WHERE announceid = '$announceid'";
+	$result = $conn->query($sql);	
+	$sql = "SELECT comment,t1.userid,username,imgpath,dateposted FROM tblcommentann AS t1
+	LEFT JOIN tbluser AS t2
+		ON t1.userid = t2.userid
+	WHERE announceid = '$announceid'
+	ORDER BY dateposted DESC";
+$result = $conn->query($sql);
+while($row = $result->fetch_object()){
+	$comment = $row->comment;
+	$user = $row->username;
+	$userid = $row->userid;
+	$img = $row->imgpath;
+	$date = $row->dateposted;
+	echo'<div class="comment-box">
+<div class="comment-header">
+<a class="cm-user" href="profile.php?name='.$user.'">
+<div class="comment-tn">
+<img src="'.$img.'">
+</div>
+'.$user.'</a>
+<small>'.time_elapsed_string($date).'</small>
+</div>
+<div class="comment-body">
+<div class="com-container"><p class="comment-cm">'.nl2br($comment).'</p></div>
+</div>
+</div>';
+}
+}
+
+
+
 ?>

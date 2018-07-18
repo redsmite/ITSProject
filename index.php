@@ -83,11 +83,12 @@ while($row=$result->fetch_object()){
 	<p>Posted on: '.$date.' by: <a href="profile.php?name='.$author.'">'.$author.'</a></p>
 	<div class="announce-content">'.substr(nl2br($content), 0, 450);
 	if(strlen($content) > 450 ){
-		echo'...<br>
-		<a class="center" id="announcement-comment" href="announcement.php">Read More</a>';
+		echo'...';
 	}
 
-	echo'</div>';
+	echo'<br>
+		<a class="center" id="announcement-comment" href="announcement.php">Read More</a>
+		</div>';
 }
 ?>
 				</div>
