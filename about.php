@@ -89,9 +89,9 @@
 					<p>1. Search for the product you want.</p>
 					<p>There are plenty of ways to <strong>Search</strong> for the items you want like searching for keywords or browse categories or sorting for prices.</p>
 					<p>2. Click the add-to-cart button</p>
-					<p> Choose the weight of the product in kilograms. Then click that green button with a <strong>Shopping Cart Icon</strong>. The item will be added on your shopping cart.</p>
+					<p> Click that green button with a <strong>Shopping Cart Icon</strong>. The item will be added on your shopping cart.</p>
 					<p>3. Checkout your order.</p>
-					<p> Click for the icon located at the top-right corner of the screen.The shopping cart will pop-out at the right of the screen. Click <strong>Checkout</strong> and 
+					<p> Click for the icon located at the top-right corner of the screen. The shopping cart will pop-out at the right of the screen. Choose the <strong>Weight</strong> of the product in kilograms. Click <strong>Checkout</strong> then 
 <?php
 	// Show Login Modal
 	if(isset($_SESSION['id'])){
@@ -102,7 +102,7 @@
 ?>
 					, or <strong><a class="black" href="register.php" target="_blank">register</a></strong> if you doesn't have an account yet.</p>
 					<p>4. Choose payment options</p>
-					<p>You can choose for either <strong>Cash-on-delivery</strong> or <strong>[something]</strong>.</p>
+					<p>You can choose for either <strong>Cash-on-delivery</strong> or <strong>Bank</strong>.</p>
 					<p>5. Wait for the delivery</p>
 					<p>Wait for at least one day for the delivery. We don't deliver at places <strong>outside of Manila</strong> unfortunately.</p>
 					<hr>

@@ -1824,6 +1824,11 @@ function hideCartPanel(){
 	modal.style.display='none';	
 }
 
+function addThistoCart(click){
+	let id = click.getAttribute('value');
+	console.log(id);
+}
+
 // Photo
 
 function removePhoto(){

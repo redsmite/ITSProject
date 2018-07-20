@@ -67,13 +67,14 @@
 			<div class="main-content-grid">
 				<div class="announcement">
 <?php
-$sql="SELECT title,content,t1.datecreated,username FROM tblannouncement AS t1
+$sql="SELECT announceid,title,content,t1.datecreated,username FROM tblannouncement AS t1
 LEFT JOIN tbluser
 	ON userid = author
 ORDER BY announceid DESC
 LIMIT 1";
 $result= $conn->query($sql);
-while($row=$result->fetch_object()){
+$row=$result->fetch_object();
+	$announceid = $row->announceid;
 	$title = $row->title;
 	$content = $row->content;
 	$date = date('D, F j Y g:i A',strtotime($row->datecreated));
@@ -87,9 +88,13 @@ while($row=$result->fetch_object()){
 	}
 
 	echo'<br>
-		<a class="center" id="announcement-comment" href="announcement.php">Read More</a>
-		</div>';
-}
+		<a class="center" id="announcement-comment" href="announcement.php">Read More</a>';
+$sql = "SELECT commentannid FROM tblcommentann WHERE announceid = '$announceid'";
+$result= $conn->query($sql);
+$comments = $result->num_rows;
+echo'<p>Comments ('.$comments.')</p>
+		</div>
+		';
 ?>
 				</div>
 				<div class="advertisement">
@@ -100,7 +105,7 @@ while($row=$result->fetch_object()){
 				<div class="content-body">
 					<h3>Products</h3>
 <?php
-$sql = "SELECT category, productname, description, farmname, username, dateposted, price, img FROM tblproduct as t1
+$sql = "SELECT productid,category, productname, description, farmname, username, dateposted, price, img, rating FROM tblproduct as t1
 LEFT JOIN tblcategory as t2
 	ON t1.categoryid = t2.categoryid
 LEFT JOIN tbluser as t3
@@ -111,6 +116,7 @@ ORDER BY dateposted DESC
 LIMIT 15";
 $result = $conn->query($sql);
 while($row = $result->fetch_object()){
+	$id = $row->productid;
 	$category = $row->category;
 	$product = $row->productname;
 	$desc = $row->description;
@@ -122,8 +128,10 @@ while($row = $result->fetch_object()){
 	if(!$img){
 		$img='img/default2.jpg';
 	}
+	$rating = $row->rating;
 
-	echo'<div class="product">
+	echo'<a href="product.php?id='.$id.'">
+	<div class="product">
 	<div class="product-img-wrap">
 		<img src="'.$img.'" alt="Product Image">
 	</div>
@@ -131,7 +139,7 @@ while($row = $result->fetch_object()){
 
 	<p>';
 
-	starsystem(100);
+	starsystem($rating);
 
 	echo'
 	</p>
@@ -139,11 +147,12 @@ while($row = $result->fetch_object()){
 	<p class="product-category">'.$category.'</p>
 	<p class="product-desc">Description: '.substr($desc,0,30).' ...</p>
 	<p class="product-location">'.$farm.'</p>
-	<p class="product-seller"> Seller:<a href="profile.php?name='.$user.'" class="black">'.$user.'</a></p>
-	<p class="product-date">'.$date.'</p>
+	<p class="product-seller"> Seller: <a href="profile.php?name='.$user.'" class="black">'.$user.'</a></p>
+	<p class="product-date">Posted: '.$date.'</p>
 	<p class="product-price">₱'.$price.' / kg</p>
-	<div class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</div>
-	</div>';
+	<div class="add-to-cart" value="'.$id.'" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart</div>
+	</div>
+	</a>';
 }
 
 ?>
