@@ -99,15 +99,54 @@ while($row=$result->fetch_object()){
 				</div>
 				<div class="content-body">
 					<h3>Products</h3>
-					<div class="product"></div>
-					<div class="product"></div>
-					<div class="product"></div>
-					<div class="product"></div>
-					<div class="product"></div>
-					<div class="product"></div>
-				</div>
-				<div class="sidebar">
-					<h3>Articles</h3>
+<?php
+$sql = "SELECT category, productname, description, farmname, username, dateposted, price, img FROM tblproduct as t1
+LEFT JOIN tblcategory as t2
+	ON t1.categoryid = t2.categoryid
+LEFT JOIN tbluser as t3
+	ON t1.userid = t3.userid
+LEFT JOIN tblfarm as t4
+	ON t1.farmid = t4.farmid
+ORDER BY dateposted DESC
+LIMIT 15";
+$result = $conn->query($sql);
+while($row = $result->fetch_object()){
+	$category = $row->category;
+	$product = $row->productname;
+	$desc = $row->description;
+	$farm = $row->farmname;
+	$user = $row->username;
+	$date = date('F j, Y',strtotime($row->dateposted));
+	$price = $row->price;
+	$img = $row->img;
+	if(!$img){
+		$img='img/default2.jpg';
+	}
+
+	echo'<div class="product">
+	<div class="product-img-wrap">
+		<img src="'.$img.'" alt="Product Image">
+	</div>
+	<p class="product-title">'.$product.'</p>
+
+	<p>';
+
+	starsystem(100);
+
+	echo'
+	</p>
+
+	<p class="product-category">'.$category.'</p>
+	<p class="product-desc">Description: '.substr($desc,0,30).' ...</p>
+	<p class="product-location">'.$farm.'</p>
+	<p class="product-seller"> Seller:<a href="profile.php?name='.$user.'" class="black">'.$user.'</a></p>
+	<p class="product-date">'.$date.'</p>
+	<p class="product-price">₱'.$price.' / kg</p>
+	<div class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</div>
+	</div>';
+}
+
+?>
 				</div>
 		</div>
 	<!-- Footer -->

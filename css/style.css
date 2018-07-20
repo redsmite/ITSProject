@@ -675,7 +675,7 @@ li{
 	grid-template-columns: 1fr 3fr;
 	grid-template-areas: 
 	"advertisement announcement"
-	"sidebar main";
+	"main main";
 }
 
 .announcement{
@@ -686,12 +686,12 @@ li{
 	margin: 20px 5px 20px 5px;
 	display: block;
 	padding:10px;
-	max-height: 280px;
+	min-height: 240px;
 	box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 #announcement-title{
-	font-family: "Times New Roman", Times, sans-serif;
+	font-family: "Arial", sans-serif;
 }
 
 .announcement a{
@@ -710,6 +710,7 @@ li{
 }
 
 .announce-content{
+	font-family: verdana, sans-serif;
 	background: var(--light-color);
 	display: block;
 	margin: 0 auto;
@@ -724,6 +725,17 @@ li{
 #announcement-text{
 	width:95%;
 	height:100px;
+}
+
+.button-control{
+	text-align: center;
+	margin: 2px auto;
+	cursor: pointer;
+	width: 50px;
+	font-size: 0.6em;
+	padding: 1em;
+	background: var(--dark-color);
+	color: var(--light-color);
 }
 
 .advertisement{
@@ -760,23 +772,64 @@ li{
 	background: var(--gray);
 	border: 1px solid var(--darkgray);
 	text-align: center;
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .product{
-	height: 240px;
+	min-height: 300px;
 	width: 220px;
 	margin: 10px;
 	display: inline-block;
 	background: var(--light-color);
-	border: var(--darkgray);
+	border: 1px solid var(--darkgray);
 	transition-duration: 250ms;
 	transition-property: box-shadow;
 	transition-timing-function: ease-in-out;
+	padding: 10px;
+	box-sizing: border-box;
 }
 
 .product:hover{
 	cursor: pointer;
 	box-shadow: 0 0 20px rgba(0,0,0,0.75);
+}
+
+.product-img-wrap{
+	padding: 15px;
+	margin: 0 auto;
+	width: 125px;
+	height: 80px;
+	overflow: hidden;
+}
+
+.product-img-wrap img{
+	max-width:100%; 
+	margin: 0 auto;
+}
+
+.product-title{
+	font-weight: bold;
+	font-size: 1.2em;
+	color: var(--primary-color);
+	font-family: verdana, sans-serif;
+}
+
+.product-category{
+	color:var(--orangered);
+}
+
+.product-desc,.product-seller,.product-date{
+	font-size: 0.8em;
+}
+
+.product-location{
+	color: var(--secondary-contrast);
+}
+
+.product-price{
+	font-family: "Courier New", Courier, monospace;
+	color: green;
+	font-weight: bold;
 }
 
 .tab-control a{
@@ -795,15 +848,6 @@ li{
 .content-body h2{
 	color:var(--primary-color);
 	margin:2px;
-}
-
-.sidebar{
-	grid-area:sidebar;
-	background: var(--gray);
-	padding:10px;
-	margin:5px;
-	border: 1px solid var(--light-color);
-	box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 /* Content from other pages */
@@ -1412,6 +1456,7 @@ li{
 	line-height: 2rem;
 	color: var(--light-color);
     text-align: center;
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .inboxform-div input{
@@ -1419,6 +1464,7 @@ li{
 }
 
 #sendmsg{
+	font-family: verdana, sans-serif;
 	height:30px;
 	width:90%;
 	margin:10px 0;
@@ -1426,10 +1472,10 @@ li{
 
 .right-inbox{
 	grid-area: right-inbox;
-	background: var(--light-color);
-	border-top: 1px solid var(--dark-color);
-	border-left: 1px solid var(--dark-color);
-	border-right: 1px solid var(--dark-color);
+	background: linear-gradient(to right, var(--light-color) , var(--primary-color));
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
+	border-left: 1px solid var(--darkgray);
+	border-right: 1px solid var(--darkgray);
 	padding: 20px 0 20px 5px;
 	display: block;
 	margin-right: auto;
@@ -1447,7 +1493,7 @@ li{
 	padding:5px;
 	padding-left: 10px;
 	border:1px solid var(--darkgray);
-	box-shadow: 5px 5px var(--darkgray);
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 	margin-bottom: 10px;
 	min-height: 65px;
 }
@@ -1459,26 +1505,27 @@ li{
 	padding:5px;
 	padding-left: 10px;
 	border:1px solid var(--darkgray);
-	box-shadow: 5px 5px var(--darkgray);
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 	margin-bottom: 10px;
 	min-height: 65px;
 }
 
 .chat-me{
 	width:75%;
-	background: var(--twitterlogo);
-	color: var(--dark-color);
+	background: var(--primary-color);
+	color: var(--light-color);
 	padding:5px;
 	padding-left: 10px;
 	border-radius: 20px;
 	border:1px solid var(--dark-color);
 	margin-bottom: 10px;
 	min-height: 65px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .chat-notme{
 	width:75%;
-	background: var(--cyan);
+	background: var(--light-color);
 	color: var(--dark-color);
 	padding:5px;
 	padding-left: 10px;
@@ -1487,14 +1534,12 @@ li{
 	margin-bottom: 10px;
 	min-height: 65px;
 	margin-left: 22%;
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
-.sender{
+.sender,.reply{
 	color:var(--dark-color);
-}
-
-.reply{
-	color:var(--dark-color);
+	text-decoration: underline;
 }
 
 .inbox-div{
@@ -1518,6 +1563,7 @@ li{
 .inbxmsg{
 	word-wrap: break-word;
 	padding-left: 25px;
+	font-family: verdana, sans-serif;
 }
 
 .inbox-date{
@@ -2043,23 +2089,26 @@ li{
 	padding:2px;
 	border-radius: 8px;
 	cursor: default;
-	width: 120px;
+	width: 75px;
 	text-align: center;
+	margin: 0 auto;
+	font-size: 0.5em;
 }
 
 /* Shopping Cart */
 .add-to-cart{
-	padding:10px 20px;
-	font-size:30px;
+	font-size: 0.8em;
+	padding:1em 2em;
 	display:block;
+	width: 100px;
 	margin: 10px auto;
 	background: var(--lime);
 	color: var(--light-color);
-	width: 200px;
 	text-align: center;
 	cursor:pointer;
 	border-radius: 8px;
-	border: 2px solid var(--light-color);
+	border: 1px solid var(--light-color);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5)
 }
 
 #cart-modal{

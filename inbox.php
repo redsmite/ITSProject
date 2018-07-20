@@ -49,7 +49,7 @@ if($name!=$_SESSION['name']){
 						<div>
 						<input type="hidden" id="hidden" name="hidden" value="'.$_GET["name"].'" />
 						<input type="hidden" id="hidden2" name="hidden2" value="'.$_SESSION["id"].'" />
-							<input type="text" autocomplete="off" id="sendmsg" name="message" required>Enter
+							<input placeholder="Send message to '.$_GET["name"].'"type="text" autocomplete="off" id="sendmsg" name="message" required>Enter
 						</div>
 					</form>
 				</div>
@@ -58,18 +58,17 @@ if($name!=$_SESSION['name']){
 //Show Conversation
 $id=$_SESSION['id'];
 
-$Rquery="SELECT userid,imgpath FROM tbluser WHERE username='$name'";
+$Rquery="SELECT userid,username,imgpath FROM tbluser WHERE username='$name'";
 $result=$conn->query($Rquery);
 $row=$result->fetch_object();
 $Rid=$row->userid;
+$Ruser=$row->username;
 $Rimage=$row->imgpath;
 if($Rimage==''){
 	$Rimage='img/default.png';
 }
 
-			echo'<div class="right-inbox" style="background:url('.$Rimage.');
-	background-position:center;
-	background-repeat:no-repeat;
+			echo'<div class="right-inbox"
 	background-attachment: fixed;">';
 
 $sql="SELECT username,imgpath,message,pmdate FROM tblpm

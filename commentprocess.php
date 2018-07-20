@@ -86,15 +86,16 @@ if(isset($_POST['announce'])){
 	$sql = "INSERT INTO tblcommentann (announceid,comment,userid,dateposted) VALUES('$announceid','$comment','$userid',NOW())";
 	$result = $conn->query($sql);
 
-	$sql = "UPDATE tblannouncement SET comments = comments+1 WHERE announceid = '$announceid'";
-	$result = $conn->query($sql);	
-	$sql = "SELECT comment,t1.userid,username,imgpath,dateposted FROM tblcommentann AS t1
-	LEFT JOIN tbluser AS t2
-		ON t1.userid = t2.userid
-	WHERE announceid = '$announceid'
-	ORDER BY dateposted DESC";
+// Redisplay
+
+$sql = "SELECT commentannid,comment,t1.userid,username,imgpath,dateposted FROM tblcommentann AS t1
+LEFT JOIN tbluser AS t2
+	ON t1.userid = t2.userid
+WHERE announceid = '$announceid'
+ORDER BY dateposted DESC";
 $result = $conn->query($sql);
 while($row = $result->fetch_object()){
+	$thisid = $row->commentannid;
 	$comment = $row->comment;
 	$user = $row->username;
 	$userid = $row->userid;
@@ -111,11 +112,62 @@ while($row = $result->fetch_object()){
 </div>
 <div class="comment-body">
 <div class="com-container"><p class="comment-cm">'.nl2br($comment).'</p></div>
-</div>
 </div>';
+
+if($_SESSION['id']==$userid){
+	echo'<p class="button-control" id="'.$announceid.'"value="'.$thisid.'" onclick="deleteComment(this)">Delete</p>';
 }
+
+echo'</div>';
+	}
+
 }
 
 
+if(isset($_POST['delete'])){
+	$id = $_POST['delete'];
+	$id2 = $_POST['id2'];
+
+
+	$sql = "DELETE FROM tblcommentann WHERE commentannid = '$id'";
+	$result= $conn->query($sql);
+
+
+// Redisplay
+
+$sql = "SELECT commentannid,comment,t1.userid,username,imgpath,dateposted FROM tblcommentann AS t1
+LEFT JOIN tbluser AS t2
+	ON t1.userid = t2.userid
+WHERE announceid = '$id2'
+ORDER BY dateposted DESC";
+$result = $conn->query($sql);
+while($row = $result->fetch_object()){
+	$thisid = $row->commentannid;
+	$comment = $row->comment;
+	$user = $row->username;
+	$userid = $row->userid;
+	$img = $row->imgpath;
+	$date = $row->dateposted;
+	echo'<div class="comment-box">
+<div class="comment-header">
+<a class="cm-user" href="profile.php?name='.$user.'">
+<div class="comment-tn">
+<img src="'.$img.'">
+</div>
+'.$user.'</a>
+<small>'.time_elapsed_string($date).'</small>
+</div>
+<div class="comment-body">
+<div class="com-container"><p class="comment-cm">'.nl2br($comment).'</p></div>
+</div>';
+
+if($_SESSION['id']==$userid){
+	echo'<p class="button-control" id="'.$id2.'" value="'.$thisid.'" onclick="deleteComment(this)">Delete</p>';
+}
+
+echo'</div>';
+	}
+
+}
 
 ?>

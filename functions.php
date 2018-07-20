@@ -50,7 +50,7 @@ function addheader(){
 					</p>
 				</div>
 				<div class="nav">
-					<a id="How-to" target="_blank" href="about.php#how-to-order">How to Order?</a>
+					<a id="How-to" href="about.php#how-to-order"><i class="far fa-question-circle"></i> How to Order?</a>
 				</div>
 				<div class="profile-grid">';
 					

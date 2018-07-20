@@ -29,7 +29,7 @@
 	?>
 	<div class="other-content">
 <?php
-$sql="SELECT announceid,title,content,t1.datecreated,username,comments FROM tblannouncement AS t1
+$sql="SELECT announceid,title,content,t1.datecreated,username FROM tblannouncement AS t1
 LEFT JOIN tbluser
 	ON userid = author
 ORDER BY announceid DESC
@@ -42,15 +42,18 @@ $title = $row->title;
 $content = $row->content;
 $date = date('D, F j Y g:i A',strtotime($row->datecreated));
 $author = $row->username;
-$comments = $row->comments;
 
 echo '<h2 id="announcement-title">'.$title.'</h2>
 <p>Posted on: '.$date.' by: <a href="profile.php?name='.$author.'">'.$author.'</a></p>
 <div class="announce-content">'.nl2br($content);
 
 echo'</div>
-<br><hr>
-<p>Comments ('.$comments.')</p>
+<br><hr>';
+
+$sql = "SELECT commentannid FROM tblcommentann WHERE announceid = '$id'";
+$result= $conn->query($sql);
+$comments = $result->num_rows;
+echo'<p>Comments ('.$comments.')</p>
 ';
 
 
@@ -78,13 +81,14 @@ echo'<form id="comment-form">
 
 // Display Comments
 echo '<div id="announcement-comments">';
-$sql = "SELECT comment,t1.userid,username,imgpath,dateposted FROM tblcommentann AS t1
+$sql = "SELECT commentannid,comment,t1.userid,username,imgpath,dateposted FROM tblcommentann AS t1
 	LEFT JOIN tbluser AS t2
 		ON t1.userid = t2.userid
 	WHERE announceid = '$id'
 	ORDER BY dateposted DESC";
 $result = $conn->query($sql);
 while($row = $result->fetch_object()){
+	$thisid = $row->commentannid;
 	$comment = $row->comment;
 	$user = $row->username;
 	$userid = $row->userid;
@@ -100,9 +104,12 @@ while($row = $result->fetch_object()){
 <small>'.time_elapsed_string($date).'</small>
 </div>
 <div class="comment-body">
-<div class="com-container"><p class="comment-cm">'.nl2br($comment).'</p></div>
-</div>
-</div>
+<div class="com-container"><p class="comment-cm">'.nl2br($comment).'</p></div></div>';
+
+if($_SESSION['id']==$userid){
+	echo'<p class="button-control" id="'.$id.'" value="'.$thisid.'" onclick="deleteComment(this)">Delete</p>';
+}
+echo'</div>
 ';
 }
 ?>

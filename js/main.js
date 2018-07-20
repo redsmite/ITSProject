@@ -153,6 +153,31 @@ function addAnnounceComment(){
 	}
 }
 
+function deleteComment(click){
+	let id = click.getAttribute('value');
+	let id2 = click.getAttribute('id');
+	
+	addSpinners();
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'commentprocess.php';
+
+	var formData = "delete="+id+"&id2="+id2;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		if(response){
+			removeSpinners();
+			let body = document.getElementById('announcement-comments');
+			body.innerHTML=response;
+		}
+	}
+	myRequest.send(formData);	
+}
+
 // Search
 
 function searchdropdown(){

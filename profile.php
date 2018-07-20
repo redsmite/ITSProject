@@ -199,9 +199,17 @@ if($testR->num_rows!=0){
 						$sql="SELECT commentid FROM tblcomment WHERE userid = '$id'";
 						$result=$conn->query($sql);
 						$count = $result->num_rows;
+
+
+						$sql="SELECT commentannid FROM tblcommentann WHERE userid = '$id'";
+						$result=$conn->query($sql);
+						$count2 = $result->num_rows;
+						
+						$total = $count + $count2;
+
 						echo'<tr>
 						<th><i class="far fa-comment-dots"></i> Comments:</th>
-						<th>'.$count.'</th>
+						<th>'.$total.'</th>
 						</tr>';
 						//Profile Views
 						if(isset($_SESSION['id'])){

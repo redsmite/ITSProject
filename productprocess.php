@@ -44,6 +44,12 @@ if(isset($_POST['add'])){
 		$error .= '<i class="fas fa-exclamation-circle"></i> No farm selected <br>';
 	}
 
+
+	if(strlen($desc) < 30){
+
+		$error .= '<i class="fas fa-exclamation-circle"></i> Description must be 30 character or longer <br>';
+	}
+
 	if($price < $low){
 		$error .= '<i class="fas fa-exclamation-circle"></i> Price can\'t be lower than the Lowest Price <br>';
 	}

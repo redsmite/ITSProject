@@ -98,7 +98,7 @@ $sql = "SELECT categoryid,status,category FROM tblcategory";
 						<div id="error-message3"></div>
 						<ul class="price-ul">
 <?php
-	$sql = "SELECT categoryid, category, low ,high, prevailing FROM tblcategory";
+	$sql = "SELECT categoryid, category, low ,high, prevailing FROM tblcategory WHERE status=1";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_object()){
 		$id = $row->categoryid;

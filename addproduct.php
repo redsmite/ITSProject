@@ -53,7 +53,7 @@
 					<input required type="text" id="name" name="name">
 				</div>
 				<div>
-					<p>Description</p>
+					<p>Description *Required 30 characters</p>
 					<textarea required id="desc" name="desc"></textarea>
 				</div>
 				<div>		
