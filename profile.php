@@ -210,14 +210,14 @@ echo'<li><a href="myproducts.php?id='.$id.'"><i class="far fa-money-bill-alt"></
 
 						echo'<tr>
 						<th><i class="far fa-comment-dots"></i> Comments:</th>
-						<th>'.$total.'</th>
+						<th>'.number_format($total).'</th>
 						</tr>';
 						//Profile Views
 						if(isset($_SESSION['id'])){
 							if($id==$_SESSION['id']){
 							echo'<tr>
 							<th><i class="far fa-eye"></i> Profile Views:</th>
-							<th>'.$views.'</th>
+							<th>'.number_format($views).'</th>
 							</tr>';
 							}
 						}

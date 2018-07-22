@@ -11,7 +11,7 @@ if(isset($_GET['id'])){
 }
 
 
-$sql = "SELECT productid,category, productname, description, farmname, username, t1.userid, dateposted, price, img, rating FROM tblproduct as t1
+$sql = "SELECT productid,category, productname, description, farmname, username, t1.userid, dateposted, price, view, img, rating FROM tblproduct as t1
 LEFT JOIN tblcategory as t2
 	ON t1.categoryid = t2.categoryid
 LEFT JOIN tbluser as t3
@@ -33,11 +33,23 @@ if(!$row){
 	$user = $row->username;
 	$date = date('F j, Y',strtotime($row->dateposted));
 	$price = $row->price;
+	$view = $row->view;
 	$img = $row->img;
 	if(!$img){
 		$img='img/default2.jpg';
 	}
 	$rating = $row->rating;
+}
+
+// Product views
+if(!isset($_SESSION['id'])){
+
+	$sql = "UPDATE tblproduct SET view=view+1 WHERE productid='$id'";
+	$result = $conn->query($sql);
+
+}else if($userid!=$_SESSION['id']){
+	$sql = "UPDATE tblproduct SET view=view+1 WHERE productid='$id'";
+	$result = $conn->query($sql);
 }
 
 addSidebar();
@@ -80,6 +92,7 @@ chattab();
 						<li>Description: <?php echo $desc;?></li>
 						<li>Seller: <a href="profile.php?name=<?php echo $user; ?>" class="black"> <?php echo $user; ?></a></li>
 						<li>Date Posted: <?php echo $date?></li>
+						<li>Views: <?php echo number_format($view); ?></li>
 					</ul>
 					<div class="add-to-cart" value="<?php echo $id; ?>" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart
 					</div>

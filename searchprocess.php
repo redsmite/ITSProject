@@ -4,7 +4,7 @@ include'functions.php';
 include'connection.php';
 
 if(isset($_POST['search'])){
-	$search=$_POST['search'];
+	$search=$conn->real_escape_string($_POST['search']);
 
 	$data='';
 	$sql="SELECT username,imgpath,datecreated FROM tbluser WHERE username LIKE '%$search%' ORDER BY lastonline  DESC LIMIT 10";
@@ -23,8 +23,30 @@ if(isset($_POST['search'])){
 	echo $data;
 }
 
+if(isset($_POST['search2'])){
+	$search = $conn->real_escape_string($_POST['search2']);
+	echo '<ul class="drop-ul">';
+	$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%' ORDER BY view DESC LIMIT 15";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_object()){
+		$id = $row->productid;
+		$name = $row->productname;
+		$img = $row->img;
+		$price = $row->price;
+
+		echo '<a href="product.php?id='.$id.'"><li>
+		<div class="sch-tn">
+			<img src="'.$img.'">
+		</div>
+		'.$name.'<br>
+		₱'.number_format($price,2).' / kg
+		</li></a>';
+	}
+	echo '</ul>';
+}
+
 if(isset($_POST['chatsearch'])){
-	$search = $_POST['chatsearch'];
+	$search = $conn->real_escape_string($_POST['chatsearch']);
 	$id = $_SESSION['id'];
 
 	$sql="SELECT username,imgpath,lastonline FROM tblfriend
@@ -62,7 +84,7 @@ if(isset($_POST['mainsearch'])){
 
 	echo '<ul>';
 	if($criteria == 'Select Category'){
-		$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%'";
+		$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%' ORDER BY view DESC LIMIT 15";
 		$result = $conn->query($sql);
 		while($row = $result->fetch_object()){
 			$id = $row->productid;
@@ -75,11 +97,11 @@ if(isset($_POST['mainsearch'])){
 				<img src="'.$img.'">
 			</div>
 			'.$name.'<br>
-			₱'.$price.'
+			₱'.number_format($price,2).' / kg
 			</li></a>';
 		}
 	}else{
-		$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%' AND categoryid='$criteria'";
+		$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%' AND categoryid='$criteria' ORDER BY view DESC LIMIT 15";
 		$result = $conn->query($sql);
 		while($row = $result->fetch_object()){
 			$id = $row->productid;
@@ -92,7 +114,7 @@ if(isset($_POST['mainsearch'])){
 				<img src="'.$img.'">
 			</div>
 			'.$name.'<br>
-			₱'.$price.'
+			₱'.number_format($price,2).' / kg
 			</li></a>';
 		}
 	}

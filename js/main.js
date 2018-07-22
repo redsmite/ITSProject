@@ -230,7 +230,7 @@ function searchdropdown(){
 				var output='';
 				for(i=0;i<dataArray.length-1;i++){
 					var itemArray = dataArray[i].split('|');
-					output+='<ul class="drop-ul"><li><a href="profile.php?name='+itemArray[0]+'"><div class="drop-tn"><img src="'+itemArray[1]+'"></div><p>'+itemArray[0]+'</a></p><small>Joined: '+itemArray[2]+'</small><li></ul>';
+					output+='<ul class="drop-ul"><a href="profile.php?name='+itemArray[0]+'"><li><div class="drop-tn"><img src="'+itemArray[1]+'"></div><p>'+itemArray[0]+'</p><small>Joined: '+itemArray[2]+'</small><li></a></ul>';
 				}
 			document.getElementById('search-dropdown').innerHTML = output;
 			
@@ -300,6 +300,12 @@ function hideSearchPanel(){
 
 	panel.style.display= 'none';
 	modal.style.display= 'none';
+}
+
+function browseCategory(click){
+	let id = click.getAttribute('value');
+
+	window.location.href = "searchproduct.php?search=&select="+id;
 }
 
 // friend
@@ -1848,7 +1854,6 @@ function showCartPanel(){
 	panel.style.display='block';
 	modal.style.display='block';
 
-
 	var myRequest = new XMLHttpRequest();
 	
 	var url = 'productprocess.php';
@@ -1878,7 +1883,7 @@ function hideCartPanel(){
 
 function addThistoCart(click){
 	let id = click.getAttribute('value');
-	
+	addSpinners();
 	var myRequest = new XMLHttpRequest();
 
 	var url = 'productprocess.php';
@@ -1887,6 +1892,9 @@ function addThistoCart(click){
 	
 	myRequest.open('POST', url ,true);
 	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+	myRequest.onload = function(){
+		removeSpinners();
+	}
 	myRequest.send(formData);		
 
 }

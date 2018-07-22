@@ -406,6 +406,7 @@ li{
 .drop-ul li{
 	padding: 4px 2px;
 	overflow:hidden;
+	color:var(--dark-color);
 }
 
 .drop-ul li a{

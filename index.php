@@ -31,24 +31,24 @@
 			<div id="category-modal" onclick="hideCategory()"></div>
 			<div id="category-slide">
 <?php
-	$sql = "SELECT categoryid,category FROM tblcategory WHERE status =1";
+	$sql = "SELECT categoryid,category FROM tblcategory WHERE status =1 ORDER BY category";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_object()){
 		$category = $row->category;
 		$id = $row->categoryid;
 
-		echo '<p value="'.$id.'">'.$category.'</p>';
+		echo '<p value="'.$id.'" onclick="browseCategory(this)">'.$category.'</p>';
 	}
 ?>
 			</div>
-			<form id="main-search-form">
+			<form action="searchproduct.php" method="get" id="main-search-form">
 				<div>
-					<input type="text" id="main-search" placeholder="Search for Products..." onkeyup="searchProduct()">
-					<select  id="main-select" >
+					<input type="text" name="search" id="main-search" autocomplete="off" placeholder="Search for Products..." onkeyup="searchProduct()">
+					<select  id="main-select" name="select">
 						<option disabled selected>Select Category</option>
 <?php
 // Select Category
-	$sql = "SELECT categoryid,category FROM tblcategory WHERE status =1";
+	$sql = "SELECT categoryid,category FROM tblcategory WHERE status =1 ORDER BY category";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_object()){
 		$category = $row->category;
@@ -118,7 +118,7 @@ LEFT JOIN tbluser as t3
 LEFT JOIN tblfarm as t4
 	ON t1.farmid = t4.farmid
 ORDER BY dateposted DESC
-LIMIT 15";
+LIMIT 16";
 $result = $conn->query($sql);
 while($row = $result->fetch_object()){
 	$id = $row->productid;
@@ -155,7 +155,7 @@ while($row = $result->fetch_object()){
 	<p class="product-category">'.$category.'</p>
 	<p class="product-desc">Description: '.substr($desc,0,30).' ...</p>
 	</a>
-	<p class="product-price">₱'.$price.' / kg</p>
+	<p class="product-price">₱'.number_format($price,2).' / kg</p>
 	<div class="add-to-cart" value="'.$id.'" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart</div>
 	</div>
 	</div>';

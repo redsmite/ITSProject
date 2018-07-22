@@ -313,6 +313,7 @@ function search_function(){
 			<i class="fas fa-search"></i>
 			<label>Search</label>
 			<select name="criteria" id="criteria">
+				<option value="1">Product</option>
 				<option value="2">User</option>
 			</select>
 			<input type="text" onkeyup="searchdropdown()" required name="search-text" placeholder="Search..." id="search-text" autocomplete="off">

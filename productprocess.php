@@ -101,7 +101,7 @@ if(isset($_POST['showcart'])){
 		echo '<li>'.$name.' ₱'.$price.'</li>';
 	}
 	echo'</ul>
-	<h3> Total: ₱' .$total .'</h3>';
+	<h3> Total: ₱' . number_format($total,2).'</h3>';
 	
 	}
 }
