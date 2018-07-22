@@ -185,11 +185,13 @@ function session_button(){
 	$conn = mysqli_connect ("localhost", "root", "", "itsproject");
 
 // Shopping Cart
-	echo'<div id="cart-panel">
+	echo'
+	<div id="cart-panel">
 		<h1>Shopping Cart</h1>
+		<div id="shopping-cart-content"></div>
 	</div>
-	<div id="cart-modal" onclick="hideCartPanel()"></div>';
-
+	<div id="cart-modal" onclick="hideCartPanel()"></div>
+	<i class="fas fa-shopping-cart button" onclick="showCartPanel()"></i>';
 
 	if(isset($_SESSION['id'])){
 
@@ -201,7 +203,6 @@ function session_button(){
 		if($tn_image==''){
 			$tn_image='img/default.png';
 		}
-echo'<i class="fas fa-shopping-cart button" onclick="showCartPanel()"></i>';
 //PM Count
 $sql="SELECT pmid FROM tblpm WHERE receiverid='$id' AND checked=0 GROUP BY senderid";
 $result=$conn->query($sql);
@@ -299,7 +300,6 @@ if($type==1){
 		</div>';
 	}else{
 		echo'<div id="notifnum"></div><div id="pmnum"></div>
-		<i class="fas fa-shopping-cart button" onclick="showCartPanel()"></i>
 		<a href ="register.php" class="button"><i class="fas fa-pencil-alt"></i></i>Sign Up</a>
 		<a id="modalBtn" class="button"><i class="fas fa-sign-in-alt"></i>Login</a>';
 	}

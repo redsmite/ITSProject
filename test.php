@@ -15,6 +15,7 @@
 </head>
 <body>
 	<?php
+	echo $_SESSION['cart'];
 	$percent = 3;
 
 	if($percent>=98){

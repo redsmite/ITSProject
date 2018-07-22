@@ -55,4 +55,47 @@ if(isset($_POST['chatsearch'])){
 			echo'
 				</ul>';
 }
+
+if(isset($_POST['mainsearch'])){
+	$search = $conn->real_escape_string($_POST['mainsearch']);
+	$criteria = $_POST['criteria'];
+
+	echo '<ul>';
+	if($criteria == 'Select Category'){
+		$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%'";
+		$result = $conn->query($sql);
+		while($row = $result->fetch_object()){
+			$id = $row->productid;
+			$name = $row->productname;
+			$img = $row->img;
+			$price = $row->price;
+
+			echo '<a href="product.php?id='.$id.'"><li>
+			<div class="sch-tn">
+				<img src="'.$img.'">
+			</div>
+			'.$name.'<br>
+			₱'.$price.'
+			</li></a>';
+		}
+	}else{
+		$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%' AND categoryid='$criteria'";
+		$result = $conn->query($sql);
+		while($row = $result->fetch_object()){
+			$id = $row->productid;
+			$name = $row->productname;
+			$img = $row->img;
+			$price = $row->price;
+
+			echo '<a href="product.php?id='.$id.'"><li>
+			<div class="sch-tn">
+				<img src="'.$img.'">
+			</div>
+			'.$name.'<br>
+			₱'.$price.'
+			</li></a>';
+		}
+	}
+	echo '</ul>';
+}
 ?>

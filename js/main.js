@@ -268,6 +268,40 @@ function searchdropdown(){
 	}
 }
 
+function searchProduct(){
+	let panel = document.getElementById('main-search-panel');
+	let modal = document.getElementById('main-search-modal');
+
+	panel.style.display= 'block';
+	modal.style.display= 'block';
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'searchprocess.php';
+
+	let mainsearch = document.getElementById('main-search').value;
+	let criteria = document.getElementById('main-select').value;
+
+
+	var formData = "mainsearch="+mainsearch+"&criteria="+criteria;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.getElementById('main-search-panel').innerHTML=response;
+	}
+	myRequest.send(formData);
+}
+
+function hideSearchPanel(){
+	let panel = document.getElementById('main-search-panel');
+	let modal = document.getElementById('main-search-modal');
+
+	panel.style.display= 'none';
+	modal.style.display= 'none';
+}
+
 // friend
 
 function friendprocess(){
@@ -1813,6 +1847,24 @@ function showCartPanel(){
 
 	panel.style.display='block';
 	modal.style.display='block';
+
+
+	var myRequest = new XMLHttpRequest();
+	
+	var url = 'productprocess.php';
+
+	var formData = "showcart='Show'";
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		let cart = document.getElementById('shopping-cart-content');
+		cart.innerHTML = response;
+	}
+	myRequest.send(formData);		
+
 }
 
 function hideCartPanel(){
@@ -1826,7 +1878,17 @@ function hideCartPanel(){
 
 function addThistoCart(click){
 	let id = click.getAttribute('value');
-	console.log(id);
+	
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'productprocess.php';
+
+	var formData = "cart="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+	myRequest.send(formData);		
+
 }
 
 // Photo

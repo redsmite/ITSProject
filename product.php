@@ -2,11 +2,7 @@
 session_start();
 include'functions.php';
 require_once'connection.php';
-addSidebar();
-addLogin();
-setupCookie();
-updateStatus();
-chattab();
+
 
 if(isset($_GET['id'])){
 	$id = $_GET['id'];
@@ -25,21 +21,30 @@ LEFT JOIN tblfarm as t4
 WHERE productid='$id'";
 $result = $conn->query($sql);
 $row = $result->fetch_object();
-
-$id = $row->productid;
-$category = $row->category;
-$product = $row->productname;
-$desc = $row->description;
-$farm = $row->farmname;
-$userid = $row->userid;
-$user = $row->username;
-$date = date('F j, Y',strtotime($row->dateposted));
-$price = $row->price;
-$img = $row->img;
-if(!$img){
-	$img='img/default2.jpg';
+if(!$row){
+	die('This page doesn\'t exist');
+}else{
+	$id = $row->productid;
+	$category = $row->category;
+	$product = $row->productname;
+	$desc = $row->description;
+	$farm = $row->farmname;
+	$userid = $row->userid;
+	$user = $row->username;
+	$date = date('F j, Y',strtotime($row->dateposted));
+	$price = $row->price;
+	$img = $row->img;
+	if(!$img){
+		$img='img/default2.jpg';
+	}
+	$rating = $row->rating;
 }
-$rating = $row->rating;
+
+addSidebar();
+addLogin();
+setupCookie();
+updateStatus();
+chattab();
 
 ?>
 <!DOCTYPE html>
@@ -177,6 +182,10 @@ $high = $fetch->high;
 		$error .= '<i class="fas fa-exclamation-circle"></i> No farm selected <br>';
 	}
 
+	if(strlen($name) > 40){
+
+		$error .= '<i class="fas fa-exclamation-circle"></i> Product name is too long <br>';
+	}
 
 	if(strlen($desc) < 30){
 
@@ -192,7 +201,7 @@ $high = $fetch->high;
 	}
 
 	if(!$_FILES['img']['tmp_name']){
-		$error .= '<div id="error-message2"><i class="fas fa-exclamation-circle"></i>File is empty. Select an image to upload.</div>';
+		$filepath= $img;
 	}else{
 
 		$filetemp=$_FILES['img']['tmp_name'];
@@ -212,9 +221,12 @@ $high = $fetch->high;
 
 	if(!$error){
 
+		if(!$_FILES['img']['tmp_name']){
+
+		}else{
 		move_uploaded_file($filetemp, $filepath);
 		$filepath=$conn->real_escape_string($filepath);
-
+		}
 		$sql = "UPDATE tblproduct SET categoryid='$category', productname='$name', description='$desc', farmid='$farm', price='$price', img='$filepath' WHERE productid = '$id'";
 		$result = $conn->query($sql);
 		echo 'Product is successfully updated';

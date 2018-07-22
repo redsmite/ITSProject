@@ -1,7 +1,6 @@
 <?php
 session_start();
 include'functions.php';
-user_access();
 require_once'connection.php';
 
 if(isset($_POST['select'])){
@@ -44,6 +43,10 @@ if(isset($_POST['add'])){
 		$error .= '<i class="fas fa-exclamation-circle"></i> No farm selected <br>';
 	}
 
+	if(strlen($name) > 50){
+
+		$error .= '<i class="fas fa-exclamation-circle"></i> Product name is too long <br>';
+	}
 
 	if(strlen($desc) < 30){
 
@@ -65,6 +68,41 @@ if(isset($_POST['add'])){
 		echo 'success';
 	}else{
 		echo $error;
+	}
+}
+
+if(isset($_POST['cart'])){
+	$id = $_POST['cart'];
+
+	$_SESSION['cart'] .= $id.'|';
+
+}
+
+if(isset($_POST['showcart'])){
+	if(!isset($_SESSION['cart'])){
+
+	echo'<p>Shopping Cart is empty...</p>';
+
+	}else{
+	
+	echo'<ul>';
+	$array = explode('|',$_SESSION['cart']);
+	array_pop($array);
+	$total=0;
+	foreach ($array as $key => $value) {
+		$sql = "SELECT productname,price FROM tblproduct
+		WHERE productid = '$value'";
+		$result = $conn->query($sql);
+		$row = $result->fetch_object();
+		$name = $row->productname;
+		$price = $row->price;
+
+		$total = $total + $price;
+		echo '<li>'.$name.' ₱'.$price.'</li>';
+	}
+	echo'</ul>
+	<h3> Total: ₱' .$total .'</h3>';
+	
 	}
 }
 ?>

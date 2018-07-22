@@ -148,17 +148,17 @@ $imgpath=$rows->imgpath;
 ?>
 					</div>
 					<div class="dashboard">
+						<ul>
 						<?php
 						if(isset($_SESSION['id'])){
 							if($_SESSION['name']==$_GET['name']){
-								echo'<ul>
+								echo'
 									<li><a href="inbox.php?name='.$_GET["name"].'"><i class="fas fa-envelope"></i> Check Inbox</a></li>
 									<li><a href="insertphoto.php"><i class="fas fa-camera"></i> Change Profile Picture</a></li>
 									<li><a href="editinfo.php"><i class="fas fa-pen-square"></i> Edit Personal Info</a></li>
-									<li><a href="accountsetting.php"><i class="fas fa-cog"></i> Account Settings</a></li>
-									</ul>';
+									<li><a href="accountsetting.php"><i class="fas fa-cog"></i> Account Settings</a></li>';
 							}else{
-								echo'<ul>
+								echo'
 								<li>
 								<a href="inbox.php?name='.$_GET["name"].'"><i class="fas fa-comments"></i> Chat with '.$_GET["name"].'</a>
 								</li>
@@ -179,22 +179,23 @@ if($testR->num_rows!=0){
 	$accepted=$rows->accepted;
 	$friendsince=$rows->friendsince;
 	if($accepted==1){
-	echo'<li><p><i class="fas fa-user-plus"></i> Pending request...</p></li>
-	</ul>';
+	echo'<li><p><i class="fas fa-user-plus"></i> Pending request...</p></li>';
 	} else if ($accepted==2){
-		echo'<li><a id="rmv-fr" value="'.$fid.'" onclick="friendremove()"><i class="fas fa-ban"></i> Remove Friend</a></li>
-		</ul>';
+		echo'<li><a id="rmv-fr" value="'.$fid.'" onclick="friendremove()"><i class="fas fa-ban"></i> Remove Friend</a></li>';
 	} else if ($accepted==3 && $friendsince==''){
-		echo'<li><a id="fr-btn" value="'.$name.'" onclick="friendprocess()"><i class="fas fa-user-plus"></i> Add as friend</a></li>
-		</ul>';
+		echo'<li><a id="fr-btn" value="'.$name.'" onclick="friendprocess()"><i class="fas fa-user-plus"></i> Add as friend</a></li>';
 	}
 }else{
-	echo'<li><a id="fr-btn" value="'.$name.'" onclick="friendprocess()"><i class="fas fa-user-plus"></i> Add as friend</a></li>
-	</ul>';
+	echo'<li><a id="fr-btn" value="'.$name.'" onclick="friendprocess()"><i class="fas fa-user-plus"></i> Add as friend</a></li>';
 }
 							}
 						}
-						echo'<table id="profilestats">';
+//Products
+if($usertype==3 or $usertype==4){
+echo'<li><a href="myproducts.php?id='.$id.'"><i class="far fa-money-bill-alt"></i> My Products</a></li>';
+}
+						echo'</ul>
+						<table id="profilestats">';
 						// Comment Count
 						$sql="SELECT commentid FROM tblcomment WHERE userid = '$id'";
 						$result=$conn->query($sql);

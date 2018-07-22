@@ -43,7 +43,7 @@
 			</div>
 			<form id="main-search-form">
 				<div>
-					<input type="text" id="main-search" placeholder="Search for Products...">
+					<input type="text" id="main-search" placeholder="Search for Products..." onkeyup="searchProduct()">
 					<select  id="main-select" >
 						<option disabled selected>Select Category</option>
 <?php
@@ -62,6 +62,11 @@
 				</div>
 			</form>
 		</div>
+<!-- Main-Search Modal -->
+<div id="main-search-panel">
+	
+</div>
+<div id="main-search-modal" onclick="hideSearchPanel()"></div>
 	<!-- Content -->
 		<div class="main-content">
 			<div class="main-content-grid">
@@ -130,13 +135,16 @@ while($row = $result->fetch_object()){
 	}
 	$rating = $row->rating;
 
-	echo'<a href="product.php?id='.$id.'">
+	echo'
 	<div class="product">
+	<a href="product.php?id='.$id.'">
 	<div class="product-img-wrap">
 		<img src="'.$img.'" alt="Product Image">
 	</div>
 	<p class="product-title">'.$product.'</p>
-
+	</a>
+	<div class="product-content">
+	<a href="product.php?id='.$id.'">
 	<p>';
 
 	starsystem($rating);
@@ -146,13 +154,11 @@ while($row = $result->fetch_object()){
 
 	<p class="product-category">'.$category.'</p>
 	<p class="product-desc">Description: '.substr($desc,0,30).' ...</p>
-	<p class="product-location">'.$farm.'</p>
-	<p class="product-seller"> Seller: <a href="profile.php?name='.$user.'" class="black">'.$user.'</a></p>
-	<p class="product-date">Posted: '.$date.'</p>
+	</a>
 	<p class="product-price">₱'.$price.' / kg</p>
 	<div class="add-to-cart" value="'.$id.'" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart</div>
 	</div>
-	</a>';
+	</div>';
 }
 
 ?>

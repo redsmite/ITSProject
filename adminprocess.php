@@ -259,6 +259,21 @@ if(isset($_POST['low'])){
 		$sql = "UPDATE tblcategory SET low='$low',high='$high',prevailing='$prev' WHERE categoryid='$id'";
 		$result = $conn->query($sql);
 
+		$sql2="SELECT productid,price FROM tblproduct WHERE categoryid='$id'";
+		$result2=$conn->query($sql2);
+		while($row2=$result2->fetch_object()){
+			$id = $row2->productid;
+			$price = $row2->price;
+			if($price < $low){
+				$sql = "UPDATE tblproduct SET price = '$low' WHERE productid = '$id'";
+				$result = $conn->query($sql);
+			}
+			if($price>$high){
+				$sql = "UPDATE tblproduct SET price = '$high' WHERE productid = '$id'";
+				$result = $conn->query($sql);
+			}
+		}
+
 		$log = 'Update price of '.$category;
 
 		$sql = "INSERT INTO tblchangelog (log,datecreated) VALUES ('$log',NOW())";

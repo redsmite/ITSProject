@@ -105,9 +105,10 @@ while($row = $result->fetch_object()){
 </div>
 <div class="comment-body">
 <div class="com-container"><p class="comment-cm">'.nl2br($comment).'</p></div></div>';
-
-if($_SESSION['id']==$userid){
-	echo'<p class="button-control" id="'.$id.'" value="'.$thisid.'" onclick="deleteComment(this)">Delete</p>';
+if(isset($_SESSION['id'])){
+	if($_SESSION['id']==$userid){
+		echo'<p class="button-control" id="'.$id.'" value="'.$thisid.'" onclick="deleteComment(this)">Delete</p>';
+	}
 }
 echo'</div>
 ';

@@ -19,6 +19,8 @@
 	--cyan:#00ffff;
 	--bluegreen:#21c36f;
 	--canvas:#F3ECE2;
+	--dark-purple:#551A8B;
+	--dark-blue:#313d4b;
 
 	/*	Blue-Orangered	*/
 	/*--primary-color:#FF4500;
@@ -566,6 +568,47 @@ li{
 	height: 45px;	
 }
 
+#main-search-modal{
+	display:none;
+	position:fixed;
+	z-index:100;
+	left:0;
+	top:0;
+	height:100%;
+	width:100%;
+}
+
+#main-search-panel{
+	display: none;
+	z-index: 200;
+	position: absolute;
+	top: 193px;
+	left: 268px;
+	width: 560px;
+	height: 350px;
+	background: var(--gray);
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
+	overflow: auto;
+}
+
+#main-search-panel .sch-tn{
+	height: 65px;
+	width: 65px;
+}
+
+#main-search-panel ul li{
+	color: var(--dark-color);
+	line-height: 1.5em;
+	font-size: 1.2em;
+	margin: 2px;
+	padding: 10px 0;
+}
+
+#main-search-panel ul li:hover{
+	background: var(--primary-color);
+	color: var(--light-color);
+}
+
 /* Login */
 
 .modal{
@@ -789,8 +832,8 @@ li{
 	transition-duration: 250ms;
 	transition-property: box-shadow;
 	transition-timing-function: ease-in-out;
-	padding: 10px;
 	box-sizing: border-box;
+	text-align: center;
 }
 
 .product:hover{
@@ -799,10 +842,10 @@ li{
 }
 
 .product-img-wrap{
-	padding: 15px;
+	padding: 10px 0;
 	margin: 0 auto;
-	width: 125px;
-	height: 80px;
+	width: 200px;
+	height: 150px;
 	overflow: hidden;
 }
 
@@ -815,26 +858,28 @@ li{
 
 .product-title{
 	font-weight: bold;
-	font-size: 1.2em;
-	color: var(--primary-color);
-	font-family: verdana, sans-serif;
-}
-
-.product-category{
-	color:var(--orangered);
-}
-
-.product-desc,.product-seller,.product-date{
-	font-size: 0.8em;
-}
-
-.product-location{
 	color: var(--secondary-contrast);
+	font-family: verdana, sans-serif;
+	margin-bottom: 2px;
+}
+
+.product-content{
+	padding: 10px;
+	background: var(--primary-color);
+	color: var(--light-color);
+}
+
+.product-content a{
+	color: var(--light-color);
+}
+
+.product-desc{
+	font-size: 0.8em;
 }
 
 .product-price{
 	font-family: "Courier New", Courier, monospace;
-	color: green;
+	color: var(--secondary-contrast);
 	font-weight: bold;
 }
 
@@ -1093,16 +1138,16 @@ li{
 
 #user-bot{
 	padding: 5px;
-	background: coral;
+	background: linear-gradient(to right, var(--darkgray) , var(--lightblue));
 	color:var(--light-color);
 	border-radius: 12px;
 	margin: 10px 35px 10px 35px;
 	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
-
+main-select
 #user-seller{
 	padding: 5px;
-	background: var(--lime);
+	background: linear-gradient(to right, coral,var(--orangered));
 	color:var(--light-color);
 	border-radius: 12px;
 	margin: 10px 35px 10px 35px;
@@ -1111,7 +1156,7 @@ li{
 
 #user-siteadmin{
 	padding: 5px;
-	background: red;
+	background: linear-gradient(to right, red , var(--dark-color));
 	color:var(--light-color);
 	border-radius: 12px;
 	margin: 10px 35px 10px 35px;
@@ -2090,12 +2135,12 @@ li{
 
 .star-system{
 	color: var(--sunflower);
-	background: var(--blood-red);
-	border: 1px solid var(--dark-color);
+	background: red;
+	border: 1px solid var(--darkgray);
 	padding:2px;
 	border-radius: 8px;
 	cursor: default;
-	width: 75px;
+	width: 60px;
 	text-align: center;
 	margin: 0 auto;
 	font-size: 0.5em;
@@ -2152,9 +2197,16 @@ li{
 	grid-area: right-product;
 }
 
+.my-products{
+	text-align: center;
+	background: var(--light-color);
+	margin: 5px;
+	padding: 5px;
+}
+
 /* Shopping Cart */
 .add-to-cart{
-	z-index: 2;
+	z-index: 10;
 	font-size: 0.8em;
 	padding:1em 2em;
 	display:block;
@@ -2187,9 +2239,10 @@ li{
 	top: 0;
 	width: 300px;
 	height: 100%;
+	overflow: auto;
 	background: var(--light-color);
 	border: 1px solid var(--darkgray);
-	color: var(--primary-color);
+	color: var(--dark-color);
 	text-align: center;
 	box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	animation-name:modalopen;
@@ -2274,6 +2327,10 @@ li{
 	
 	.user-grid{
 		display:block;
+	}
+	#main-search-panel{
+		top: 230px;
+		left: 200px;
 	}
 }
 
@@ -2378,6 +2435,10 @@ li{
 		"empty";
 		grid-template-columns: 1fr;
 	}
+	#main-search-panel{
+		top: 312px;
+		left: 95px;
+	}
 }
 
 
@@ -2436,5 +2497,10 @@ li{
 
 	#get-users-div{
 		width:95%;
+	}
+	#main-search-panel{
+		top: 380px;
+		left: 25px;
+		width: 95%;
 	}
 }
