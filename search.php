@@ -126,7 +126,7 @@ if(isset($_GET['search-text'])){
 
 	$sql="SELECT username,imgpath,datecreated FROM tbluser WHERE username LIKE '%$search%' ORDER BY lastonline DESC $limit";
 	
-	$textline1 = "Result (<b>$rows</b>)";
+	$textline1 = "Result (<b>".number_format($rows)."</b>)";
 	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
 	$paginationCtrls = '';
 	if($last != 1){

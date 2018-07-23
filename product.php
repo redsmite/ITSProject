@@ -11,7 +11,7 @@ if(isset($_GET['id'])){
 }
 
 
-$sql = "SELECT productid,category, productname, description, farmname, username, t1.userid, dateposted, price, view, img, rating FROM tblproduct as t1
+$sql = "SELECT productid,category, productname, description, farmname, username, t1.userid, dateposted, price, view, img, rating, low, prevailing, high FROM tblproduct as t1
 LEFT JOIN tblcategory as t2
 	ON t1.categoryid = t2.categoryid
 LEFT JOIN tbluser as t3
@@ -39,6 +39,9 @@ if(!$row){
 		$img='img/default2.jpg';
 	}
 	$rating = $row->rating;
+	$low = $row->low;
+	$prev = $row->prevailing;
+	$high = $row->high;
 }
 
 // Product views
@@ -87,12 +90,12 @@ chattab();
 					<?php starsystem($rating);?>
 					<p class="product-price">₱ <?php echo $price; ?> / kg</p>
 					<ul>
-						<li>Category: <?php echo $category;?></li>
-						<li>Farm: <?php echo $farm ?></li>
-						<li>Description: <?php echo $desc;?></li>
-						<li>Seller: <a href="profile.php?name=<?php echo $user; ?>" class="black"> <?php echo $user; ?></a></li>
-						<li>Date Posted: <?php echo $date?></li>
-						<li>Views: <?php echo number_format($view); ?></li>
+						<li><b>Category:</b> <?php echo $category;?></li>
+						<li><b>Farm:</b> <?php echo $farm ?></li>
+						<li><b>Description:</b> <?php echo $desc;?></li>
+						<li><b>Seller:</b> <a href="profile.php?name=<?php echo $user; ?>" class="black"> <?php echo $user; ?></a></li>
+						<li><b>Date Posted:</b> <?php echo $date?></li>
+						<li><b>Views:</b> <?php echo number_format($view+1); ?></li>
 					</ul>
 					<div class="add-to-cart" value="<?php echo $id; ?>" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart
 					</div>
@@ -156,9 +159,9 @@ echo '
 				</div>
 				<div>
 					<p>Price / kg</p>
-					Low: <span id="low"></span><br>
-					Prevailing: <span id="prev"></span> <br>
-					High: <span id="high"></span><br>
+					Low: <span id="low">'.$low.'</span><br>
+					Prevailing: <span id="prev">'.$prev.'</span> <br>
+					High: <span id="high">'.$high.'</span><br>
 					<input value="'.$price.'" type="number" required id="price" name="price">
 				</div>
 				<div>
@@ -242,8 +245,8 @@ $high = $fetch->high;
 		}
 		$sql = "UPDATE tblproduct SET categoryid='$category', productname='$name', description='$desc', farmid='$farm', price='$price', img='$filepath' WHERE productid = '$id'";
 		$result = $conn->query($sql);
-		echo 'Product is successfully updated';
-
+		echo "<script>alert('Update Successful')</script>";
+		echo "<meta http-equiv='refresh' content='0'>";
 	}else{
 		echo $error;
 	}

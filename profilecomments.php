@@ -63,7 +63,7 @@ LEFT JOIN tbluser
 WHERE receiver='$rid'
 ORDER BY commentid DESC $limit";
 
-$textline1 = "<i class='fas fa-comments'></i>Comments (<b>$rows</b>)";
+$textline1 = "<i class='fas fa-comments'></i>Comments (<b>".number_format($rows)."</b>)";
 $textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
 $paginationCtrls = '';
 if($last != 1){

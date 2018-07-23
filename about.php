@@ -49,7 +49,7 @@
 					</p>
 					<p>
 					But if we could choose, wouldn’t we rather spend the extra time?if any?with family and attend to more important matters, than spend the hour on a supermarket run?</p>
-					<p>We deliver only the freshest harvest at your doorstep every [Not Yet Defined] straight from the different farms we represent located in 
+					<p>We deliver only the freshest harvest at your doorstep every day straight from the different farms we represent located in 
 <?php
 // Display farm location
 	$data=array();
@@ -85,9 +85,9 @@
 					<p>Source: greengrocermanila</p>
 					<hr>
 					<center><h1 id="how-to-order"><span id="highlight-text" class="">How</span> to Order?</h1></center>
-					<p>Ordering here is pretty easy, you only need to do is click an item, add to the cart and checkout and choose a payment option for our great services. If these steps are unclear, please refer to the following steps.</p>
+					<p>Ordering here is pretty easy, all you need to do is click an item, add to the cart and checkout and choose a payment option for our great services. If these steps are unclear, please refer to the following steps.</p>
 					<p>1. Search for the product you want.</p>
-					<p>There are plenty of ways to <strong>Search</strong> for the items you want like searching for keywords or browse categories or sorting for prices.</p>
+					<p>There are plenty of ways to <strong>Search</strong> for the items you want like searching for keywords or browse categories.</p>
 					<p>2. Click the add-to-cart button</p>
 					<p> Click that green button with a <strong>Shopping Cart Icon</strong>. The item will be added on your shopping cart.</p>
 					<p>3. Checkout your order.</p>

@@ -1,3 +1,16 @@
+// Number format
+function addCommas(nStr) {
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+
 //sideMenu
 function openSlideMenu(){
 	document.getElementById('side-menu').style.width='90px';
@@ -1237,7 +1250,7 @@ function sendAllUser(){
 			if(response){
 				removeSpinners();
 				form.reset();
-				alert('Message has been sent to all users');
+				alert('Message is sent to all users');
 			}
 		}
 		myRequest.send(formData);
@@ -1711,7 +1724,7 @@ function reportuser(){
 		myRequest.onload = function(){
 			var response= this.responseText;
 			if(response){
-				alert('Your report has been sent for review, thank you.');
+				alert('Your report is sent for the review, thank you.');
 				removeSpinners();
 				hidereport();
 				form.reset();
@@ -1766,7 +1779,7 @@ function sendAnnounce(){
 		myRequest.onload = function(){
 			var response= this.responseText;
 			form.reset();
-			alert('Your announcement has been sent to the home page');
+			alert('Your announcement is sent to the home page');
 		}
 		myRequest.send(formData);		
 	}
@@ -1836,7 +1849,7 @@ function addProductAjax(){
 			console.log(response);
 			if(response=='success'){
 				form.reset();
-				alert(name + ' has been added to the database');
+				alert(name + ' is added to the database');
 			}else{
 				document.getElementById('error-message2').innerHTML=response;
 			}
@@ -1894,9 +1907,48 @@ function addThistoCart(click){
 	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
 	myRequest.onload = function(){
 		removeSpinners();
+		response = this.responseText;
+		console.log(response);
 	}
 	myRequest.send(formData);		
+}
 
+function addWeight(click){
+	let id = click.getAttribute('id');
+	let input = document.getElementById(id);
+	let weight = input.value;
+
+	let priceid = 'price-'+id;
+	let price = document.getElementById(priceid).value;
+
+	let total = weight * price;
+	let outputid = 'unit-price'+id;
+	let output = document.getElementById(outputid);
+	output.innerHTML = addCommas(total.toFixed(2));
+
+	let ftotal = document.getElementById('total').innerHTML;
+	let ftotalint = parseInt(ftotal);
+	let ftotalval = ftotalint + total;
+
+	let foutput = document.getElementById('total');
+	foutput.innerHTML=addCommas(ftotalval.toFixed(2));
+}
+
+function deleteCart(){
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'productprocess.php';
+
+	var formData = "delete='delete'";
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+	myRequest.onload = function(){
+		response = this.responseText;
+		let cart = document.getElementById('shopping-cart-content');
+		cart.innerHTML = '<p>Shopping Cart is empty...</p>';
+	}
+	myRequest.send(formData);
 }
 
 // Photo

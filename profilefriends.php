@@ -58,7 +58,7 @@ $page_rows = 8;
 	    $pagenum = $last; 
 	}
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
-	$textline1 = $name."'s Friends (<b>$rows</b>)";
+	$textline1 = $name."'s Friends (<b>".number_format($rows)."</b>)";
 	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
 	$paginationCtrls = '';
 	if($last != 1){

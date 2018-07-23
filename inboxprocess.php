@@ -101,21 +101,21 @@ if(isset($_POST['hellobot'])){
 
 if(isset($_POST['song'])){
 	$name=$_SESSION['name'];
-	$message='(♪ Jazz music playing...)';
+	$message='(♪ Background music playing...)';
 
 	sendmessage(71,$name,$message);
 }
 
 if(isset($_POST['time'])){
 	$name=$_SESSION['name'];
-	$message='The time is ' . date("h:i:s A") . ' '. $name. '-san';
+	$message='The time is ' . date("h:i:s A") . ' '. $name;
 
 	sendmessage(71,$name,$message);
 }
 
 if(isset($_POST['thanks'])){
 	$name=$_SESSION['name'];
-	$message='You\'re welcome '. $name. '-san!';
+	$message='You\'re welcome '. $name. '!';
 
 	sendmessage(71,$name,$message);
 }
@@ -129,7 +129,7 @@ if(isset($_POST['chat'])){
 
 if(isset($_POST['bye'])){
 	$name=$_SESSION['name'];
-	$message='Goodbye '. $name. '-san see you later!';
+	$message='Goodbye '. $name. ' see you later!';
 
 	sendmessage(71,$name,$message);
 }

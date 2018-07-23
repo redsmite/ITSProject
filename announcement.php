@@ -53,7 +53,7 @@ echo'</div>
 $sql = "SELECT commentannid FROM tblcommentann WHERE announceid = '$id'";
 $result= $conn->query($sql);
 $comments = $result->num_rows;
-echo'<p>Comments ('.$comments.')</p>
+echo'<p>Comments ('.number_format($comments).')</p>
 ';
 
 

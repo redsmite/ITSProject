@@ -39,7 +39,7 @@ if($name!=$_SESSION['name']){
 		<source src="audio/tuturumayushiidesuring.mp3" type="audio/mpeg">
 	</audio>
 	<audio id="mySong">
-		<source src="audio/lounge.mp3" type="audio/mpeg">
+		<source src="audio/credens.mp3" type="audio/mpeg">
 	</audio>
 	<div class="closethis"><a href="inbox.php?name='.$_SESSION['name'].'"><i class="fas fa-times"></i></a></div>
 	<div class="inbox-grid">
@@ -143,7 +143,7 @@ while($row=$result->fetch_object()){
 	    $pagenum = $last; 
 	}
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
-	$textline1 = "<i class='fas fa-comments'></i>Conversations (<b>$rows</b>)";
+	$textline1 = "<i class='fas fa-comments'></i>Conversations (<b>".number_format($rows)."</b>)";
 	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
 	$paginationCtrls = '';
 	if($last != 1){

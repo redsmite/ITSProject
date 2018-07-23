@@ -62,7 +62,7 @@ if(isset($_POST['add'])){
 	}
 
 	if(!$error){
-		$sql = "INSERT INTO tblproduct (categoryid, productname, description, farmid, userid, dateposted, price) VALUES ('$category','$name','$desc','$farm','$userid',NOW(),'$price')";
+		$sql = "INSERT INTO tblproduct (categoryid, productname, description, farmid, userid, dateposted, price, rating) VALUES ('$category','$name','$desc','$farm','$userid',NOW(),'$price','50')";
 		$result = $conn->query($sql);
 
 		echo 'success';
@@ -73,9 +73,17 @@ if(isset($_POST['add'])){
 
 if(isset($_POST['cart'])){
 	$id = $_POST['cart'];
+	$array = explode('|',$_SESSION['cart']);
+	array_pop($array);
+	if(in_array($id, $array)){
 
-	$_SESSION['cart'] .= $id.'|';
+	}else{
+		$_SESSION['cart'] .= $id.'|';
+	}
+}
 
+if(isset($_POST['delete'])){
+	unset($_SESSION['cart']);
 }
 
 if(isset($_POST['showcart'])){
@@ -88,7 +96,6 @@ if(isset($_POST['showcart'])){
 	echo'<ul>';
 	$array = explode('|',$_SESSION['cart']);
 	array_pop($array);
-	$total=0;
 	foreach ($array as $key => $value) {
 		$sql = "SELECT productname,price FROM tblproduct
 		WHERE productid = '$value'";
@@ -97,12 +104,17 @@ if(isset($_POST['showcart'])){
 		$name = $row->productname;
 		$price = $row->price;
 
-		$total = $total + $price;
-		echo '<li>'.$name.' ₱'.$price.'</li>';
+		echo '<li>'.$name.'<br>
+		₱'.number_format($price,2).' / kg x
+		<input type="number" onkeyup="addWeight(this)" step="any" id="'.$value.'">
+		<input type="hidden" id="price-'.$value.'" value="'.$price.'"">
+		Unit Price: ₱<span id="unit-price'.$value.'"></span>
+		</li>';
 	}
 	echo'</ul>
-	<h3> Total: ₱' . number_format($total,2).'</h3>';
-	
+	<h3> Total: ₱<span id="total">0</span></h3>
+	<div class="add-to-cart" onclick="showCartPanel()"><i class="fas fa-sync-alt"></i></div>
+	<div class="red-cart" onclick="deleteCart()"><i class="fas fa-trash-alt"></i></div>';
 	}
 }
 ?>

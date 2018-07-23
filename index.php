@@ -97,7 +97,7 @@ $row=$result->fetch_object();
 $sql = "SELECT commentannid FROM tblcommentann WHERE announceid = '$announceid'";
 $result= $conn->query($sql);
 $comments = $result->num_rows;
-echo'<p>Comments ('.$comments.')</p>
+echo'<p>Comments ('.number_format($comments).')</p>
 		</div>
 		';
 ?>

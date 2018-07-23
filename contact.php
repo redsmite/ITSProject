@@ -25,7 +25,7 @@
 	?>
 	<!-- Contact Form -->
 		<div class="other-content">
-			<h1><i class="far fa-envelope"></i> Contact Us</h1>
+			<h1>Contact Us</h1>
 			<h2><span id="highlight-text">Get</span> in Touch</h2>	
 			<div class="form">
 				<center>

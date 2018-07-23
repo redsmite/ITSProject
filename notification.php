@@ -46,7 +46,7 @@ $page_rows = 10;
 	    $pagenum = $last; 
 	}
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
-	$textline1 = "<i class='fas fa-bell'></i>Notifications (<b>$rows</b>)";
+	$textline1 = "<i class='fas fa-bell'></i>Notifications (<b>".number_format($rows)."</b>)";
 	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
 	$paginationCtrls = '';
 	if($last != 1){
