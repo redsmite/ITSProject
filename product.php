@@ -44,7 +44,7 @@ if(!$row){
 	$high = $row->high;
 }
 
-// Product views
+// Product view
 if(!isset($_SESSION['id'])){
 
 	$sql = "UPDATE tblproduct SET view=view+1 WHERE productid='$id'";
@@ -95,7 +95,7 @@ chattab();
 						<li><b>Description:</b> <?php echo $desc;?></li>
 						<li><b>Seller:</b> <a href="profile.php?name=<?php echo $user; ?>" class="black"> <?php echo $user; ?></a></li>
 						<li><b>Date Posted:</b> <?php echo $date?></li>
-						<li><b>Views:</b> <?php echo number_format($view+1); ?></li>
+						<li><b>Views:</b> <?php if($_SESSION['id']==$userid){echo number_format($view);}else{echo number_format($view+1);} ?></li>
 					</ul>
 					<div class="add-to-cart" value="<?php echo $id; ?>" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart
 					</div>
@@ -106,8 +106,14 @@ chattab();
 			</div>
 			<div class="product-main-right">
 <?php
-// Update Product
 	if(isset($_SESSION['id'])){
+if($_SESSION['type']==3 OR $_SESSION['type']==4){
+	echo'<div class="align-right-button">
+	<a href="addproduct.php" class="white"><i class="fas fa-plus"></i> Add Product</a>
+	</div>';
+}
+
+// Update Product
 		if($_SESSION['id']==$userid){
 echo '
 <div class="edit-form">
@@ -165,8 +171,11 @@ echo '
 					<input value="'.$price.'" type="number" required id="price" name="price">
 				</div>
 				<div>
-					<p>Image</p>
-					<input type="file" name="img">
+					<p>Image</p>';
+if($img=='img/default2.jpg'){
+	echo'<h2 style="background:red;color:white;margin:5px;">No Image Yet, add image here.</h2>';
+}
+					echo'<input type="file" name="img">
 				</div>
 				<div>
 					<input type="submit" value="submit" name="submit">
@@ -245,7 +254,6 @@ $high = $fetch->high;
 		}
 		$sql = "UPDATE tblproduct SET categoryid='$category', productname='$name', description='$desc', farmid='$farm', price='$price', img='$filepath' WHERE productid = '$id'";
 		$result = $conn->query($sql);
-		echo "<script>alert('Update Successful')</script>";
 		echo "<meta http-equiv='refresh' content='0'>";
 	}else{
 		echo $error;

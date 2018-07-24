@@ -101,6 +101,11 @@ a{
 	text-decoration: underline;
 }
 
+.white{
+	color:var(--light-color);
+	text-decoration: underline;
+}
+
 .center{
 	text-align: center;
 }
@@ -740,7 +745,7 @@ li{
 }
 
 .announcement a{
-	background: red;
+	background: linear-gradient(to right, red , var(--dark-color));
 	color: var(--light-color);
 	padding: 2px 5px;
 	font-weight: bold;
@@ -837,6 +842,16 @@ li{
 	box-sizing: border-box;
 	text-align: center;
 	box-shadow: 0 0 2px var(--dark-purple);
+}
+
+.align-right-button{
+	text-align: center;
+	float: right;
+	cursor: pointer;
+	font-size: 1.2em;
+	padding: 1em;
+	background: var(--dark-color);
+	color: var(--light-color);
 }
 
 .product:hover{
@@ -2238,6 +2253,24 @@ li{
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
+
+.refresh-button{
+	text-align: center;
+	margin: 2px auto;
+	cursor: pointer;
+	width: 50px;
+	font-size: 0.5em;
+	padding: 0.5em;
+	border-radius: 8px;
+	background: var(--lime);
+	color: var(--light-color);
+}
+
+.remove-button{
+	float:right;
+	cursor: pointer;
+}
+
 #cart-modal{
 	display:none;
 	position:fixed;
@@ -2257,14 +2290,22 @@ li{
 	width: 300px;
 	height: 100%;
 	overflow: auto;
-	background: var(--primary-color);
-	border: 1px solid var(--darkgray);
-	color: var(--light-color);
+	background: var(--light-color);
+	border: 1px solid var(--dark-color);
+	color: var(--dark-color);
 	text-align: center;
 	box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	animation-name:modalopen;
 	animation-duration: 350ms;
 	transition-timing-function: ease-in;
+}
+
+#cart-panel h1{
+	color: var(--light-color);
+	background: var(--primary-color);
+	font-family: verdana,sans-serif;
+	padding: 5px 0;
+	font-size: 1.2em;
 }
 
 #cart-panel ul{
@@ -2276,8 +2317,11 @@ li{
 	border-bottom: 2px solid var(--darkgray);
 	line-height: 1.2em;
 	background: var(--light-color);
-	color: var(--secondary-contrast);
 	padding: 5px 0;
+}
+
+.kg-input{
+	width: 50px;
 }
 
 /* Footer */
@@ -2468,6 +2512,9 @@ li{
 	#main-search-panel{
 		top: 312px;
 		left: 95px;
+	}
+	.align-right-button{
+		float:none;
 	}
 }
 

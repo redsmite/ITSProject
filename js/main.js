@@ -1845,11 +1845,12 @@ function addProductAjax(){
 
 		myRequest.onload = function(){
 			var response= this.responseText;
+			var array = response.split('|');
 			removeSpinners();
-			console.log(response);
-			if(response=='success'){
+			if(array[0]=='success'){
 				form.reset();
 				alert(name + ' is added to the database');
+				window.location.href = 'product.php?id='+array[1];
 			}else{
 				document.getElementById('error-message2').innerHTML=response;
 			}
@@ -1888,7 +1889,6 @@ function showCartPanel(){
 function hideCartPanel(){
 	let panel = document.getElementById('cart-panel');
 	let modal = document.getElementById('cart-modal');
-
 	
 	panel.style.display='none';
 	modal.style.display='none';	
@@ -1907,15 +1907,15 @@ function addThistoCart(click){
 	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
 	myRequest.onload = function(){
 		removeSpinners();
-		response = this.responseText;
-		console.log(response);
 	}
-	myRequest.send(formData);		
+	myRequest.send(formData);
 }
 
-function addWeight(click){
+function addWeight(click){ 
+	let key = click.getAttribute('value');
 	let id = click.getAttribute('id');
-	let input = document.getElementById(id);
+	let inputid = 'input-'+id;
+	let input = document.getElementById(inputid);
 	let weight = input.value;
 
 	let priceid = 'price-'+id;
@@ -1932,6 +1932,22 @@ function addWeight(click){
 
 	let foutput = document.getElementById('total');
 	foutput.innerHTML=addCommas(ftotalval.toFixed(2));
+	input.disabled=true;
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'productprocess.php';
+
+	var formData = "weight="+weight+"&price="+price+"&listid="+id+"&total="+ftotalval+"&key="+key;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+		document.getElementById('top-total').innerHTML='₱'+addCommas(ftotalval.toFixed(2));
+	}
+	myRequest.send(formData);
 }
 
 function deleteCart(){
@@ -1949,6 +1965,31 @@ function deleteCart(){
 		cart.innerHTML = '<p>Shopping Cart is empty...</p>';
 	}
 	myRequest.send(formData);
+}
+
+function removeList(click){
+	let id = click.getAttribute('value');
+	let listid = 'list-'+id;
+	let list = document.getElementById(listid);
+	list.style.display='none';
+	
+	addSpinners();
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'productprocess.php';
+
+	var formData = "remove="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		console.log(response);
+		removeSpinners();
+	}
+	myRequest.send(formData);		
 }
 
 // Photo

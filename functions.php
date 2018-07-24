@@ -185,6 +185,9 @@ function session_button(){
 	$conn = mysqli_connect ("localhost", "root", "", "itsproject");
 
 // Shopping Cart
+	if(isset($_SESSION['total'])){
+		echo '<div id="top-total" style="display:inline-block;">₱'.number_format($_SESSION['total'],2).'</div>';
+	}
 	echo'
 	<div id="cart-panel">
 		<h1>Shopping Cart</h1>

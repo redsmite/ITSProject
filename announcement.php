@@ -44,7 +44,7 @@ $date = date('D, F j Y g:i A',strtotime($row->datecreated));
 $author = $row->username;
 
 echo '<h2 id="announcement-title">'.$title.'</h2>
-<p>Posted on: '.$date.' by: <a href="profile.php?name='.$author.'">'.$author.'</a></p>
+<p>Posted on: '.$date.' by: <a class="black" href="profile.php?name='.$author.'">'.$author.'</a></p>
 <div class="announce-content">'.nl2br($content);
 
 echo'</div>

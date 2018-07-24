@@ -91,7 +91,7 @@
 					<p>2. Click the add-to-cart button</p>
 					<p> Click that green button with a <strong>Shopping Cart Icon</strong>. The item will be added on your shopping cart.</p>
 					<p>3. Checkout your order.</p>
-					<p> Click for the icon located at the top-right corner of the screen. The shopping cart will pop-out at the right of the screen. Choose the <strong>Weight</strong> of the product in kilograms. Click <strong>Checkout</strong> then 
+					<p> Click for the icon located at the top-right corner of the screen. The shopping cart will pop-out at the right of the screen. Choose the <strong>Weight</strong> the product in kilograms. Click the green <strong>Shopping Cart Button</strong> then 
 <?php
 	// Show Login Modal
 	if(isset($_SESSION['id'])){
