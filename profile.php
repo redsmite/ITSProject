@@ -5,13 +5,13 @@
 	//Get Profile Info
 	require_once'connection.php';
 
-	if(!isset($_GET['name'])){
+	if(!isset($_GET['id'])){
 		die('<div id="thanks-message"><p>This page doesn\'t exist.</p></div>');
 	}
 
-	if(isset($_GET['name'])){
-		$name = $_GET['name'];
-		$sql="SELECT userid,username,firstname,middlename,lastname,birthday,datecreated,email,website,location,usertypeid,imgpath,bio,is_show_email,gender,lastonline,profileviews FROM tbluser WHERE username='$name'";
+	if(isset($_GET['id'])){
+		$id = $_GET['id'];
+		$sql="SELECT userid,username,firstname,middlename,lastname,birthday,datecreated,email,website,location,usertypeid,imgpath,bio,is_show_email,gender,lastonline,profileviews FROM tbluser WHERE userid='$id'";
 		
 		$result=$conn->query($sql);
 
@@ -121,29 +121,28 @@
 					</div>
 					<div class="friends">
 						<h1>Friends</h1>
-						<a href="profilefriends.php?name=<?php echo $name; ?>"><p id="showallfr">Show all friends</p></a>
+						<a href="profilefriends.php?id=<?php echo $id; ?>"><p id="showallfr">Show all friends</p></a>
 <?php
 // Show friends
-$sql="SELECT user1,user2,username,imgpath FROM tblfriend
+$sql="SELECT tbluser.userid,user1,user2,username,imgpath FROM tblfriend
 LEFT JOIN tbluser
 	ON userid=user1 or userid=user2
  WHERE (user1='$id' or user2='$id') AND accepted=2 AND userid!='$id'
  ORDER BY lastonline DESC LIMIT 12";
 $result=$conn->query($sql);
 while($rows=$result->fetch_object()){
-$user1=$rows->user1;
-$user2=$rows->user2;
+$userid=$rows->userid;
 $username=$rows->username;
 $imgpath=$rows->imgpath;
-
+if($imgpath==''){
+	$imgpath='img/default.png';
+}
 	echo'<div class="friends-tn">
-			<a title="'.$username.'" href="profile.php?name='.$username.'"><img src="'.$imgpath.'"></a>
+			<a title="'.$username.'" href="profile.php?id='.$userid.'"><img src="'.$imgpath.'"></a>
 		</div>';
 
 
 }
-
-
 
 ?>
 					</div>
@@ -151,16 +150,16 @@ $imgpath=$rows->imgpath;
 						<ul>
 						<?php
 						if(isset($_SESSION['id'])){
-							if($_SESSION['name']==$_GET['name']){
+							if($_SESSION['id']==$_GET['id']){
 								echo'
-									<li><a href="inbox.php?name='.$_GET["name"].'"><i class="fas fa-envelope"></i> Check Inbox</a></li>
+									<li><a href="inbox.php?id='.$_GET["id"].'"><i class="fas fa-envelope"></i> Check Inbox</a></li>
 									<li><a href="insertphoto.php"><i class="fas fa-camera"></i> Change Profile Picture</a></li>
 									<li><a href="editinfo.php"><i class="fas fa-pen-square"></i> Edit Personal Info</a></li>
 									<li><a href="accountsetting.php"><i class="fas fa-cog"></i> Account Settings</a></li>';
 							}else{
 								echo'
 								<li>
-								<a href="inbox.php?name='.$_GET["name"].'"><i class="fas fa-comments"></i> Chat with '.$_GET["name"].'</a>
+								<a href="inbox.php?id='.$_GET["id"].'"><i class="fas fa-comments"></i> Chat with '.$user.'</a>
 								</li>
 								<li><a id="report" onclick="showreport()"><i class="far fa-flag"></i> Report this User</a>
 								</li>';
@@ -183,10 +182,10 @@ if($testR->num_rows!=0){
 	} else if ($accepted==2){
 		echo'<li><a id="rmv-fr" value="'.$fid.'" onclick="friendremove()"><i class="fas fa-ban"></i> Remove Friend</a></li>';
 	} else if ($accepted==3 && $friendsince==''){
-		echo'<li><a id="fr-btn" value="'.$name.'" onclick="friendprocess()"><i class="fas fa-user-plus"></i> Add as friend</a></li>';
+		echo'<li><a id="fr-btn" value="'.$id.'" onclick="friendprocess()"><i class="fas fa-user-plus"></i> Add as friend</a></li>';
 	}
 }else{
-	echo'<li><a id="fr-btn" value="'.$name.'" onclick="friendprocess()"><i class="fas fa-user-plus"></i> Add as friend</a></li>';
+	echo'<li><a id="fr-btn" value="'.$id.'" onclick="friendprocess()"><i class="fas fa-user-plus"></i> Add as friend</a></li>';
 }
 							}
 						}
@@ -269,29 +268,25 @@ echo'<li><a href="myproducts.php?id='.$id.'"><i class="far fa-money-bill-alt"></
 					<div class="comment-grid">
 					<div id="profile-comments">
 						<h1><i class="fas fa-comments"></i>Comments</h1>
-						<p align="right"><a id="allcom" href="profilecomments.php?name=<?php echo $name ?>">Show All Comments</a></p>
+						<p align="right"><a id="allcom" href="profilecomments.php?id=<?php echo $id ?>">Show All Comments</a></p>
 						<?php
 						if(isset($_SESSION['id'])){
 							echo'<div>
 							<form action="commentprocess.php" method="post" id="postcomment">
 								<textarea name="comment" required id="comment"></textarea>
 								<input type="hidden" id="hidden" name="hidden" value="'.$_SESSION["id"].'" />
-								<input type="hidden" id="hidden2" name="hidden2" value="'.$_GET["name"].'" />
+								<input type="hidden" id="hidden2" name="hidden2" value="'.$_GET["id"].'" />
 								<input type="submit" id="comment-submit" name="comment-submit" value="submit">
 								</form>
 							</div>';
 							}
 							?>
 <?php
-	$sql2="SELECT userid FROM tbluser WHERE username='$name'";
-	$result2=$conn->query($sql2);
-	$row=$result2->fetch_object();
-	$rid=$row->userid;
 
 	$sql3="SELECT commentid,tblcomment.userid,username,comment,dateposted,imgpath,modified FROM tblcomment
 	LEFT JOIN tbluser
 		ON tblcomment.userid = tbluser.userid
-	WHERE receiver='$rid'
+	WHERE receiver='$id'
 	ORDER BY commentid DESC
 	LIMIT 15";
 
@@ -315,7 +310,7 @@ echo'<li><a href="myproducts.php?id='.$id.'"><i class="far fa-money-bill-alt"></
 
 		echo'<div id="comment'.$Cid.'" class="comment-box">
 		<div class="comment-header">
-		<a class="cm-user" href="profile.php?name='.$Cuser.'">
+		<a class="cm-user" href="profile.php?id='.$Cuid.'">
 		<div class="comment-tn">
 		<img src="'.$Cimg.'">
 		</div>
@@ -330,13 +325,13 @@ echo'<li><a href="myproducts.php?id='.$id.'"><i class="far fa-money-bill-alt"></
 if(!isset($_SESSION['name'])|| !isset($_SESSION['id']))
 {
 
-}else if($name==$_SESSION['name']||$Cuid==$_SESSION['id']){
+}else if($id==$_SESSION['id']||$Cuid==$_SESSION['id']){
 echo'
 <form align="right" action="commentprocess.php" method="post">
-<input type="hidden" name="hidden4" value="'.$_GET["name"].'" />
+<input type="hidden" name="hidden4" value="'.$_GET["id"].'" />
 <input type="hidden" name="hidden3" value="'.$Cid.'">'; 
 if($Cuid==$_SESSION['id']){
-	echo'<a class="profile-edit" href="editcomment.php?id='.$Cid.'&name='.$name.'&this='.$Cuid.'">edit</a>';
+	echo'<a class="profile-edit" href="editcomment.php?cid='.$Cid.'&pid='.$id.'&this='.$_SESSION['id'].'">edit</a>';
 }
 echo'	<input type="submit" value="delete" name="deletebtn">   
 

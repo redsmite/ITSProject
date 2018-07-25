@@ -77,7 +77,7 @@ $page_rows = 10;
 
 
 
-$sql="SELECT notifid,username,imgpath,receiverid,notifdate,notiftype,details,details2 FROM tblnotif
+$sql="SELECT tblnotif.userid,notifid,username,imgpath,receiverid,notifdate,notiftype,details,details2 FROM tblnotif
 LEFT JOIN tbluser
 ON tblnotif.userid=tbluser.userid
 WHERE receiverid='$id' 
@@ -89,6 +89,7 @@ echo '<ul id="notiflist">';
 while($rows=$result->fetch_object())
 {
 $nid=$rows->notifid;
+$uid=$rows->userid;
 $uname=$rows->username;
 $rid=$rows->receiverid;
 $type=$rows->notiftype;
@@ -104,13 +105,13 @@ if($type==1){
 
 	echo'<li><div class="comment-tn">
 				<img src="'.$imgpath.'">
-			</div><a class="n1" href="profile.php?name='.$uname.'">'.$uname.'</a> <a class="n2" href="profile.php?name='.$_SESSION['name'].'#comment'.$details.'"> has commented on your profile '.$date.'</a></li>';
+			</div><a class="n1" href="profile.php?id='.$uid.'">'.$uname.'</a> <a class="n2" href="profile.php?name='.$_SESSION['name'].'#comment'.$details.'"> has commented on your profile '.$date.'</a></li>';
 } else if($type==2){
 	if ($details2==1){
 	echo'<li><div class="comment-tn">
 				<img src="'.$imgpath.'">
 			</div>
-			 <a class="n1" href="profile.php?name='.$uname.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
+			 <a class="n1" href="profile.php?id='.$uid.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
 		<div id="fr-'.$nid.'"><a class="fr-yes" onclick="friendyesb(this)" value="'.$nid.'">Yes</a> <a class="fr-no" onclick="friendnob(this)" value="'.$nid.'">No</a>
 		</div>
 		</li>';
@@ -118,7 +119,7 @@ if($type==1){
 		echo'<li><div class="comment-tn">
 				<img src="'.$imgpath.'">
 			</div>
-			 <a class="n1" href="profile.php?name='.$uname.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
+			 <a class="n1" href="profile.php?id='.$uid.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
 		<div id="fr-'.$nid.'">
 			Request Accepted
 		</div>
@@ -127,7 +128,7 @@ if($type==1){
 		echo'<li><div class="comment-tn">
 				<img src="'.$imgpath.'">
 			</div>
-			 <a class="n1" href="profile.php?name='.$uname.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
+			 <a class="n1" href="profile.php?id='.$uid.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
 		<div id="fr-'.$nid.'">
 			Request Denied
 		</div>

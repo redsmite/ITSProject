@@ -1,6 +1,12 @@
 <?php
 date_default_timezone_set('Asia/Manila');
 
+// Random Character Generator
+function randomString($length)
+{
+    return bin2hex(random_bytes($length));
+}
+
 function companytitle(){
 	echo'Bahay Kubo';
 }
@@ -68,6 +74,9 @@ function addfooter(){
 				<a target="_blank" title="Like us on Facebook" href="https://www.facebook.com/BahayKuboniMangCelso/?ref=page_internal"><i class="fab fa-facebook-square"></i></a>
 				<a target="_blank" title="Follow us on Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
 				<a target="_blank" title="Follow us on Instagram" href="https://www.instagram.com/?hl=ens"><i class="fab fa-instagram"></i></a>
+				<p><a href="about.php">About Us</a>
+				<a href="contact.php">Contact Us</a>
+				</p>
 				<p>Copyright &copy; <span id="company">Bahay Kubo ni Mang Celso</span> | 2018</p>
 			</div>
 		</footer>';
@@ -185,10 +194,11 @@ function session_button(){
 	$conn = mysqli_connect ("localhost", "root", "", "itsproject");
 
 // Shopping Cart
+	echo '<div id="top-total" onclick="showCartPanel()">';
 	if(isset($_SESSION['total'])){
-		echo '<div id="top-total" style="display:inline-block;">₱'.number_format($_SESSION['total'],2).'</div>';
+		echo '₱'.number_format($_SESSION['total'],2);
 	}
-	echo'
+	echo'</div>
 	<div id="cart-panel">
 		<h1>Shopping Cart</h1>
 		<div id="shopping-cart-content"></div>
@@ -210,7 +220,7 @@ function session_button(){
 $sql="SELECT pmid FROM tblpm WHERE receiverid='$id' AND checked=0 GROUP BY senderid";
 $result=$conn->query($sql);
 $count=$result->num_rows;
-		echo'<a class="button" title="Check your messages" href="inbox.php?name='.$_SESSION["name"].'"><i class="far fa-envelope"></i><span id="pmnum">'.$count.'</span></a>';
+		echo'<a class="button" title="Check your messages" href="inbox.php?id='.$_SESSION["id"].'"><i class="far fa-envelope"></i><span id="pmnum">'.$count.'</span></a>';
 
 //Notification Count
 
@@ -221,14 +231,14 @@ $result=$conn->query($sql);
 $count=$result->num_rows;
 
 		echo'<a class="button" id="notifbtn" title="Check your notifications" onclick="toggleNotif()""><i class="far fa-bell"></i><span id="notifnum">'.$count.'</span></a>
-		<a class="button" href=profile.php?name='.$_SESSION['name'].'>
+		<a class="button" href=profile.php?id='.$_SESSION['id'].'>
 		'.$_SESSION["name"].'\'s Profile<div class="top-tn"><img src="'.$tn_image.'""></div></a>';
 		echo'<div id="notifdrop">
 		Notifications
 		<ul>';
 
 //Notification Drop down
-$sql="SELECT notifid,username,imgpath,receiverid,notifdate,notiftype,checked,details,details2 FROM tblnotif
+$sql="SELECT notifid,tblnotif.userid,username,imgpath,receiverid,notifdate,notiftype,checked,details,details2 FROM tblnotif
 	LEFT JOIN tbluser
 		ON tblnotif.userid=tbluser.userid
 	WHERE receiverid='$id'
@@ -244,6 +254,7 @@ if($count==0){
 while($rows=$result->fetch_object())
 {
 $nid=$rows->notifid;
+$uid=$rows->userid;
 $uname=$rows->username;
 $rid=$rows->receiverid;
 $date=time_elapsed_string($rows->notifdate);
@@ -262,13 +273,13 @@ if($type==1){
 
 	echo'<li><div class="comment-tn">
 				<img src="'.$imgpath.'">
-			</div> <a class="n1" href="profile.php?name='.$uname.'">'.$uname.'</a> <a class="n2" href="profile.php?name='.$_SESSION['name'].'#comment'.$details.'"> has commented on your profile '.$date.'</a></li>';
+			</div> <a class="n1" href="profile.php?id='.$uid.'">'.$uname.'</a> <a class="n2" href="profile.php?id='.$_SESSION['id'].'#comment'.$details.'"> has commented on your profile '.$date.'</a></li>';
 } else if($type==2){
 	if ($details2==1){
 	echo'<li><div class="comment-tn">
 				<img src="'.$imgpath.'">
 			</div>
-			 <a class="n1" href="profile.php?name='.$uname.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
+			 <a class="n1" href="profile.php?id='.$uid.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
 		<div id="fr-'.$nid.'"><a class="fr-yes" onclick="friendyes(this)" value="'.$nid.'">Yes</a> <a class="fr-no" onclick="friendno(this)" value="'.$nid.'">No</a>
 		</div>
 		</li>';
@@ -276,7 +287,7 @@ if($type==1){
 		echo'<li><div class="comment-tn">
 				<img src="'.$imgpath.'">
 			</div>
-			 <a class="n1" href="profile.php?name='.$uname.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
+			 <a class="n1" href="profile.php?id='.$uid.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
 		<div id="fr-'.$nid.'">
 			Request Accepted
 		</div>
@@ -285,7 +296,7 @@ if($type==1){
 		echo'<li><div class="comment-tn">
 				<img src="'.$imgpath.'">
 			</div>
-			 <a class="n1" href="profile.php?name='.$uname.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
+			 <a class="n1" href="profile.php?id='.$uid.'">'.$uname.'</a> has sent a friend request '.$date.'<br>
 		<div id="fr-'.$nid.'">
 			Request Denied
 		</div>
@@ -331,7 +342,7 @@ function chattab(){
 	$conn = new mysqli('localhost','root','','itsproject');
 	
 
-	$sql="SELECT username,imgpath,lastonline FROM tblfriend
+	$sql="SELECT userid,username,imgpath,lastonline FROM tblfriend
 	LEFT JOIN tbluser
 		ON userid=user1 or userid=user2
 	WHERE (user1='$id' or user2='$id') AND accepted=2 AND userid!='$id'
@@ -349,12 +360,16 @@ function chattab(){
 			<div id="chat-panel-body">
 				<ul>';
 	while($row=$result->fetch_object()){
+		$id=$row->userid;
  		$name=$row->username;
  		$img=$row->imgpath;
+ 		if(!$img){
+ 			$img="img/default.png";
+ 		}
  		$online=$row->lastonline;
  		$time=time();
 
- 		echo '<a href="inbox.php?name='.$name.'"><li>
+ 		echo '<a href="inbox.php?id='.$id.'"><li>
  		<div class="chat-panel-tn">
  			<img src="'.$img.'">
  		</div>';
@@ -401,7 +416,7 @@ function reportuser(){
 				<p>Other reasons:</p>
 				<textarea id="report-reasons" placeholder="State other reasons..."></textarea>
 				<br>
-				<input type="hidden" id="report-username" value="'.$_GET['name'].'">
+				<input type="hidden" id="report-userid" value="'.$_GET['id'].'">
 				<input type="submit">
 			</form>
 		</div>

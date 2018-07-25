@@ -7,7 +7,16 @@ setupCookie();
 updateStatus();
 chattab();
 require_once'connection.php';
-$name=$_GET['name'];
+if(!isset($_GET['id'])){
+	die('This page doesn\'t exists.');
+}else{
+	$id=$_GET['id'];
+
+	$sql="SELECT username FROM tbluser WHERE userid='$id'";
+	$result=$conn->query($sql);
+	$fetch=$result->fetch_object();
+	$name=$fetch->username;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,10 +40,6 @@ $name=$_GET['name'];
 			<div class="wrap-center">
 <?php
 // Show friends
-$sql="SELECT userid FROM tbluser WHERE username='$name'";
-$result=$conn->query($sql);
-$rows=$result->fetch_object();
-$id=$rows->userid;
 
 $sql="SELECT friendid FROM tblfriend
 LEFT JOIN tbluser
@@ -64,34 +69,30 @@ $page_rows = 8;
 	if($last != 1){
 		if ($pagenum > 1) {
         $previous = $pagenum - 1;
-		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?name='.$name.'&pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
+		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?id='.$id.'&pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
 		for($i = $pagenum-4; $i < $pagenum; $i++){
 			if($i > 0){
-		        $paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?name='.$name.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+		        $paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?id='.$id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
 				}
 	   		}
     	}
 	    $paginationCtrls .= ''.$pagenum.' &nbsp; ';
 	    for($i = $pagenum+1; $i <= $last; $i++){
-			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?name='.$name.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?id='.$id.'&pn='.$i.'">'.$i.'</a> &nbsp; ';
 			if($i >= $pagenum+4){
 				break;
 			}
 		}
 		if ($pagenum != $last) {
 	        $next = $pagenum + 1;
-	        $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?name='.$name.'&pn='.$next.'">Next</a> ';
+	        $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?id='.$id.'&pn='.$next.'">Next</a> ';
 	    }
 	}
 	echo'<h2>  '.$textline1.'</h2>
 	<p>  '.$textline2.' </p>
 	<div id="pagination_controls"> '.$paginationCtrls.'</div>';
 
-
-
-
-
-$sql="SELECT friendsince,username,imgpath,lastonline FROM tblfriend
+$sql="SELECT userid,friendsince,username,imgpath,lastonline FROM tblfriend
 LEFT JOIN tbluser
 	ON userid=user1 or userid=user2
  WHERE (user1='$id' or user2='$id') AND accepted=2 AND userid!='$id'
@@ -102,15 +103,16 @@ while($rows=$result->fetch_object()){
 $since=date("M j, Y", strtotime($rows->friendsince));
 $online=$rows->lastonline;
 $time=time();
-
-
+$userid=$rows->userid;
 $username=$rows->username;
 $imgpath=$rows->imgpath;
-
+if(!$imgpath){
+	$imgpath="img/default.png";
+}
 	echo'<div class="fr-div">
 	<div class="showfr-tn">
-			<a href="profile.php?name='.$username.'"><img src="'.$imgpath.'"></a></div>
-		<p><a href="profile.php?name='.$username.'">'.$username.'</a></p>
+			<a href="profile.php?id='.$userid.'"><img src="'.$imgpath.'"></a></div>
+		<p><a href="profile.php?id='.$userid.'">'.$username.'</a></p>
 		<p>Friend Since: '.$since.'</p>';
 		if($time-strtotime($online)< 300){
 			echo'<h5><font color="#98fb98">Online</font></h5>';

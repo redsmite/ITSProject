@@ -4,8 +4,12 @@ include'functions.php';
 include'connection.php';
 user_access();
 updateStatus();
-if(isset($_GET['name'])){
-	$name=$_GET['name'];	
+if(isset($_GET['id'])){
+	$id=$_GET['id'];
+	$sql ="SELECT username FROM tbluser WHERE userid ='$id'";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$name = $fetch->username;
 }else{
 	die('This page doesn\'t exist.');
 }
@@ -32,24 +36,21 @@ chattab();
 	<!-- Main Content -->
 		<div class="other-content">
 <?php
-if($name!=$_SESSION['name']){
+if($id!=$_SESSION['id']){
 	//Send PM
 	echo'
-	<audio id="myAudio">
-		<source src="audio/tuturumayushiidesuring.mp3" type="audio/mpeg">
-	</audio>
 	<audio id="mySong">
-		<source src="audio/credens.mp3" type="audio/mpeg">
+		<source src="audio/Lounge.mp3" type="audio/mpeg">
 	</audio>
-	<div class="closethis"><a href="inbox.php?name='.$_SESSION['name'].'"><i class="fas fa-times"></i></a></div>
+	<div class="closethis"><a href="inbox.php?id='.$_SESSION['id'].'"><i class="fas fa-times"></i></a></div>
 	<div class="inbox-grid">
 			<div class="left-inbox">
 				<div class="inboxform-div">
 					<form action="#" id="chatform" method="post">
 						<div>
-						<input type="hidden" id="hidden" name="hidden" value="'.$_GET["name"].'" />
+						<input type="hidden" id="hidden" name="hidden" value="'.$_GET["id"].'" />
 						<input type="hidden" id="hidden2" name="hidden2" value="'.$_SESSION["id"].'" />
-							<input placeholder="Send message to '.$_GET["name"].'"type="text" autocomplete="off" id="sendmsg" name="message" required>Enter
+							<input placeholder="Send message to '.$name.'"type="text" autocomplete="off" id="sendmsg" name="message" required>Enter
 						</div>
 					</form>
 				</div>
@@ -71,7 +72,7 @@ if($Rimage==''){
 			echo'<div class="right-inbox"
 	background-attachment: fixed;">';
 
-$sql="SELECT username,imgpath,message,pmdate FROM tblpm
+$sql="SELECT senderid,username,imgpath,message,pmdate FROM tblpm
 LEFT JOIN tbluser
 	ON senderid=userid
 WHERE (receiverid='$id' and username='$name') or (senderid='$id' and receiverid='$Rid')
@@ -79,6 +80,7 @@ WHERE (receiverid='$id' and username='$name') or (senderid='$id' and receiverid=
 
 $result=$conn->query($sql);
 while($row=$result->fetch_object()){
+	$Sid = $row->senderid;
 	$Sname=$row->username;
 	$message=$row->message;
 	$imgpath=$row->imgpath;
@@ -87,9 +89,9 @@ while($row=$result->fetch_object()){
 		$imgpath='img/default.png';
 	}
 
-	if($Sname==$_SESSION['name']){
+	if($Sid==$_SESSION['id']){
 	echo '<div class="chat-me">
-	<a class="sender" href="profile.php?name='.$Sname.'">
+	<a class="sender" href="profile.php?id='.$Sid.'">
 		<div class="comment-tn">
 			<img src="'.$imgpath.'">
 		</div>'.$Sname.'</a><span class="inbox-date">'.time_elapsed_string($date).'</span><br>
@@ -99,7 +101,7 @@ while($row=$result->fetch_object()){
 	</div>';
 	}else{
 	echo '<div class="chat-notme">
-	<a class="sender" href="profile.php?name='.$Sname.'">
+	<a class="sender" href="profile.php?id='.$Sid.'">
 		<div class="comment-tn">
 			<img src="'.$imgpath.'">
 		</div>'.$Sname.'</a><span class="inbox-date">'.time_elapsed_string($date).'</span><br>
@@ -149,30 +151,30 @@ while($row=$result->fetch_object()){
 	if($last != 1){
 		if ($pagenum > 1) {
         $previous = $pagenum - 1;
-		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?name='.$_GET['name'].'&pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
+		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?id='.$_GET['id'].'&pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
 		for($i = $pagenum-4; $i < $pagenum; $i++){
 			if($i > 0){
-		        $paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?name='.$_GET['name'].'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+		        $paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?id='.$_GET['id'].'&pn='.$i.'">'.$i.'</a> &nbsp; ';
 				}
 	   		}
     	}
 	    $paginationCtrls .= ''.$pagenum.' &nbsp; ';
 	    for($i = $pagenum+1; $i <= $last; $i++){
-			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?name='.$_GET['name'].'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?id='.$_GET['id'].'&pn='.$i.'">'.$i.'</a> &nbsp; ';
 			if($i >= $pagenum+4){
 				break;
 			}
 		}
 		if ($pagenum != $last) {
 	        $next = $pagenum + 1;
-	        $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?name='.$_GET['name'].'&pn='.$next.'">Next</a> ';
+	        $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?id='.$_GET['id'].'&pn='.$next.'">Next</a> ';
 	    }
 	}
 	echo'<h2>  '.$textline1.'</h2>
 	<p>  '.$textline2.' </p>
 	<div id="pagination_controls"> '.$paginationCtrls.'</div>';
 
-	$sql="SELECT username,imgpath,message,pmdate,checked FROM tblpm
+	$sql="SELECT senderid,username,imgpath,message,pmdate,checked FROM tblpm
 	LEFT JOIN tbluser
 		ON senderid=userid
 	WHERE pmid IN (SELECT max(pmid) FROM tblpm WHERE receiverid='$id' GROUP BY senderid)
@@ -180,6 +182,7 @@ while($row=$result->fetch_object()){
 	$result=$conn->query($sql);
 	$count=$result->num_rows;
 	while($row=$result->fetch_object()){
+		$Sid=$row->senderid;
 		$Sname=$row->username;
 		$message=$row->message;
 		$imgpath=$row->imgpath;
@@ -191,19 +194,19 @@ while($row=$result->fetch_object()){
 
 		if($checked==0){
 			echo '<div class="inbox-new">
-				<a class="sender" href="profile.php?name='.$Sname.'">'.$Sname.'</a>	
+				<a class="sender" href="profile.php?id='.$Sid.'">'.$Sname.'</a>	
 				<span class="new"> <i class="fab fa-gripfire"></i>new</span>';
 		}else{
 			
 			echo'<div class="inbox-box">
-				<a class="sender" href="profile.php?name='.$Sname.'">'.$Sname.'</a>';
+				<a class="sender" href="profile.php?id='.$Sid.'">'.$Sname.'</a>';
 		}
 		echo'<span class="inbox-date">'.time_elapsed_string($date).'</span>
 			<div class="comment-tn">
 				<img src="'.$imgpath.'">
 			</div>
 		<div class="inbox-div"> <p class="inbxmsg">'.createlink(nl2br($message)).'</p></div>
-		<a class="reply" href="inbox.php?name='.$Sname.'#main-footer">Show Conversation</a>
+		<a class="reply" href="inbox.php?id='.$Sid.'#main-footer">Show Conversation</a>
 		</div>
 
 		<script src="js/main.js"></script>';

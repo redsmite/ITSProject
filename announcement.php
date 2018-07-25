@@ -29,7 +29,7 @@
 	?>
 	<div class="other-content">
 <?php
-$sql="SELECT announceid,title,content,t1.datecreated,username FROM tblannouncement AS t1
+$sql="SELECT announceid,title,content,t1.datecreated,username,userid FROM tblannouncement AS t1
 LEFT JOIN tbluser
 	ON userid = author
 ORDER BY announceid DESC
@@ -42,9 +42,10 @@ $title = $row->title;
 $content = $row->content;
 $date = date('D, F j Y g:i A',strtotime($row->datecreated));
 $author = $row->username;
+$userid = $row->userid;
 
 echo '<h2 id="announcement-title">'.$title.'</h2>
-<p>Posted on: '.$date.' by: <a class="black" href="profile.php?name='.$author.'">'.$author.'</a></p>
+<p>Posted on: '.$date.' by: <a class="black" href="profile.php?id='.$userid.'">'.$author.'</a></p>
 <div class="announce-content">'.nl2br($content);
 
 echo'</div>
@@ -93,10 +94,13 @@ while($row = $result->fetch_object()){
 	$user = $row->username;
 	$userid = $row->userid;
 	$img = $row->imgpath;
+	if(!$img){
+		$img="img/default.png";
+	}
 	$date = $row->dateposted;
 	echo'<div class="comment-box">
 <div class="comment-header">
-<a class="cm-user" href="profile.php?name='.$user.'">
+<a class="cm-user" href="profile.php?id='.$userid.'">
 <div class="comment-tn">
 <img src="'.$img.'">
 </div>

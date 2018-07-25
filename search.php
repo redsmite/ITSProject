@@ -124,7 +124,7 @@ if(isset($_GET['search-text'])){
 	}
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
 
-	$sql="SELECT username,imgpath,datecreated FROM tbluser WHERE username LIKE '%$search%' ORDER BY lastonline DESC $limit";
+	$sql="SELECT userid,username,imgpath,datecreated FROM tbluser WHERE username LIKE '%$search%' ORDER BY lastonline DESC $limit";
 	
 	$textline1 = "Result (<b>".number_format($rows)."</b>)";
 	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
@@ -160,6 +160,7 @@ if(isset($_GET['search-text'])){
 	$result=$conn->query($sql);
 
 	while($row=$result->fetch_object()){
+		$id = $row->userid;
 		$name = $row->username;
 		$img = $row->imgpath;
 		$date = date("M j, Y", strtotime($row->datecreated));
@@ -167,7 +168,7 @@ if(isset($_GET['search-text'])){
 			$img='img/default.png';
 		}
 
-		echo'<li><a href="profile.php?name='.$name.'">
+		echo'<li><a href="profile.php?id='.$id.'">
 		<div class="sch-tn">
 		<img src="'.$img.'">
 		</div>

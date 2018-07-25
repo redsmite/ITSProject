@@ -13,7 +13,7 @@ if(isset($_POST['remove'])){
 
 	$sql = "UPDATE tbluser SET imgname='',imgtype='',imgpath='' WHERE userid='$id'";  
 	$conn->query($sql);
-	echo $_SESSION['name'];	
+	echo $_SESSION['id'];	
 
 }
 

@@ -99,7 +99,6 @@ if(isset($_POST['remove'])){
 	$id = $_POST['remove'];
 
 	$array = explode('|',$_SESSION['cart']);
-
 	unset($array[$id]);
 	$array = implode("|",$array);
 	$_SESSION['cart'] = $array;
@@ -120,7 +119,7 @@ if(isset($_POST['weight'])){
 
 //Remove from list
 	$array = explode('|',$_SESSION['cart']);
-
+	array_pop($array);
 	unset($array[$key]);
 	$array = implode("|",$array);
 	$_SESSION['cart'] = $array;
@@ -131,9 +130,18 @@ if(isset($_POST['weight'])){
 	$_SESSION['trans'] .= $weight.'||';
 
 	$_SESSION['total'] = $total;
+}
 
-	echo $_SESSION['trans'];
+if(isset($_POST['undo'])){
+	$key = $_POST['undo'];
+	$unitprice = $_POST['undoprice'];
+	$_SESSION['total'] = $_SESSION['total'] - $unitprice;
 	echo $_SESSION['total'];
+	$array = explode('||',$_SESSION['trans']);
+
+	unset($array[$key]);
+	$array = implode("||",$array);
+	$_SESSION['trans'] = $array;	
 }
 
 if(isset($_POST['showcart'])){
@@ -161,7 +169,6 @@ if(isset($_POST['showcart'])){
 			echo '<b>'.$list[0].'</b><br>
 			₱'.$list[1].'/kg x '.$list[2].'kg<br>
 			Unit Price: ₱'.number_format($total,2);
-
 			echo'</li>';
 		}
 	}
@@ -182,7 +189,7 @@ if(isset($_POST['showcart'])){
 		</div>
 		<b>'.$name.'</b><br>
 		₱'.number_format($price,2).' / kg x
-		<input type="number" class="kg-input" id="input-'.$value.'" step="any">
+		<input type="number" min="0" class="kg-input" id="input-'.$value.'" step="any">
 		<button class="button-control" onclick="addWeight(this)" value='.$key.' id="'.$value.'">Go</button><br>
 		<input type="hidden" id="price-'.$value.'" value="'.$price.'"">
 		Unit Price: ₱<span id="unit-price'.$value.'"></span>

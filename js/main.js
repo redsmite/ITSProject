@@ -243,7 +243,7 @@ function searchdropdown(){
 				var output='';
 				for(i=0;i<dataArray.length-1;i++){
 					var itemArray = dataArray[i].split('|');
-					output+='<ul class="drop-ul"><a href="profile.php?name='+itemArray[0]+'"><li><div class="drop-tn"><img src="'+itemArray[1]+'"></div><p>'+itemArray[0]+'</p><small>Joined: '+itemArray[2]+'</small><li></a></ul>';
+					output+='<ul class="drop-ul"><a href="profile.php?id='+itemArray[0]+'"><li><div class="drop-tn"><img src="'+itemArray[2]+'"></div><p>'+itemArray[1]+'</p><small>Joined: '+itemArray[3]+'</small><li></a></ul>';
 				}
 			document.getElementById('search-dropdown').innerHTML = output;
 			
@@ -532,8 +532,7 @@ function ajaxRegister(){
 	function regName(e){
 		e.preventDefault();
 
-		addSpinners();
-			
+		addSpinners();			
 
 		var myRequest = new XMLHttpRequest();
 		var url = 'registerprocess.php';
@@ -570,8 +569,7 @@ function AjaxEditUser(){
 	function editName(e){
 		e.preventDefault();
 
-		addSpinners();
-			
+		addSpinners();			
 
 		var myRequest = new XMLHttpRequest();
 		var url = 'edituserprocess.php';
@@ -588,7 +586,6 @@ function AjaxEditUser(){
 
 		myRequest.onload = function(){
 			var response= JSON.parse(this.responseText);
-			console.warn(response);
 			if(response=="success"){
 
 				window.location.href = 'changesuccess.html';
@@ -708,7 +705,6 @@ function ajaxinbox(){
 		var message = document.getElementById('sendmsg').value;
 		var name = document.getElementById('hidden').value;
 		
-		
 		var formData = "message="+message+"&name="+name;
 		
 		myRequest.open('POST', url ,true);
@@ -722,7 +718,7 @@ function ajaxinbox(){
 				document.querySelector('.right-inbox').innerHTML=response;
 				var messageBody = document.querySelector(".right-inbox");
 				messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
-				if(name=='TuturuBot'){
+				if(name==71){
 					botreply(message,name);
 				}
 			}
@@ -769,8 +765,7 @@ function botreply(message,name){
 		var url = 'inboxprocess.php';
 
 		//form data variables
-		var hellobot = '♪ tu tu ru Mayushi-desu!';
-		
+		var hellobot = 'hello';		
 		
 		var formData = "hellobot="+hellobot;
 		
@@ -781,10 +776,7 @@ function botreply(message,name){
 			var response= this.responseText;
 			if(response){
 
-				form.reset();
-				var tuturump3 = document.getElementById("myAudio"); 
-				tuturump3.play(); 
-	
+				form.reset(); 
 				document.querySelector('.right-inbox').innerHTML=response;
 				var messageBody = document.querySelector(".right-inbox");
 				messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
@@ -896,7 +888,7 @@ function botreply(message,name){
 				var messageBody = document.querySelector(".right-inbox");
 				messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
 				setTimeout(function () {
-					window.location.replace("index.php");;
+					window.location.href="index.php";
 				}, 3000);
 			}
 		}
@@ -1565,7 +1557,7 @@ function adminSetting(){
 			if(response=='success'){
 				form.reset();
 				alert('admin name and/or password changed');
-				window.location.replace("adminpanel.php");
+				window.location.href="adminpanel.php";
 			}else{
 				document.getElementById('error-message2').innerHTML=response;
 			}
@@ -1671,7 +1663,7 @@ function updateFarm(){
 		myRequest.onload = function(){
 			var response= this.responseText;
 			if(response=='success'){
-				window.location.replace("adminpanel.php");
+				window.location.href="adminpanel.php";
 			}else{
 				removeSpinners();
 				document.getElementById('error-message2').innerHTML=response;
@@ -1711,12 +1703,12 @@ function reportuser(){
 
 		var select = document.getElementById('select-reason').value;
 		var reason = document.getElementById('report-reasons').value;
-		var username = document.getElementById('report-username').value;
+		var userid = document.getElementById('report-userid').value;
 
 		var myRequest = new XMLHttpRequest();
 		var url = 'adminprocess.php';
 		
-		var formData = "select="+select+"&reason="+reason+"&username="+username;
+		var formData = "select="+select+"&reason="+reason+"&userid="+userid;
 		
 		myRequest.open('POST', url ,true);
 		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
@@ -1914,6 +1906,7 @@ function addThistoCart(click){
 function addWeight(click){ 
 	let key = click.getAttribute('value');
 	let id = click.getAttribute('id');
+
 	let inputid = 'input-'+id;
 	let input = document.getElementById(inputid);
 	let weight = input.value;
@@ -1933,6 +1926,8 @@ function addWeight(click){
 	let foutput = document.getElementById('total');
 	foutput.innerHTML=addCommas(ftotalval.toFixed(2));
 	input.disabled=true;
+	let button = document.getElementById(id);
+	button.style.display='none';
 
 	var myRequest = new XMLHttpRequest();
 
@@ -1944,6 +1939,7 @@ function addWeight(click){
 	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
 	myRequest.onload = function(){
 		var response= this.responseText;
+		console.log(response);
 		removeSpinners();
 		document.getElementById('top-total').innerHTML='₱'+addCommas(ftotalval.toFixed(2));
 	}
@@ -1963,6 +1959,7 @@ function deleteCart(){
 		response = this.responseText;
 		let cart = document.getElementById('shopping-cart-content');
 		cart.innerHTML = '<p>Shopping Cart is empty...</p>';
+		document.getElementById('top-total').innerHTML='';
 	}
 	myRequest.send(formData);
 }
@@ -2018,7 +2015,7 @@ function removePhoto(){
 		myRequest.onload = function(){
 			var response= this.responseText;
 			removeSpinners();
-			let profile = "profile.php?name="+response;
+			let profile = "profile.php?id="+response;
 			let profile2 = profile.split('<');			
 			window.location.replace(profile2[0]);
 		}
@@ -2100,7 +2097,7 @@ function redirectProfile(){
 	
 	var myRequest = new XMLHttpRequest();
 	var url = 'edituserprocess.php';
-	var session = "$_SESSION['name']";
+	var session = "$_SESSION['id']";
 	
 	var formData = "session="+session;
 	
@@ -2115,11 +2112,11 @@ function redirectProfile(){
 
 					
 			function historyback(){
-				window.location.replace("profile.php?name="+response);
+				window.location.replace("profile.php?id="+response);
 			}
 			setTimeout(function () {
 				   
-				window.location.replace("profile.php?name="+response);
+				window.location.replace("profile.php?id="+response);
 			
 			}, 3000);
 

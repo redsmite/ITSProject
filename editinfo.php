@@ -143,8 +143,5 @@
 	<!-- End of Container -->
 	</div>
 	<script src="js/main.js"></script>
-	<script>
-		ajaxLogin();
-	</script>
 </body>
 </html>

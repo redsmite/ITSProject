@@ -8,10 +8,6 @@ include'connection.php';
 if(isset($_POST['fr'])){
 	$user1=$_SESSION['id'];
 	$user2=$_POST['fr'];
-	$sql="SELECT userid FROM tbluser WHERE username='$user2'";
-	$result=$conn->query($sql);
-	$row=$result->fetch_object();
-	$user2=$row->userid;
 
 	$sql="SELECT user1,user2 FROM tblfriend WHERE (user1=$user1 and user2=$user2)or(user1=$user2 and user2=$user1)";
 	$result=$conn->query($sql);

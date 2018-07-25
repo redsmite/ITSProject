@@ -10,17 +10,6 @@ if(isset($_POST['username'])){
 	    $error.='<i class="fas fa-exclamation-circle"></i>Username must not exceed 20 characters<br>';
 	}
 
-	if (preg_match('/[^A-Z]/i',$_POST['username']))
-	{
-	    $error.='<i class="fas fa-exclamation-circle"></i>Username must not contain special characters or spaces<br>';
-	}
-
-	// if username is a special search string
-	if ($_POST['username']=='Show_All') {
-		$error.='<i class="fas fa-exclamation-circle"></i>Username is a special search string<br>';
-	}
-	
-
 	if(strlen($_POST['password']) < 8)
 	{
 	    $error.='<i class="fas fa-exclamation-circle"></i>Password must be atleast 8 characters<br>';

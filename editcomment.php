@@ -13,10 +13,10 @@ addLogin();
 setupCookie();
 chattab();
 	
-$id= $_GET['id'];
-$name= $_GET['name'];
+$cid= $_GET['cid'];
+$pid= $_GET['pid'];
 
-$sql="SELECT comment FROM tblcomment WHERE commentid='$id'";
+$sql="SELECT comment FROM tblcomment WHERE commentid='$cid'";
 if($result=$conn->query($sql)){
 $row=$result->fetch_object();
 $comment=$row->comment;
@@ -51,15 +51,12 @@ mysqli_close($conn);
 							<form action="commentprocess.php" method="POST">
 								<textarea id="cmt-val" name="comment"><?php echo nl2br($comment); ?></textarea>
 								<br>
-								<input type="hidden" name="hidden" <?php echo 'value="'.$id.'"'?> />
+								<input type="hidden" name="hidden" <?php echo 'value="'.$cid.'"'?> />
 
-								<input type="hidden" name="hidden2" <?php echo 'value="'.$name.'"'?> />
+								<input type="hidden" name="hidden2" <?php echo 'value="'.$pid.'"'?> />
 								
 								<input type="submit" value="Ok" name="submit"> <input type="submit" value="Cancel" name="back">
 							</form>
-							<?php
-								
-							?>
 						</center>	
 					</div>
 				</div>

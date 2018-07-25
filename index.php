@@ -72,7 +72,7 @@
 			<div class="main-content-grid">
 				<div class="announcement">
 <?php
-$sql="SELECT announceid,title,content,t1.datecreated,username FROM tblannouncement AS t1
+$sql="SELECT announceid,title,content,t1.datecreated,author,username FROM tblannouncement AS t1
 LEFT JOIN tbluser
 	ON userid = author
 ORDER BY announceid DESC
@@ -83,10 +83,11 @@ $row=$result->fetch_object();
 	$title = $row->title;
 	$content = $row->content;
 	$date = date('D, F j Y g:i A',strtotime($row->datecreated));
+	$userid = $row->author;
 	$author = $row->username;
 
 	echo '<h2 id="announcement-title">'.$title.'</h2>
-	<p>Posted on: '.$date.' by: <a href="profile.php?name='.$author.'">'.$author.'</a></p>
+	<p>Posted on: '.$date.' by: <a href="profile.php?id='.$userid.'">'.$author.'</a></p>
 	<div class="announce-content">'.substr(nl2br($content), 0, 450);
 	if(strlen($content) > 450 ){
 		echo'...';

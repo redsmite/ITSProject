@@ -76,7 +76,7 @@
 					Low: <span id="low"></span><br>
 					Prevailing: <span id="prev"></span> <br>
 					High: <span id="high"></span><br>
-					<input type="number" required id="price" name="price">
+					<input type="number" step="any" required id="price" name="price">
 				</div>
 				<div>
 					<button>Submit</button>

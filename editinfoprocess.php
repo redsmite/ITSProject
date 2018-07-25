@@ -17,7 +17,7 @@ if(isset($_POST['edit-button'])){
 
 	$sql="UPDATE tbluser SET firstname='$firstname', middlename='$middlename',lastname='$lastname',birthday='$birthday',website='$website',location='$location',bio='$bio',is_show_email='$privacy',gender='$gender' WHERE username='$username'";
 	if($result =$conn->query($sql)){
-		header("Location:profile.php?name=".$_SESSION['name']."");
+		header("Location:profile.php?id=".$_SESSION['id']."");
 	}
 }
 

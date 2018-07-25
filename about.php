@@ -9,10 +9,10 @@
 	chattab();
 
 // select admin
-	$sql = "SELECT username FROM tbluser WHERE usertypeid = 4";
+	$sql = "SELECT userid FROM tbluser WHERE usertypeid = 4";
 	$result = $conn->query($sql);
 	$fetch = $result->fetch_object();
-	$admin = $fetch->username;
+	$admin = $fetch->userid;
 
 // select farm
 	$sql = "SELECT farmname FROM tblfarm WHERE status = 1";
@@ -107,7 +107,7 @@
 					<p>Wait for at least one day for the delivery. We don't deliver at places <strong>outside of Manila</strong> unfortunately.</p>
 					<hr>
 					<center><h1>Feedbacks</h1></center>
-					<p>Please go <a class="black" href="contact.php" target="_blank">here</a> for feedbacks, or message the admin <a class="black" href="inbox.php?name=<?php echo $admin ?>" target="_blank">here</a> (you need to login / create an account).</p>
+					<p>Please go <a class="black" href="contact.php" target="_blank">here</a> for feedbacks, or message the admin <a class="black" href="inbox.php?id=<?php echo $admin ?>" target="_blank">here</a> (you need to login / create an account).</p>
 					<hr>
 					<center><h1>Developers</h1></center>
 					<p>Carabeo, Kym</p>

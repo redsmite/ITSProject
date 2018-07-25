@@ -108,14 +108,12 @@ if(isset($_POST['submit'])){
 
 	if($error==''){
 		move_uploaded_file($filetemp, $filepath);
-		$filename=$conn->real_escape_string($filename);
-		$filetype=$conn->real_escape_string($filetype);
 		$filepath=$conn->real_escape_string($filepath);
-		$sql="UPDATE tbluser SET imgname='$filename',imgtype='$filetype',imgpath='$filepath' WHERE userid='$id'";
+		$sql="UPDATE tbluser SET imgpath='$filepath' WHERE userid='$id'";
 		$result=$conn->query($sql) or die($conn->error());
 
 		if($result){
-			echo("<script>window.location.href = 'profile.php?name=".$_SESSION['name']."';</script>");
+			echo("<script>window.location.href = 'profile.php?id=".$_SESSION['id']."';</script>");
 		}
 	}
 	}

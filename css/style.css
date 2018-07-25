@@ -608,7 +608,7 @@ li{
 	line-height: 1.5em;
 	font-size: 1.2em;
 	margin: 2px;
-	padding: 10px 0;
+	padding: 10px 5px;
 	border-bottom: 1px solid var(--darkgray);
 }
 
@@ -1250,16 +1250,17 @@ li{
 	display: inline-block;
 	border-radius: 10%;
 	margin:5px 3px;
-	background: var(--dark-color);
+	background: linear-gradient(to right, var(--secondary-contrast) , var(--primary-color));
 	color: var(--light-color);
 	padding:10px;
-	border: 1px solid var(--cyan);
+	border: 1px solid var(--light-color);
 	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 	text-align: center;
 }
 
 .fr-div a{
-	color:var(--primary-color);
+	color:var(--dark-color);
+	font-weight: bold;
 }
 
 .showfr-tn{
@@ -1270,7 +1271,7 @@ li{
 	width:125px;
 	border-radius: 50%;
 	overflow:hidden;
-	border: 1px solid var(--cyan);
+	border: 1px solid var(--light-color);
 }
 
 .showfr-tn img{
@@ -2324,18 +2325,23 @@ li{
 	width: 50px;
 }
 
+#top-total{
+	display: inline-block;
+	cursor: pointer;
+}
+
 /* Footer */
 #main-footer{
 	grid-area:footer;
-	background:url(../img/rainbow.jpg);
+	background:var(--dark-color);
 	background-position:center;
 	background-size:cover;
 	background-repeat:no-repeat;
 	background-attachment: fixed;
 	text-align: center;
 	padding: 8px;
-	color:var(--cyan);
-	height: 50px;
+	color:var(--light-color);
+	height: 60px;
 }
 
 /* About */

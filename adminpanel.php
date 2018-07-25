@@ -27,7 +27,7 @@ chattab();
 	<!-- Admin Panel -->
 		<div class="other-content">
 			<h1 class="center"><i class="fas fa-unlock-alt"></i> Admin Panel</h1>
-			<h1 class="center">Hello <?php echo '<a class="black" href="profile.php?name='.$_SESSION['name'].'">'.$_SESSION['name'].'!</a>'?> - <a href="adminsetting.php" class="black"><i class="fas fa-cog"></i> Admin Settings</a></h1>
+			<h1 class="center">Hello <?php echo '<a class="black" href="profile.php?id='.$_SESSION['id'].'">'.$_SESSION['name'].'!</a>'?> - <a href="adminsetting.php" class="black"><i class="fas fa-cog"></i> Admin Settings</a></h1>
 			<div id="admin-tab">
 				<a id="monitoring-tab" onclick="showMonitoringTab()">Monitoring</a>
 				<a id="sales-tab" onclick="showSalesTab()">Sales</a>
@@ -156,7 +156,7 @@ $sql = "SELECT categoryid,status,category FROM tblcategory";
 	}
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
 
-	$sql = "SELECT reportid,user1.username AS reported, user2.username AS reporter,reason,tblreport.datecreated,checked FROM tblreport
+	$sql = "SELECT tblreport.userid,reportid,user1.username AS reported, user2.username AS reporter,reason,tblreport.datecreated,checked FROM tblreport
 	LEFT JOIN tbluser AS user1
 		ON user1.userid=tblreport.userid
 	LEFT JOIN tbluser AS user2
@@ -195,6 +195,7 @@ if($last != 1){
 
 	$result = $conn->query($sql);
 	while($row=$result->fetch_object()){
+		$userid = $row->userid;
 		$username= $row->reported;
 		$reason = $row->reason;
 		$date= time_elapsed_string($row->datecreated);
@@ -210,7 +211,7 @@ if($last != 1){
 			echo '<p class="checkreport">Checked</p>';
 		}
 
-		echo'<p>Reported User: <a href="profile.php?name='.$username.'"><font color="#00c07f">'.$username.'</font></a></p>
+		echo'<p>Reported User: <a href="profile.php?id='.$userid.'"><font color="#00c07f">'.$username.'</font></a></p>
 		<p>Reported by: <a href="profile.php?name='.$reporter.'">'.$reporter.'</a></p>';
 		
 		if($reason==1){

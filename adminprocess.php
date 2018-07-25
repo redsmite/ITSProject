@@ -39,7 +39,7 @@ if(isset($_POST['fetch'])){
 		$type = $row->usertypeid;
 
 		$data.= '<tr>
-		<th><a href="profile.php?name='.$name.'">'.$name.'</a><br></th>
+		<th><a href="profile.php?id='.$id.'">'.$name.'</a><br></th>
 		<th id="user-'.$id.'"><a id="'.$id.'" class="useraccess" value="'.$id.'" onclick="useraccess(this.id)">';
 
 		
@@ -120,13 +120,8 @@ if(isset($_POST['notseller'])){
 if(isset($_POST['select'])){
 	$select = $_POST['select'];
 	$reason = $_POST['reason'];
-	$name = $_POST['username'];
+	$id = $_POST['userid'];
 	$reporter = $_SESSION['id'];
-
-	$sql = "SELECT userid FROM tbluser WHERE username ='$name'";
-	$result = $conn->query($sql);
-	$row = $result->fetch_object();
-	$id = $row->userid;
 
 	if (!$reason){
 

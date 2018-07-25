@@ -93,9 +93,21 @@ chattab();
 						<li><b>Category:</b> <?php echo $category;?></li>
 						<li><b>Farm:</b> <?php echo $farm ?></li>
 						<li><b>Description:</b> <?php echo $desc;?></li>
-						<li><b>Seller:</b> <a href="profile.php?name=<?php echo $user; ?>" class="black"> <?php echo $user; ?></a></li>
+						<li><b>Seller:</b> <a href="profile.php?id=<?php echo $userid; ?>" class="black"> <?php echo $user; ?></a></li>
 						<li><b>Date Posted:</b> <?php echo $date?></li>
-						<li><b>Views:</b> <?php if($_SESSION['id']==$userid){echo number_format($view);}else{echo number_format($view+1);} ?></li>
+						<li><b>Views:</b> 
+							<?php
+							if(isset($_SESSION['id'])){ 
+								 if($_SESSION['id']==$userid){
+								 	echo number_format($view);
+								 }else{
+								 	echo number_format($view+1);
+								 } 
+							 }else{
+								 echo number_format($view+1);
+							 }
+							 ?>
+						</li>
 					</ul>
 					<div class="add-to-cart" value="<?php echo $id; ?>" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart
 					</div>
@@ -168,7 +180,7 @@ echo '
 					Low: <span id="low">'.$low.'</span><br>
 					Prevailing: <span id="prev">'.$prev.'</span> <br>
 					High: <span id="high">'.$high.'</span><br>
-					<input value="'.$price.'" type="number" required id="price" name="price">
+					<input value="'.$price.'" type="number" required id="price" step="any" name="price">
 				</div>
 				<div>
 					<p>Image</p>';

@@ -15,9 +15,9 @@ if(isset($_POST['username'])){
 	}else{
 
 		$sql="SELECT username FROM tbluser WHERE username='$username'";
-		$res_u=$conn->query($sql);
-		$row=$res_u->fetch_object();
-		if ($res_u->num_rows != 0 or $row->username !=$username) {
+		$result=$conn->query($sql);
+		$count= $result->num_rows;
+		if ($count == 0) {
 			array_push($error,'<i class="fas fa-exclamation-circle"></i>Username is already taken');
 		}
 
@@ -29,11 +29,6 @@ if(isset($_POST['username'])){
 
 		if($username==$_POST['username']){
 			array_push($error,'<i class="fas fa-exclamation-circle"></i> No changes made.');	
-		}
-
- 		if (preg_match('/[^A-Z]/i',$_POST['username']))
-		{
-		     array_push($error,'<i class="fas fa-exclamation-circle"></i>Username must not contain special characters or spaces.');
 		}
 		if(!$error){
 			$editname=$_POST['username'];
@@ -118,8 +113,8 @@ if(isset($_POST['oldpass'])){
 	}
 }
 if(isset($_POST['session'])){
-	$name=$_SESSION['name'];
-	echo json_encode($name);
+	$id=$_SESSION['id'];
+	echo json_encode($id);
 }
 
 if(isset($_POST['checked'])){
