@@ -38,11 +38,16 @@ if(!$row){
 	if(!$img){
 		$img='img/default2.jpg';
 	}
-	$rating = $row->rating;
+	$ProductRating = $row->rating;
 	$low = $row->low;
 	$prev = $row->prevailing;
 	$high = $row->high;
 }
+
+// Rating count
+$sql="SELECT ratingid FROM tblrating WHERE productid='$id' ";
+$result = $conn->query($sql);
+$votercount = $result->num_rows;
 
 // Product view
 if(!isset($_SESSION['id'])){
@@ -85,9 +90,60 @@ chattab();
 				<div class="product-image-wrap">
 					<img src="<?php echo $img ?>">
 				</div>
+				<!-- 5 star rating -->
+<?php
+	if(isset($_SESSION['id'])){
+	$myid = $_SESSION['id'];
+	$sql="SELECT rating FROM tblrating WHERE userid='$myid' AND productid='$id'";
+	$result = $conn->query($sql);
+	if(!$result->num_rows){
+	echo'<div id="rate-this" onmouseleave="starLeave()">
+		<h1>Rate This</h1>
+		<i id="star1" class="fas fa-star" onmouseover="star1hover()" onclick="clickstar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="1"></i>
+		<i id="star2" class="fas fa-star" onmouseover="star2hover()" onclick="clickstar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="2"></i>
+		<i id="star3" class="fas fa-star" onmouseover="star3hover()" onclick="clickstar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="3"></i>
+		<i id="star4" class="fas fa-star" onmouseover="star4hover()" onclick="clickstar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="4"></i>
+		<i id="star5" class="fas fa-star" onmouseover="star5hover()" onclick="clickstar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="5"></i>
+	</div>';
+	}else{
+		$fetch = $result->fetch_object();
+		$rating = $fetch->rating;
+		echo'<div id="rate-this" onmouseleave="starLeave()">';
+		if($rating == 1){
+			$string='Star';
+		}else{
+			$string='Stars';
+		}
+		echo'<p>You rated this '.$rating.' '.$string.'</p>
+
+		<i id="star1" class="fas fa-star" onmouseover="star1hover()" onclick="updatestar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="1"></i>
+		<i id="star2" class="fas fa-star" onmouseover="star2hover()" onclick="updatestar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="2"></i>
+		<i id="star3" class="fas fa-star" onmouseover="star3hover()" onclick="updatestar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="3"></i>
+		<i id="star4" class="fas fa-star" onmouseover="star4hover()" onclick="updatestar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="4"></i>
+		<i id="star5" class="fas fa-star" onmouseover="star5hover()" onclick="updatestar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="5"></i>
+		</div>';
+	}
+}else{
+	echo'<div id="rate-this" onmouseleave="starLeave()" onclick="showLogin()">
+		<h1>Rate This</h1>
+		<i id="star1" class="fas fa-star" onmouseover="star1hover()"></i>
+		<i id="star2" class="fas fa-star" onmouseover="star2hover()"></i>
+		<i id="star3" class="fas fa-star" onmouseover="star3hover()"></i>
+		<i id="star4" class="fas fa-star" onmouseover="star4hover()"></i>
+		<i id="star5" class="fas fa-star" onmouseover="star5hover()"></i>
+	</div>';
+}
+?>
 				<div class="product-main-content">
 					<h1><?php echo $product; ?></h1>
-					<?php starsystem($rating);?>
+					<?php starsystem($ProductRating);
+					echo '<p>(Rated by '.number_format($votercount);
+					if($votercount==1){
+						echo ' user';
+					}else{
+					 echo ' users';
+					}
+					echo')</p>'?>
 					<p class="product-price">₱ <?php echo $price; ?> / kg</p>
 					<ul>
 						<li><b>Category:</b> <?php echo $category;?></li>
@@ -114,21 +170,23 @@ chattab();
 				</div>
 				<div class="product-reviews">
 					<h1>Reviews</h1>
+
 				</div>
 			</div>
 			<div class="product-main-right">
 <?php
 	if(isset($_SESSION['id'])){
-if($_SESSION['type']==3 OR $_SESSION['type']==4){
-	echo'<div class="align-right-button">
-	<a href="addproduct.php" class="white"><i class="fas fa-plus"></i> Add Product</a>
-	</div>';
-}
+		if($_SESSION['type']==3 OR $_SESSION['type']==4){
+			echo'<a href="addproduct.php" class="white"><div class="add-product-button">
+			<i class="fas fa-plus"></i> Add Product
+			</div></a>';
+		}
 
 // Update Product
 		if($_SESSION['id']==$userid){
 echo '
-<div class="edit-form">
+<div onclick="showUpdateProductForm()" class="add-product-button">Update Product</div>
+<div class="edit-form" style="display:none;">
 			<form method="post" id="add-product-form" enctype="multipart/form-data">
 				<h1>Update Product</h1>
 				<div>		

@@ -102,7 +102,7 @@
 ?>
 					, or <strong><a class="black" href="register.php" target="_blank">register</a></strong> if you doesn't have an account yet.</p>
 					<p>4. Choose payment options</p>
-					<p>You can choose for either <strong>Cash-on-delivery</strong> or <strong>Bank</strong>.</p>
+					<p><strong>Cash-on-delivery</strong> is the only option as for now.</p>
 					<p>5. Wait for the delivery</p>
 					<p>Wait for at least one day for the delivery. We don't deliver at places <strong>outside of Manila</strong> unfortunately.</p>
 					<hr>

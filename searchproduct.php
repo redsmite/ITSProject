@@ -28,6 +28,13 @@ chattab();
 	<div class="other-content">
 		<div class="my-products">
 <?php
+	if(isset($_SESSION['id'])){
+		if($_SESSION['type']==3 OR $_SESSION['type']==4){
+			echo'<a href="addproduct.php" class="white"><div class="add-product-button">
+			<i class="fas fa-plus"></i> Add Product
+			</div></a>';
+		}
+	}
 	if(isset($_GET['search'])){
 		$search = $_GET['search'];
 

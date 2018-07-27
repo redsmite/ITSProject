@@ -6,18 +6,17 @@ user_access();
 include'connection.php';
 if(isset($_POST['comment-submit'])){
 	$comment=$conn->real_escape_string($_POST['comment']);
-	$id=$conn->real_escape_string($_POST['hidden']);
-	$rid=$conn->real_escape_string($_POST['hidden2']);
+	$id=$_POST['hidden'];
+	$rid=$_POST['hidden2'];
 	$timestamp='NOW()';
 	
-
 
 
 	$sql2="INSERT INTO tblcomment (userid,receiver,comment,dateposted) VALUES('$id','$rid','$comment',NOW())";
 	$result2=$conn->query($sql2) or die(mysqli_error($conn));
 	if($rid==$id){
 
-			header("Location:profile.php?id=".$receiver."#profile-comments");
+			header("Location:profile.php?id=".$rid."#profile-comments");
 	}else{
 		$sql4='SELECT COALESCE(MAX(commentid), 0) AS newUserID FROM tblcomment';
 		$result=$conn->query($sql4);

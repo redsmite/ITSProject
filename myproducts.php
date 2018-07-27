@@ -42,7 +42,7 @@
 	?>
 	<!-- Content -->
 	<div class="other-content">
-		<h1><a class="btp" href="profile.php?name=<?php echo $username ?>">Back to <?php echo $username ?>'s Profile</a></h1>
+		<h1><a class="btp" href="profile.php?id=<?php echo $_GET['id'] ?>">Back to <?php echo $username ?>'s Profile</a></h1>
 		<h3><?php echo $username;?>'s Products</h3>
 		<div class="my-products">
 <?php

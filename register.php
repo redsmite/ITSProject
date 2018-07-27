@@ -34,7 +34,7 @@
 							<div class="grid-register">
 								<div>
 									<label for="">Username</label><br>
-									<small><i>*Must not exceed 20 characters and not include spaces or special characters</i></small><br>
+									<small><i>*Must not exceed 20 characters.</i></small><br>
 									<input type="text" required id="reg-name" placeholder="Enter Username...">
 								</div>
 								<div>

@@ -200,7 +200,7 @@ function session_button(){
 	}
 	echo'</div>
 	<div id="cart-panel">
-		<h1>Shopping Cart</h1>
+		<h1 onclick="hideCartPanel()" class="close-heading">Shopping Cart</h1>
 		<div id="shopping-cart-content"></div>
 	</div>
 	<div id="cart-modal" onclick="hideCartPanel()"></div>
@@ -357,7 +357,7 @@ function chattab(){
 		<div id="chat-modal" onclick="hideChatPanel()">
 		</div>
 		<div id="chat-panel">
-			<div id="chat-panel-body">
+			<div id="chat-panel-body"><h3 onclick="hideChatPanel()" class="close-heading">Chat</h3>
 				<ul>';
 	while($row=$result->fetch_object()){
 		$id=$row->userid;
@@ -543,7 +543,7 @@ function destroyCookie(){
 
 function user_access(){
 	if(!isset($_SESSION['id'])){
-		header('location:index.php');
+		die('You\'re not login.');
 	}
 }
 

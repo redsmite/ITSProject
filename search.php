@@ -27,7 +27,6 @@ chattab();
 	<!-- Main Content -->
 	<div class="other-content">
 		<h1><i class="fas fa-search"></i>Search</h1>
-		<ul class="search-ul">
 <?php
 //get criteria
 if(isset($_GET['criteria'])){
@@ -97,6 +96,7 @@ if(isset($_GET['search-text'])){
 //if criteria is user
 
 if(isset($_GET['search-text'])){
+	echo'<ul class="search-ul">';
 	$search= $conn->real_escape_string($_GET['search-text']);
 
 

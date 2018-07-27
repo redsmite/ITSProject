@@ -16,12 +16,16 @@ function openSlideMenu(){
 	document.getElementById('side-menu').style.width='90px';
 	document.getElementById('side-menu').marginleft='90px';
 	document.getElementById('sidebarmodal').style.display='block';
+	let element = document.querySelector('.fa-bars');
+	element.classList.add('rotate-slide');
 }
 
 function closeSlideMenu(){
 	document.getElementById('side-menu').style.width='0';
 	document.getElementById('side-menu').marginleft='0';
 	document.getElementById('sidebarmodal').style.display='none';
+	let element = document.querySelector('.fa-bars');
+	element.classList.remove('rotate-slide');
 }
 
 // Create modal
@@ -114,8 +118,8 @@ function toggleNotif(){
 
 function showCategory(){
 	document.getElementById('category-slide').style.display='block';
-	document.getElementById('category-slide').style.width='20%';
-	document.getElementById('category-slide').marginleft='20%';
+	document.getElementById('category-slide').style.width='250px';
+	document.getElementById('category-slide').marginleft='250px';
 	document.getElementById('category-modal').style.display='block';
 }
 
@@ -890,137 +894,6 @@ function botreply(message,name){
 				setTimeout(function () {
 					window.location.href="index.php";
 				}, 3000);
-			}
-		}
-		myRequest.send(formData);
-	}else if(message=='!chat'){
-		var messages = [
-		'We should work towards world peace. Like giving everyone in the world an Upa cushion...',
-		'Finally... Mayushii was... useful.',
-		'Mayushii here! I\'ve become more wonderful! Kyaha',
-		'Tuturuuuu',
-		'Mayushii\'s in a good mood~♪',
-		'Hrm. The next job\'s location.. wha, today\'s an off day... I see...',
-		'Mayushii belongs to everyone, so don\'t touch her too much, okay?',
-		'Even if this is boring, please don\'t hate Mayushii!',
-		'I worked pretty hard right? praise me! Praise me!',
-		'What would you like me to do next?',
-		'I\'ll be resting for a bit.',
-		'Let\'s be cheerful and go!',
-		'I\'ll try my best again today!',
-		'I-I can still keep going!',
-		'Today feels like a good day.',
-		'Yes! I\'ll work even harder',
-		'I\'ll send a smile to everyone\'s hearts. ♪',
-		'Living should mean no do-overs. This is for the best.',
-		'Pa... pa... pa... What sound does a panda make...?',
-		'I like this clothes because they\'re easy to move.',
-		'*pant, pant* ...I\'m so tired... B-But it\'s not like I\'m not athletic. I\'m just suited to short distances... probably.',
-		'D-Do you mind staying with me for a while?',
-		'Don\'t you think that the pink and yellow of the flowers fit me too well?',
-		'I\'m a sweet angel after all, so I\'m sure I can easily get to your heart~ ♪',
-		'Putting chocolate on dry fruit seems to give it an adult taste. Mayushii likes it quite a bit.',
-		'I\'m getting tired of acting like a good girl~ ...Wh-what, isn\'t Mayushii just being honest?',
-		'That’s enough work. I’m ready for a snack and a break!',
-		'What\'ll I do if I get too popular!?',
-		'I\'m just doing what I always do~ ♪',
-		'How would I describe myself? I\'m pretty honest and innocent, right?',
-		'It\'s weird. When I see your lonely expression, why do I feel sad too?',
-		'On days when there\'s a cold wind, I want to walk home together with someone~',
-		'Did something happen?',
-		'I have pretty good luck you know',
-		'Mimosa punica, or sensitive plant, will actually fold up its leaves when it is touched. Crazy isn\'t it?',
-		'Has my cheer beam reached you all? Bzzt☆" ...Never mind, please look away.',
-		'How are you feeling? I\'m in perfect shape.',
-		'Do you want to go out somewhere today?',
-		'You\'re under arrest! Just kidding... Did that fit me?',
-		'Whenever you\'re troubled by something, do some exercise. Surprisingly, it calms you down.',
-		'Spring flowers have such beautiful colors; they\'re very soothing.',
-		'I\'m not a human being, so I can\'t show you my true form... Just kidding.',
-		'Occasionally it would be nice to try a different hairstyle sometime... Does it suit me well?',
-		'Just watching your appearance makes me happy. It is strange.',
-		'I don’t know until I try. I want to challenge myself without fear.',
-		'I am learning about the history of fashion as of now... ...because I don’t know much',
-		'I think we should use our past experiences to make the most out of this year',
-		'Do you like the ocean?',
-		'Do you need something?',
-		'How are you feeling? I\'m of course feeling perfectly fine.',
-		'Be sure to take care of your health.',
-		'I like going to the library. The quiet and peaceful atmosphere makes me feel refreshed.',
-		'White rice is amazing... I wonder why it is so white...',
-		'This may come as a surprise... but I\'m pretty good at origami.',
-		'Surprisingly, February is the chilliest month of the year...',
-		'Leave it to me! You get away from here. Hurry!" ...Just kidding. Did that fit me?',
-		'The role of scarry jack-o\'-lanterns is to ward off mischevious spirits who come to play pranks.',
-		'If there\'s something I can do to help, just say the word!',
-		'I want to live a life free of regrets.',
-		'If you want to grant your own wish, then you should clear your own path to it.',
-		'The "present" is a leaf floating on top of the river. It moves along with the flow from past to future.',
-		'Everyone gets help from someone else at some point in their lives. So someday, you should help someone too.',
-		'Theories are nothing more than words. Accept what you\'ve seen.',
-		'Fortune telling is one of my hobbies. Want me to read your fortune?',
-		'Today\'s fortune is... Hmm... Got it!',
-		'Things like being under an umbrella together, it\'s romantic, right?',
-		'God has a big heart, so there\'s no need to be so nervous.',
-		'Don\'t I look fashionable today?',
-		'Ah! Th-The smell of ramen! ...I\'m hungry...',
-		'Cotton candy is so soft and fluffy~ I want to try making it myself next time ♪ All you have to do is spin it around and around, right~??',
-		'Even without an umbrella, if you have a raincoat, you won\'t get wet. ♪ The person who invented the raincoat is amazing.',
-		'Ramen will save the world! ...I think!',
-		'I\'ll be sure to support you~',
-		'Being active every day seems to put me in a good mood. Let\'s make tomorrow just as good!',
-		'I get excited when I get to wear such a really beautiful costume.',
-		'I\'m still feeling a little shy, but I\'m okay now!',
-		'Welcome home, Master! Hee, hee. Do I make a good maid?',
-		'Do I really have to say, "I want to capture your heart"?!',
-		'Unifying your heart with another is such a wonderful thing.',
-		'T-Time travel? It\'s not for real, you know...or is it?',
-		'I\'m going to do my best all year, starting from day one. It\'s important to start off on the right foot!',
-		'I hope we\'ll be in each other\'s lives for years and years to come.',
-		'I am your guide to the world of dreams. *Giggle* It\'s fun to be a clown.',
-		'Everyone has their own way of seeing the world... I\'d be so happy if our points of view were similar.',
-		'I could never handle a sea cucumber, but I don\'t mind touching penguins and dolphins.',
-		'Argh, what should I do? I want to ask them, but I\'m afraid I\'ll get rejected...',
-		'I guess I\'m the happiest when I\'m able to do things I want at my own pace.',
-		'The English word "angel" also means "herald." How neat is that?',
-		'Oh, lost lambs, a pure and cute angel shall take thee to heaven... Ugh... Do I really have to say this?',
-		'Can I come see you later?',
-		'I heard Germany is famous for beer! Wait, I can\'t drink yet... Maybe I\'ll have some wurst and pretzels then!',
-		'Huh? I-I guess I am pretty boring after all.',
-		'My super lucky powers will give you good luck!',
-		'You want a hug? Sure come over',
-		'The future remains uncertain, but I believe it\'ll all work out. Let\'s bide our time and carry on!',
-		'The sky and the sea are both so vast. It really reminds me how small I am in the grand scheme of things.',
-		'People can\'t live in solitude. We need to support one another.',
-		'When you just can\'t think of an answer to your problems, it\'s best to clear your mind and go to bed.',
-		'My colleagues are always so tough on me. *Sniffle*',
-		'If only I had some special skill…',
-		'Sunflower is the only flower with flower in its name!'
-
-		]
-		var rand = Math.floor((Math.random() * messages.length-1) + 1);
-
-		var myRequest = new XMLHttpRequest();
-		var url = 'inboxprocess.php';
-
-		//form data variables
-		var chat = messages[rand];
-		
-		
-		var formData = "chat="+chat;
-		
-		myRequest.open('POST', url ,true);
-		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-
-		myRequest.onload = function(){
-			var response= this.responseText;
-			if(response){
-
-				form.reset();
-				
-				document.querySelector('.right-inbox').innerHTML=response;
-				var messageBody = document.querySelector(".right-inbox");
-				messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
 			}
 		}
 		myRequest.send(formData);
@@ -1851,6 +1724,15 @@ function addProductAjax(){
 	}	
 }
 
+function showUpdateProductForm(){
+	let form = document.querySelector('.edit-form');
+	if(form.style.display=="none"){
+		form.style.display="block";
+	}else if(form.style.display=="block"){
+		form.style.display="none";
+	}
+}
+
 // Cart
 
 function showCartPanel(){
@@ -1989,6 +1871,139 @@ function removeList(click){
 	myRequest.send(formData);		
 }
 
+// Review
+
+function star1hover(){
+	let star1 = document.getElementById('star1');
+	let star2 = document.getElementById('star2');
+	let star3 = document.getElementById('star3');
+	let star4 = document.getElementById('star4');
+	let star5 = document.getElementById('star5');
+
+	star1.style.color='gold';
+	star2.style.color='black';
+	star3.style.color='black';
+	star4.style.color='black';
+	star5.style.color='black';
+}
+
+function star2hover(){
+	let star1 = document.getElementById('star1');
+	let star2 = document.getElementById('star2');
+	let star3 = document.getElementById('star3');
+	let star4 = document.getElementById('star4');
+	let star5 = document.getElementById('star5');
+
+	star1.style.color='gold';
+	star2.style.color='gold';
+	star3.style.color='black';
+	star4.style.color='black';
+	star5.style.color='black';
+}
+
+function star3hover(){
+	let star1 = document.getElementById('star1');
+	let star2 = document.getElementById('star2');
+	let star3 = document.getElementById('star3');
+	let star4 = document.getElementById('star4');
+	let star5 = document.getElementById('star5');
+
+	star1.style.color='gold';
+	star2.style.color='gold';
+	star3.style.color='gold';
+	star4.style.color='black';
+	star5.style.color='black';
+}
+
+function star4hover(){
+	let star1 = document.getElementById('star1');
+	let star2 = document.getElementById('star2');
+	let star3 = document.getElementById('star3');
+	let star4 = document.getElementById('star4');
+	let star5 = document.getElementById('star5');
+
+	star1.style.color='gold';
+	star2.style.color='gold';
+	star3.style.color='gold';
+	star4.style.color='gold';
+	star5.style.color='black';
+}
+
+function star5hover(){
+	let star1 = document.getElementById('star1');
+	let star2 = document.getElementById('star2');
+	let star3 = document.getElementById('star3');
+	let star4 = document.getElementById('star4');
+	let star5 = document.getElementById('star5');
+
+	star1.style.color='gold';
+	star2.style.color='gold';
+	star3.style.color='gold';
+	star4.style.color='gold';
+	star5.style.color='gold';
+}
+
+function starLeave(){
+	let star1 = document.getElementById('star1');
+	let star2 = document.getElementById('star2');
+	let star3 = document.getElementById('star3');
+	let star4 = document.getElementById('star4');
+	let star5 = document.getElementById('star5');
+
+	star1.style.color='#222';
+	star2.style.color='#222';
+	star3.style.color='#222';
+	star4.style.color='#222';
+	star5.style.color='#222';	
+}
+
+function clickstar(clicked){
+	let userid = clicked.getAttribute('value');
+	let productid = clicked.getAttribute('name');
+	let star = clicked.getAttribute('rating');
+
+	addSpinners();
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'productprocess.php';
+
+	var formData = "star="+userid+"&rateproduct="+productid+"&rating="+star;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+		document.getElementById('rate-this').innerHTML="Thank you for rating!";
+	}
+	myRequest.send(formData);
+}
+
+function updatestar(clicked){
+	let userid = clicked.getAttribute('value');
+	let productid = clicked.getAttribute('name');
+	let star = clicked.getAttribute('rating');
+	
+	addSpinners();
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'productprocess.php';
+
+	var formData = "updatestar="+userid+"&updaterateproduct="+productid+"&updaterating="+star;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+		console.log(response);
+		document.getElementById('rate-this').innerHTML="Thank you for rating!";
+	}
+	myRequest.send(formData);	
+}
+
 // Photo
 
 function removePhoto(){
@@ -2089,6 +2104,19 @@ function redirectPage(){
 	setTimeout(function () {
 		   
 		window.location.replace("index.php");
+	
+	}, 3000);
+}
+
+function goBackPage(){
+	document.getElementById('redirectlink').addEventListener('click',historyback);
+
+	function historyback(){
+    	window.history.back();
+	}
+	setTimeout(function () {
+		   
+    	window.history.back();
 	
 	}, 3000);
 }

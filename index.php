@@ -30,6 +30,7 @@
 			</div>
 			<div id="category-modal" onclick="hideCategory()"></div>
 			<div id="category-slide">
+				<h2 class="close-heading" onclick="hideCategory()">All Categories</h2>
 <?php
 	$sql = "SELECT categoryid,category FROM tblcategory WHERE status =1 ORDER BY category";
 	$result = $conn->query($sql);
@@ -105,11 +106,11 @@ echo'<p>Comments ('.number_format($comments).')</p>
 				</div>
 				<div class="advertisement">
 					<div class="advertisement-inner">
-						<img src="img/neiman_marcus.gif" alt="advertisement">
+						<img src="img/logo.jpg" alt="advertisement">
 					</div>
 				</div>
 				<div class="content-body">
-					<h3>Products</h3>
+					<h2>Freshly Picked</h2>
 <?php
 $sql = "SELECT productid,category, productname, description, farmname, username, dateposted, price, img, rating FROM tblproduct as t1
 LEFT JOIN tblcategory as t2

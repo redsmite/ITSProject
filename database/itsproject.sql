@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2018 at 07:48 PM
+-- Generation Time: Jul 27, 2018 at 07:23 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -327,7 +327,8 @@ INSERT INTO `tblcomment` (`commentid`, `userid`, `receiver`, `comment`, `datepos
 (162, 11, 14, 'Hey Honoka, you know what? Rize can remove that dirty picture of yours.', '2018-06-26 17:52:08', NULL),
 (163, 14, 11, 'Idc :>', '2018-06-26 17:53:21', NULL),
 (164, 79, 79, 'okay', '2018-06-28 13:41:35', NULL),
-(168, 1, 2, 'cocoa???', '2018-07-25 23:26:57', NULL);
+(168, 1, 2, 'cocoa???', '2018-07-25 23:26:57', NULL),
+(174, 1, 5, 'Deathwing', '2018-07-26 23:01:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -477,6 +478,18 @@ INSERT INTO `tblfriend` (`friendid`, `user1`, `user2`, `accepted`, `friendsince`
 (155, 79, 1, 1, NULL),
 (156, 73, 81, 2, '2018-07-10'),
 (158, 7, 1, 2, '2018-07-26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbllikes`
+--
+
+CREATE TABLE `tbllikes` (
+  `likeid` int(11) NOT NULL,
+  `reviewid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -823,7 +836,8 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (321, 1, 2, '2018-07-25 23:23:07', 1, 1, 167, 0),
 (322, 1, 2, '2018-07-25 23:26:57', 1, 1, 168, 0),
 (323, 1, 7, '2018-07-26 00:58:07', 1, 2, 157, 3),
-(324, 7, 1, '2018-07-26 01:03:05', 1, 2, 158, 2);
+(324, 7, 1, '2018-07-26 01:03:05', 1, 2, 158, 2),
+(325, 1, 5, '2018-07-26 23:02:00', 1, 1, 174, 0);
 
 -- --------------------------------------------------------
 
@@ -2296,7 +2310,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1456, 71, 28, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:45', 0),
 (1457, 71, 29, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:45', 0),
 (1458, 71, 30, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:45', 0),
-(1459, 71, 31, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:45', 0),
+(1459, 71, 31, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:45', 1),
 (1460, 71, 32, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:45', 0),
 (1461, 71, 33, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:45', 0),
 (1462, 71, 34, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:45', 0),
@@ -2384,7 +2398,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1544, 71, 28, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:17', 0),
 (1545, 71, 29, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:17', 0),
 (1546, 71, 30, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:17', 0),
-(1547, 71, 31, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:17', 0),
+(1547, 71, 31, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:17', 1),
 (1548, 71, 32, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:17', 0),
 (1549, 71, 33, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:17', 0),
 (1550, 71, 34, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:17', 0),
@@ -2475,10 +2489,10 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1635, 71, 86, 'Hello  ! \n Welcome to Bahay Kubo ni Mang Celso. \n Thanks for joining us. \n Please refer for the link for more info \n http://localhost/project/about.php', '2018-07-25 14:38:19', 0),
 (1636, 71, 87, 'Hello 12313asdasd! \n Welcome to Bahay Kubo ni Mang Celso. \n Thanks for joining us. \n Please refer for the link for more info \n http://localhost/project/about.php', '2018-07-25 14:41:02', 1),
 (1637, 71, 88, 'Hello 3r2 dsfsdfas! \n Welcome to Bahay Kubo ni Mang Celso. \n Thanks for joining us. \n Please refer for the link for more info \n http://localhost/project/about.php', '2018-07-25 14:42:43', 0),
-(1638, 1, 5, 'hello', '2018-07-25 23:42:14', 0),
-(1639, 1, 5, 'hello', '2018-07-25 23:42:34', 0),
-(1640, 1, 5, 'hello', '2018-07-25 23:45:27', 0),
-(1641, 1, 5, 'hello', '2018-07-25 23:48:08', 0),
+(1638, 1, 5, 'hello', '2018-07-25 23:42:14', 1),
+(1639, 1, 5, 'hello', '2018-07-25 23:42:34', 1),
+(1640, 1, 5, 'hello', '2018-07-25 23:45:27', 1),
+(1641, 1, 5, 'hello', '2018-07-25 23:48:08', 1),
 (1642, 1, 71, '!hello', '2018-07-25 23:48:32', 0),
 (1643, 1, 71, '!music', '2018-07-25 23:48:45', 0),
 (1644, 1, 71, '!music', '2018-07-25 23:50:33', 0),
@@ -2491,12 +2505,12 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1651, 71, 1, 'Today feels like a good day.', '2018-07-25 23:58:33', 1),
 (1652, 1, 71, '!music', '2018-07-25 23:58:38', 0),
 (1653, 71, 1, '(â™ª Background music playing...)', '2018-07-25 23:58:38', 1),
-(1654, 71, 0, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
+(1654, 71, 0, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 1),
 (1655, 71, 1, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 1),
 (1656, 71, 2, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
 (1657, 71, 3, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
 (1658, 71, 4, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
-(1659, 71, 5, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
+(1659, 71, 5, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 1),
 (1660, 71, 6, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
 (1661, 71, 7, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
 (1662, 71, 8, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
@@ -2522,7 +2536,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1682, 71, 28, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:43', 0),
 (1683, 71, 29, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:43', 0),
 (1684, 71, 30, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:43', 0),
-(1685, 71, 31, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:43', 0),
+(1685, 71, 31, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:43', 1),
 (1686, 71, 32, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:43', 0),
 (1687, 71, 33, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:43', 0),
 (1688, 71, 34, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:43', 0),
@@ -2584,7 +2598,19 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1744, 51, 71, '!hello', '2018-07-26 01:42:31', 0),
 (1745, 71, 51, 'Hello 0df2e46b223cd45b, I hope you\'re having a nice day.', '2018-07-26 01:42:31', 1),
 (1746, 51, 71, '!music', '2018-07-26 01:46:28', 0),
-(1747, 71, 51, '(â™ª Background music playing...)', '2018-07-26 01:46:28', 0);
+(1747, 71, 51, '(â™ª Background music playing...)', '2018-07-26 01:46:28', 0),
+(1748, 31, 71, '!hello', '2018-07-27 08:32:44', 0),
+(1749, 71, 31, 'Hello 492a9ac0b8d4ce2a, I hope you\'re having a nice day.', '2018-07-27 08:32:46', 1),
+(1750, 31, 71, '!chat', '2018-07-27 08:32:49', 0),
+(1751, 31, 71, '!bye', '2018-07-27 08:33:26', 0),
+(1752, 71, 31, 'Goodbye 31 see you later!', '2018-07-27 08:33:26', 1),
+(1753, 31, 71, '!thanks', '2018-07-27 08:35:21', 0),
+(1754, 71, 31, 'You\'re welcome 492a9ac0b8d4ce2a!', '2018-07-27 08:35:21', 1),
+(1755, 31, 71, '!hello', '2018-07-27 08:35:24', 0),
+(1756, 71, 31, 'Hello 492a9ac0b8d4ce2a, I hope you\'re having a nice day.', '2018-07-27 08:35:25', 1),
+(1757, 31, 71, '!bye', '2018-07-27 08:35:30', 0),
+(1758, 71, 31, 'Goodbye 492a9ac0b8d4ce2a see you later!', '2018-07-27 08:35:30', 1),
+(1759, 71, 90, 'Hello username! \n Welcome to Bahay Kubo ni Mang Celso. \n Thanks for joining us. \n Please refer for the link for more info \n http://localhost/project/about.php', '2018-07-27 13:25:27', 1);
 
 -- --------------------------------------------------------
 
@@ -2611,20 +2637,49 @@ CREATE TABLE `tblproduct` (
 --
 
 INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description`, `farmid`, `userid`, `dateposted`, `price`, `img`, `view`, `rating`) VALUES
-(1, 1, 'XYZ Amargoso', 'the balsam apple of the Philippines', 1, 2, '2018-07-18 20:23:54', '70.00', 'product/213500944001201.jpg', 2, '50.00'),
-(2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '70.00', 'product/food-healthy-summer-green.jpeg', 1, '50.00'),
-(3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 10, '50.00'),
-(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 8, '50.00'),
+(1, 1, 'XYZ Amargoso', 'the balsam apple of the Philippines', 1, 2, '2018-07-18 20:23:54', '70.00', 'product/213500944001201.jpg', 7, '60.00'),
+(2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '70.00', 'product/food-healthy-summer-green.jpeg', 1, '80.00'),
+(3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 12, '50.00'),
+(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 15, '100.00'),
 (5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 7, '50.00'),
 (6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 3, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 3, '50.00'),
 (7, 15, 'Indian Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mangofruit.jpg', 1, '50.00'),
 (8, 3, 'Party Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 3, 5, '2018-07-23 00:25:06', '120.00', 'product/cabbage-vegetable-power-green.jpg', 2, '50.00'),
 (9, 13, 'Calamansi C', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:10', '50.00', 'product/Calamansi.jpg', 0, '50.00'),
-(10, 13, 'Calamansi G', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 0, '50.00'),
-(11, 13, 'Calamansi A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 5, '50.00'),
-(12, 10, 'Pechay', 'Pechay Pechay Pechay Pechay Pechay Pechay Pechay', 1, 2, '2018-07-24 15:59:23', '55.00', 'product/pechay-baguio.jpg', 1, '50.00'),
-(13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 2, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 0, '50.00'),
-(14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 0, '50.00');
+(10, 13, 'Calamansi G', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 1, '50.00'),
+(11, 13, 'Calamansi A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 16, '80.00'),
+(12, 10, 'Pechay', 'Pechay Pechay Pechay Pechay Pechay Pechay Pechay', 1, 2, '2018-07-24 15:59:23', '55.00', 'product/pechay-baguio.jpg', 11, '100.00'),
+(13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 2, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 1, '50.00'),
+(14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 7, '80.00'),
+(15, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 2, 1, '2018-07-26 14:30:26', '50.00', '', 32, '70.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblrating`
+--
+
+CREATE TABLE `tblrating` (
+  `ratingid` int(11) NOT NULL,
+  `productid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `rating` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblrating`
+--
+
+INSERT INTO `tblrating` (`ratingid`, `productid`, `userid`, `rating`) VALUES
+(1, 15, 1, 5),
+(2, 14, 1, 3),
+(3, 14, 2, 5),
+(4, 15, 2, 2),
+(5, 4, 2, 5),
+(6, 2, 2, 4),
+(7, 12, 1, 5),
+(8, 11, 1, 4),
+(9, 1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -2648,8 +2703,24 @@ CREATE TABLE `tblreport` (
 INSERT INTO `tblreport` (`reportid`, `userid`, `reporter`, `reason`, `datecreated`, `checked`) VALUES
 (1, 2, 1, 'hello', '2018-07-10 22:38:01', 1),
 (2, 2, 1, '3', '2018-07-10 22:38:12', 1),
-(3, 0, 1, 'none', '2018-07-26 00:18:52', 1),
-(4, 10, 1, 'none', '2018-07-26 00:22:46', 1);
+(3, 20, 1, 'none', '2018-07-26 00:18:52', 1),
+(4, 10, 1, 'none', '2018-07-26 00:22:46', 1),
+(5, 5, 1, '5', '2018-07-27 13:46:34', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblreviews`
+--
+
+CREATE TABLE `tblreviews` (
+  `reviewid` int(11) NOT NULL,
+  `review` text NOT NULL,
+  `productid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `dateposted` datetime DEFAULT NULL,
+  `likes` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -2685,11 +2756,11 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `website`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-07-25 17:41:33', 110),
-(2, '959a9424ee49693d', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-07-25 16:42:12', 174),
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-07-27 17:20:21', 110),
+(2, '959a9424ee49693d', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-07-27 02:46:41', 176),
 (3, 'c24359d3031378f2', '5488d6d6f37a311a1085daf41f2e990c', '8f87ec93bf', '083a24', '6df46230', '2000-07-15', '2018-06-07 01:56:37', '985198f63d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (4, '15092bfa5e2b6e8c', '5f4dcc3b5aa765d61d8327deb882cf99', '7df2090dc6', '0d6c92', 'a401c8f7', '2000-12-04', '2018-06-07 01:56:37', '252d3825ae@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-07-25 16:50:29', 28),
-(5, 'fa86b2c7c8d2f4af', '5f4dcc3b5aa765d61d8327deb882cf99', '87efa34481', 'b17e8d', 'f4120928', '2000-09-19', '2018-06-07 01:56:37', '7182aa0862@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 4, '0000-00-00 00:00:00', '2018-07-25 16:43:34', 21),
+(5, 'fa86b2c7c8d2f4af', '5f4dcc3b5aa765d61d8327deb882cf99', '87efa34481', 'b17e8d', 'f4120928', '2000-09-19', '2018-06-07 01:56:37', '7182aa0862@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-07-26 15:55:42', 25),
 (6, 'e9eee15647061a7c', '5f4dcc3b5aa765d61d8327deb882cf99', '1bdd26b9d4', '755678', '505f27a9', '2000-03-15', '2018-06-07 15:32:53', '17f70978e3@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-04 08:07:37', 21),
 (7, 'c222b3b69f9b0d9a', '5f4dcc3b5aa765d61d8327deb882cf99', '22a8f59cd0', 'e1feb5', '8feeb649', '2000-07-15', '2018-06-07 14:08:15', '8010fdd3df@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-07-25 17:03:00', 57),
 (8, 'f3bd37208580dfc0', '5f4dcc3b5aa765d61d8327deb882cf99', '998a862c0d', '74e778', 'dcc92235', '2000-01-31', '2018-06-07 15:31:06', '62e6b92616@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:01', 40),
@@ -2711,11 +2782,11 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (24, '5dd646bc14b6628c', '5f4dcc3b5aa765d61d8327deb882cf99', '761e0bf11e', '5a68b8', '18e2aa13', '1996-12-01', '2018-06-08 21:10:39', '4795889861@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (25, '41bad328bd13ef8d', '5f4dcc3b5aa765d61d8327deb882cf99', '649d456b74', '0d8eb8', '6c9eb898', '2002-12-14', '2018-06-09 01:37:59', '8fdde69e29@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-16 06:41:06', 1),
 (26, '568ad715f48211bd', '5f4dcc3b5aa765d61d8327deb882cf99', '9b57a6c64d', 'c0ab9c', '703575f8', '', '2018-06-09 23:49:52', '042c5891cb@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(27, '0c2b94ea904a79d7', '5f4dcc3b5aa765d61d8327deb882cf99', 'bfeac5f6d9', 'f89539', '27d100e1', '', '2018-06-09 23:52:55', '549bf70879@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(27, '0c2b94ea904a79d7', '5f4dcc3b5aa765d61d8327deb882cf99', 'bfeac5f6d9', 'f89539', '27d100e1', '', '2018-06-09 23:52:55', '549bf70879@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
 (28, '2c6e469c9828ca6e', '5f4dcc3b5aa765d61d8327deb882cf99', '257b0f4fdd', '1fdf37', '845b56b6', '', '2018-06-09 23:54:40', '52ea7712fc@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
 (29, 'dfb93848736ab669', '5f4dcc3b5aa765d61d8327deb882cf99', '66354c849a', '0cc8a3', '954c9508', '', '2018-06-09 23:55:56', '33afbd0748@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (30, '9cfce5d493fa9826', '5f4dcc3b5aa765d61d8327deb882cf99', 'ba7a8f53b6', 'a04004', 'ef94975e', '', '2018-06-10 00:01:55', '24c73bc8a2@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(31, '492a9ac0b8d4ce2a', '5f4dcc3b5aa765d61d8327deb882cf99', '6e4d02d2b6', '18a4fd', 'd57fd742', '', '2018-06-10 00:11:13', 'f7a260bb17@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '2018-06-10 00:17:42', '2018-07-04 12:58:57', 1),
+(31, '492a9ac0b8d4ce2a', '5f4dcc3b5aa765d61d8327deb882cf99', '6e4d02d2b6', '18a4fd', 'd57fd742', '', '2018-06-10 00:11:13', 'f7a260bb17@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '2018-06-10 00:17:42', '2018-07-27 00:35:49', 2),
 (32, '7330df500d2b0a6e', '5f4dcc3b5aa765d61d8327deb882cf99', 'c480fa9406', 'e6f615', 'b31a913c', '', '2018-06-11 16:47:15', '1ca3cafaba@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (33, 'f352923168ec4e75', '5f4dcc3b5aa765d61d8327deb882cf99', '4eb7b9072c', 'd01ae9', '8e89de1c', '1990-01-19', '2018-06-12 05:01:54', '3ef8cc6bda@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (34, 'f3659d1a891da5ee', '5f4dcc3b5aa765d61d8327deb882cf99', 'b7cd597036', 'af0ec6', '9d08b654', '2004-02-14', '2018-06-12 05:08:10', 'b957f8ce32@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
@@ -2755,7 +2826,7 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (68, 'a5100ae5965eeac0', '5f4dcc3b5aa765d61d8327deb882cf99', '4d0b3daa58', 'e5a250', '847b31f3', '', '2018-06-21 06:01:06', '2696337211@gmail.com', '', 'Quezon City', 1, 1, '', '', 0, 4, '0000-00-00 00:00:00', '2018-06-21 15:25:19', 7),
 (69, '447ab0fe9db2fecc', '5f4dcc3b5aa765d61d8327deb882cf99', '6bebb77137', 'bb3f9b', '6076f22a', '2000-07-07', '2018-06-21 15:47:24', 'c2920496ca@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-25 10:11:15', 3),
 (70, 'd1ae9373014dbe15', '5f4dcc3b5aa765d61d8327deb882cf99', '0ff62ec3f4', '76ab55', '8289478a', '1993-07-07', '2018-06-22 04:45:25', '4e77d5a229@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-22 22:48:59', 2),
-(71, 'Mang Celso', '5f4dcc3b5aa765d61d8327deb882cf99', '50c12812b7', '5ee0ef', '120b5e7a', '', '2018-06-22 20:41:16', '4e091bcdd3@gmail.com', '', 'Quezon City', 2, 1, 'upload/manwithrooster-Navarro.jpg', '', 0, 4, '2018-07-25 17:29:26', '2018-07-25 17:29:32', 39),
+(71, 'Mang Celso', '5f4dcc3b5aa765d61d8327deb882cf99', '50c12812b7', '5ee0ef', '120b5e7a', '', '2018-06-22 20:41:16', '4e091bcdd3@gmail.com', '', 'Quezon City', 2, 1, 'upload/manwithrooster-Navarro.jpg', 'I am a bot...\r\n\r\nCommand\r\n\r\n!hello - I say hello.\r\n!thanks - I say you\'re welcome.\r\n!time - I\'ll tell the time.\r\n!bye - I\'ll say goodbye.\r\n!music - I\'ll play the music.\r\n!stop - I\'ll stop the music.', 0, 4, '2018-07-25 17:29:26', '2018-07-27 00:38:49', 40),
 (72, 'd40a050b4002b723', '5f4dcc3b5aa765d61d8327deb882cf99', '268271afb7', '52ae99', 'd539596a', '1995-10-03', '2018-06-22 21:19:59', '3953f5ff3e@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-23 20:11:44', 1),
 (73, '1433a047b99297b6', '5f4dcc3b5aa765d61d8327deb882cf99', '1a52effec7', '52784e', '296cb18f', '2002-10-01', '2018-06-24 03:17:01', '6447e32d95@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-08 11:57:19', 5),
 (74, '500d7d4f1047d9fd', '5f4dcc3b5aa765d61d8327deb882cf99', '6730b069d6', '11a7c9', 'eed303b4', '2003-09-19', '2018-06-24 08:08:28', '670c2358d1@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:34:51', 8),
@@ -2772,8 +2843,9 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (85, 'dfsfssfa', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:34:12', 'ranadasd@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 06:34:19', '2018-07-25 06:34:24', 0),
 (86, 'sdasdasdasd', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:38:19', '23234@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:40:31', 0),
 (87, '12313asdasd', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:41:01', 'asdada@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:42:02', 0),
-(88, 'fsdfsdf232', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:42:43', 'adasdasf@feadkfdfkdfki', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:46:53', 1),
-(89, 'Chandra Vengeant', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 17:22:42', 'chandra@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-07-25 17:26:37', 0);
+(88, 'fsdfsdf232', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:42:43', 'adasdasf@feadkfdfkdfki', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:46:53', 2),
+(89, 'Chandra Vengeant', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 17:22:42', 'chandra@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-07-25 17:26:37', 0),
+(90, 'username', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-27 05:25:27', 'username@gmail.com', '', '', 3, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-27 05:26:33', 1);
 
 --
 -- Indexes for dumped tables
@@ -2828,6 +2900,12 @@ ALTER TABLE `tblfriend`
   ADD PRIMARY KEY (`friendid`);
 
 --
+-- Indexes for table `tbllikes`
+--
+ALTER TABLE `tbllikes`
+  ADD PRIMARY KEY (`likeid`);
+
+--
 -- Indexes for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
@@ -2846,10 +2924,22 @@ ALTER TABLE `tblproduct`
   ADD PRIMARY KEY (`productid`);
 
 --
+-- Indexes for table `tblrating`
+--
+ALTER TABLE `tblrating`
+  ADD PRIMARY KEY (`ratingid`);
+
+--
 -- Indexes for table `tblreport`
 --
 ALTER TABLE `tblreport`
   ADD PRIMARY KEY (`reportid`);
+
+--
+-- Indexes for table `tblreviews`
+--
+ALTER TABLE `tblreviews`
+  ADD PRIMARY KEY (`reviewid`);
 
 --
 -- Indexes for table `tbluser`
@@ -2889,13 +2979,13 @@ ALTER TABLE `tblchangelog`
 -- AUTO_INCREMENT for table `tblcomment`
 --
 ALTER TABLE `tblcomment`
-  MODIFY `commentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+  MODIFY `commentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
 -- AUTO_INCREMENT for table `tblcommentann`
 --
 ALTER TABLE `tblcommentann`
-  MODIFY `commentannid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `commentannid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tblfarm`
@@ -2910,34 +3000,52 @@ ALTER TABLE `tblfriend`
   MODIFY `friendid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 
 --
+-- AUTO_INCREMENT for table `tbllikes`
+--
+ALTER TABLE `tbllikes`
+  MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=325;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=326;
 
 --
 -- AUTO_INCREMENT for table `tblpm`
 --
 ALTER TABLE `tblpm`
-  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1748;
+  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1760;
 
 --
 -- AUTO_INCREMENT for table `tblproduct`
 --
 ALTER TABLE `tblproduct`
-  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `tblrating`
+--
+ALTER TABLE `tblrating`
+  MODIFY `ratingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tblreport`
 --
 ALTER TABLE `tblreport`
-  MODIFY `reportid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `reportid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tblreviews`
+--
+ALTER TABLE `tblreviews`
+  MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

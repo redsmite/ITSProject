@@ -99,28 +99,21 @@ if(isset($_POST['song'])){
 
 if(isset($_POST['time'])){
 	$name=$_SESSION['name'];
-	$message='The time is ' . date("h:i:s A") . ' '. $name;
+	$message='The time is ' . date("h:i:s A") . ' '. $_SESSION['name'];
 
 	sendmessage(71,$name,$message);
 }
 
 if(isset($_POST['thanks'])){
 	$name=$_SESSION['id'];
-	$message='You\'re welcome '. $name. '!';
-
-	sendmessage(71,$name,$message);
-}
-
-if(isset($_POST['chat'])){
-	$name=$_SESSION['id'];
-	$message=$_POST['chat'];
+	$message='You\'re welcome '. $_SESSION['name']. '!';
 
 	sendmessage(71,$name,$message);
 }
 
 if(isset($_POST['bye'])){
 	$name=$_SESSION['id'];
-	$message='Goodbye '. $name. ' see you later!';
+	$message='Goodbye '. $_SESSION['name']. ' see you later!';
 
 	sendmessage(71,$name,$message);
 }

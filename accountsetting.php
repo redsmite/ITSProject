@@ -59,7 +59,7 @@
 						<input type="hidden" id="hidden2" <?php echo 'value="'.$timestamp.'"'?> />
 						<label for="">New Username</label><br>
 						<p>*You can only change your username once per month</p>
-						<p>*Must not exceed 20 characters and not include spaces or special characters.</p>
+						<p>*Must not exceed 20 characters.</p>
 						<input type="text" <?php echo 'value="'.$username.'"'?> required id="edit-name" name="edit-name" placeholder="Enter New Username...">
 					</div>
 					<div>

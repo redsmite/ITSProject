@@ -32,6 +32,9 @@ if(isset($_POST['search2'])){
 		$id = $row->productid;
 		$name = $row->productname;
 		$img = $row->img;
+		if(!$img){
+			$img='img/default2.jpg';
+		}
 		$price = $row->price;
 
 		echo '<a href="product.php?id='.$id.'"><li>
@@ -60,6 +63,9 @@ if(isset($_POST['chatsearch'])){
 		$id=$row->userid;
  		$name=$row->username;
  		$img=$row->imgpath;
+ 		if(!$img){
+			$img='img/default.png';
+		}
  		$online=$row->lastonline;
  		$time=time();
 
@@ -91,6 +97,9 @@ if(isset($_POST['mainsearch'])){
 			$id = $row->productid;
 			$name = $row->productname;
 			$img = $row->img;
+			if(!$img){
+				$img='img/default2.jpg';
+			}
 			$price = $row->price;
 
 			echo '<a href="product.php?id='.$id.'"><li>
@@ -108,6 +117,9 @@ if(isset($_POST['mainsearch'])){
 			$id = $row->productid;
 			$name = $row->productname;
 			$img = $row->img;
+			if(!$img){
+				$img='img/default2.jpg';
+			}
 			$price = $row->price;
 
 			echo '<a href="product.php?id='.$id.'"><li>

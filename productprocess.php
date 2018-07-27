@@ -78,6 +78,49 @@ if(isset($_POST['add'])){
 	}
 }
 
+// Review
+if(isset($_POST['star'])){
+	$userid=$_POST['star'];
+	$productid=$_POST['rateproduct'];
+	$star=$_POST['rating'];
+
+	$sql = "INSERT INTO tblrating (userid,productid,rating) VALUES ('$userid','$productid','$star')";
+	$result = $conn->query($sql);
+
+	$sql = "SELECT AVG(rating) AS average FROM tblrating WHERE productid='$productid'";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+
+	$finalrating = $fetch->average;
+
+	$finalrating = $finalrating*20;
+
+	$sql = "UPDATE tblproduct SET rating='$finalrating' WHERE productid='$productid'";
+	$result = $conn->query($sql);
+}
+
+if(isset($_POST['updatestar'])){
+	$userid=$_POST['updatestar'];
+	$productid=$_POST['updaterateproduct'];
+	$star=$_POST['updaterating'];
+
+	$sql = "UPDATE tblrating SET rating='$star' WHERE userid='$userid' AND productid = '$productid'";
+	$result = $conn->query($sql);
+	
+	$sql = "SELECT AVG(rating) AS average FROM tblrating WHERE productid='$productid'";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+
+	$finalrating = $fetch->average;
+
+	$finalrating = $finalrating*20;
+
+	$sql = "UPDATE tblproduct SET rating='$finalrating' WHERE productid='$productid'";
+	$result = $conn->query($sql);
+}
+
+// Cart
+
 if(isset($_POST['cart'])){
 	$id = $_POST['cart'];
 	$array = explode('|',$_SESSION['cart']);
