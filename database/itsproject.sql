@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2018 at 11:59 AM
+-- Generation Time: Jul 28, 2018 at 06:54 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -88,21 +88,21 @@ CREATE TABLE `tblcategory` (
 --
 
 INSERT INTO `tblcategory` (`categoryid`, `category`, `status`, `low`, `high`, `prevailing`) VALUES
-(1, 'Amargoso', 1, '70.00', '130.00', '100.00'),
-(2, 'Sitao', 1, '70.00', '140.00', '80.00'),
-(3, 'Cabbage', 1, '50.00', '120.00', '80.00'),
-(4, 'Carrots', 1, '50.00', '90.00', '60.00'),
-(5, 'Habitchuelas', 1, '60.00', '120.00', '80.00'),
-(6, 'Tomato', 1, '70.00', '120.00', '80.00'),
+(1, 'Amargoso', 1, '90.00', '160.00', '120.00'),
+(2, 'Sitao', 1, '80.00', '160.00', '110.00'),
+(3, 'Cabbage', 1, '50.00', '120.00', '70.00'),
+(4, 'Carrots', 1, '50.00', '120.00', '100.00'),
+(5, 'Habitchuelas', 1, '70.00', '140.00', '100.00'),
+(6, 'Tomato', 1, '80.00', '120.00', '100.00'),
 (7, 'Onion Red', 1, '80.00', '120.00', '100.00'),
-(8, 'White Potato', 1, '40.00', '80.00', '50.00'),
-(9, 'Eggplant', 1, '40.00', '90.00', '60.00'),
-(10, 'Pechay', 1, '40.00', '90.00', '55.00'),
+(8, 'White Potato', 1, '32.00', '90.00', '55.00'),
+(9, 'Eggplant', 1, '60.00', '120.00', '80.00'),
+(10, 'Pechay', 1, '45.00', '100.00', '60.00'),
 (11, 'Banana, Lakatan', 1, '45.00', '70.00', '60.00'),
 (12, 'Banana, Latundan', 1, '35.00', '60.00', '40.00'),
-(13, 'Calamansi', 1, '32.00', '80.00', '50.00'),
+(13, 'Calamansi', 1, '40.00', '100.00', '60.00'),
 (14, 'Papaya', 1, '35.00', '70.00', '60.00'),
-(15, 'Mango', 1, '80.00', '165.00', '120.00'),
+(15, 'Mango', 1, '100.00', '180.00', '120.00'),
 (16, 'Orange', 0, '0.00', '0.00', '0.00'),
 (17, 'Apple', 0, '0.00', '0.00', '0.00');
 
@@ -173,7 +173,18 @@ INSERT INTO `tblchangelog` (`logid`, `log`, `datecreated`) VALUES
 (48, 'Update price of Banana, Latundan', '2018-07-18 20:43:35'),
 (49, 'Update price of Calamansi', '2018-07-18 20:44:18'),
 (50, 'Update price of Papaya', '2018-07-18 20:44:33'),
-(51, 'Update price of Mango', '2018-07-18 20:44:57');
+(51, 'Update price of Mango', '2018-07-18 20:44:57'),
+(52, 'Update price of Amargoso', '2018-07-28 23:13:16'),
+(53, 'Update price of Sitao', '2018-07-28 23:13:33'),
+(54, 'Update price of Cabbage', '2018-07-28 23:13:59'),
+(55, 'Update price of Carrots', '2018-07-28 23:14:12'),
+(56, 'Update price of Habitchuelas', '2018-07-28 23:14:33'),
+(57, 'Update price of Tomato', '2018-07-28 23:14:47'),
+(58, 'Update price of White Potato', '2018-07-28 23:15:29'),
+(59, 'Update price of Eggplant', '2018-07-28 23:15:49'),
+(60, 'Update price of Pechay', '2018-07-28 23:16:07'),
+(61, 'Update price of Calamansi', '2018-07-28 23:16:43'),
+(62, 'Update price of Mango', '2018-07-28 23:17:11');
 
 -- --------------------------------------------------------
 
@@ -490,6 +501,15 @@ CREATE TABLE `tbllikes` (
   `reviewid` int(11) NOT NULL,
   `userid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbllikes`
+--
+
+INSERT INTO `tbllikes` (`likeid`, `reviewid`, `userid`) VALUES
+(3, 12, 7),
+(5, 14, 7),
+(8, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -2286,7 +2306,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1432, 71, 4, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:43', 0),
 (1433, 71, 5, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:43', 1),
 (1434, 71, 6, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:44', 0),
-(1435, 71, 7, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:44', 0),
+(1435, 71, 7, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:44', 1),
 (1436, 71, 8, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:44', 0),
 (1437, 71, 9, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:44', 0),
 (1438, 71, 10, 'The website has changed its layout \n stay tune for more update.', '2018-07-10 22:54:44', 0),
@@ -2374,7 +2394,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1520, 71, 4, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:16', 0),
 (1521, 71, 5, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:16', 1),
 (1522, 71, 6, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:16', 0),
-(1523, 71, 7, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:16', 0),
+(1523, 71, 7, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:16', 1),
 (1524, 71, 8, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:16', 0),
 (1525, 71, 9, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:16', 0),
 (1526, 71, 10, 'Hello everyone.\n\nThanks for patronizing us,\n\nStay tune for more updates.', '2018-07-20 15:04:16', 0),
@@ -2512,7 +2532,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1658, 71, 4, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
 (1659, 71, 5, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 1),
 (1660, 71, 6, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
-(1661, 71, 7, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
+(1661, 71, 7, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 1),
 (1662, 71, 8, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
 (1663, 71, 9, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
 (1664, 71, 10, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
@@ -2637,21 +2657,21 @@ CREATE TABLE `tblproduct` (
 --
 
 INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description`, `farmid`, `userid`, `dateposted`, `price`, `img`, `view`, `rating`) VALUES
-(1, 1, 'XYZ Amargoso', 'the balsam apple of the Philippines', 1, 2, '2018-07-18 20:23:54', '70.00', 'product/213500944001201.jpg', 7, '60.00'),
-(2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '70.00', 'product/food-healthy-summer-green.jpeg', 1, '80.00'),
+(1, 1, 'XYZ Amargoso', 'the balsam apple of the Philippines', 1, 2, '2018-07-18 20:23:54', '90.00', 'product/213500944001201.jpg', 7, '60.00'),
+(2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '80.00', 'product/food-healthy-summer-green.jpeg', 1, '80.00'),
 (3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 12, '50.00'),
 (4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 16, '100.00'),
 (5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 13, '50.00'),
 (6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 3, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 3, '50.00'),
 (7, 15, 'Indian Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mangofruit.jpg', 1, '50.00'),
-(8, 3, 'Party Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 3, 5, '2018-07-23 00:25:06', '120.00', 'product/cabbage-vegetable-power-green.jpg', 3, '50.00'),
+(8, 3, 'Party Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 3, 5, '2018-07-23 00:25:06', '120.00', 'product/cabbage-vegetable-power-green.jpg', 4, '50.00'),
 (9, 13, 'Calamansi C', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:10', '50.00', 'product/Calamansi.jpg', 0, '50.00'),
 (10, 13, 'Calamansi G', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 1, '50.00'),
 (11, 13, 'Calamansi A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 16, '80.00'),
 (12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 2, '2018-07-24 15:59:23', '50.00', 'img/default2.jpg', 12, '100.00'),
 (13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 2, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 10, '60.00'),
-(14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 17, '80.00'),
-(15, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 1, '2018-07-26 14:30:26', '55.00', 'product/potato.jpg', 34, '70.00');
+(14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 20, '80.00'),
+(15, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 1, '2018-07-26 14:30:26', '60.00', 'product/potato.jpg', 70, '73.33');
 
 -- --------------------------------------------------------
 
@@ -2680,7 +2700,8 @@ INSERT INTO `tblrating` (`ratingid`, `productid`, `userid`, `rating`) VALUES
 (7, 12, 1, 5),
 (8, 11, 1, 4),
 (9, 1, 1, 3),
-(10, 13, 1, 3);
+(10, 13, 1, 3),
+(11, 15, 7, 4);
 
 -- --------------------------------------------------------
 
@@ -2728,7 +2749,8 @@ CREATE TABLE `tblreviews` (
 --
 
 INSERT INTO `tblreviews` (`reviewid`, `review`, `productid`, `userid`, `dateposted`, `likes`) VALUES
-(12, 'Sample Review\n\nConsidered a high-value crop and major agricultural produce in the Cordilleras, annual demand for potato in the country is about 745,000 metric tons.\n\nWith the increasing number of fastfood chains in the country, meeting the countryâ€™s requirement for processing varieties is a great challenge for our potato stakeholders.\n\nThe Northern Philippines Root Crops Research and Training Center is undertaking a project that aims to mass produce, commercialize, and promote approved processing potato varieties of good quality.', 15, 1, '2018-07-28 17:04:49', 0);
+(12, 'Sample Review\n\nConsidered a high-value crop and major agricultural produce in the Cordilleras, annual demand for potato in the country is about 745,000 metric tons.\n\nWith the increasing number of fastfood chains in the country, meeting the countryâ€™s requirement for processing varieties is a great challenge for our potato stakeholders.\n\nThe Northern Philippines Root Crops Research and Training Center is undertaking a project that aims to mass produce, commercialize, and promote approved processing potato varieties of good quality.', 15, 1, '2018-07-28 17:04:49', 2),
+(14, 'Potato contains several phytochemicals such as phenolics, flavonoids, polyamines, and carotenoids, which are highly desirable in diet because of their beneficial effects on human health. The concentration and stability of these constituents are affected by several factors such as genotype, agronomic factors, postharvest storage, cooking and processing conditions. The advances in analytical techniques have made possible the identification and understanding the functions of phytochemicals, particularly their antioxidant properties. The potatoes are stored and processed into a variety of products before consumption. In the present review, phytochemicals present in potatoes, factors affecting their content, stability and health benefits are discussed. Processing the potatoes rich in phytochemicals can play an important role in promoting the health of a large segment of population in the countries where potatoes form a substantial part of daily diet.', 15, 7, '2018-07-29 00:24:24', 1);
 
 -- --------------------------------------------------------
 
@@ -2764,13 +2786,13 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `website`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-07-28 09:54:48', 111),
-(2, '959a9424ee49693d', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-07-27 02:46:41', 177),
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-07-28 16:51:57', 111),
+(2, '959a9424ee49693d', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-07-28 16:43:54', 178),
 (3, 'c24359d3031378f2', '5488d6d6f37a311a1085daf41f2e990c', '8f87ec93bf', '083a24', '6df46230', '2000-07-15', '2018-06-07 01:56:37', '985198f63d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (4, '15092bfa5e2b6e8c', '5f4dcc3b5aa765d61d8327deb882cf99', '7df2090dc6', '0d6c92', 'a401c8f7', '2000-12-04', '2018-06-07 01:56:37', '252d3825ae@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-07-25 16:50:29', 28),
 (5, 'fa86b2c7c8d2f4af', '5f4dcc3b5aa765d61d8327deb882cf99', '87efa34481', 'b17e8d', 'f4120928', '2000-09-19', '2018-06-07 01:56:37', '7182aa0862@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-07-26 15:55:42', 25),
 (6, 'e9eee15647061a7c', '5f4dcc3b5aa765d61d8327deb882cf99', '1bdd26b9d4', '755678', '505f27a9', '2000-03-15', '2018-06-07 15:32:53', '17f70978e3@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-04 08:07:37', 21),
-(7, 'c222b3b69f9b0d9a', '5f4dcc3b5aa765d61d8327deb882cf99', '22a8f59cd0', 'e1feb5', '8feeb649', '2000-07-15', '2018-06-07 14:08:15', '8010fdd3df@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-07-25 17:03:00', 57),
+(7, 'c222b3b69f9b0d9a', '5f4dcc3b5aa765d61d8327deb882cf99', '22a8f59cd0', 'e1feb5', '8feeb649', '2000-07-15', '2018-06-07 14:08:15', '8010fdd3df@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-07-28 16:31:01', 57),
 (8, 'f3bd37208580dfc0', '5f4dcc3b5aa765d61d8327deb882cf99', '998a862c0d', '74e778', 'dcc92235', '2000-01-31', '2018-06-07 15:31:06', '62e6b92616@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:01', 40),
 (9, '4fce1a441e1b0974', '5f4dcc3b5aa765d61d8327deb882cf99', '27bf39dd02', '7c7e3d', '6673b7c4', '2000-08-03', '2018-06-07 01:56:37', '4b55ca6ddd@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-27 06:08:30', 2),
 (10, '6e352b2a58c60b6a', '5f4dcc3b5aa765d61d8327deb882cf99', '27f4c9247b', 'ea8db1', '013b532f', '2004-04-01', '2018-06-07 15:29:14', 'cb329a0ba9@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-30 08:48:26', 12),
@@ -2794,7 +2816,7 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (28, '2c6e469c9828ca6e', '5f4dcc3b5aa765d61d8327deb882cf99', '257b0f4fdd', '1fdf37', '845b56b6', '', '2018-06-09 23:54:40', '52ea7712fc@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
 (29, 'dfb93848736ab669', '5f4dcc3b5aa765d61d8327deb882cf99', '66354c849a', '0cc8a3', '954c9508', '', '2018-06-09 23:55:56', '33afbd0748@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (30, '9cfce5d493fa9826', '5f4dcc3b5aa765d61d8327deb882cf99', 'ba7a8f53b6', 'a04004', 'ef94975e', '', '2018-06-10 00:01:55', '24c73bc8a2@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(31, '492a9ac0b8d4ce2a', '5f4dcc3b5aa765d61d8327deb882cf99', '6e4d02d2b6', '18a4fd', 'd57fd742', '', '2018-06-10 00:11:13', 'f7a260bb17@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '2018-06-10 00:17:42', '2018-07-27 00:35:49', 2),
+(31, '492a9ac0b8d4ce2a', '5f4dcc3b5aa765d61d8327deb882cf99', '6e4d02d2b6', '18a4fd', 'd57fd742', '', '2018-06-10 00:11:13', 'f7a260bb17@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '2018-06-10 00:17:42', '2018-07-28 16:34:07', 2),
 (32, '7330df500d2b0a6e', '5f4dcc3b5aa765d61d8327deb882cf99', 'c480fa9406', 'e6f615', 'b31a913c', '', '2018-06-11 16:47:15', '1ca3cafaba@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (33, 'f352923168ec4e75', '5f4dcc3b5aa765d61d8327deb882cf99', '4eb7b9072c', 'd01ae9', '8e89de1c', '1990-01-19', '2018-06-12 05:01:54', '3ef8cc6bda@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (34, 'f3659d1a891da5ee', '5f4dcc3b5aa765d61d8327deb882cf99', 'b7cd597036', 'af0ec6', '9d08b654', '2004-02-14', '2018-06-12 05:08:10', 'b957f8ce32@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
@@ -2814,7 +2836,7 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (48, '1e2f4ab9fb8edc29', '5f4dcc3b5aa765d61d8327deb882cf99', '814f89067c', 'd7733e', 'e024e294', '', '2018-06-16 00:37:00', '4995c64f7b@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:37:18', 0),
 (49, '000a06915f0b0b94', '5f4dcc3b5aa765d61d8327deb882cf99', 'bad39fd945', '241e86', 'e4488210', '', '2018-06-16 00:39:08', '811b8a1121@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:39:33', 0),
 (50, '350678fec48b5bb0', '5f4dcc3b5aa765d61d8327deb882cf99', 'bd24cbc45f', '62903d', '92e86909', '', '2018-06-16 00:45:11', '1efdf324a6@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:45:21', 1),
-(51, '0df2e46b223cd45b', '5f4dcc3b5aa765d61d8327deb882cf99', '7e5397d828', 'cab35c', '0c23b067', '', '2018-06-16 00:48:13', '24909decdf@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 17:46:12', 1),
+(51, '0df2e46b223cd45b', '5f4dcc3b5aa765d61d8327deb882cf99', '7e5397d828', 'cab35c', '0c23b067', '', '2018-06-16 00:48:13', '24909decdf@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-28 16:34:30', 1),
 (52, 'ba6fdb5010e83c12', '5f4dcc3b5aa765d61d8327deb882cf99', '352a1fd40c', '0a4c7f', '8f32e680', '1991-11-27', '2018-06-16 00:50:39', '675f232d80@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-18 03:13:11', 2),
 (53, '5c736ce85356d4c9', '5f4dcc3b5aa765d61d8327deb882cf99', '406034602d', '8d9ed0', '5a92e355', '', '2018-06-16 00:52:21', '9dca9b5ed2@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 4, '2018-06-16 05:43:52', '2018-06-16 05:44:20', 0),
 (54, '2c389830e5f9c1d5', '5f4dcc3b5aa765d61d8327deb882cf99', '7b67ee15fa', 'e24275', '328a4faa', '1999-01-17', '2018-06-16 05:28:28', '09b589ac64@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:34:10', 5),
@@ -2981,7 +3003,7 @@ ALTER TABLE `tblcategory`
 -- AUTO_INCREMENT for table `tblchangelog`
 --
 ALTER TABLE `tblchangelog`
-  MODIFY `logid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `logid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `tblcomment`
@@ -3011,7 +3033,7 @@ ALTER TABLE `tblfriend`
 -- AUTO_INCREMENT for table `tbllikes`
 --
 ALTER TABLE `tbllikes`
-  MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tblnotif`
@@ -3035,7 +3057,7 @@ ALTER TABLE `tblproduct`
 -- AUTO_INCREMENT for table `tblrating`
 --
 ALTER TABLE `tblrating`
-  MODIFY `ratingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ratingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tblreport`
@@ -3047,7 +3069,7 @@ ALTER TABLE `tblreport`
 -- AUTO_INCREMENT for table `tblreviews`
 --
 ALTER TABLE `tblreviews`
-  MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbluser`

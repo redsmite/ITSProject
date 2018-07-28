@@ -72,17 +72,16 @@ function showLogin(){
 
 function scrollOpacity(){
 	let header = document.querySelector('.subheader');
-	header.style.opacity=0.6;
+	header.style.opacity=0.1;
 
 	let body = document.getElementsByTagName("BODY")[0];
 	if(body.scrollTop==0){
 		header.style.opacity=1;
 	}
 
-	header.addEventListener('mouseover',back);
-	function back(){
+	header.addEventListener('mouseover',function(){
 		header.style.opacity=1;
-	}
+	});
 }
 
 //No display if count is zero
@@ -2132,7 +2131,53 @@ function deleteReview(clicked){
 		var response= this.responseText;
 		location.reload();
 	}
-	myRequest.send(formData);	
+	myRequest.send(formData);
+}
+
+function likeReview(clicked){
+	let id = clicked.getAttribute('value');
+	let helpfulid = 'helpful-'+id;
+	let helpful = document.getElementById(helpfulid);
+	helpful.innerHTML = 'Thanks for your feedback!';
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'productprocess.php';
+	
+	addSpinners();
+
+	var formData = "likeReview="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+	}
+	myRequest.send(formData);
+}
+
+function undoLike(clicked){
+	let id = clicked.getAttribute('value');
+	let helpfulid = 'helpful-'+id;
+	let helpful = document.getElementById(helpfulid);
+	helpful.innerHTML = 'Your helpful vote was removed';
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'productprocess.php';
+	
+	addSpinners();
+
+	var formData = "undoLike="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+	}
+	myRequest.send(formData);
 }
 
 // Photo

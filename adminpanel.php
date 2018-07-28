@@ -18,7 +18,7 @@ chattab();
     <link rel="stylesheet" href="css/style.css">
   	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<title><?php companytitle()?></title>
-<body>
+<body onscroll="scrollOpacity()">
 	<div class="main-container">
 	<!-- Header -->
 	<?php
@@ -41,9 +41,7 @@ chattab();
 				</div>
 				<div class="left-monitoring">
 					<div class="monitoring-option" onclick="setPrice()"><i class="far fa-money-bill-alt"></i> Price Monitoring</div>
-
 					<div class="monitoring-option" onclick="addNewCategory()"><i class="fas fa-plus"></i> Add / Remove Category</div>
-
 					<div class="monitoring-option" onclick="priceHistory()"><i class="fas fa-book"></i> Change Log</div>
 				</div>
 				<div class="empty"></div>

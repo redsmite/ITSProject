@@ -105,9 +105,11 @@ echo'<p>Comments ('.number_format($comments).')</p>
 ?>
 				</div>
 				<div class="advertisement">
+					<a href="about.php">
 					<div class="advertisement-inner">
 						<img src="img/logo.jpg" alt="advertisement">
 					</div>
+					</a>
 				</div>
 				<div class="content-body">
 					<h2><i class="fas fa-leaf"></i> Freshly Picked<br>

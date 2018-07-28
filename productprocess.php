@@ -268,4 +268,26 @@ if(isset($_POST['deleteReview'])){
 	$sql = "DELETE FROM tblreviews WHERE reviewid = '$id'";
 	$result = $conn->query($sql);
 }
+
+if(isset($_POST['likeReview'])){
+	$id = $_POST['likeReview'];
+	$userid = $_SESSION['id'];
+
+	$sql = "INSERT INTO tbllikes (reviewid, userid) VALUES ('$id','$userid')";
+	$result = $conn->query($sql);
+
+	$sql = "UPDATE tblreviews SET likes = likes+1 WHERE reviewid ='$id'";
+	$result = $conn->query($sql);
+}
+
+if(isset($_POST['undoLike'])){
+	$id = $_POST['undoLike'];
+	$userid = $_SESSION['id'];
+
+	$sql = "DELETE FROM tbllikes WHERE reviewid='$id' AND userid='$userid'";
+	$result = $conn->query($sql);
+
+	$sql = "UPDATE tblreviews SET likes = likes-1 WHERE reviewid ='$id'";
+	$result = $conn->query($sql);
+}
 ?>

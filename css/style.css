@@ -819,7 +819,6 @@ li{
 
 .advertisement-inner{
 	border: 1px solid var(--darkgray);
-	background: var(--darkgray);
 	color: var(--light-color);
 	height: 50vh;
 	width: 95%;
@@ -2264,6 +2263,10 @@ li{
 	width:200px;
 }
 
+#reviews{
+	min-height: 50vh;
+}
+
 #review-text{
 	width: 95%;
 	height: 100px;
@@ -2285,8 +2288,8 @@ li{
 }
 
 .review-tn{
-	width: 100px;
-	height: 100px;
+	width: 80px;
+	height: 80px;
 	overflow: hidden;
 	border-radius: 50%;
 	float: left;
@@ -2305,8 +2308,25 @@ li{
 	margin-left: 10px;
 }
 
-#reviews{
-	min-height: 50vh;
+.helpful{
+	margin: 5px auto;
+	background: var(--lightblue);
+	color: var(--dark-blue);
+	padding: 2px;
+	width: 280px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.find-this-helpful{
+	margin: 5px auto;
+	background: var(--lightblue);
+	color: var(--dark-blue);
+	padding: 2px;
+	width: 400px;
+	text-align: center;
+	cursor: pointer;
+	margin-bottom: 22px;
 }
 
 /* Shopping Cart */

@@ -187,12 +187,12 @@ if(isset($_SESSION['id'])){
 ?>
 					<div id="reviews">
 <?php
-$sql = "SELECT t1.userid, reviewid, review, username, imgpath, dateposted 
+$sql = "SELECT t1.userid, reviewid, review, username, imgpath, dateposted, likes
 FROM tblreviews AS t1
 LEFT JOIN tbluser AS t2
 	ON t1.userid = t2.userid
 WHERE productid='$id'
-ORDER BY dateposted DESC";
+ORDER BY likes DESC";
 $result = $conn->query($sql);
 if($result->num_rows==0){
 	echo'<h3>No reviews yet . . .</h3>';
@@ -207,6 +207,7 @@ while($row = $result->fetch_object()){
 		$Rimg = 'img/default.png';
 	}
 	$Rdate = $row->dateposted;
+	$likes = $row->likes;
 
 	echo'<div class="review-list">
 	<div class="review-header">
@@ -215,12 +216,26 @@ while($row = $result->fetch_object()){
 		<img src="'.$Rimg.'">
 	</div>
 	<span class="white">'.$Rusername.'</span></a>
-	<span class="review-date">'.time_elapsed_string($Rdate).'</span>
+	<span class="review-date">'.date('M j, Y',strtotime($Rdate)).'</span>
 	</div>
-	<p>'.nl2br(createlink($review)).'</p>
-	</div>';
-	if($_SESSION['id']==$Ruserid){
-		echo '<p class="button-control" value="'.$Rid.'" onclick="deleteReview(this)">Delete</p>';
+	<p class="find-this-helpful">'.number_format($likes).' people find this review helpful</p>
+	<p>'.nl2br(createlink($review)).'</p>';
+	if(isset($_SESSION['id'])){
+	// Find this helpful
+	$Sid = $_SESSION['id'];
+	$sql2 = "SELECT likeid FROM tbllikes WHERE userid='$Sid' AND reviewid='$Rid'";
+	$result2 = $conn->query($sql2);
+	if($result2->num_rows==0){
+		echo '<div class="helpful" id="helpful-'.$Rid.'" ><p onclick="likeReview(this)" value="'.$Rid.'">Do you find this review helpful? <i class="far fa-thumbs-up"></i><p></div>';
+		}else{
+		echo '<div class="helpful" id="helpful-'.$Rid.'" ><p onclick="undoLike(this)" value="'.$Rid.'">You find this review helpful. Undo<p></div>';
+		}
+	}
+	echo'</div>';
+	if(isset($_SESSION['id'])){
+		if($_SESSION['id']==$Ruserid){
+			echo '<p class="button-control" value="'.$Rid.'" onclick="deleteReview(this)">Delete</p>';
+		}
 	}
 }
 ?>
@@ -305,12 +320,14 @@ if($img=='img/default2.jpg'){
 					<input type="submit" value="submit" name="submit">
 				</div>
 				<div id="error-message2">';
+// Submit Changes
 if(isset($_POST['submit'])){
-	$category = $_POST['category'];
-	$name = $conn->real_escape_string($_POST['name']);
-	$desc = $conn->real_escape_string($_POST['desc']);
-	$farm = $_POST['farm'];
-	$price = $_POST['price'];
+
+$category = $_POST['category'];
+$name = $conn->real_escape_string($_POST['name']);
+$desc = $conn->real_escape_string($_POST['desc']);
+$farm = $_POST['farm'];
+$price = $_POST['price'];
 
 $sql = "SELECT low,high FROM tblcategory WHERE categoryid= '$category'";
 $result= $conn->query($sql);
@@ -376,9 +393,11 @@ $high = $fetch->high;
 		}
 		$sql = "UPDATE tblproduct SET categoryid='$category', productname='$name', description='$desc', farmid='$farm', price='$price', img='$filepath' WHERE productid = '$id'";
 		$result = $conn->query($sql);
+		unset($_SESSION['updateProduct']);
 		echo "<meta http-equiv='refresh' content='0'>";
 	}else{
 		echo $error;
+		$_SESSION['updateProduct'] = 1;
 	}
 }
 
@@ -402,7 +421,12 @@ $high = $fetch->high;
 		<?php 
 		if(isset($rating)){
 			echo 'ratedThis('.$rating.');';
-		} ?>
+		}
+		if(isset($_SESSION['updateProduct'])){
+			echo 'showUpdateProductForm();';
+		}	
+		?>
+		
 		modal();
 		ajaxLogin();
 
