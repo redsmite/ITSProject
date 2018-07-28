@@ -34,7 +34,7 @@ mysqli_close($conn);
     <link rel="stylesheet" href="css/style.css">
   	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<title><?php companytitle()?></title>
-<body>
+<body onscroll="scrollOpacity()">
 	<div class="main-container">
 	<!-- Header -->
 	<?php

@@ -16,7 +16,7 @@ chattab();
     <link rel="stylesheet" href="css/style.css">
   	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<title><?php companytitle()?></title>
-<body>
+<body onscroll="scrollOpacity()">
 	<div class="main-container">
 		<!-- Header -->
 		<?php
@@ -55,6 +55,8 @@ chattab();
 	</div>
 	<script src="js/main.js"></script>
 	<script>
+		let input = document.getElementById('admin-name');
+		input.focus();
 		adminLogin();
 	</script>
 </body>

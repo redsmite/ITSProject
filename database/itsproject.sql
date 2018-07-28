@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2018 at 07:23 PM
+-- Generation Time: Jul 28, 2018 at 11:59 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -379,9 +379,9 @@ CREATE TABLE `tblfarm` (
 --
 
 INSERT INTO `tblfarm` (`farmid`, `farmname`, `address`, `status`) VALUES
-(1, 'Pampanga', 'Porac, Pampanga', 1),
+(1, 'Pampanga', 'Pampanga', 1),
 (2, 'Cavite', 'Cavite', 1),
-(3, 'Laguna', 'laguna', 1);
+(3, 'Tagaytay', 'Tagaytay', 1);
 
 -- --------------------------------------------------------
 
@@ -2640,18 +2640,18 @@ INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description
 (1, 1, 'XYZ Amargoso', 'the balsam apple of the Philippines', 1, 2, '2018-07-18 20:23:54', '70.00', 'product/213500944001201.jpg', 7, '60.00'),
 (2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '70.00', 'product/food-healthy-summer-green.jpeg', 1, '80.00'),
 (3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 12, '50.00'),
-(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 15, '100.00'),
-(5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 7, '50.00'),
+(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 16, '100.00'),
+(5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 13, '50.00'),
 (6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 3, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 3, '50.00'),
 (7, 15, 'Indian Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mangofruit.jpg', 1, '50.00'),
-(8, 3, 'Party Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 3, 5, '2018-07-23 00:25:06', '120.00', 'product/cabbage-vegetable-power-green.jpg', 2, '50.00'),
+(8, 3, 'Party Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 3, 5, '2018-07-23 00:25:06', '120.00', 'product/cabbage-vegetable-power-green.jpg', 3, '50.00'),
 (9, 13, 'Calamansi C', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:10', '50.00', 'product/Calamansi.jpg', 0, '50.00'),
 (10, 13, 'Calamansi G', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 1, '50.00'),
 (11, 13, 'Calamansi A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 16, '80.00'),
-(12, 10, 'Pechay', 'Pechay Pechay Pechay Pechay Pechay Pechay Pechay', 1, 2, '2018-07-24 15:59:23', '55.00', 'product/pechay-baguio.jpg', 11, '100.00'),
-(13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 2, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 1, '50.00'),
-(14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 7, '80.00'),
-(15, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 2, 1, '2018-07-26 14:30:26', '50.00', '', 32, '70.00');
+(12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 2, '2018-07-24 15:59:23', '50.00', 'img/default2.jpg', 12, '100.00'),
+(13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 2, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 10, '60.00'),
+(14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 17, '80.00'),
+(15, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 1, '2018-07-26 14:30:26', '55.00', 'product/potato.jpg', 34, '70.00');
 
 -- --------------------------------------------------------
 
@@ -2679,7 +2679,8 @@ INSERT INTO `tblrating` (`ratingid`, `productid`, `userid`, `rating`) VALUES
 (6, 2, 2, 4),
 (7, 12, 1, 5),
 (8, 11, 1, 4),
-(9, 1, 1, 3);
+(9, 1, 1, 3),
+(10, 13, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -2722,6 +2723,13 @@ CREATE TABLE `tblreviews` (
   `likes` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tblreviews`
+--
+
+INSERT INTO `tblreviews` (`reviewid`, `review`, `productid`, `userid`, `dateposted`, `likes`) VALUES
+(12, 'Sample Review\n\nConsidered a high-value crop and major agricultural produce in the Cordilleras, annual demand for potato in the country is about 745,000 metric tons.\n\nWith the increasing number of fastfood chains in the country, meeting the countryâ€™s requirement for processing varieties is a great challenge for our potato stakeholders.\n\nThe Northern Philippines Root Crops Research and Training Center is undertaking a project that aims to mass produce, commercialize, and promote approved processing potato varieties of good quality.', 15, 1, '2018-07-28 17:04:49', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -2756,8 +2764,8 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `website`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-07-27 17:20:21', 110),
-(2, '959a9424ee49693d', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-07-27 02:46:41', 176),
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-07-28 09:54:48', 111),
+(2, '959a9424ee49693d', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-07-27 02:46:41', 177),
 (3, 'c24359d3031378f2', '5488d6d6f37a311a1085daf41f2e990c', '8f87ec93bf', '083a24', '6df46230', '2000-07-15', '2018-06-07 01:56:37', '985198f63d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (4, '15092bfa5e2b6e8c', '5f4dcc3b5aa765d61d8327deb882cf99', '7df2090dc6', '0d6c92', 'a401c8f7', '2000-12-04', '2018-06-07 01:56:37', '252d3825ae@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-07-25 16:50:29', 28),
 (5, 'fa86b2c7c8d2f4af', '5f4dcc3b5aa765d61d8327deb882cf99', '87efa34481', 'b17e8d', 'f4120928', '2000-09-19', '2018-06-07 01:56:37', '7182aa0862@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-07-26 15:55:42', 25),
@@ -3027,7 +3035,7 @@ ALTER TABLE `tblproduct`
 -- AUTO_INCREMENT for table `tblrating`
 --
 ALTER TABLE `tblrating`
-  MODIFY `ratingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ratingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tblreport`
@@ -3039,7 +3047,7 @@ ALTER TABLE `tblreport`
 -- AUTO_INCREMENT for table `tblreviews`
 --
 ALTER TABLE `tblreviews`
-  MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbluser`

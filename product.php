@@ -77,7 +77,7 @@ chattab();
   	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<title><?php companytitle()?></title>
 </head>
-<body>
+<body onscroll="scrollOpacity()">
 	<div class="main-container">
 	<!-- Header -->
 	<?php
@@ -114,8 +114,7 @@ chattab();
 		}else{
 			$string='Stars';
 		}
-		echo'<p>You rated this '.$rating.' '.$string.'</p>
-
+		echo'<p>You rated this <br>'.$rating.' '.$string.'</p>
 		<i id="star1" class="fas fa-star" onmouseover="star1hover()" onclick="updatestar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="1"></i>
 		<i id="star2" class="fas fa-star" onmouseover="star2hover()" onclick="updatestar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="2"></i>
 		<i id="star3" class="fas fa-star" onmouseover="star3hover()" onclick="updatestar(this)" value="'.$_SESSION['id'].'" name="'.$_GET['id'].'" rating="3"></i>
@@ -169,8 +168,63 @@ chattab();
 					</div>
 				</div>
 				<div class="product-reviews">
-					<h1>Reviews</h1>
+					<br><hr>
+					<h1 class="center">Reviews</h1>
+<?php
+if(isset($_SESSION['id'])){
+	echo'<form id="review-form">
+	<div>
+		<textarea id="review-text" required placeholder="What do you think about this product..."></textarea>
+	</div>
+	<input type="hidden" id="review-product" value="'.$id.'">
+	<input type="hidden" id="review-user" value="'.$_SESSION['id'].'">
+	<div>
+		<center><button onclick="sendReview()">Submit</button>
+		</center>
+	</div>
+	</form>';
+}
+?>
+					<div id="reviews">
+<?php
+$sql = "SELECT t1.userid, reviewid, review, username, imgpath, dateposted 
+FROM tblreviews AS t1
+LEFT JOIN tbluser AS t2
+	ON t1.userid = t2.userid
+WHERE productid='$id'
+ORDER BY dateposted DESC";
+$result = $conn->query($sql);
+if($result->num_rows==0){
+	echo'<h3>No reviews yet . . .</h3>';
+}
+while($row = $result->fetch_object()){
+	$Rid = $row->reviewid;
+	$Ruserid = $row->userid;
+	$review = $row->review;
+	$Rusername = $row->username;
+	$Rimg = $row->imgpath;
+	if(!$Rimg){
+		$Rimg = 'img/default.png';
+	}
+	$Rdate = $row->dateposted;
 
+	echo'<div class="review-list">
+	<div class="review-header">
+	<a href="profile.php?id='.$Ruserid.'">
+	<div class="review-tn">
+		<img src="'.$Rimg.'">
+	</div>
+	<span class="white">'.$Rusername.'</span></a>
+	<span class="review-date">'.time_elapsed_string($Rdate).'</span>
+	</div>
+	<p>'.nl2br(createlink($review)).'</p>
+	</div>';
+	if($_SESSION['id']==$Ruserid){
+		echo '<p class="button-control" value="'.$Rid.'" onclick="deleteReview(this)">Delete</p>';
+	}
+}
+?>
+					</div>
 				</div>
 			</div>
 			<div class="product-main-right">
@@ -264,8 +318,6 @@ $fetch = $result->fetch_object();
 $low = $fetch->low;
 $high = $fetch->high;
 
-
-
 	$error = '';
 
 	if($category=='Select Category'){
@@ -347,8 +399,13 @@ $high = $fetch->high;
 	</div>
 	<script src="js/main.js"></script>
 	<script>
+		<?php 
+		if(isset($rating)){
+			echo 'ratedThis('.$rating.');';
+		} ?>
 		modal();
 		ajaxLogin();
+
 	</script>
 </body>
 </html>

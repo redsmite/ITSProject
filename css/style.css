@@ -554,7 +554,6 @@ li{
 	top: 0;
 	background: var(--light-color);
 	overflow: auto;
-	color: var(--primary-color);
 	height:100%;
 	box-shadow: 0 0 20px rgba(0,0,0,0.5);
 	animation-name:modalopen;
@@ -846,8 +845,10 @@ li{
 
 .content-body h2{
 	padding: 2px;
-	margin:2px;
-	font-family: Florence, cursive;
+	margin: 2px;
+	font-size: 1.2em;
+	border-top: 1px solid var(--darkgray);
+	border-bottom: 1px solid var(--darkgray);
 }
 
 .content-body a{
@@ -964,6 +965,13 @@ li{
 	border-radius: 8px;
     border: 1px solid var(--light-color);
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.notice{
+	margin: 5px;
+	color: red;
+	font-family: Florence, cursive;
+	font-size: 1em;
 }
 
 .edit-form p{
@@ -2244,14 +2252,61 @@ li{
 	background: var(--light-color);
 	margin: 5px;
 	padding: 5px;
-	min-height: 50vh;
+	min-height: 100vh;
 }
 
 /* Review */
 #rate-this{
 	text-align: center;
 	font-size: 1.5em;
+	margin: 0 auto;
 	cursor: pointer;
+	width:200px;
+}
+
+#review-text{
+	width: 95%;
+	height: 100px;
+	margin:auto;
+}
+
+.review-list{
+	min-height: 200px;
+	background: var(--canvas);
+	margin-top: 10px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
+	padding-bottom: 10px;
+}
+
+.review-header{
+	padding: 10px;
+	background: var(--dark-color);
+	color: var(--light-color);
+}
+
+.review-tn{
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	border-radius: 50%;
+	float: left;
+}
+
+.review-tn img{
+	max-width: 100%;
+}
+
+.review-date{
+	float:right;
+}
+
+.review-list p{
+	line-height: 1.5em;
+	margin-left: 10px;
+}
+
+#reviews{
+	min-height: 50vh;
 }
 
 /* Shopping Cart */

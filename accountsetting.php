@@ -42,7 +42,7 @@
   	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<title><?php companytitle()?></title>
 </head>
-<body>
+<body onscroll="scrollOpacity()">
 	<div class="main-container">
 	<!-- Header -->
 	<?php

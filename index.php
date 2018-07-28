@@ -18,7 +18,7 @@
   	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<title><?php companytitle()?></title>
 </head>
-<body>
+<body onscroll="scrollOpacity()">
 	<div class="main-container">
 	<!-- Header -->
 	<?php
@@ -110,7 +110,8 @@ echo'<p>Comments ('.number_format($comments).')</p>
 					</div>
 				</div>
 				<div class="content-body">
-					<h2>Freshly Picked</h2>
+					<h2><i class="fas fa-leaf"></i> Freshly Picked<br>
+					<small>What's New</small></h2>
 <?php
 $sql = "SELECT productid,category, productname, description, farmname, username, dateposted, price, img, rating FROM tblproduct as t1
 LEFT JOIN tblcategory as t2

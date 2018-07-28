@@ -16,7 +16,7 @@
   	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<title><?php companytitle()?></title>
 </head>
-<body>
+<body onscroll="scrollOpacity()">
 	<div class="main-container">
 	<!-- Header -->
 	<?php
@@ -30,6 +30,7 @@
 					<h2><span id="highlight-text">Create</span> an Account</h2>
 					<div class="form">
 						<center>
+						<div class="notice"><h3><i class="fas fa-exclamation-circle"></i> Notice: We don't deliver goods outside Manila</h3></div>
 						<form action="registerprocess.php" id="reg-form" method="post">
 							<div class="grid-register">
 								<div>
@@ -69,6 +70,8 @@
 	</div>
 	<script src="js/main.js"></script>
 	<script>
+		let input = document.getElementById('reg-name');
+		input.focus();
 		modal();
 		ajaxRegister();
 		ajaxLogin();

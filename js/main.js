@@ -70,6 +70,21 @@ function showLogin(){
 	modal.style.display='block';
 }
 
+function scrollOpacity(){
+	let header = document.querySelector('.subheader');
+	header.style.opacity=0.6;
+
+	let body = document.getElementsByTagName("BODY")[0];
+	if(body.scrollTop==0){
+		header.style.opacity=1;
+	}
+
+	header.addEventListener('mouseover',back);
+	function back(){
+		header.style.opacity=1;
+	}
+}
+
 //No display if count is zero
 var y = document.getElementById("notifnum");
 var z = document.getElementById("pmnum");
@@ -1085,7 +1100,7 @@ function showSalesTab(){
 	body3.style.display='none';
 	body4.style.display='grid';
 
-	showFarmTab();
+	showDailyTab();
 }
 
 function sendAllUser(){
@@ -1599,6 +1614,7 @@ function reportuser(){
 		}
 }
 
+
 function checkedreport(clicked){
 	var id =clicked.getAttribute('id');
 	
@@ -2004,6 +2020,121 @@ function updatestar(clicked){
 	myRequest.send(formData);	
 }
 
+function ratedThis(rating){
+	if(rating==1){
+		let star1 = document.getElementById('star1');
+		let star2 = document.getElementById('star2');
+		let star3 = document.getElementById('star3');
+		let star4 = document.getElementById('star4');
+		let star5 = document.getElementById('star5');
+
+		star1.style.color='gold';
+		star2.style.color='#222';
+		star3.style.color='#222';
+		star4.style.color='#222';
+		star5.style.color='#222';
+	}else if(rating==2){
+		let star1 = document.getElementById('star1');
+		let star2 = document.getElementById('star2');
+		let star3 = document.getElementById('star3');
+		let star4 = document.getElementById('star4');
+		let star5 = document.getElementById('star5');
+
+		star1.style.color='gold';
+		star2.style.color='gold';
+		star3.style.color='#222';
+		star4.style.color='#222';
+		star5.style.color='#222';
+	}else if(rating==3){
+		let star1 = document.getElementById('star1');
+		let star2 = document.getElementById('star2');
+		let star3 = document.getElementById('star3');
+		let star4 = document.getElementById('star4');
+		let star5 = document.getElementById('star5');
+
+		star1.style.color='gold';
+		star2.style.color='gold';
+		star3.style.color='gold';
+		star4.style.color='#222';
+		star5.style.color='#222';
+	}else if(rating==4){
+		let star1 = document.getElementById('star1');
+		let star2 = document.getElementById('star2');
+		let star3 = document.getElementById('star3');
+		let star4 = document.getElementById('star4');
+		let star5 = document.getElementById('star5');
+
+		star1.style.color='gold';
+		star2.style.color='gold';
+		star3.style.color='gold';
+		star4.style.color='gold';
+		star5.style.color='#222';
+	}else if(rating==5){
+		let star1 = document.getElementById('star1');
+		let star2 = document.getElementById('star2');
+		let star3 = document.getElementById('star3');
+		let star4 = document.getElementById('star4');
+		let star5 = document.getElementById('star5');
+
+		star1.style.color='gold';
+		star2.style.color='gold';
+		star3.style.color='gold';
+		star4.style.color='gold';
+		star5.style.color='gold';
+	}
+}
+
+function sendReview(){
+	let form = document.getElementById('review-form');
+	form.addEventListener('submit',send);
+
+	function send(e){
+		e.preventDefault();
+
+		let review = document.getElementById('review-text').value;
+		let reviewproduct = document.getElementById('review-product').value;
+		let reviewuser = document.getElementById('review-user').value;
+
+		addSpinners();
+
+		var myRequest = new XMLHttpRequest();
+
+		var url = 'productprocess.php';
+
+		let formData = 'review='+review+'&reviewproduct='+reviewproduct+'&reviewuser='+reviewuser;
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			location.reload();
+		}
+		myRequest.send(formData);
+	}
+}
+
+
+function deleteReview(clicked){
+	let id = clicked.getAttribute('value');
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'productprocess.php';
+	
+	addSpinners();
+
+	var formData = "deleteReview="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		location.reload();
+	}
+	myRequest.send(formData);	
+}
+
 // Photo
 
 function removePhoto(){
@@ -2034,7 +2165,7 @@ function removePhoto(){
 			let profile2 = profile.split('<');			
 			window.location.replace(profile2[0]);
 		}
-		myRequest.send(formData);		
+		myRequest.send(formData);
 	}		
 }
 

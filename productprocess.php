@@ -141,10 +141,12 @@ if(isset($_POST['delete'])){
 if(isset($_POST['remove'])){
 	$id = $_POST['remove'];
 
-	$array = explode('|',$_SESSION['cart']);
-	unset($array[$id]);
-	$array = implode("|",$array);
-	$_SESSION['cart'] = $array;
+	if(isset($_SESSION['cart'])){
+		$array = explode('|',$_SESSION['cart']);
+		unset($array[$id]);
+		$array = implode("|",$array);
+		$_SESSION['cart'] = $array;
+	}
 }
 
 if(isset($_POST['weight'])){
@@ -249,5 +251,21 @@ if(isset($_POST['showcart'])){
 	<div class="add-to-cart"><i class="fas fa-cart-arrow-down"></i></div>
 	<div class="red-cart" onclick="deleteCart()"><i class="fas fa-trash-alt"></i></div>';
 	}
+}
+
+if(isset($_POST['review'])){
+	$user = $_POST['reviewuser'];
+	$product = $_POST['reviewproduct'];
+	$review = $conn->real_escape_string($_POST['review']);
+
+	$sql = "INSERT INTO tblreviews (review, productid, userid, dateposted) VALUES ('$review','$product','$user',NOW())";
+	$result = $conn->query($sql);
+}
+
+if(isset($_POST['deleteReview'])){
+	$id = $_POST['deleteReview'];
+
+	$sql = "DELETE FROM tblreviews WHERE reviewid = '$id'";
+	$result = $conn->query($sql);
 }
 ?>

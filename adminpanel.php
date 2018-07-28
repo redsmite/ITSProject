@@ -247,11 +247,11 @@ if($last != 1){
 					<form id="announce-form">
 						<div>
 							<p>Title:</p>
-							<input required type="text" id="announce-title">
+							<input required type="text" placeholder="Enter title..." id="announce-title">
 						</div>
 						<div>
 							<p>Content:</p>
-							<textarea required id="announce-content"></textarea>
+							<textarea required placeholder="Enter Content..." id="announce-content"></textarea>
 						</div>
 						<div>
 							<input type="submit" value="submit">
@@ -264,7 +264,7 @@ if($last != 1){
 				<form id='sendtoallform'>
 					<center>
 					<div>
-						<textarea id="sendtoallmessage"  required placeholder="enter message..."></textarea>
+						<textarea id="sendtoallmessage"  required placeholder="Enter message..."></textarea>
 					</div>
 					<div>
 						<input type="submit" value="submit">
@@ -275,15 +275,15 @@ if($last != 1){
 			</div>
 			<div id="sales">
 <div id="sales-left">
-	<div class="monitoring-option" onclick="showFarmTab()">
-		<i class="fab fa-pagelines"></i> Farms
-	</div>
 	<div class="monitoring-option" onclick="showDailyTab()">
 		<i class="fas fa-chart-bar"></i> Daily Report
 	</div>
 	<div class="monitoring-option" onclick="showMonthlyTab()">
 		<i class="fas fa-chart-bar"></i> Monthly Report
-	</div>	
+	</div>
+	<div class="monitoring-option" onclick="showFarmTab()">
+		<i class="fab fa-pagelines"></i> Farms
+	</div>
 </div>
 <div class="empty"></div>
 
