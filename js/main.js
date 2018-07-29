@@ -1809,7 +1809,7 @@ function addWeight(click){
 	let input = document.getElementById(inputid);
 	let weight = input.value;
 
-	if(weight<0){
+	if(weight<0 || weight==''){
 
 	}else{
 
@@ -1822,7 +1822,7 @@ function addWeight(click){
 	output.innerHTML = addCommas(total.toFixed(2));
 
 	let ftotal = document.getElementById('total').innerHTML;
-	let ftotalint = parseInt(ftotal);
+	let ftotalint = parseFloat(ftotal.replace(/,/g, ''));
 	let ftotalval = ftotalint + total;
 
 	let foutput = document.getElementById('total');
@@ -1835,7 +1835,6 @@ function addWeight(click){
 	let remove = document.getElementById(removeid);
 	remove.style.display='none';
 
-
 	var myRequest = new XMLHttpRequest();
 
 	var url = 'productprocess.php';
@@ -1846,8 +1845,6 @@ function addWeight(click){
 	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
 	myRequest.onload = function(){
 		var response= this.responseText;
-		console.log(response);
-		removeSpinners();
 		document.getElementById('top-total').innerHTML='₱'+addCommas(ftotalval.toFixed(2));
 	}
 	myRequest.send(formData);
@@ -1878,8 +1875,6 @@ function removeList(click){
 	let list = document.getElementById(listid);
 	list.style.display='none';
 	
-	addSpinners();
-
 	var myRequest = new XMLHttpRequest();
 
 	var url = 'productprocess.php';
@@ -1891,10 +1886,40 @@ function removeList(click){
 
 	myRequest.onload = function(){
 		var response= this.responseText;
-		console.log(response);
-		removeSpinners();
 	}
-	myRequest.send(formData);		
+	myRequest.send(formData);
+}
+
+function undoList(clicked){
+	let id = clicked.getAttribute('value');
+	let listid = 'flist-'+id;
+	let list = document.getElementById(listid);
+	list.style.display='none';
+
+	let unitpriceid = 'flist-unit-price-'+id;
+	let unitprice = document.getElementById(unitpriceid).innerHTML;
+	let unitpriceint = parseFloat(unitprice.replace(/,/g, ''));
+
+	let ftotal = document.getElementById('total').innerHTML;
+	let ftotalint = parseFloat(ftotal.replace(/,/g, ''));
+	let ftotalval = ftotalint - unitpriceint;
+
+	let foutput = document.getElementById('total');
+	foutput.innerHTML=addCommas(ftotalval.toFixed(2));
+	document.getElementById('top-total').innerHTML='₱'+addCommas(ftotalval.toFixed(2));
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'productprocess.php';
+
+	var formData = "undo="+id+"&undoTotal="+ftotalval;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+	}
+	myRequest.send(formData);
 }
 
 // Review

@@ -1682,7 +1682,7 @@ li{
 	right: 0;
 	bottom: 0;
 	width: 150px;
-	height: 25px;
+	height: 20px;
 	background: var(--gray);
 	border: 1px solid var(--dark-color);
 	box-shadow: 0 0 20px 0 rgba(0,0,0,0.5);
@@ -1705,7 +1705,7 @@ li{
 	position:fixed;
 	z-index: 2000;
 	right: 0;
-	bottom: 30px;
+	bottom: 25px;
 	width: 250px;
 	height: 75%;
 	background: var(--gray);
@@ -2207,7 +2207,6 @@ li{
 	display:grid;
 	grid-template-areas:
 	"product-image product-details"
-	"ratethis product-details"
 	"reviews reviews";
 	grid-template-columns: 1fr 1fr;
 	box-sizing: border-box;
@@ -2273,8 +2272,7 @@ li{
 	font-size: 1.5em;
 	margin: 0 auto;
 	cursor: pointer;
-	width: 100%;
-	background: var(--primary-color);
+	width: 250px;
 	padding: 5px 0;
 }
 
@@ -2661,6 +2659,10 @@ li{
 	.subheader{
 		position:relative;
 		grid-area:subheader;
+	}
+
+	#main-header{
+		margin-top: 0;
 	}
 
 	#search-dropdown{

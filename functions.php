@@ -8,7 +8,26 @@ function randomString($length)
 }
 
 function companytitle(){
-	echo'Bahay Kubo';
+	if(isset($_SESSION['id'])){
+		$id = $_SESSION['id'];
+		$conn = new mysqli('localhost','root','','itsproject');
+		$sql = "SELECT notifid FROM tblnotif WHERE receiverid = '$id' AND checked = 0";
+		$result = $conn->query($sql);
+		$count = $result->num_rows;
+
+		$sql = "SELECT pmid FROM tblpm WHERE receiverid = '$id' AND checked = 0";
+		$result = $conn->query($sql);
+		$count2 = $result->num_rows;
+		$total = $count+$count2;
+
+		if($total==0){
+			echo'Bahay Kubo';
+		}else{
+			echo 'Bahay Kubo ('.$total.')';
+		}
+	}else{
+		echo'Bahay Kubo';
+	}
 }
 
 function updateStatus(){

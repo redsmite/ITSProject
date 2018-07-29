@@ -177,8 +177,6 @@ while($row = $result->fetch_object()){
 	</div>
 	<script src="js/main.js"></script>
 	<script>
-		let search= document.getElementById('main-search');
-		search.focus();
 		modal();
 		ajaxLogin();
 	</script>

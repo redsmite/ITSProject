@@ -228,14 +228,10 @@ if(isset($_POST['weight'])){
 
 if(isset($_POST['undo'])){
 	$key = $_POST['undo'];
-	$unitprice = $_POST['undoprice'];
-	$_SESSION['total'] = $_SESSION['total'] - $unitprice;
-	echo $_SESSION['total'];
-	$array = explode('||',$_SESSION['trans']);
+	$total = $_POST['undoTotal'];
 
-	unset($array[$key]);
-	$array = implode("||",$array);
-	$_SESSION['trans'] = $array;	
+	$_SESSION['total']=$total;
+	unset($_SESSION['trans'][$key]);
 }
 
 if(isset($_POST['showcart'])){
@@ -256,11 +252,13 @@ if(isset($_POST['showcart'])){
 			
 		foreach ($array as $key => $value) {
 			
-			echo'<li>';
+			echo'<li id="flist-'.$key.'">
+			<div id="undo-'.$key.'" class="remove-button" value="'.$key.'" onclick="undoList(this)">
+			<i class="fas fa-trash-alt "></i></div>';
 			echo '<b>'.$array[$key]['product'].'</b><br>';
 			echo '₱'.$array[$key]['price'].' / kg x '.$array[$key]['weight'].'kg<br>';
 			$total = $array[$key]['price']*$array[$key]['weight'];
-			echo'Unit Price: ₱'.number_format($total,2).'</li>';
+			echo'Unit Price: ₱<span id="flist-unit-price-'.$key.'">'.number_format($total,2).'</span></li>';
 		}
 	}
 	//Cart - weight not defined

@@ -90,7 +90,41 @@ chattab();
 				<div class="product-image-wrap">
 					<img src="<?php echo $img ?>">
 				</div>
-				<!-- 5 star rating -->
+
+				<div class="product-main-content">
+					<h1><?php echo $product; ?></h1>
+					<?php starsystem($ProductRating);
+					echo '<p>(Rated by '.number_format($votercount);
+					if($votercount==1){
+						echo ' user';
+					}else{
+					 echo ' users';
+					}
+					echo')</p>'?>
+					<p class="product-price">₱ <?php echo $price; ?> / kg</p>
+					<ul>
+						<li><b>Category:</b> <?php echo $category;?></li>
+						<li><b>Farm:</b> <?php echo $farm ?></li>
+						<li><b>Description:</b> <?php echo $desc;?></li>
+						<li><b>Seller:</b> <a href="profile.php?id=<?php echo $userid; ?>" class="black"> <?php echo $user; ?></a></li>
+						<li><b>Date Posted:</b> <?php echo $date?></li>
+						<li><b>Views:</b> 
+							<?php
+							if(isset($_SESSION['id'])){ 
+								 if($_SESSION['id']==$userid){
+								 	echo number_format($view);
+								 }else{
+								 	echo number_format($view+1);
+								 } 
+							 }else{
+								 echo number_format($view+1);
+							 }
+							 ?>
+						</li>
+					</ul>
+					<div class="add-to-cart" value="<?php echo $id; ?>" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart
+					</div>
+<!-- 5 star rating -->
 <?php
 	if(isset($_SESSION['id'])){
 	$myid = $_SESSION['id'];
@@ -133,39 +167,6 @@ chattab();
 	</div>';
 }
 ?>
-				<div class="product-main-content">
-					<h1><?php echo $product; ?></h1>
-					<?php starsystem($ProductRating);
-					echo '<p>(Rated by '.number_format($votercount);
-					if($votercount==1){
-						echo ' user';
-					}else{
-					 echo ' users';
-					}
-					echo')</p>'?>
-					<p class="product-price">₱ <?php echo $price; ?> / kg</p>
-					<ul>
-						<li><b>Category:</b> <?php echo $category;?></li>
-						<li><b>Farm:</b> <?php echo $farm ?></li>
-						<li><b>Description:</b> <?php echo $desc;?></li>
-						<li><b>Seller:</b> <a href="profile.php?id=<?php echo $userid; ?>" class="black"> <?php echo $user; ?></a></li>
-						<li><b>Date Posted:</b> <?php echo $date?></li>
-						<li><b>Views:</b> 
-							<?php
-							if(isset($_SESSION['id'])){ 
-								 if($_SESSION['id']==$userid){
-								 	echo number_format($view);
-								 }else{
-								 	echo number_format($view+1);
-								 } 
-							 }else{
-								 echo number_format($view+1);
-							 }
-							 ?>
-						</li>
-					</ul>
-					<div class="add-to-cart" value="<?php echo $id; ?>" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart
-					</div>
 				</div>
 				<div class="product-reviews">
 					<br><hr>
