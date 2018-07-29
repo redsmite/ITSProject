@@ -3,6 +3,7 @@ session_start();
 include'functions.php';
 require_once'connection.php';
 
+//add product
 if(isset($_POST['select'])){
 	$id = $_POST['select'];
 
@@ -119,139 +120,6 @@ if(isset($_POST['updatestar'])){
 	$result = $conn->query($sql);
 }
 
-// Cart
-
-if(isset($_POST['cart'])){
-	$id = $_POST['cart'];
-	$array = explode('|',$_SESSION['cart']);
-	array_pop($array);
-	if(in_array($id, $array)){
-
-	}else{
-		$_SESSION['cart'] .= $id.'|';
-	}
-}
-
-if(isset($_POST['delete'])){
-	unset($_SESSION['cart']);
-	unset($_SESSION['trans']);
-	unset($_SESSION['total']);
-}
-
-if(isset($_POST['remove'])){
-	$id = $_POST['remove'];
-
-	if(isset($_SESSION['cart'])){
-		$array = explode('|',$_SESSION['cart']);
-		unset($array[$id]);
-		$array = implode("|",$array);
-		$_SESSION['cart'] = $array;
-	}
-}
-
-if(isset($_POST['weight'])){
-	$id = $_POST['listid'];
-	$key = $_POST['key'];
-
-	$sql = "SELECT productname FROM tblproduct WHERE productid = '$id'";
-	$result = $conn->query($sql);
-	$fetch = $result->fetch_object();
-	$product = $fetch->productname;
-
-	$weight= $_POST['weight'];
-	$price=$_POST['price'];
-	$total= $_POST['total'];
-
-//Remove from list
-	$array = explode('|',$_SESSION['cart']);
-	array_pop($array);
-	unset($array[$key]);
-	$array = implode("|",$array);
-	$_SESSION['cart'] = $array;
-
-//Add to session
-	$_SESSION['trans'] .= $product.'|';
-	$_SESSION['trans'] .= $price.'|';
-	$_SESSION['trans'] .= $weight.'||';
-
-	$_SESSION['total'] = $total;
-}
-
-if(isset($_POST['undo'])){
-	$key = $_POST['undo'];
-	$unitprice = $_POST['undoprice'];
-	$_SESSION['total'] = $_SESSION['total'] - $unitprice;
-	echo $_SESSION['total'];
-	$array = explode('||',$_SESSION['trans']);
-
-	unset($array[$key]);
-	$array = implode("||",$array);
-	$_SESSION['trans'] = $array;	
-}
-
-if(isset($_POST['showcart'])){
-	if(!isset($_SESSION['cart'])){
-
-	echo'<p>Shopping Cart is empty...</p>';
-
-	}else{
-	
-	echo'
-	<div class="refresh-button" onclick="showCartPanel()">Refresh <i class="fas fa-sync-alt"></i></div>
-	<hr>
-	<ul>';
-	//Cart - weight defined
-	if(isset($_SESSION['trans'])){
-		$array = explode('||',$_SESSION['trans']);
-		
-		array_pop($array);
-			
-		foreach ($array as $key => $value) {
-			
-			echo'<li>';
-			$list = explode('|',$array[$key]);
-			$total = $list[1]*$list[2];
-			echo '<b>'.$list[0].'</b><br>
-			₱'.$list[1].'/kg x '.$list[2].'kg<br>
-			Unit Price: ₱'.number_format($total,2);
-			echo'</li>';
-		}
-	}
-	//Cart - weight not defined
-	$array = explode('|',$_SESSION['cart']);
-	array_pop($array);
-	foreach ($array as $key => $value) {
-		$sql = "SELECT productname,price FROM tblproduct
-		WHERE productid = '$value'";
-		$result = $conn->query($sql);
-		$row = $result->fetch_object();
-		$name = $row->productname;
-		$price = $row->price;
-
-		echo '<li id="list-'.$key.'">
-		<div class="remove-button" value="'.$key.'" onclick="removeList(this)">
-			<i class="fas fa-trash-alt "></i>
-		</div>
-		<b>'.$name.'</b><br>
-		₱'.number_format($price,2).' / kg x
-		<input type="number" min="0" class="kg-input" id="input-'.$value.'" step="any">
-		<button class="button-control" onclick="addWeight(this)" value='.$key.' id="'.$value.'">Go</button><br>
-		<input type="hidden" id="price-'.$value.'" value="'.$price.'"">
-		Unit Price: ₱<span id="unit-price'.$value.'"></span>
-		</li>';
-	}
-	echo'</ul>
-	<h3> Total: ₱<span id="total">';
-	if(isset($_SESSION['total'])){
-		echo number_format($_SESSION['total'],2);
-	}else{
-		echo number_format(0,2);
-	}
-	echo'</span></h3>
-	<div class="add-to-cart"><i class="fas fa-cart-arrow-down"></i></div>
-	<div class="red-cart" onclick="deleteCart()"><i class="fas fa-trash-alt"></i></div>';
-	}
-}
 
 if(isset($_POST['review'])){
 	$user = $_POST['reviewuser'];
@@ -289,5 +157,144 @@ if(isset($_POST['undoLike'])){
 
 	$sql = "UPDATE tblreviews SET likes = likes-1 WHERE reviewid ='$id'";
 	$result = $conn->query($sql);
+}
+
+// Cart
+
+if(isset($_POST['cart'])){
+	$id = $_POST['cart'];
+	echo $id;
+	if(!isset($_SESSION['cart'])){
+		$_SESSION['cart'] = array();
+	}
+
+	if(in_array($id, $_SESSION['cart'])){
+
+	}else{
+		array_push($_SESSION['cart'], $id);
+	}
+}
+
+if(isset($_POST['delete'])){
+	unset($_SESSION['cart']);
+	unset($_SESSION['trans']);
+	unset($_SESSION['total']);
+}
+
+if(isset($_POST['remove'])){
+	$id = $_POST['remove'];
+
+	if(isset($_SESSION['cart'])){
+		$array = $_SESSION['cart'];
+		unset($array[$id]);
+		$_SESSION['cart'] = $array;
+	}
+}
+
+if(isset($_POST['weight'])){
+	$id = $_POST['listid'];
+	$key = $_POST['key'];
+
+	$sql = "SELECT productname FROM tblproduct WHERE productid = '$id'";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$product = $fetch->productname;
+
+	$weight= $_POST['weight'];
+	$price=$_POST['price'];
+	$total= $_POST['total'];
+
+	//Remove from list
+	$array = $_SESSION['cart'];
+	unset($array[$key]);
+	$_SESSION['cart'] = $array;
+
+	//Add to session
+	if(!isset($_SESSION['trans'])){
+		$_SESSION['trans'] = array();
+
+	}
+
+	$new_array = array(
+		'product'=> $product,
+		'price'=> $price,
+		'weight'=> $weight
+	);
+
+	array_push($_SESSION['trans'], $new_array);
+
+	$_SESSION['total'] = $total;
+}
+
+if(isset($_POST['undo'])){
+	$key = $_POST['undo'];
+	$unitprice = $_POST['undoprice'];
+	$_SESSION['total'] = $_SESSION['total'] - $unitprice;
+	echo $_SESSION['total'];
+	$array = explode('||',$_SESSION['trans']);
+
+	unset($array[$key]);
+	$array = implode("||",$array);
+	$_SESSION['trans'] = $array;	
+}
+
+if(isset($_POST['showcart'])){
+	if(!isset($_SESSION['cart'])){
+
+	echo'<p>Shopping Cart is empty...</p>';
+
+	}else{
+	
+	echo'
+	<div class="refresh-button" onclick="showCartPanel()">Refresh <i class="fas fa-sync-alt"></i></div>
+	<hr>
+	<ul>';
+	//Cart - weight defined
+	if(isset($_SESSION['trans'])){
+		$array = $_SESSION['trans'];
+		
+			
+		foreach ($array as $key => $value) {
+			
+			echo'<li>';
+			echo '<b>'.$array[$key]['product'].'</b><br>';
+			echo '₱'.$array[$key]['price'].' / kg x '.$array[$key]['weight'].'kg<br>';
+			$total = $array[$key]['price']*$array[$key]['weight'];
+			echo'Unit Price: ₱'.number_format($total,2).'</li>';
+		}
+	}
+	//Cart - weight not defined
+	$array = $_SESSION['cart'];
+	foreach ($array as $key => $value) {
+		$sql = "SELECT productname,price FROM tblproduct
+		WHERE productid = '$value'";
+		$result = $conn->query($sql);
+		$row = $result->fetch_object();
+		$name = $row->productname;
+		$price = $row->price;
+
+		echo '<li id="list-'.$key.'">
+		<div id="remove-'.$value.'" class="remove-button" value="'.$key.'" onclick="removeList(this)">
+			<i class="fas fa-trash-alt "></i>
+		</div>
+		<b>'.$name.'</b><br>
+		₱'.number_format($price,2).' / kg x
+		<input type="number" min="0" class="kg-input" id="input-'.$value.'" step="any">
+		<button class="button-control" onclick="addWeight(this)" value='.$key.' id="'.$value.'">Go</button><br>
+		<input type="hidden" id="price-'.$value.'" value="'.$price.'"">
+		Unit Price: ₱<span id="unit-price'.$value.'"></span>
+		</li>';
+	}
+	echo'</ul>
+	<h3> Total: ₱<span id="total">';
+	if(isset($_SESSION['total'])){
+		echo number_format($_SESSION['total'],2);
+	}else{
+		echo number_format(0,2);
+	}
+	echo'</span></h3>
+	<div class="add-to-cart"><i class="fas fa-cart-arrow-down"></i></div>
+	<div class="red-cart" onclick="deleteCart()"><i class="fas fa-trash-alt"></i></div>';
+	}
 }
 ?>

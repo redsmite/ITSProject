@@ -72,7 +72,7 @@ function showLogin(){
 
 function scrollOpacity(){
 	let header = document.querySelector('.subheader');
-	header.style.opacity=0.1;
+	header.style.opacity=0;
 
 	let body = document.getElementsByTagName("BODY")[0];
 	if(body.scrollTop==0){
@@ -1796,6 +1796,7 @@ function addThistoCart(click){
 	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
 	myRequest.onload = function(){
 		removeSpinners();
+		var response= this.responseText;
 	}
 	myRequest.send(formData);
 }
@@ -1807,6 +1808,10 @@ function addWeight(click){
 	let inputid = 'input-'+id;
 	let input = document.getElementById(inputid);
 	let weight = input.value;
+
+	if(weight<0){
+
+	}else{
 
 	let priceid = 'price-'+id;
 	let price = document.getElementById(priceid).value;
@@ -1822,9 +1827,14 @@ function addWeight(click){
 
 	let foutput = document.getElementById('total');
 	foutput.innerHTML=addCommas(ftotalval.toFixed(2));
+	//remove buttons
 	input.disabled=true;
 	let button = document.getElementById(id);
 	button.style.display='none';
+	let removeid = 'remove-'+id;
+	let remove = document.getElementById(removeid);
+	remove.style.display='none';
+
 
 	var myRequest = new XMLHttpRequest();
 
@@ -1841,6 +1851,7 @@ function addWeight(click){
 		document.getElementById('top-total').innerHTML='₱'+addCommas(ftotalval.toFixed(2));
 	}
 	myRequest.send(formData);
+	}
 }
 
 function deleteCart(){

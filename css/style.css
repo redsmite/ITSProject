@@ -2204,6 +2204,12 @@ li{
 }
 
 .product-main-left{
+	display:grid;
+	grid-template-areas:
+	"product-image product-details"
+	"ratethis product-details"
+	"reviews reviews";
+	grid-template-columns: 1fr 1fr;
 	box-sizing: border-box;
 	padding: 10px;
 	grid-area: left-product;
@@ -2213,6 +2219,8 @@ li{
 }
 
 .product-image-wrap{
+	grid-area: product-image;
+	background: var(--secondary-contrast);
 	padding-top: 15px;
 	width: 100%;
 	height: 500px;
@@ -2221,15 +2229,15 @@ li{
 }
 
 .product-image-wrap img{
-	max-width: 100%;
-	max-height: 100%;
+	max-width: 95%;
+	max-height: 95%;
 	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .product-main-content{
+	grid-area: product-details;
 	background: var(--canvas);
 	padding: 10px;
-	margin-top: 10px;
 }
 
 .product-main-content .star-system{
@@ -2255,12 +2263,19 @@ li{
 }
 
 /* Review */
+.product-reviews{
+	grid-area: reviews;
+}
+
 #rate-this{
+	grid-area: ratethis;
 	text-align: center;
 	font-size: 1.5em;
 	margin: 0 auto;
 	cursor: pointer;
-	width:200px;
+	width: 100%;
+	background: var(--primary-color);
+	padding: 5px 0;
 }
 
 #reviews{
@@ -2361,7 +2376,6 @@ li{
 	border: 1px solid var(--light-color);
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-
 
 .refresh-button{
 	text-align: center;
@@ -2626,6 +2640,10 @@ li{
 	#main-search-panel{
 		top: 312px;
 		left: 95px;
+	}
+
+	.product-main-left{
+		display: block;
 	}
 }
 

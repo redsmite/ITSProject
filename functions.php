@@ -426,7 +426,7 @@ function reportuser(){
 }
 
 function starsystem($percent){
-	echo'<div class="star-system" title="'.$percent.'% of voters likes this">';
+	echo'<div class="star-system" title="'.$percent.'% rating">';
 
 	if($percent>=98){
 	echo'
