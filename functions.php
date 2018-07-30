@@ -213,17 +213,16 @@ function session_button(){
 	$conn = mysqli_connect ("localhost", "root", "", "itsproject");
 
 // Shopping Cart
-	echo '<div id="top-total" onclick="showCartPanel()">';
+	echo '<div id="top-total" onmouseover="showCartPanel()">';
 	if(isset($_SESSION['total'])){
 		echo '₱'.number_format($_SESSION['total'],2);
 	}
 	echo'</div>
-	<div id="cart-panel">
-		<h1 onclick="hideCartPanel()" class="close-heading">Shopping Cart</h1>
+	<div id="cart-panel" onmouseleave="hideCartPanel()">
+		<h1 onclick="hideCartPanel()" class="close-heading">Shopping Cart <i style="float:right; padding-right:10px" class="fas fa-times"></i></h1>
 		<div id="shopping-cart-content"></div>
 	</div>
-	<div id="cart-modal" onclick="hideCartPanel()"></div>
-	<i class="fas fa-shopping-cart button" onclick="showCartPanel()"></i>';
+	<i class="fas fa-shopping-cart button" onmouseover="showCartPanel()"></i>';
 
 	if(isset($_SESSION['id'])){
 

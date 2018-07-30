@@ -30,7 +30,7 @@
 			</div>
 			<div id="category-modal" onclick="hideCategory()"></div>
 			<div id="category-slide">
-				<h2 class="close-heading" onclick="hideCategory()">All Categories</h2>
+				<h2 class="close-heading" onclick="hideCategory()">All Categories <i style="float:right; padding-right:10px" class="fas fa-times"></i></h2>
 <?php
 	$sql = "SELECT categoryid,category FROM tblcategory WHERE status =1 ORDER BY category";
 	$result = $conn->query($sql);

@@ -801,38 +801,6 @@ function botreply(message,name){
 			}
 		}
 		myRequest.send(formData);
-	}else if(message=='!music'){
-		var myRequest = new XMLHttpRequest();
-		var url = 'inboxprocess.php';
-
-		//form data variables
-		var song = 'bgmusic';
-		
-		
-		var formData = "song="+song;
-		
-		myRequest.open('POST', url ,true);
-		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-
-		myRequest.onload = function(){
-			var response= this.responseText;
-
-			if(response){
-
-				form.reset();
-				var bgmusic = document.getElementById("mySong"); 
-				bgmusic.play(); 
-				document.querySelector('.right-inbox').innerHTML=response;
-				var messageBody = document.querySelector(".right-inbox");
-				messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
-			}
-		}
-		myRequest.send(formData);
-	}else if(message=='!stop'){
-			form.reset();
-			var bgmusic = document.getElementById("mySong"); 
-			bgmusic.pause();
-			bgmusic.currentTime = 0;
 	}else if(message=='!time'){
 		var myRequest = new XMLHttpRequest();
 		var url = 'inboxprocess.php';
@@ -1752,10 +1720,8 @@ function showUpdateProductForm(){
 
 function showCartPanel(){
 	let panel = document.getElementById('cart-panel');
-	let modal = document.getElementById('cart-modal');
 
 	panel.style.display='block';
-	modal.style.display='block';
 
 	var myRequest = new XMLHttpRequest();
 	
@@ -1770,17 +1736,21 @@ function showCartPanel(){
 		var response= this.responseText;
 		let cart = document.getElementById('shopping-cart-content');
 		cart.innerHTML = response;
+		gotoBottomCart();
 	}
 	myRequest.send(formData);		
 
 }
 
+function gotoBottomCart(){
+		var messageBody = document.getElementById('cart-panel');
+		messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+}
+
 function hideCartPanel(){
 	let panel = document.getElementById('cart-panel');
-	let modal = document.getElementById('cart-modal');
 	
 	panel.style.display='none';
-	modal.style.display='none';	
 }
 
 function addThistoCart(click){
@@ -1797,6 +1767,7 @@ function addThistoCart(click){
 	myRequest.onload = function(){
 		removeSpinners();
 		var response= this.responseText;
+		showCartPanel();
 	}
 	myRequest.send(formData);
 }
@@ -1809,7 +1780,7 @@ function addWeight(click){
 	let input = document.getElementById(inputid);
 	let weight = input.value;
 
-	if(weight<0 || weight==''){
+	if(weight<=0 || weight==''){
 
 	}else{
 
@@ -1834,7 +1805,7 @@ function addWeight(click){
 	let removeid = 'remove-'+id;
 	let remove = document.getElementById(removeid);
 	remove.style.display='none';
-
+	gotoBottomCart();
 	var myRequest = new XMLHttpRequest();
 
 	var url = 'productprocess.php';
@@ -1845,6 +1816,7 @@ function addWeight(click){
 	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
 	myRequest.onload = function(){
 		var response= this.responseText;
+		console.log(response);
 		document.getElementById('top-total').innerHTML='₱'+addCommas(ftotalval.toFixed(2));
 	}
 	myRequest.send(formData);
@@ -1920,6 +1892,24 @@ function undoList(clicked){
 		var response= this.responseText;
 	}
 	myRequest.send(formData);
+}
+
+// Transaction
+
+function finalizeTransaction(clicked){
+	let login = clicked.getAttribute('value');
+	let ftotal = document.getElementById('total').innerHTML;
+	let ftotalint = parseFloat(ftotal.replace(/,/g, ''));
+	if(ftotalint<500){
+		let errorString = 'Orders should be a minimum of 500 pesos';
+		document.getElementById('error-message5').innerHTML=errorString;
+	}else{
+		if(login==1){
+
+		}else{
+			showLogin();
+		}
+	}
 }
 
 // Review
@@ -2148,7 +2138,6 @@ function sendReview(){
 		myRequest.send(formData);
 	}
 }
-
 
 function deleteReview(clicked){
 	let id = clicked.getAttribute('value');

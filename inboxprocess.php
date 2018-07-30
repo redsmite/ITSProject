@@ -90,13 +90,6 @@ if(isset($_POST['hellobot'])){
 	
 }
 
-if(isset($_POST['song'])){
-	$name=$_SESSION['id'];
-	$message='(♪ Background music playing...)';
-
-	sendmessage(71,$name,$message);
-}
-
 if(isset($_POST['time'])){
 	$name=$_SESSION['name'];
 	$message='The time is ' . date("h:i:s A") . ' '. $_SESSION['name'];

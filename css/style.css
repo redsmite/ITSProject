@@ -96,6 +96,10 @@ a{
 	text-decoration: none;
 }
 
+li{
+	list-style: none;
+}
+
 .black{
 	color:var(--dark-color);
 	text-decoration: underline;
@@ -116,14 +120,6 @@ a{
 	padding:2px 0;
 	color: var(--light-color);
 	cursor: pointer;
-}
-
-.rotate-slide{
-	transform:rotate(180deg);
-}
-
-li{
-	list-style: none;
 }
 
 /* Scrollbar */
@@ -219,6 +215,10 @@ li{
 .fa-bars{
 	transition-duration: 350ms;
 	transition-property: transform;
+}
+
+.rotate-slide{
+	transform:rotate(180deg);
 }
 
 #how-to{
@@ -1051,7 +1051,7 @@ li{
 	padding:10px -50px 10px -50px;
 }
 
-#error-message,#error-message2,#error-message3,#error-message4{
+#error-message,#error-message2,#error-message3,#error-message4,#error-message5{
 	text-align: center;
 	line-height: 1.5em;
 	grid-area: error;
@@ -1316,6 +1316,7 @@ li{
 	font-style: italic;
 	font-weight: normal;
 }
+
 .left-grid a{
 	color:var(--dark-color);
 	cursor: pointer;
@@ -1565,7 +1566,7 @@ li{
 
 .right-inbox{
 	grid-area: right-inbox;
-	background: linear-gradient(to right, var(--light-color) , var(--primary-color));
+	background: var(--light-color);
 	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 	border-left: 1px solid var(--darkgray);
 	border-right: 1px solid var(--darkgray);
@@ -2338,7 +2339,7 @@ li{
 	padding: 2px;
 	width: 400px;
 	text-align: center;
-	cursor: pointer;
+	cursor: default;
 	margin-bottom: 22px;
 }
 
@@ -2390,16 +2391,6 @@ li{
 .remove-button{
 	float:right;
 	cursor: pointer;
-}
-
-#cart-modal{
-	display:none;
-	position:fixed;
-	z-index:300;
-	left:0;
-	top:0;
-	height:100%;
-	width:100%;
 }
 
 #cart-panel{

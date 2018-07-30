@@ -202,6 +202,7 @@ if(isset($_POST['weight'])){
 
 	$weight= $_POST['weight'];
 	$price=$_POST['price'];
+	$unitprice = $_POST['weight']*$_POST['price'];
 	$total= $_POST['total'];
 
 	//Remove from list
@@ -212,17 +213,44 @@ if(isset($_POST['weight'])){
 	//Add to session
 	if(!isset($_SESSION['trans'])){
 		$_SESSION['trans'] = array();
-
 	}
 
-	$new_array = array(
+	if(!$_SESSION['trans']){
+
+		$new_array = array(
+		'productid'=> $id,
 		'product'=> $product,
 		'price'=> $price,
-		'weight'=> $weight
-	);
+		'weight'=> $weight,
+		'unitprice'=>$unitprice
+		);
 
-	array_push($_SESSION['trans'], $new_array);
+		array_push($_SESSION['trans'], $new_array);	
 
+	}else{
+		foreach ($_SESSION['trans'] as $key => $value) {
+			if($_SESSION['trans'][$key]['productid']==$id){
+
+				$_SESSION['trans'][$key]['weight'] += $weight;
+				$_SESSION['trans'][$key]['unitprice'] += $unitprice;
+				$_SESSION['notexist']=1;
+			}
+		}
+		if(!isset($_SESSION['notexist'])){
+			$new_array = array(
+			'productid'=> $id,
+			'product'=> $product,
+			'price'=> $price,
+			'weight'=> $weight,
+			'unitprice'=>$unitprice
+			);
+
+			array_push($_SESSION['trans'], $new_array);
+				
+		}else{
+			unset($_SESSION['notexist']);
+		}
+	}
 	$_SESSION['total'] = $total;
 }
 
@@ -255,10 +283,9 @@ if(isset($_POST['showcart'])){
 			echo'<li id="flist-'.$key.'">
 			<div id="undo-'.$key.'" class="remove-button" value="'.$key.'" onclick="undoList(this)">
 			<i class="fas fa-trash-alt "></i></div>';
-			echo '<b>'.$array[$key]['product'].'</b><br>';
+			echo '<a class="black" href="product.php?id='.$array[$key]['productid'].'">'.$array[$key]['product'].'</a><br>';
 			echo '₱'.$array[$key]['price'].' / kg x '.$array[$key]['weight'].'kg<br>';
-			$total = $array[$key]['price']*$array[$key]['weight'];
-			echo'Unit Price: ₱<span id="flist-unit-price-'.$key.'">'.number_format($total,2).'</span></li>';
+			echo'Unit Price: ₱<span id="flist-unit-price-'.$key.'">'.number_format($array[$key]['unitprice'],2).'</span></li>';
 		}
 	}
 	//Cart - weight not defined
@@ -275,7 +302,7 @@ if(isset($_POST['showcart'])){
 		<div id="remove-'.$value.'" class="remove-button" value="'.$key.'" onclick="removeList(this)">
 			<i class="fas fa-trash-alt "></i>
 		</div>
-		<b>'.$name.'</b><br>
+		<a class="black" href="product.php?id='.$value.'">'.$name.'</a><br>
 		₱'.number_format($price,2).' / kg x
 		<input type="number" min="0" class="kg-input" id="input-'.$value.'" step="any">
 		<button class="button-control" onclick="addWeight(this)" value='.$key.' id="'.$value.'">Go</button><br>
@@ -291,8 +318,15 @@ if(isset($_POST['showcart'])){
 		echo number_format(0,2);
 	}
 	echo'</span></h3>
-	<div class="add-to-cart"><i class="fas fa-cart-arrow-down"></i></div>
-	<div class="red-cart" onclick="deleteCart()"><i class="fas fa-trash-alt"></i></div>';
+	<div class="add-to-cart"'; 
+		if(isset($_SESSION['id'])){
+			echo'value="1"';
+		}else{
+			echo'value="0"';
+		}
+	echo'onclick="finalizeTransaction(this)"><i class="fas fa-cart-arrow-down"></i></div>
+	<div class="red-cart" onclick="deleteCart()"><i class="fas fa-trash-alt"></i></div>
+	<div id="error-message5"></div>';
 	}
 }
 ?>

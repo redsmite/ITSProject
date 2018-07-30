@@ -1,6 +1,9 @@
 <?php
 	session_start();
-	session_destroy();
+	unset($_SESSION['id']);
+	unset($_SESSION['name']);
+	unset($_SESSION['type']);
+	unset($_SESSION['admin']);
 	include'functions.php';
 	destroyCookie();
 ?>

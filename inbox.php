@@ -39,9 +39,6 @@ chattab();
 if($id!=$_SESSION['id']){
 	//Send PM
 	echo'
-	<audio id="mySong">
-		<source src="audio/Lounge.mp3" type="audio/mpeg">
-	</audio>
 	<div class="closethis"><a href="inbox.php?id='.$_SESSION['id'].'"><i class="fas fa-times"></i></a></div>
 	<div class="inbox-grid">
 			<div class="left-inbox">
