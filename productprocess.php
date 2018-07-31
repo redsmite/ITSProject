@@ -93,8 +93,24 @@ if(isset($_POST['removeProduct'])){
 	$sql = "UPDATE tblproduct SET is_approved = 0 WHERE productid ='$id'";
 	$result = $conn->query($sql);
 }
+
 if(isset($_POST['unsetUpdate'])){
 	unset($_SESSION['updateProduct']);
+}
+
+if(isset($_POST['activateProduct'])){
+	$id = $_POST['activateProduct'];
+
+	$sql = "UPDATE tblproduct SET is_available = 1 WHERE productid ='$id'";
+	$result = $conn->query($sql);
+}
+
+
+if(isset($_POST['deactivateProduct'])){
+	$id = $_POST['deactivateProduct'];
+
+	$sql = "UPDATE tblproduct SET is_available = 0 WHERE productid ='$id'";
+	$result = $conn->query($sql);
 }
 
 // Review
@@ -287,14 +303,10 @@ if(isset($_POST['showcart'])){
 
 	}else{
 	
-	echo'
-	<div class="refresh-button" onclick="showCartPanel()">Refresh <i class="fas fa-sync-alt"></i></div>
-	<hr>
-	<ul>';
+	echo'<ul>';
 	//Cart - weight defined
 	if(isset($_SESSION['trans'])){
 		$array = $_SESSION['trans'];
-		
 			
 		foreach ($array as $key => $value) {
 			
@@ -325,7 +337,6 @@ if(isset($_POST['showcart'])){
 		<input type="number" min="0" class="kg-input" id="input-'.$value.'" step="any">
 		<button class="button-control" onclick="addWeight(this)" value='.$key.' id="'.$value.'">Go</button><br>
 		<input type="hidden" id="price-'.$value.'" value="'.$price.'"">
-		Unit Price: ₱<span id="unit-price'.$value.'"></span>
 		</li>';
 	}
 	echo'</ul>
@@ -342,9 +353,13 @@ if(isset($_POST['showcart'])){
 		}else{
 			echo'value="0"';
 		}
-	echo'onclick="finalizeTransaction(this)"><i class="fas fa-cart-arrow-down"></i></div>
+	echo'onclick="checkoutCart(this)"><i class="fas fa-cart-arrow-down"></i></div>
 	<div class="red-cart" onclick="deleteCart()"><i class="fas fa-trash-alt"></i></div>
 	<div id="error-message5"></div>';
 	}
+}
+
+if(isset($_POST['checkout'])){
+	$_SESSION['checkout']=1;
 }
 ?>

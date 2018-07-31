@@ -1825,6 +1825,51 @@ function removeProduct(clicked){
 	}
 	myRequest.send(formData);
 }
+
+function activateProduct(clicked){
+	let id = clicked.getAttribute('value');
+
+	addSpinners();
+	document.getElementById('activate-button').innerHTML='Activating...';
+	var myRequest = new XMLHttpRequest();
+	
+	var url = 'productprocess.php';
+
+	var formData = "activateProduct="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+		alert('You activate this product');
+	}
+	myRequest.send(formData);
+}
+
+function deactivateProduct(clicked){
+	let id = clicked.getAttribute('value');
+
+	addSpinners();
+	document.getElementById('deactivate-button').innerHTML='Deactivating...';
+	var myRequest = new XMLHttpRequest();
+	
+	var url = 'productprocess.php';
+
+	var formData = "deactivateProduct="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+		alert('You deactivate this product');
+	}
+	myRequest.send(formData);
+}
+
 // Cart
 
 function showCartPanel(){
@@ -1896,9 +1941,6 @@ function addWeight(click){
 	let price = document.getElementById(priceid).value;
 
 	let total = weight * price;
-	let outputid = 'unit-price'+id;
-	let output = document.getElementById(outputid);
-	output.innerHTML = addCommas(total.toFixed(2));
 
 	let ftotal = document.getElementById('total').innerHTML;
 	let ftotalint = parseFloat(ftotal.replace(/,/g, ''));
@@ -1906,14 +1948,7 @@ function addWeight(click){
 
 	let foutput = document.getElementById('total');
 	foutput.innerHTML=addCommas(ftotalval.toFixed(2));
-	//remove buttons
-	input.disabled=true;
-	let button = document.getElementById(id);
-	button.style.display='none';
-	let removeid = 'remove-'+id;
-	let remove = document.getElementById(removeid);
-	remove.style.display='none';
-	gotoBottomCart();
+
 	var myRequest = new XMLHttpRequest();
 
 	var url = 'productprocess.php';
@@ -1924,8 +1959,8 @@ function addWeight(click){
 	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
 	myRequest.onload = function(){
 		var response= this.responseText;
-		console.log(response);
 		document.getElementById('top-total').innerHTML='₱'+addCommas(ftotalval.toFixed(2));
+		showCartPanel();
 	}
 	myRequest.send(formData);
 	}
@@ -2002,9 +2037,7 @@ function undoList(clicked){
 	myRequest.send(formData);
 }
 
-// Transaction
-
-function finalizeTransaction(clicked){
+function checkoutCart(clicked){
 	let login = clicked.getAttribute('value');
 	let ftotal = document.getElementById('total').innerHTML;
 	let ftotalint = parseFloat(ftotal.replace(/,/g, ''));
@@ -2014,11 +2047,28 @@ function finalizeTransaction(clicked){
 	}else{
 		if(login==1){
 
+			var myRequest = new XMLHttpRequest();
+			var url = 'productprocess.php';
+
+			var formData = "checkout='oke-oke-okay'";
+			
+			myRequest.open('POST', url ,true);
+			myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+			myRequest.onload = function(){
+				var response= this.responseText;
+				window.location.href='checkout.php';
+			}
+			myRequest.send(formData);
+		
 		}else{
 			showLogin();
 		}
 	}
 }
+
+// Transaction
+
 
 // Review
 

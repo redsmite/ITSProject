@@ -57,7 +57,11 @@ if(!$row){
 	if($available == 1){
 		$available = 'Available';
 	}else{
-		$available = 'Not Available';
+		if($userid!=$tuserid AND $tusertype!=4){
+			die('This product is not available.');
+		}else{
+			$available = 'Not Available';
+		}
 	}
 }
 
@@ -140,10 +144,13 @@ chattab();
 							 ?>
 						</li>
 					</ul>
-					<div class="add-to-cart" value="<?php echo $id; ?>" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart
-					</div>
-<!-- 5 star rating -->
 <?php
+// Add-to-Cart
+	if($available != 'Not Available' AND $approved != 0){
+	echo'<div class="add-to-cart" value="'. $id.'" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart
+					</div>';
+	}
+// 5 star rating
 	if(isset($_SESSION['id'])){
 	$myid = $_SESSION['id'];
 	$sql="SELECT rating FROM tblrating WHERE userid='$myid' AND productid='$id'";
@@ -287,6 +294,12 @@ while($row = $result->fetch_object()){
 
 // Update Product
 		if($_SESSION['id']==$userid){
+			//activate/deactivate product
+			if($available == 'Not Available'){
+			echo'<div id="activate-button" onclick="activateProduct(this)" value="'.$id.'" class="add-product-button"><i class="fas fa-star"></i> Available</div>';
+			}else{
+			echo'<div id="deactivate-button" onclick="deactivateProduct(this)" value="'.$id.'" class="add-product-button"><i class="far fa-star"></i> Not Available</div>';
+			}
 echo '
 <div onclick="showUpdateProductForm()" class="add-product-button">Update Product</div>
 <div class="edit-form" style="display:none;">
