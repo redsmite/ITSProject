@@ -26,7 +26,7 @@ if(isset($_POST['search'])){
 if(isset($_POST['search2'])){
 	$search = $conn->real_escape_string($_POST['search2']);
 	echo '<ul class="drop-ul">';
-	$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%' ORDER BY view DESC LIMIT 15";
+	$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%' AND is_approved = 1 AND is_available = 1 ORDER BY view DESC LIMIT 15";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_object()){
 		$id = $row->productid;
@@ -91,7 +91,7 @@ if(isset($_POST['mainsearch'])){
 
 	echo '<ul>';
 	if($criteria == 'Select Category'){
-		$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%' ORDER BY view DESC LIMIT 15";
+		$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%' AND  is_approved = 1 AND is_available = 1 ORDER BY view DESC LIMIT 15";
 		$result = $conn->query($sql);
 		while($row = $result->fetch_object()){
 			$id = $row->productid;
@@ -111,7 +111,7 @@ if(isset($_POST['mainsearch'])){
 			</li></a>';
 		}
 	}else{
-		$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%' AND categoryid='$criteria' ORDER BY view DESC LIMIT 15";
+		$sql = "SELECT productid,productname, img, price FROM tblproduct WHERE productname LIKE '%$search%' AND categoryid='$criteria' AND is_approved = 1 AND is_available = 1 ORDER BY view DESC LIMIT 15";
 		$result = $conn->query($sql);
 		while($row = $result->fetch_object()){
 			$id = $row->productid;

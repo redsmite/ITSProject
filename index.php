@@ -122,6 +122,7 @@ LEFT JOIN tbluser as t3
 	ON t1.userid = t3.userid
 LEFT JOIN tblfarm as t4
 	ON t1.farmid = t4.farmid
+WHERE is_approved = 1 AND is_available = 1
 ORDER BY dateposted DESC
 LIMIT 16";
 $result = $conn->query($sql);

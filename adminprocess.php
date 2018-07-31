@@ -4,6 +4,8 @@ require_once'connection.php';
 include'functions.php';
 user_access();
 
+//Admin login and settings
+
 if(isset($_POST['login'])){
 	$name=$conn->real_escape_string($_POST['login']);
 	$password=md5($_POST['password']);
@@ -17,6 +19,39 @@ if(isset($_POST['login'])){
 		echo 'success';
 	}
 }
+
+if(isset($_POST['changeadmin'])){
+	$name = $conn->real_escape_string($_POST['changeadmin']);
+	$old = md5($_POST['old']);
+	$new = md5($_POST['new']);
+	$confirm = md5($_POST['confirm']);
+
+	$sql = "SELECT password FROM tbladmin";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$password = $fetch->password;
+	
+
+	$error = '';
+	
+	if($old != $password){
+		$error .= '<i class="fas fa-exclamation-circle"></i> Old password doesn\'t match<br>';
+	}
+
+	if($confirm != $new){
+		$error .= '<i class="fas fa-exclamation-circle"></i> New password doesn\'t match<br>';	
+	}
+
+	if(!$error){
+		$sql = "UPDATE tbladmin SET name='$name',password='$new'";
+		$result = $conn->query($sql);
+		echo 'success';		
+	}else{
+		echo $error;
+	}
+}
+
+//Users and Reports
 
 if(isset($_POST['fetch'])){
 	$fetch = $_POST['fetch'];
@@ -149,6 +184,8 @@ if(isset($_POST['check'])){
 	echo 'oke-oke-okay';
 }
 
+//Announcement
+
 if(isset($_POST['title'])){
 	$title = $conn->real_escape_string($_POST['title']);
 	$content = $conn->real_escape_string($_POST['content']);
@@ -159,6 +196,8 @@ if(isset($_POST['title'])){
 	echo $sql;
 
 }
+
+// Price Monitoring
 
 if(isset($_POST['addCat'])){
 	$category = $conn->real_escape_string($_POST['addCat']);
@@ -280,6 +319,21 @@ if(isset($_POST['low'])){
 	}
 }
 
+// Products and Transactions
+
+if(isset($_POST['showApprove'])){
+
+	$sql = "SELECT productid, productname FROM tblproduct WHERE is_approved = 0 ORDER BY productid DESC";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_object()){
+		$productid = $row->productid;
+		$product = $row->productname;
+		echo '<p><a class="black" target="_blank" href="product.php?id='.$productid.'">'.$product.'</a></p>';
+	}
+}
+
+//Sales and Farm
+
 if(isset($_POST['farm'])){
 	$farm = $conn->real_escape_string($_POST['farm']);
 	$address = $conn->real_escape_string($_POST['address']);
@@ -307,34 +361,4 @@ if(isset($_POST['updatefarm'])){
 	echo 'success';
 }
 
-if(isset($_POST['changeadmin'])){
-	$name = $conn->real_escape_string($_POST['changeadmin']);
-	$old = md5($_POST['old']);
-	$new = md5($_POST['new']);
-	$confirm = md5($_POST['confirm']);
-
-	$sql = "SELECT password FROM tbladmin";
-	$result = $conn->query($sql);
-	$fetch = $result->fetch_object();
-	$password = $fetch->password;
-	
-
-	$error = '';
-	
-	if($old != $password){
-		$error .= '<i class="fas fa-exclamation-circle"></i> Old password doesn\'t match<br>';
-	}
-
-	if($confirm != $new){
-		$error .= '<i class="fas fa-exclamation-circle"></i> New password doesn\'t match<br>';	
-	}
-
-	if(!$error){
-		$sql = "UPDATE tbladmin SET name='$name',password='$new'";
-		$result = $conn->query($sql);
-		echo 'success';		
-	}else{
-		echo $error;
-	}
-}
 ?>

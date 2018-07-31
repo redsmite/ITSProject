@@ -221,7 +221,7 @@ while($row=$result->fetch_object()){
 </html>
 <?php
 	$id=$_SESSION['id'];
-	$update="UPDATE tblpm SET checked=1 WHERE receiverid='$id'";
+	$update="UPDATE tblpm SET checked=1 WHERE receiverid='$id' AND checked = 0";
 	$R_up=$conn->query($update);
 	mysqli_close($conn);
 ?>

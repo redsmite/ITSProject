@@ -18,6 +18,12 @@
 		}
 	}
 
+	if(isset($_SESSION['id'])){
+		$tuserid = $_SESSION['id'];
+	}else{
+		$tuserid = 'none';
+	}
+
 	addSidebar();
 	addLogin();
 	setupCookie();
@@ -46,7 +52,7 @@
 		<h3><?php echo $username;?>'s Products</h3>
 		<div class="my-products">
 <?php
-$sql = "SELECT productid,category, productname, description, farmname, username, dateposted, price, img, rating FROM tblproduct as t1
+$sql = "SELECT productid,category, productname, description, farmname, t1.userid,username, dateposted, price, img, rating, is_approved FROM tblproduct as t1
 LEFT JOIN tblcategory as t2
 	ON t1.categoryid = t2.categoryid
 LEFT JOIN tbluser as t3
@@ -63,6 +69,7 @@ while($row = $result->fetch_object()){
 	$desc = $row->description;
 	$farm = $row->farmname;
 	$user = $row->username;
+	$userid = $row->userid;
 	$date = date('F j, Y',strtotime($row->dateposted));
 	$price = $row->price;
 	$img = $row->img;
@@ -70,6 +77,10 @@ while($row = $result->fetch_object()){
 		$img='img/default2.jpg';
 	}
 	$rating = $row->rating;
+	$approved = $row->is_approved;
+
+	if($approved == 0 AND $userid!=$tuserid){
+	}else{
 
 	echo'
 	<div class="product">
@@ -95,8 +106,8 @@ while($row = $result->fetch_object()){
 	<div class="add-to-cart" value="'.$id.'" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart</div>
 	</div>
 	</div>';
+	}
 }
-
 ?>
 		</div>
 	</div>
@@ -108,6 +119,8 @@ while($row = $result->fetch_object()){
 	</div>
 	<script src="js/main.js"></script>
 	<script>
+		modal();
+		ajaxLogin();
 	</script>
 </body>
 </html>

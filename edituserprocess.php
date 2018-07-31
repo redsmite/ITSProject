@@ -119,7 +119,7 @@ if(isset($_POST['session'])){
 
 if(isset($_POST['checked'])){
 	$id=$_SESSION['id'];
-	$sql="UPDATE tblnotif SET checked=1 WHERE receiverid='$id'";
+	$sql="UPDATE tblnotif SET checked=1 WHERE receiverid='$id' AND checked = 0";
 	$result=$conn->query($sql);
 
 	echo json_encode('oke-oke-okay');

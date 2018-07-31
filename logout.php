@@ -4,6 +4,7 @@
 	unset($_SESSION['name']);
 	unset($_SESSION['type']);
 	unset($_SESSION['admin']);
+	unset($_SESSION['updateProduct']);
 	include'functions.php';
 	destroyCookie();
 ?>

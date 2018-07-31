@@ -1039,7 +1039,7 @@ function showMonitoringTab(){
 	body3.style.display='grid';
 	body4.style.display='none';
 
-	setPrice();
+	showTransactions();
 }
 
 function showSalesTab(){
@@ -1223,30 +1223,43 @@ function addNewCategory(){
 	let body1= document.getElementById('add-category');
 	let body2= document.getElementById('set-price');
 	let body3= document.getElementById('history');
+	let body4= document.getElementById('transaction-body');
+	let body5= document.getElementById('product-monitoring');
 
 	body1.style.display ='block';
 	body2.style.display ='none';
-	body3.style.display ='none';	
+	body3.style.display ='none';
+	body4.style.display ='none';
+	body5.style.display ='none';
 }
 
 function setPrice(){
 	let body1= document.getElementById('add-category');
 	let body2= document.getElementById('set-price');
 	let body3= document.getElementById('history');
+	let body4= document.getElementById('transaction-body');
+	let body5= document.getElementById('product-monitoring');
 
 	body1.style.display ='none';
 	body2.style.display ='block';
-	body3.style.display ='none';	
+	body3.style.display ='none';
+	body4.style.display ='none';
+	body5.style.display ='none';
 }
 
 function priceHistory(){
 	let body1= document.getElementById('add-category');
 	let body2= document.getElementById('set-price');
 	let body3= document.getElementById('history');
+	let body4= document.getElementById('transaction-body');
+	let body5= document.getElementById('product-monitoring');
+
 
 	body1.style.display ='none';
 	body2.style.display ='none';
 	body3.style.display ='block';
+	body4.style.display ='none';
+	body5.style.display ='none';
 
 	var myRequest = new XMLHttpRequest();
 
@@ -1265,6 +1278,49 @@ function priceHistory(){
 		div.innerHTML = response;
 	}
 	myRequest.send(formData);				
+}
+
+function showTransactions(){
+	let body1= document.getElementById('add-category');
+	let body2= document.getElementById('set-price');
+	let body3= document.getElementById('history');
+	let body4= document.getElementById('transaction-body');
+	let body5= document.getElementById('product-monitoring');
+
+	body1.style.display ='none';
+	body2.style.display ='none';
+	body3.style.display ='none';
+	body4.style.display ='block';
+	body5.style.display ='none';	
+}
+
+function showApproveProduct(){
+	let body1= document.getElementById('add-category');
+	let body2= document.getElementById('set-price');
+	let body3= document.getElementById('history');
+	let body4= document.getElementById('transaction-body');
+	let body5= document.getElementById('product-monitoring');
+
+	body1.style.display ='none';
+	body2.style.display ='none';
+	body3.style.display ='none';
+	body4.style.display ='none';
+	body5.style.display ='block';
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'adminprocess.php';
+
+	var formData = "showApprove='hello'";
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.getElementById('product-monitoring-content').innerHTML=response;
+	}
+	myRequest.send(formData);
 }
 
 function addCategoryAjax(){
@@ -1587,7 +1643,7 @@ function checkedreport(clicked){
 	
 	var markid = 'rp-'+id;
 	var marked = document.getElementById(markid);
-	marked.innerHTML ='<p class="checkreport">Checked</p>';
+	marked.innerHTML ='<p class="checkreport">Read</p>';
 
 	var myRequest = new XMLHttpRequest();
 
@@ -1697,7 +1753,7 @@ function addProductAjax(){
 			removeSpinners();
 			if(array[0]=='success'){
 				form.reset();
-				alert(name + ' is added to the database');
+				alert(name + ' is added to the database, please wait for the admin to approved your product');
 				window.location.href = 'product.php?id='+array[1];
 			}else{
 				document.getElementById('error-message2').innerHTML=response;
@@ -1713,9 +1769,62 @@ function showUpdateProductForm(){
 		form.style.display="block";
 	}else if(form.style.display=="block"){
 		form.style.display="none";
+
+		var myRequest = new XMLHttpRequest();
+		var url = 'productprocess.php';
+
+		var formData = "unsetUpdate='unset'";
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+		myRequest.send(formData);
 	}
 }
 
+function approveProduct(clicked){
+	let id = clicked.getAttribute('value');
+
+	addSpinners();
+	document.getElementById('approve-button').innerHTML='Approving...';
+	var myRequest = new XMLHttpRequest();
+	
+	var url = 'productprocess.php';
+
+	var formData = "approveProduct="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		alert('You approved this product');
+		removeSpinners();
+	}
+	myRequest.send(formData);
+}
+
+function removeProduct(clicked){
+	let id = clicked.getAttribute('value');
+
+	addSpinners();
+	document.getElementById('remove-product').innerHTML='Removing...';
+	var myRequest = new XMLHttpRequest();
+	
+	var url = 'productprocess.php';
+
+	var formData = "removeProduct="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+		alert('You removed this product');
+	}
+	myRequest.send(formData);
+}
 // Cart
 
 function showCartPanel(){
@@ -1738,8 +1847,7 @@ function showCartPanel(){
 		cart.innerHTML = response;
 		gotoBottomCart();
 	}
-	myRequest.send(formData);		
-
+	myRequest.send(formData);
 }
 
 function gotoBottomCart(){

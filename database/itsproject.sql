@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2018 at 04:14 PM
+-- Generation Time: Jul 31, 2018 at 11:17 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -341,7 +341,8 @@ INSERT INTO `tblcomment` (`commentid`, `userid`, `receiver`, `comment`, `datepos
 (168, 1, 2, 'cocoa???', '2018-07-25 23:26:57', NULL),
 (174, 1, 5, 'Deathwing', '2018-07-26 23:01:59', NULL),
 (175, 1, 2, 'have you seen me?', '2018-07-29 20:42:27', NULL),
-(176, 2, 1, 'yes', '2018-07-29 20:47:53', NULL);
+(176, 2, 1, 'yes', '2018-07-29 20:47:53', NULL),
+(177, 1, 2, 'lol', '2018-07-31 14:18:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -512,7 +513,8 @@ INSERT INTO `tbllikes` (`likeid`, `reviewid`, `userid`) VALUES
 (3, 12, 7),
 (5, 14, 7),
 (8, 12, 1),
-(9, 12, 31);
+(9, 12, 31),
+(10, 19, 1);
 
 -- --------------------------------------------------------
 
@@ -861,8 +863,9 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (323, 1, 7, '2018-07-26 00:58:07', 1, 2, 157, 3),
 (324, 7, 1, '2018-07-26 01:03:05', 1, 2, 158, 2),
 (325, 1, 5, '2018-07-26 23:02:00', 1, 1, 174, 0),
-(326, 1, 2, '2018-07-29 20:42:27', 0, 1, 175, 0),
-(327, 2, 1, '2018-07-29 20:47:53', 0, 1, 176, 0);
+(326, 1, 2, '2018-07-29 20:42:27', 1, 1, 175, 0),
+(327, 2, 1, '2018-07-29 20:47:53', 1, 1, 176, 0),
+(328, 1, 2, '2018-07-31 14:18:37', 1, 1, 177, 0);
 
 -- --------------------------------------------------------
 
@@ -2532,7 +2535,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1653, 71, 1, '(â™ª Background music playing...)', '2018-07-25 23:58:38', 1),
 (1654, 71, 0, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 1),
 (1655, 71, 1, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 1),
-(1656, 71, 2, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
+(1656, 71, 2, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 1),
 (1657, 71, 3, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
 (1658, 71, 4, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 0),
 (1659, 71, 5, 'We are fixing some problems\n\nThis will take for a while.\n\nThank you for your patience.\n\nStay tune for more updates.', '2018-07-26 00:24:42', 1),
@@ -2635,7 +2638,12 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1756, 71, 31, 'Hello 492a9ac0b8d4ce2a, I hope you\'re having a nice day.', '2018-07-27 08:35:25', 1),
 (1757, 31, 71, '!bye', '2018-07-27 08:35:30', 0),
 (1758, 71, 31, 'Goodbye 492a9ac0b8d4ce2a see you later!', '2018-07-27 08:35:30', 1),
-(1759, 71, 90, 'Hello username! \n Welcome to Bahay Kubo ni Mang Celso. \n Thanks for joining us. \n Please refer for the link for more info \n http://localhost/project/about.php', '2018-07-27 13:25:27', 1);
+(1759, 71, 90, 'Hello username! \n Welcome to Bahay Kubo ni Mang Celso. \n Thanks for joining us. \n Please refer for the link for more info \n http://localhost/project/about.php', '2018-07-27 13:25:27', 1),
+(1760, 90, 71, '!music', '2018-07-30 14:44:18', 0),
+(1761, 90, 71, '!bye', '2018-07-30 14:44:21', 0),
+(1762, 71, 90, 'Goodbye username see you later!', '2018-07-30 14:44:21', 1),
+(1763, 1, 2, 'let\'s sell something', '2018-07-31 14:19:02', 1),
+(1764, 2, 1, 'great idea', '2018-07-31 14:21:45', 0);
 
 -- --------------------------------------------------------
 
@@ -2654,29 +2662,36 @@ CREATE TABLE `tblproduct` (
   `price` decimal(10,2) NOT NULL,
   `img` varchar(200) NOT NULL,
   `view` int(11) NOT NULL,
-  `rating` decimal(10,2) NOT NULL
+  `rating` decimal(10,2) NOT NULL,
+  `is_approved` tinyint(1) NOT NULL,
+  `is_available` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblproduct`
 --
 
-INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description`, `farmid`, `userid`, `dateposted`, `price`, `img`, `view`, `rating`) VALUES
-(1, 1, 'XYZ Amargoso', 'the balsam apple of the Philippines', 1, 2, '2018-07-18 20:23:54', '90.00', 'product/213500944001201.jpg', 8, '60.00'),
-(2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '80.00', 'product/food-healthy-summer-green.jpeg', 1, '80.00'),
-(3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 12, '50.00'),
-(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 17, '100.00'),
-(5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 13, '100.00'),
-(6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 3, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 3, '50.00'),
-(7, 15, 'Indian Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mangofruit.jpg', 1, '50.00'),
-(8, 3, 'Party Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 3, 5, '2018-07-23 00:25:06', '120.00', 'product/cabbage-vegetable-power-green.jpg', 7, '80.00'),
-(9, 13, 'Calamansi C', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:10', '50.00', 'product/Calamansi.jpg', 0, '50.00'),
-(10, 13, 'Calamansi G', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 1, '50.00'),
-(11, 13, 'Calamansi A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 28, '80.00'),
-(12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 2, '2018-07-24 15:59:23', '50.00', 'product/potato.jpg', 12, '100.00'),
-(13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 2, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 28, '70.00'),
-(14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 20, '80.00'),
-(15, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 1, '2018-07-26 14:30:26', '60.00', 'product/potato.jpg', 82, '75.00');
+INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description`, `farmid`, `userid`, `dateposted`, `price`, `img`, `view`, `rating`, `is_approved`, `is_available`) VALUES
+(1, 1, 'XYZ Amargoso', 'the balsam apple of the Philippines', 1, 2, '2018-07-18 20:23:54', '90.00', 'product/213500944001201.jpg', 10, '60.00', 1, 1),
+(2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '80.00', 'product/food-healthy-summer-green.jpeg', 4, '80.00', 1, 1),
+(3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 14, '50.00', 1, 1),
+(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 19, '100.00', 1, 1),
+(5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 14, '100.00', 1, 1),
+(6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 3, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 4, '50.00', 1, 1),
+(7, 15, 'Indian Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mangofruit.jpg', 5, '50.00', 1, 1),
+(8, 3, 'Party Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 3, 5, '2018-07-23 00:25:06', '120.00', 'product/cabbage-vegetable-power-green.jpg', 8, '80.00', 1, 1),
+(9, 13, 'Calamansi C', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:10', '50.00', 'product/Calamansi.jpg', 6, '100.00', 1, 1),
+(10, 13, 'Calamansi G', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 3, '50.00', 1, 1),
+(11, 13, 'Calamansi A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 34, '80.00', 1, 1),
+(12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 2, '2018-07-24 15:59:23', '50.00', 'product/potato.jpg', 13, '100.00', 1, 1),
+(13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 2, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 30, '70.00', 1, 1),
+(14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 22, '80.00', 1, 1),
+(15, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 1, '2018-07-26 14:30:26', '60.00', 'product/potato.jpg', 83, '75.00', 1, 1),
+(16, 3, 'Pechay Baguio', 'Pechay Pechay Pechay Pechay Pechay Pechay Pechay Pechay ', 3, 90, '2018-07-30 14:47:42', '70.00', 'product/pechay-baguio.jpg', 4, '80.00', 1, 1),
+(17, 10, 'Pechay', 'masarap mura pa kaya bilina kau parang awa nyo na\r\n', 1, 2, '2018-07-30 16:09:03', '60.00', 'product/__original_drawn_by_aoha_twintail__sample-2ae9cf5c6deeeac1dc3e7dde22267dc1.jpg', 9, '50.00', 0, 1),
+(18, 4, 'Carrots', 'Carrots Carrots Carrots Carrots Carrots Carrots Carrots Carrots', 1, 1, '2018-07-31 16:37:55', '100.00', 'product/storecarrots.jpg', 0, '50.00', 1, 1),
+(19, 9, 'Talong', 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 3, 1, '2018-07-31 16:41:58', '80.00', 'product/talong.jpg', 1, '100.00', 1, 1),
+(20, 12, 'Saging na Latundan', 'Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan', 3, 1, '2018-07-31 17:05:46', '40.00', 'product/latundan.jpg', 0, '100.00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2710,7 +2725,11 @@ INSERT INTO `tblrating` (`ratingid`, `productid`, `userid`, `rating`) VALUES
 (12, 15, 31, 4),
 (13, 13, 31, 4),
 (14, 8, 1, 4),
-(15, 5, 2, 5);
+(15, 5, 2, 5),
+(16, 9, 1, 5),
+(17, 16, 90, 4),
+(18, 19, 1, 5),
+(19, 20, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -2736,7 +2755,8 @@ INSERT INTO `tblreport` (`reportid`, `userid`, `reporter`, `reason`, `datecreate
 (2, 2, 1, '3', '2018-07-10 22:38:12', 1),
 (3, 20, 1, 'none', '2018-07-26 00:18:52', 1),
 (4, 10, 1, 'none', '2018-07-26 00:22:46', 1),
-(5, 5, 1, '5', '2018-07-27 13:46:34', 1);
+(5, 5, 1, '5', '2018-07-27 13:46:34', 1),
+(6, 90, 2, '3', '2018-07-31 14:51:35', 1);
 
 -- --------------------------------------------------------
 
@@ -2759,7 +2779,10 @@ CREATE TABLE `tblreviews` (
 
 INSERT INTO `tblreviews` (`reviewid`, `review`, `productid`, `userid`, `dateposted`, `likes`) VALUES
 (12, 'Sample Review\n\nConsidered a high-value crop and major agricultural produce in the Cordilleras, annual demand for potato in the country is about 745,000 metric tons.\n\nWith the increasing number of fastfood chains in the country, meeting the countryâ€™s requirement for processing varieties is a great challenge for our potato stakeholders.\n\nThe Northern Philippines Root Crops Research and Training Center is undertaking a project that aims to mass produce, commercialize, and promote approved processing potato varieties of good quality.', 15, 1, '2018-07-28 17:04:49', 3),
-(14, 'Potato contains several phytochemicals such as phenolics, flavonoids, polyamines, and carotenoids, which are highly desirable in diet because of their beneficial effects on human health. The concentration and stability of these constituents are affected by several factors such as genotype, agronomic factors, postharvest storage, cooking and processing conditions. The advances in analytical techniques have made possible the identification and understanding the functions of phytochemicals, particularly their antioxidant properties. The potatoes are stored and processed into a variety of products before consumption. In the present review, phytochemicals present in potatoes, factors affecting their content, stability and health benefits are discussed. Processing the potatoes rich in phytochemicals can play an important role in promoting the health of a large segment of population in the countries where potatoes form a substantial part of daily diet.', 15, 7, '2018-07-29 00:24:24', 1);
+(14, 'Potato contains several phytochemicals such as phenolics, flavonoids, polyamines, and carotenoids, which are highly desirable in diet because of their beneficial effects on human health. The concentration and stability of these constituents are affected by several factors such as genotype, agronomic factors, postharvest storage, cooking and processing conditions. The advances in analytical techniques have made possible the identification and understanding the functions of phytochemicals, particularly their antioxidant properties. The potatoes are stored and processed into a variety of products before consumption. In the present review, phytochemicals present in potatoes, factors affecting their content, stability and health benefits are discussed. Processing the potatoes rich in phytochemicals can play an important role in promoting the health of a large segment of population in the countries where potatoes form a substantial part of daily diet.', 15, 7, '2018-07-29 00:24:24', 1),
+(16, 'Review Review Review Review Review Review Review Review Review ', 16, 90, '2018-07-30 14:48:54', 0),
+(18, 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 19, 1, '2018-07-31 16:48:29', 0),
+(19, 'According to the Department of Agriculture website, there are 57 cultivars of banana in Southeast Asia but only five are common in the Philippines: saba, latundan, lacatan, bungulan and cavendish.\n\nI donâ€™t know where the seÃ±orita bananas went as they seem to be very common in the southern part of Luzon, from Cavite to Batangas, especially, yet they didnâ€™t make it to the list. I remember those trips to Tagaytay when I was young and we would buy a whole piling (arm) of seÃ±orita bananas and tie the handle at the back of the Land Rover so that the bananas were suspended in mid-air all the way back to Manila. SeÃ±orita bananas have very thin skin and they fall off the piling very easily. If left on the floor of the truck, they got bruised easily too.\n\nAll that trouble for seÃ±orita bananas? They were my favorite. My least favorite is the pale latundan. Truth be told, I wasnâ€™t really familiar with banana cultivars until I became a mommy. The girlsâ€™ pediatrician prescribed mashed latundan bananas as a cure for diarrhea. So I learned to tell the difference between lacatan and latundan just by looking at them.\n\n\nTo this day, however, I have not developed any affection for the latundan. I prefer the creamier and sweeter lacatan when seÃ±orita bananas are not available. As for saba bananas, well, they arenâ€™t eaten raw so they fall under a different category. They are cooking bananas and we love them. See the following recipes with saba bananas as an ingredient:\n\nMinatamis na saging (sweetened bananas)\nArroz a la Cubana\nCheesy turon\nGinataang halo-halo\nHalo-halo', 20, 1, '2018-07-31 17:07:23', 1);
 
 -- --------------------------------------------------------
 
@@ -2795,13 +2818,13 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `website`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-07-29 12:42:27', 113),
-(2, '959a9424ee49693d', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-07-29 14:13:21', 181),
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-07-31 09:16:22', 119),
+(2, '959a9424ee49693d', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-07-31 08:52:05', 187),
 (3, 'c24359d3031378f2', '5488d6d6f37a311a1085daf41f2e990c', '8f87ec93bf', '083a24', '6df46230', '2000-07-15', '2018-06-07 01:56:37', '985198f63d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (4, '15092bfa5e2b6e8c', '5f4dcc3b5aa765d61d8327deb882cf99', '7df2090dc6', '0d6c92', 'a401c8f7', '2000-12-04', '2018-06-07 01:56:37', '252d3825ae@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-07-25 16:50:29', 28),
-(5, 'fa86b2c7c8d2f4af', '5f4dcc3b5aa765d61d8327deb882cf99', '87efa34481', 'b17e8d', 'f4120928', '2000-09-19', '2018-06-07 01:56:37', '7182aa0862@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-07-26 15:55:42', 25),
+(5, 'fa86b2c7c8d2f4af', '5f4dcc3b5aa765d61d8327deb882cf99', '87efa34481', 'b17e8d', 'f4120928', '2000-09-19', '2018-06-07 01:56:37', '7182aa0862@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-07-26 15:55:42', 26),
 (6, 'e9eee15647061a7c', '5f4dcc3b5aa765d61d8327deb882cf99', '1bdd26b9d4', '755678', '505f27a9', '2000-03-15', '2018-06-07 15:32:53', '17f70978e3@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-04 08:07:37', 21),
-(7, 'c222b3b69f9b0d9a', '5f4dcc3b5aa765d61d8327deb882cf99', '22a8f59cd0', 'e1feb5', '8feeb649', '2000-07-15', '2018-06-07 14:08:15', '8010fdd3df@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-07-28 16:31:01', 57),
+(7, 'c222b3b69f9b0d9a', '5f4dcc3b5aa765d61d8327deb882cf99', '22a8f59cd0', 'e1feb5', '8feeb649', '2000-07-15', '2018-06-07 14:08:15', '8010fdd3df@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-07-31 09:12:00', 57),
 (8, 'f3bd37208580dfc0', '5f4dcc3b5aa765d61d8327deb882cf99', '998a862c0d', '74e778', 'dcc92235', '2000-01-31', '2018-06-07 15:31:06', '62e6b92616@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:01', 40),
 (9, '4fce1a441e1b0974', '5f4dcc3b5aa765d61d8327deb882cf99', '27bf39dd02', '7c7e3d', '6673b7c4', '2000-08-03', '2018-06-07 01:56:37', '4b55ca6ddd@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-27 06:08:30', 2),
 (10, '6e352b2a58c60b6a', '5f4dcc3b5aa765d61d8327deb882cf99', '27f4c9247b', 'ea8db1', '013b532f', '2004-04-01', '2018-06-07 15:29:14', 'cb329a0ba9@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-30 08:48:26', 12),
@@ -2884,7 +2907,7 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (87, '12313asdasd', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:41:01', 'asdada@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:42:02', 0),
 (88, 'fsdfsdf232', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:42:43', 'adasdasf@feadkfdfkdfki', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:46:53', 2),
 (89, 'Chandra Vengeant', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 17:22:42', 'chandra@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-07-25 17:26:37', 0),
-(90, 'username', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-27 05:25:27', 'username@gmail.com', '', '', 3, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-27 05:26:33', 1);
+(90, 'username', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-27 05:25:27', 'username@gmail.com', '', '', 3, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-30 07:35:26', 2);
 
 --
 -- Indexes for dumped tables
@@ -3018,7 +3041,7 @@ ALTER TABLE `tblchangelog`
 -- AUTO_INCREMENT for table `tblcomment`
 --
 ALTER TABLE `tblcomment`
-  MODIFY `commentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
+  MODIFY `commentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- AUTO_INCREMENT for table `tblcommentann`
@@ -3042,43 +3065,43 @@ ALTER TABLE `tblfriend`
 -- AUTO_INCREMENT for table `tbllikes`
 --
 ALTER TABLE `tbllikes`
-  MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=328;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
 
 --
 -- AUTO_INCREMENT for table `tblpm`
 --
 ALTER TABLE `tblpm`
-  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1760;
+  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1765;
 
 --
 -- AUTO_INCREMENT for table `tblproduct`
 --
 ALTER TABLE `tblproduct`
-  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tblrating`
 --
 ALTER TABLE `tblrating`
-  MODIFY `ratingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ratingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tblreport`
 --
 ALTER TABLE `tblreport`
-  MODIFY `reportid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `reportid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblreviews`
 --
 ALTER TABLE `tblreviews`
-  MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tbluser`

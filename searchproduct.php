@@ -63,7 +63,7 @@ LEFT JOIN tbluser as t3
 	ON t1.userid = t3.userid
 LEFT JOIN tblfarm as t4
 	ON t1.farmid = t4.farmid
-WHERE productname LIKE '%$search%' $limit
+WHERE productname LIKE '%$search%' $limit AND is_approved = 1 AND is_available = 1
 ORDER BY view,dateposted DESC";
 $result = $conn->query($sql);
 while($row = $result->fetch_object()){

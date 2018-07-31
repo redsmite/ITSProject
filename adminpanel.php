@@ -31,7 +31,17 @@ chattab();
 			<div id="admin-tab">
 				<a id="monitoring-tab" onclick="showMonitoringTab()">Monitoring</a>
 				<a id="sales-tab" onclick="showSalesTab()">Sales</a>
-				<a id="report-tab" onclick="showReportTab()">Users</a>
+				<a id="report-tab" onclick="showReportTab()">
+<?php
+//Number of unread reports
+	$sql = "SELECT reportid FROM tblreport WHERE checked=0";
+	$result = $conn->query($sql);
+	$count = $result->num_rows;
+	if(!$count == 0){
+		echo '('.$count.')';
+	}
+?>
+				Users</a>
 				<a id="announcement-tab" onclick="showAnnouncementTab()">Announcement</a>
 			</div>
 			<div id="admin-body">
@@ -40,12 +50,32 @@ chattab();
 					<a href="https://psa.gov.ph/content/psa-media-service-market-prices-selected-commodities-metro-manila" class="get-pdf" target="_blank"><i class="fas fa-file-pdf"></i> Get PDF Here!</a>
 				</div>
 				<div class="left-monitoring">
+					<div class="monitoring-option" onclick="showTransactions()"><i class="fas fa-book-open"></i> Transactions</div>
+					<div class="monitoring-option" onclick="showApproveProduct()"><i class="fas fa-clipboard-check"></i>
+<?php
+$sql = "SELECT productid FROM tblproduct WHERE is_approved = 0";
+$result = $conn->query($sql);
+$new_products = $result->num_rows;
+if($new_products!=0){
+	echo '('.$new_products.')';
+}
+?>
+					 Products</div>
 					<div class="monitoring-option" onclick="setPrice()"><i class="far fa-money-bill-alt"></i> Price Monitoring</div>
 					<div class="monitoring-option" onclick="addNewCategory()"><i class="fas fa-plus"></i> Add / Remove Category</div>
 					<div class="monitoring-option" onclick="priceHistory()"><i class="fas fa-book"></i> Change Log</div>
 				</div>
 				<div class="empty"></div>
 				<div class="right-monitoring">
+					<div id="transaction-body">
+						<h1>Transactions</h1>
+					</div>
+					<div id="product-monitoring">
+						<h1>Approve New Products</h1>
+						<div class="refresh-button" onclick="showApproveProduct()"><h2>Refresh <i class="fas fa-sync-alt"></i></h2></div>
+						<div id="product-monitoring-content">
+						</div>
+					</div>
 					<div id="add-category">
 						<h1>Add / Remove Category</h1>
 						<div class="edit-form">
@@ -204,9 +234,9 @@ if($last != 1){
 		echo '<li id="'.$id.'" onclick="checkedreport(this)">';
 
 		if($checked==0){
-			echo'<p id="rp-'.$id.'" class="newreport">Unchecked</p>';
+			echo'<p id="rp-'.$id.'" class="newreport">Unread</p>';
 		} else {
-			echo '<p class="checkreport">Checked</p>';
+			echo '<p class="checkreport">Read</p>';
 		}
 
 		echo'<p>Reported User: <a href="profile.php?id='.$userid.'"><font color="#00c07f">'.$username.'</font></a></p>

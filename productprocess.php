@@ -63,11 +63,12 @@ if(isset($_POST['add'])){
 	}
 
 	if(!$error){
-		$sql = "INSERT INTO tblproduct (categoryid, productname, description, farmid, userid, dateposted, price, rating) VALUES ('$category','$name','$desc','$farm','$userid',NOW(),'$price','50')";
+		$sql = "INSERT INTO tblproduct (categoryid, productname, description, farmid, userid, dateposted, price, rating,is_available) VALUES ('$category','$name','$desc','$farm','$userid',NOW(),'$price','50',1)";
 		$result = $conn->query($sql);
 
 		echo 'success|';
 
+		$_SESSION['updateProduct'] = 1;
 		$sql = "SELECT productid FROM tblproduct ORDER BY dateposted DESC LIMIT 1";
 		$result = $conn->query($sql);
 		$fetch = $result->fetch_object();
@@ -77,6 +78,23 @@ if(isset($_POST['add'])){
 	}else{
 		echo $error;
 	}
+}
+
+if(isset($_POST['approveProduct'])){
+	$id = $_POST['approveProduct'];
+
+	$sql = "UPDATE tblproduct SET is_approved = 1 WHERE productid ='$id'";
+	$result = $conn->query($sql);
+}
+
+if(isset($_POST['removeProduct'])){
+	$id = $_POST['removeProduct'];
+
+	$sql = "UPDATE tblproduct SET is_approved = 0 WHERE productid ='$id'";
+	$result = $conn->query($sql);
+}
+if(isset($_POST['unsetUpdate'])){
+	unset($_SESSION['updateProduct']);
 }
 
 // Review

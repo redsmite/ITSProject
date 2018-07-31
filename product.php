@@ -10,8 +10,15 @@ if(isset($_GET['id'])){
 	die('This page doesn\'t exist');
 }
 
+if(isset($_SESSION['id'])){
+	$tuserid = $_SESSION['id'];
+	$tusertype = $_SESSION['type'];
+}else{
+	$tuserid = 'none';
+	$tusertype = 'none';
+}
 
-$sql = "SELECT productid,category, productname, description, farmname, username, t1.userid, dateposted, price, view, img, rating, low, prevailing, high FROM tblproduct as t1
+$sql = "SELECT productid,category, productname, description, farmname, username, t1.userid, dateposted, price, view, img, rating, is_approved, is_available, low, prevailing, high FROM tblproduct as t1
 LEFT JOIN tblcategory as t2
 	ON t1.categoryid = t2.categoryid
 LEFT JOIN tbluser as t3
@@ -42,6 +49,16 @@ if(!$row){
 	$low = $row->low;
 	$prev = $row->prevailing;
 	$high = $row->high;
+	$approved = $row->is_approved;
+	if($approved == 0 AND $userid!=$tuserid AND $tusertype!=4){
+		die('This product is not approved yet by the admin');
+	}
+	$available = $row->is_available;
+	if($available == 1){
+		$available = 'Available';
+	}else{
+		$available = 'Not Available';
+	}
 }
 
 // Rating count
@@ -108,6 +125,7 @@ chattab();
 						<li><b>Description:</b> <?php echo $desc;?></li>
 						<li><b>Seller:</b> <a href="profile.php?id=<?php echo $userid; ?>" class="black"> <?php echo $user; ?></a></li>
 						<li><b>Date Posted:</b> <?php echo $date?></li>
+						<li><b>Status:</b> <?php echo $available?></li>
 						<li><b>Views:</b> 
 							<?php
 							if(isset($_SESSION['id'])){ 
@@ -245,7 +263,22 @@ while($row = $result->fetch_object()){
 			</div>
 			<div class="product-main-right">
 <?php
+	if($approved==0){
+	echo'<h3>This product is not approved yet by the admin.</h3>';
+	}
 	if(isset($_SESSION['id'])){
+		// Approve Product
+
+		if($_SESSION['type']==4){
+
+		if($approved == 0){
+			echo'<div id="approve-button" onclick="approveProduct(this)" value="'.$id.'" class="add-product-button"><i class="far fa-thumbs-up"></i> Approve</div>';
+			}else{
+			echo'<div id="remove-product" onclick="removeProduct(this)" value="'.$id.'" class="add-product-button"><i class="fas fa-minus-circle"></i> Remove</div>';
+			}
+		}
+
+		// Add Product
 		if($_SESSION['type']==3 OR $_SESSION['type']==4){
 			echo'<a href="addproduct.php" class="white"><div class="add-product-button">
 			<i class="fas fa-plus"></i> Add Product
