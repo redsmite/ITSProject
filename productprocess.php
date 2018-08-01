@@ -340,7 +340,7 @@ if(isset($_POST['showcart'])){
 		</li>';
 	}
 	echo'</ul>
-	<h3> Total: ₱<span id="total">';
+	<h3> Subtotal: ₱<span id="total">';
 	if(isset($_SESSION['total'])){
 		echo number_format($_SESSION['total'],2);
 	}else{

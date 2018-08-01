@@ -2042,7 +2042,7 @@ function checkoutCart(clicked){
 	let ftotal = document.getElementById('total').innerHTML;
 	let ftotalint = parseFloat(ftotal.replace(/,/g, ''));
 	if(ftotalint<500){
-		let errorString = 'Orders should be a minimum of 500 pesos';
+		let errorString = 'Orders should be a minimum of ₱500.00 worth of purchase.';
 		document.getElementById('error-message5').innerHTML=errorString;
 	}else{
 		if(login==1){
@@ -2069,6 +2069,31 @@ function checkoutCart(clicked){
 
 // Transaction
 
+function placeOrder(clicked){
+	let final = clicked.getAttribute('final').trim();
+	let form = document.getElementById('place-order-form');
+
+	form.addEventListener('submit',(e)=>{
+		e.preventDefault();
+		var myRequest = new XMLHttpRequest();
+		var url = 'transactionprocess.php';
+
+		var formData = "placeOrder="+final;
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			if(response=='success'){
+				window.location.href='ordersuccess.php';
+			}else{
+				document.getElementById('error-message5').innerHTML=response;
+			}
+		}
+		myRequest.send(formData);
+	});
+}
 
 // Review
 
