@@ -31,7 +31,7 @@
 		<h3>Order Tracking</h3>
 <?php
 	$userid = $_SESSION['id'];
-	$sql = "SELECT orderid, ordernumber, billingaddress, email, phone, total, status, datecommit FROM tblorder WHERE userid = '$userid'";
+	$sql = "SELECT orderid, ordernumber, billingaddress, email, phone, total, status, datecommit FROM tblorder WHERE userid = '$userid' ORDER BY datecommit DESC";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_object()){
 		$orderid = $row->orderid;
@@ -42,19 +42,21 @@
 		$total = $row->total;
 		$status = $row->status;
 		if($status==0){
-			$status = '<font style="color:orangered;">On approval...</font>';
+			$status = '<font style="color:orangered;">Reviewing...</font>';
 		}else if($status == 1){
 			$status = '<font style="color:green;">On delivery...</font>';
 		}else if($status == 2){
-			$status = '<font style="color:red;">Cancelled</font>';
+			$status = '<font style="color:red;">Rejected</font>';
 		}else if($status == 3){
+			$status = '<font style="color:red;">Cancelled</font>';
+		}else if($status == 4){
 			$status = '<font style="color:green;">Completed</font>';
 		}
 		$date = $row->datecommit;
 
 		echo '<div class="orders">
 		<p>Order No: '.$ordernum.'</p>
-		<p>Status: '.$status.'</p>
+		<p>Status: <b>'.$status.'</b></p>
 		<p>Submitted: '.date('M j, Y g:i A',strtotime($date)).'</p>
 		<p>Submitted info:</p> 
 		<p class="submitted-info">Billing Address: '.$address.'<br>
@@ -68,19 +70,20 @@
 				<th>Price</th>
 			</tr>';
 // Order Summary
-$sql2 = "SELECT productname, price, weight FROM tblordersummary AS t1
+$sql2 = "SELECT t1.productid,productname, price, weight FROM tblordersummary AS t1
 LEFT JOIN tblproduct AS t2
 	ON t1.productid = t2.productid
 WHERE orderid = '$orderid'";
 $result2 = $conn->query($sql2);
 while($row2 = $result2->fetch_object()){
+	$productid = $row2->productid;
 	$product = $row2->productname;
 	$price = $row2->price;
 	$weight = $row2->weight;
 	$Ptotal = $price*$weight; 
 	
 	echo'<tr>
-		<th>'.$product.' (x '.$weight.')
+		<th><a class="black" href="product.php?id='.$productid.'">'.$product.'</a> (x '.$weight.')
 		</th>';
 	echo'<th>₱'.number_format($Ptotal,2).'</th>
 		</tr>';

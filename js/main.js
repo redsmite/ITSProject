@@ -1039,7 +1039,7 @@ function showMonitoringTab(){
 	body3.style.display='grid';
 	body4.style.display='none';
 
-	showTransactions();
+	showOrders();
 }
 
 function showSalesTab(){
@@ -1223,7 +1223,7 @@ function addNewCategory(){
 	let body1= document.getElementById('add-category');
 	let body2= document.getElementById('set-price');
 	let body3= document.getElementById('history');
-	let body4= document.getElementById('transaction-body');
+	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
 
 	body1.style.display ='block';
@@ -1237,7 +1237,7 @@ function setPrice(){
 	let body1= document.getElementById('add-category');
 	let body2= document.getElementById('set-price');
 	let body3= document.getElementById('history');
-	let body4= document.getElementById('transaction-body');
+	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
 
 	body1.style.display ='none';
@@ -1251,7 +1251,7 @@ function priceHistory(){
 	let body1= document.getElementById('add-category');
 	let body2= document.getElementById('set-price');
 	let body3= document.getElementById('history');
-	let body4= document.getElementById('transaction-body');
+	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
 
 
@@ -1280,11 +1280,11 @@ function priceHistory(){
 	myRequest.send(formData);				
 }
 
-function showTransactions(){
+function showOrders(){
 	let body1= document.getElementById('add-category');
 	let body2= document.getElementById('set-price');
 	let body3= document.getElementById('history');
-	let body4= document.getElementById('transaction-body');
+	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
 
 	body1.style.display ='none';
@@ -1298,7 +1298,7 @@ function showApproveProduct(){
 	let body1= document.getElementById('add-category');
 	let body2= document.getElementById('set-price');
 	let body3= document.getElementById('history');
-	let body4= document.getElementById('transaction-body');
+	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
 
 	body1.style.display ='none';
@@ -2067,7 +2067,7 @@ function checkoutCart(clicked){
 	}
 }
 
-// Transaction
+// Order
 
 function placeOrder(clicked){
 	let final = clicked.getAttribute('final').trim();
@@ -2097,6 +2097,58 @@ function placeOrder(clicked){
 		}
 		myRequest.send(formData);
 	});
+}
+
+function approveOrder(clicked){
+	let id = clicked.getAttribute('value');
+	let buttonid = 'order-approve-'+id;
+	let button = document.getElementById(buttonid);
+	let button2id = 'order-reject-'+id;
+	let button2 = document.getElementById(button2id);
+	
+	addSpinners();
+
+	button.innerHTML = 'Approving...';
+	button2.style.display = 'none';
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'transactionprocess.php';
+
+	var formData = "approve="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+	}
+	myRequest.send(formData);
+}
+
+function rejectOrder(clicked){
+	let id = clicked.getAttribute('value');
+	let buttonid = 'order-reject-'+id;
+	let button = document.getElementById(buttonid);
+	let button2id = 'order-approve-'+id;
+	let button2 = document.getElementById(button2id);
+
+	button.innerHTML = 'Rejecting...';
+	button2.style.display = 'none';
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'transactionprocess.php';
+
+	var formData = "reject="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+	}
+	myRequest.send(formData);
 }
 
 // Review

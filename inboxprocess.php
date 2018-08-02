@@ -121,11 +121,14 @@ if(isset($_POST['sendall'])){
 	$sql = "SELECT userid FROM tbluser";
 	$result=$conn->query($sql);
 	$count = $result->num_rows;
-
+	$values = '';
 	for ($i = 0; $i <= $count; $i++) {
-		$send="INSERT INTO tblpm (senderid,receiverid,message,pmdate) VALUES('71','$i','$message',$timestamp)";
-		$result=$conn->query($send);
+		$values .="('71','$i','$message',$timestamp),";
 	}
+	$values = rtrim($values,',');
+
+	$send="INSERT INTO tblpm (senderid,receiverid,message,pmdate) VALUES $values";
+	$result=$conn->query($send);
 	echo 'oke-oke-okay';
 }
 

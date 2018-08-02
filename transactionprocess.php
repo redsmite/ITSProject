@@ -48,4 +48,18 @@ if(isset($_POST['placeOrder'])){
 	}
 }
 
+if(isset($_POST['approve'])){
+	$id = $_POST['approve'];
+
+	$sql = "UPDATE tblorder SET status = 1 WHERE orderid = '$id'";
+	$result = $conn->query($sql);
+}
+
+if(isset($_POST['reject'])){
+	$id = $_POST['reject'];
+
+	$sql = "UPDATE tblorder SET status = 2 WHERE orderid = '$id'";
+	$result = $conn->query($sql);
+}
+
 ?>

@@ -213,7 +213,7 @@ function session_button(){
 	$conn = mysqli_connect ("localhost", "root", "", "itsproject");
 
 // Shopping Cart
-	echo '<div id="top-total" onmouseover="showCartPanel()">';
+	echo '<div id="top-total" onclick="showCartPanel()">';
 	if(isset($_SESSION['total'])){
 		echo '₱'.number_format($_SESSION['total'],2);
 	}
@@ -222,7 +222,7 @@ function session_button(){
 		<h1 onclick="hideCartPanel()" class="close-heading">Shopping Cart <i style="float:right; padding-right:10px" class="fas fa-times"></i></h1>
 		<div id="shopping-cart-content"></div>
 	</div>
-	<i class="fas fa-shopping-cart button" onmouseover="showCartPanel()"></i>';
+	<i class="fas fa-shopping-cart button" onclick="showCartPanel()"></i>';
 
 	if(isset($_SESSION['id'])){
 
@@ -574,18 +574,26 @@ function user_nonAccess(){
 
 function adminAccess(){
 	if(isset($_SESSION['id'])){
-		if($_SESSION['type']== 3 OR $_SESSION['type']== 4){
-		}else{
+		if($_SESSION['type']!= 4){
 			header('Location: index.php');
 		}
 	}
 }
 
 function adminpanelAccess(){
-	if(isset($_SESSION['admin'])){
-		if($_SESSION['admin']!='IchigoParfait'){
-			header('Location: admin.php');
+	if(isset($_SESSION['id'])){
+		if($_SESSION['type']==4){
+
+			if(isset($_SESSION['admin'])){
+				if($_SESSION['admin']!='IchigoParfait'){
+					header('Location: admin.php');
+				}
+			}
+		}else{
+			die('You\'re not allowed to access this page');	
 		}
+	}else{
+		die('You\'re not allowed to access this page');
 	}
 }
 

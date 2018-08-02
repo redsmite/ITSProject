@@ -80,7 +80,7 @@
 				<ol>
 					<li>1. Minimum of <b>₱500.00</b> worth of purchase.</li>
 					<li>2. Delivery is limited only in <b>Metro Manila</b></li>
-					<li>3. There will be <strong>no cancellation</strong> once you place your order</b>.</li>
+					<li>3. There will be <strong>no cancellation</strong> when the goods starts to deliver.</li>
 				</ol>
 			</div>
 			<div class="payment-option">

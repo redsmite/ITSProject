@@ -861,13 +861,14 @@ li{
 	color:var(--light-color);
 	display: inline-block;
 	background: var(--light-color);
-	border: 1px solid var(--darkgray);
+	border-top: 1px solid var(--darkgray);
+	border-right: 1px solid var(--darkgray);
+	border-radius: 8px;
 	transition-duration: 250ms;
 	transition-property: box-shadow;
 	transition-timing-function: ease-in-out;
 	box-sizing: border-box;
 	text-align: center;
-	box-shadow: 0 0 2px rgba(0,0,0,0.5);
 }
 
 .product:hover{
@@ -901,6 +902,8 @@ li{
 	padding: 5px 10px;
 	background: var(--primary-color);
 	color: var(--light-color);
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
 
 .product-content a{
@@ -1266,13 +1269,14 @@ li{
 
 .fr-div{
 	display: inline-block;
-	border-radius: 10%;
-	margin:5px 3px;
-	background: var(--light-color);
+	margin:20px 10px;
 	padding:10px;
-	border: 1px solid var(--darkgray);
-	box-shadow: 0 0 15px rgba(0,0,0,0.5);
+	border-top: 1px solid var(--darkgray);
+	border-right: 1px solid var(--darkgray);
+	border-radius: 8px;
 	text-align: center;
+	transition-duration: 300ms;
+	transition-property: box-shadow;
 }
 
 .fr-div a{
@@ -1281,7 +1285,7 @@ li{
 }
 
 .fr-div:hover{
-	background: var(--gray);
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .showfr-tn{
@@ -2536,6 +2540,7 @@ li{
 	background: var(--light-color);
 	padding: 10px;
 	margin: 5px;
+	margin-bottom: 20px;
 	line-height: 1.2em;
 	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
