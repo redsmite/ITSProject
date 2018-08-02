@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2018 at 06:14 PM
+-- Generation Time: Aug 02, 2018 at 11:00 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -89,20 +89,20 @@ CREATE TABLE `tblcategory` (
 
 INSERT INTO `tblcategory` (`categoryid`, `category`, `status`, `low`, `high`, `prevailing`) VALUES
 (1, 'Amargoso', 1, '90.00', '160.00', '120.00'),
-(2, 'Sitao', 1, '80.00', '160.00', '110.00'),
-(3, 'Cabbage', 1, '50.00', '120.00', '70.00'),
-(4, 'Carrots', 1, '50.00', '120.00', '100.00'),
-(5, 'Habitchuelas', 1, '70.00', '140.00', '100.00'),
-(6, 'Tomato', 1, '80.00', '120.00', '100.00'),
+(2, 'Sitao', 1, '80.00', '160.00', '120.00'),
+(3, 'Cabbage (Scorpio)', 1, '50.00', '100.00', '80.00'),
+(4, 'Carrots', 1, '50.00', '130.00', '100.00'),
+(5, 'Habitchuelas', 1, '70.00', '140.00', '80.00'),
+(6, 'Tomato', 1, '70.00', '120.00', '100.00'),
 (7, 'Onion Red', 1, '80.00', '120.00', '100.00'),
-(8, 'White Potato', 1, '32.00', '90.00', '55.00'),
-(9, 'Eggplant', 1, '60.00', '120.00', '80.00'),
-(10, 'Pechay', 1, '45.00', '100.00', '60.00'),
+(8, 'White Potato', 1, '40.00', '80.00', '60.00'),
+(9, 'Eggplant', 1, '70.00', '120.00', '80.00'),
+(10, 'Pechay, Native', 1, '45.00', '100.00', '80.00'),
 (11, 'Banana, Lakatan', 1, '45.00', '70.00', '60.00'),
 (12, 'Banana, Latundan', 1, '35.00', '60.00', '40.00'),
-(13, 'Calamansi', 1, '40.00', '100.00', '60.00'),
+(13, 'Calamansi', 1, '40.00', '90.00', '60.00'),
 (14, 'Papaya', 1, '35.00', '70.00', '60.00'),
-(15, 'Mango', 1, '100.00', '180.00', '120.00'),
+(15, 'Mango, Carabao', 1, '100.00', '180.00', '120.00'),
 (16, 'Orange', 0, '0.00', '0.00', '0.00'),
 (17, 'Apple', 0, '0.00', '0.00', '0.00');
 
@@ -184,7 +184,16 @@ INSERT INTO `tblchangelog` (`logid`, `log`, `datecreated`) VALUES
 (59, 'Update price of Eggplant', '2018-07-28 23:15:49'),
 (60, 'Update price of Pechay', '2018-07-28 23:16:07'),
 (61, 'Update price of Calamansi', '2018-07-28 23:16:43'),
-(62, 'Update price of Mango', '2018-07-28 23:17:11');
+(62, 'Update price of Mango', '2018-07-28 23:17:11'),
+(63, 'Update price of Sitao', '2018-08-02 04:29:42'),
+(64, 'Update price of Cabbage (Scorpio)', '2018-08-02 04:29:58'),
+(65, 'Update price of Carrots', '2018-08-02 04:30:11'),
+(66, 'Update price of Habitchuelas', '2018-08-02 04:30:38'),
+(67, 'Update price of Tomato', '2018-08-02 04:31:32'),
+(68, 'Update price of White Potato', '2018-08-02 04:32:18'),
+(69, 'Update price of Eggplant', '2018-08-02 04:32:41'),
+(70, 'Update price of Pechay, Native', '2018-08-02 04:32:52'),
+(71, 'Update price of Calamansi', '2018-08-02 04:33:19');
 
 -- --------------------------------------------------------
 
@@ -206,143 +215,143 @@ CREATE TABLE `tblcomment` (
 --
 
 INSERT INTO `tblcomment` (`commentid`, `userid`, `receiver`, `comment`, `dateposted`, `modified`) VALUES
-(1, 1, 1, 'comment', '2018-06-09 07:24:04', '2018-08-01 16:08:52'),
-(2, 1, 1, 'comment', '2018-06-09 07:40:52', '2018-08-01 16:08:52'),
-(3, 2, 1, 'comment', '2018-06-09 07:42:20', '2018-08-01 16:08:52'),
-(4, 2, 2, 'comment', '2018-06-09 07:44:14', '2018-08-01 16:08:52'),
-(5, 1, 2, 'comment', '2018-06-09 07:45:36', '2018-08-01 16:08:52'),
-(6, 1, 7, 'comment', '2018-06-09 07:46:03', '2018-08-01 16:08:52'),
-(7, 7, 1, 'comment', '2018-06-09 07:46:44', '2018-08-01 16:08:52'),
-(8, 25, 25, 'comment', '2018-06-09 09:38:17', '2018-08-01 16:08:52'),
-(9, 11, 15, 'comment', '2018-06-09 09:46:37', '2018-08-01 16:08:52'),
-(10, 11, 14, 'comment', '2018-06-09 09:50:37', '2018-08-01 16:08:52'),
-(11, 11, 1, 'comment', '2018-06-09 09:53:04', '2018-08-01 16:08:52'),
-(12, 1, 11, 'comment', '2018-06-09 09:55:20', '2018-08-01 16:08:52'),
-(13, 11, 1, 'comment', '2018-06-09 10:02:28', '2018-08-01 16:08:52'),
-(14, 1, 11, 'comment', '2018-06-09 10:16:06', '2018-08-01 16:08:52'),
-(23, 1, 14, 'comment', '2018-06-10 01:16:36', '2018-08-01 16:08:52'),
-(28, 1, 7, 'comment', '2018-06-10 04:22:44', '2018-08-01 16:08:52'),
-(30, 1, 6, 'comment', '2018-06-10 04:47:30', '2018-08-01 16:08:52'),
-(31, 8, 6, 'comment', '2018-06-10 04:53:35', '2018-08-01 16:08:52'),
-(32, 16, 11, 'comment', '2018-06-10 04:55:01', '2018-08-01 16:08:52'),
-(33, 12, 6, 'comment', '2018-06-10 04:55:52', '2018-08-01 16:08:52'),
-(34, 12, 1, 'comment', '2018-06-10 04:56:07', '2018-08-01 16:08:52'),
-(35, 6, 12, 'comment', '2018-06-10 04:56:35', '2018-08-01 16:08:52'),
-(36, 11, 12, 'comment', '2018-06-10 08:50:58', '2018-08-01 16:08:52'),
-(37, 12, 11, 'comment', '2018-06-10 08:59:08', '2018-08-01 16:08:52'),
-(38, 13, 11, 'comment', '2018-06-10 09:02:55', '2018-08-01 16:08:52'),
-(41, 1, 1, 'comment', '2018-06-10 09:15:02', '2018-08-01 16:08:52'),
-(42, 11, 1, 'comment', '2018-06-10 10:09:26', '2018-08-01 16:08:52'),
-(43, 13, 1, 'comment', '2018-06-10 22:23:46', '2018-08-01 16:08:52'),
-(44, 13, 1, 'comment', '2018-06-10 22:24:08', '2018-08-01 16:08:52'),
-(45, 1, 11, 'comment', '2018-06-10 22:49:36', '2018-08-01 16:08:52'),
-(46, 1, 13, 'comment', '2018-06-11 00:35:12', '2018-08-01 16:08:52'),
-(47, 13, 1, 'comment', '2018-06-11 00:48:42', '2018-08-01 16:08:52'),
-(48, 1, 13, 'comment', '2018-06-11 00:53:44', '2018-08-01 16:08:52'),
-(49, 13, 1, 'comment', '2018-06-11 00:55:07', '2018-08-01 16:08:52'),
-(50, 13, 1, 'comment', '2018-06-11 00:55:14', '2018-08-01 16:08:52'),
-(51, 13, 1, 'comment', '2018-06-11 00:55:21', '2018-08-01 16:08:52'),
-(52, 1, 13, 'comment', '2018-06-11 00:59:12', '2018-08-01 16:08:52'),
-(53, 1, 13, 'comment', '2018-06-11 00:59:19', '2018-08-01 16:08:52'),
-(54, 12, 1, 'comment', '2018-06-11 11:14:53', '2018-08-01 16:08:52'),
-(55, 1, 12, 'comment', '2018-06-11 23:20:08', '2018-08-01 16:08:52'),
-(56, 17, 1, 'comment', '2018-06-12 00:38:07', '2018-08-01 16:08:52'),
-(62, 1, 1, 'comment', '2018-06-12 04:35:12', '2018-08-01 16:08:52'),
-(64, 12, 1, 'comment', '2018-06-12 04:52:59', '2018-08-01 16:08:52'),
-(65, 1, 12, 'comment', '2018-06-12 05:05:47', '2018-08-01 16:08:52'),
-(66, 13, 1, 'comment', '2018-06-12 05:22:22', '2018-08-01 16:08:52'),
-(67, 1, 13, 'comment', '2018-06-12 11:08:52', '2018-08-01 16:08:52'),
-(68, 1, 13, 'comment', '2018-06-12 11:16:37', '2018-08-01 16:08:52'),
-(69, 13, 1, 'comment', '2018-06-12 11:24:19', '2018-08-01 16:08:52'),
-(70, 1, 12, 'comment', '2018-06-12 11:24:54', '2018-08-01 16:08:52'),
-(71, 1, 12, 'comment', '2018-06-12 11:25:04', '2018-08-01 16:08:52'),
-(72, 1, 12, 'comment', '2018-06-12 11:25:12', '2018-08-01 16:08:52'),
-(73, 1, 13, 'comment', '2018-06-12 11:25:23', '2018-08-01 16:08:52'),
-(74, 13, 1, 'comment', '2018-06-12 11:26:53', '2018-08-01 16:08:52'),
-(75, 1, 13, 'comment', '2018-06-12 11:27:31', '2018-08-01 16:08:52'),
-(76, 12, 13, 'comment', '2018-06-12 11:28:11', '2018-08-01 16:08:52'),
-(78, 13, 12, 'comment', '2018-06-12 12:26:30', '2018-08-01 16:08:52'),
-(79, 12, 13, 'comment', '2018-06-12 12:27:45', '2018-08-01 16:08:52'),
-(80, 13, 12, 'comment', '2018-06-12 12:29:02', '2018-08-01 16:08:52'),
-(81, 1, 13, 'comment', '2018-06-13 04:39:39', '2018-08-01 16:08:52'),
-(82, 7, 1, 'comment', '2018-06-13 10:59:02', '2018-08-01 16:08:52'),
-(83, 1, 7, 'comment', '2018-06-13 11:00:43', '2018-08-01 16:08:52'),
-(84, 13, 7, 'comment', '2018-06-13 11:04:06', '2018-08-01 16:08:52'),
-(85, 7, 13, 'comment', '2018-06-13 11:06:27', '2018-08-01 16:08:52'),
-(86, 13, 7, 'comment', '2018-06-13 11:07:23', '2018-08-01 16:08:52'),
-(88, 1, 2, 'comment', '2018-06-13 13:06:15', '2018-08-01 16:08:52'),
-(89, 2, 1, 'comment', '2018-06-13 13:11:52', '2018-08-01 16:08:52'),
-(90, 1, 2, 'comment', '2018-06-13 13:12:58', '2018-08-01 16:08:52'),
-(91, 2, 1, 'comment', '2018-06-13 13:14:15', '2018-08-01 16:08:52'),
-(92, 1, 2, 'comment', '2018-06-13 13:14:42', '2018-08-01 16:08:52'),
-(93, 2, 1, 'comment', '2018-06-13 13:16:04', '2018-08-01 16:08:52'),
-(94, 1, 2, 'comment', '2018-06-13 13:17:17', '2018-08-01 16:08:52'),
-(95, 13, 2, 'comment', '2018-06-13 14:13:43', '2018-08-01 16:08:52'),
-(96, 2, 13, 'comment', '2018-06-13 14:14:10', '2018-08-01 16:08:52'),
-(97, 1, 13, 'comment', '2018-06-13 15:29:44', '2018-08-01 16:08:52'),
-(98, 13, 1, 'comment', '2018-06-13 15:31:12', '2018-08-01 16:08:52'),
-(100, 13, 1, 'comment', '2018-06-14 04:24:05', '2018-08-01 16:08:52'),
-(104, 8, 10, 'comment', '2018-06-14 04:34:29', '2018-08-01 16:08:52'),
-(106, 8, 1, 'comment', '2018-06-14 05:43:07', '2018-08-01 16:08:52'),
-(107, 1, 8, 'comment', '2018-06-14 13:47:58', '2018-08-01 16:08:52'),
-(108, 6, 12, 'comment', '2018-06-14 20:43:11', '2018-08-01 16:08:52'),
-(109, 4, 2, 'comment', '2018-06-14 21:06:22', '2018-08-01 16:08:52'),
-(110, 2, 4, 'comment', '2018-06-14 21:08:16', '2018-08-01 16:08:52'),
-(111, 38, 23, 'comment', '2018-06-15 04:47:27', '2018-08-01 16:08:52'),
-(112, 38, 37, 'comment', '2018-06-15 04:47:36', '2018-08-01 16:08:52'),
-(113, 23, 38, 'comment', '2018-06-15 04:52:35', '2018-08-01 16:08:52'),
-(114, 9, 8, 'comment', '2018-06-15 05:02:39', '2018-08-01 16:08:52'),
-(115, 9, 6, 'comment', '2018-06-15 05:02:51', '2018-08-01 16:08:52'),
-(117, 13, 1, 'comment', '2018-06-15 05:54:05', '2018-08-01 16:08:52'),
-(118, 18, 1, 'comment', '2018-06-15 13:13:06', '2018-08-01 16:08:52'),
-(119, 8, 9, 'comment', '2018-06-15 13:14:48', '2018-08-01 16:08:52'),
-(120, 8, 9, 'comment', '2018-06-15 13:14:52', '2018-08-01 16:08:52'),
-(121, 8, 9, 'comment', '2018-06-15 13:14:57', '2018-08-01 16:08:52'),
-(122, 9, 8, 'comment', '2018-06-15 13:20:41', '2018-08-01 16:08:52'),
-(123, 9, 8, 'comment', '2018-06-15 13:21:15', '2018-08-01 16:08:52'),
-(124, 8, 9, 'comment', '2018-06-15 13:22:57', '2018-08-01 16:08:52'),
-(126, 52, 1, 'comment', '2018-06-16 09:07:05', '2018-08-01 16:08:52'),
-(127, 2, 4, 'comment', '2018-06-16 12:47:10', '2018-08-01 16:08:52'),
-(128, 2, 4, 'comment', '2018-06-16 12:47:12', '2018-08-01 16:08:52'),
-(129, 2, 4, 'comment', '2018-06-16 12:47:15', '2018-08-01 16:08:52'),
-(130, 7, 1, 'comment', '2018-06-16 13:10:28', '2018-08-01 16:08:52'),
-(131, 2, 1, 'comment', '2018-06-16 13:11:12', '2018-08-01 16:08:52'),
-(132, 40, 54, 'comment', '2018-06-16 13:40:51', '2018-08-01 16:08:52'),
-(133, 2, 7, 'comment', '2018-06-18 11:29:55', '2018-08-01 16:08:52'),
-(134, 5, 7, 'comment', '2018-06-18 11:30:22', '2018-08-01 16:08:52'),
-(135, 7, 7, 'comment', '2018-06-18 11:30:59', '2018-08-01 16:08:52'),
-(136, 2, 7, 'comment', '2018-06-18 11:31:36', '2018-08-01 16:08:52'),
-(137, 7, 7, 'comment', '2018-06-18 11:32:37', '2018-08-01 16:08:52'),
-(138, 2, 7, 'comment', '2018-06-18 11:33:08', '2018-08-01 16:08:52'),
-(139, 7, 7, 'comment', '2018-06-18 11:33:41', '2018-08-01 16:08:52'),
-(140, 5, 7, 'comment', '2018-06-18 11:34:09', '2018-08-01 16:08:52'),
-(141, 2, 7, 'comment', '2018-06-18 11:34:36', '2018-08-01 16:08:52'),
-(142, 5, 7, 'comment', '2018-06-18 11:35:05', '2018-08-01 16:08:52'),
-(143, 7, 7, 'comment', '2018-06-18 11:36:07', '2018-08-01 16:08:52'),
-(144, 2, 1, 'comment', '2018-06-18 11:38:53', '2018-08-01 16:08:52'),
-(145, 2, 1, 'comment', '2018-06-18 11:39:02', '2018-08-01 16:08:52'),
-(146, 2, 1, 'comment', '2018-06-18 11:39:07', '2018-08-01 16:08:52'),
-(147, 2, 1, 'comment', '2018-06-18 11:39:10', '2018-08-01 16:08:52'),
-(148, 4, 1, 'comment', '2018-06-18 11:40:03', '2018-08-01 16:08:52'),
-(149, 1, 68, 'comment', '2018-06-21 15:55:52', '2018-08-01 16:08:52'),
-(151, 69, 69, 'comment', '2018-06-22 11:41:51', '2018-08-01 16:08:52'),
-(152, 69, 69, 'comment', '2018-06-22 11:46:37', '2018-08-01 16:08:52'),
-(153, 74, 75, 'comment', '2018-06-24 16:28:51', '2018-08-01 16:08:52'),
-(154, 75, 74, 'comment', '2018-06-24 16:29:14', '2018-08-01 16:08:52'),
-(155, 2, 8, 'comment', '2018-06-25 17:45:50', '2018-08-01 16:08:52'),
-(156, 7, 8, 'comment', '2018-06-25 17:46:09', '2018-08-01 16:08:52'),
-(157, 14, 11, 'comment', '2018-06-25 21:00:34', '2018-08-01 16:08:52'),
-(158, 11, 14, 'comment', '2018-06-25 21:09:01', '2018-08-01 16:08:52'),
-(159, 11, 14, 'comment', '2018-06-25 21:09:12', '2018-08-01 16:08:52'),
-(161, 1, 16, 'comment', '2018-06-26 14:32:38', '2018-08-01 16:08:52'),
-(162, 11, 14, 'comment', '2018-06-26 17:52:08', '2018-08-01 16:08:52'),
-(163, 14, 11, 'comment', '2018-06-26 17:53:21', '2018-08-01 16:08:52'),
-(164, 79, 79, 'comment', '2018-06-28 13:41:35', '2018-08-01 16:08:52'),
-(168, 1, 2, 'comment', '2018-07-25 23:26:57', '2018-08-01 16:08:52'),
-(174, 1, 5, 'comment', '2018-07-26 23:01:59', '2018-08-01 16:08:52'),
-(175, 1, 2, 'comment', '2018-07-29 20:42:27', '2018-08-01 16:08:52'),
-(176, 2, 1, 'comment', '2018-07-29 20:47:53', '2018-08-01 16:08:52'),
-(177, 1, 2, 'comment', '2018-07-31 14:18:37', '2018-08-01 16:08:52');
+(1, 1, 1, 'comment', '2018-06-09 07:24:04', '0000-00-00 00:00:00'),
+(2, 1, 1, 'comment', '2018-06-09 07:40:52', '0000-00-00 00:00:00'),
+(3, 2, 1, 'comment', '2018-06-09 07:42:20', '0000-00-00 00:00:00'),
+(4, 2, 2, 'comment', '2018-06-09 07:44:14', '0000-00-00 00:00:00'),
+(5, 1, 2, 'comment', '2018-06-09 07:45:36', '0000-00-00 00:00:00'),
+(6, 1, 7, 'comment', '2018-06-09 07:46:03', '0000-00-00 00:00:00'),
+(7, 7, 1, 'comment', '2018-06-09 07:46:44', '0000-00-00 00:00:00'),
+(8, 25, 25, 'comment', '2018-06-09 09:38:17', '0000-00-00 00:00:00'),
+(9, 11, 15, 'comment', '2018-06-09 09:46:37', '0000-00-00 00:00:00'),
+(10, 11, 14, 'comment', '2018-06-09 09:50:37', '0000-00-00 00:00:00'),
+(11, 11, 1, 'comment', '2018-06-09 09:53:04', '0000-00-00 00:00:00'),
+(12, 1, 11, 'comment', '2018-06-09 09:55:20', '0000-00-00 00:00:00'),
+(13, 11, 1, 'comment', '2018-06-09 10:02:28', '0000-00-00 00:00:00'),
+(14, 1, 11, 'comment', '2018-06-09 10:16:06', '0000-00-00 00:00:00'),
+(23, 1, 14, 'comment', '2018-06-10 01:16:36', '0000-00-00 00:00:00'),
+(28, 1, 7, 'comment', '2018-06-10 04:22:44', '0000-00-00 00:00:00'),
+(30, 1, 6, 'comment', '2018-06-10 04:47:30', '0000-00-00 00:00:00'),
+(31, 8, 6, 'comment', '2018-06-10 04:53:35', '0000-00-00 00:00:00'),
+(32, 16, 11, 'comment', '2018-06-10 04:55:01', '0000-00-00 00:00:00'),
+(33, 12, 6, 'comment', '2018-06-10 04:55:52', '0000-00-00 00:00:00'),
+(34, 12, 1, 'comment', '2018-06-10 04:56:07', '0000-00-00 00:00:00'),
+(35, 6, 12, 'comment', '2018-06-10 04:56:35', '0000-00-00 00:00:00'),
+(36, 11, 12, 'comment', '2018-06-10 08:50:58', '0000-00-00 00:00:00'),
+(37, 12, 11, 'comment', '2018-06-10 08:59:08', '0000-00-00 00:00:00'),
+(38, 13, 11, 'comment', '2018-06-10 09:02:55', '0000-00-00 00:00:00'),
+(41, 1, 1, 'comment', '2018-06-10 09:15:02', '0000-00-00 00:00:00'),
+(42, 11, 1, 'comment', '2018-06-10 10:09:26', '0000-00-00 00:00:00'),
+(43, 13, 1, 'comment', '2018-06-10 22:23:46', '0000-00-00 00:00:00'),
+(44, 13, 1, 'comment', '2018-06-10 22:24:08', '0000-00-00 00:00:00'),
+(45, 1, 11, 'comment', '2018-06-10 22:49:36', '0000-00-00 00:00:00'),
+(46, 1, 13, 'comment', '2018-06-11 00:35:12', '0000-00-00 00:00:00'),
+(47, 13, 1, 'comment', '2018-06-11 00:48:42', '0000-00-00 00:00:00'),
+(48, 1, 13, 'comment', '2018-06-11 00:53:44', '0000-00-00 00:00:00'),
+(49, 13, 1, 'comment', '2018-06-11 00:55:07', '0000-00-00 00:00:00'),
+(50, 13, 1, 'comment', '2018-06-11 00:55:14', '0000-00-00 00:00:00'),
+(51, 13, 1, 'comment', '2018-06-11 00:55:21', '0000-00-00 00:00:00'),
+(52, 1, 13, 'comment', '2018-06-11 00:59:12', '0000-00-00 00:00:00'),
+(53, 1, 13, 'comment', '2018-06-11 00:59:19', '0000-00-00 00:00:00'),
+(54, 12, 1, 'comment', '2018-06-11 11:14:53', '0000-00-00 00:00:00'),
+(55, 1, 12, 'comment', '2018-06-11 23:20:08', '0000-00-00 00:00:00'),
+(56, 17, 1, 'comment', '2018-06-12 00:38:07', '0000-00-00 00:00:00'),
+(62, 1, 1, 'comment', '2018-06-12 04:35:12', '0000-00-00 00:00:00'),
+(64, 12, 1, 'comment', '2018-06-12 04:52:59', '0000-00-00 00:00:00'),
+(65, 1, 12, 'comment', '2018-06-12 05:05:47', '0000-00-00 00:00:00'),
+(66, 13, 1, 'comment', '2018-06-12 05:22:22', '0000-00-00 00:00:00'),
+(67, 1, 13, 'comment', '2018-06-12 11:08:52', '0000-00-00 00:00:00'),
+(68, 1, 13, 'comment', '2018-06-12 11:16:37', '0000-00-00 00:00:00'),
+(69, 13, 1, 'comment', '2018-06-12 11:24:19', '0000-00-00 00:00:00'),
+(70, 1, 12, 'comment', '2018-06-12 11:24:54', '0000-00-00 00:00:00'),
+(71, 1, 12, 'comment', '2018-06-12 11:25:04', '0000-00-00 00:00:00'),
+(72, 1, 12, 'comment', '2018-06-12 11:25:12', '0000-00-00 00:00:00'),
+(73, 1, 13, 'comment', '2018-06-12 11:25:23', '0000-00-00 00:00:00'),
+(74, 13, 1, 'comment', '2018-06-12 11:26:53', '0000-00-00 00:00:00'),
+(75, 1, 13, 'comment', '2018-06-12 11:27:31', '0000-00-00 00:00:00'),
+(76, 12, 13, 'comment', '2018-06-12 11:28:11', '0000-00-00 00:00:00'),
+(78, 13, 12, 'comment', '2018-06-12 12:26:30', '0000-00-00 00:00:00'),
+(79, 12, 13, 'comment', '2018-06-12 12:27:45', '0000-00-00 00:00:00'),
+(80, 13, 12, 'comment', '2018-06-12 12:29:02', '0000-00-00 00:00:00'),
+(81, 1, 13, 'comment', '2018-06-13 04:39:39', '0000-00-00 00:00:00'),
+(82, 7, 1, 'comment', '2018-06-13 10:59:02', '0000-00-00 00:00:00'),
+(83, 1, 7, 'comment', '2018-06-13 11:00:43', '0000-00-00 00:00:00'),
+(84, 13, 7, 'comment', '2018-06-13 11:04:06', '0000-00-00 00:00:00'),
+(85, 7, 13, 'comment', '2018-06-13 11:06:27', '0000-00-00 00:00:00'),
+(86, 13, 7, 'comment', '2018-06-13 11:07:23', '0000-00-00 00:00:00'),
+(88, 1, 2, 'comment', '2018-06-13 13:06:15', '0000-00-00 00:00:00'),
+(89, 2, 1, 'comment', '2018-06-13 13:11:52', '0000-00-00 00:00:00'),
+(90, 1, 2, 'comment', '2018-06-13 13:12:58', '0000-00-00 00:00:00'),
+(91, 2, 1, 'comment', '2018-06-13 13:14:15', '0000-00-00 00:00:00'),
+(92, 1, 2, 'comment', '2018-06-13 13:14:42', '0000-00-00 00:00:00'),
+(93, 2, 1, 'comment', '2018-06-13 13:16:04', '0000-00-00 00:00:00'),
+(94, 1, 2, 'comment', '2018-06-13 13:17:17', '0000-00-00 00:00:00'),
+(95, 13, 2, 'comment', '2018-06-13 14:13:43', '0000-00-00 00:00:00'),
+(96, 2, 13, 'comment', '2018-06-13 14:14:10', '0000-00-00 00:00:00'),
+(97, 1, 13, 'comment', '2018-06-13 15:29:44', '0000-00-00 00:00:00'),
+(98, 13, 1, 'comment', '2018-06-13 15:31:12', '0000-00-00 00:00:00'),
+(100, 13, 1, 'comment', '2018-06-14 04:24:05', '0000-00-00 00:00:00'),
+(104, 8, 10, 'comment', '2018-06-14 04:34:29', '0000-00-00 00:00:00'),
+(106, 8, 1, 'comment', '2018-06-14 05:43:07', '0000-00-00 00:00:00'),
+(107, 1, 8, 'comment', '2018-06-14 13:47:58', '0000-00-00 00:00:00'),
+(108, 6, 12, 'comment', '2018-06-14 20:43:11', '0000-00-00 00:00:00'),
+(109, 4, 2, 'comment', '2018-06-14 21:06:22', '0000-00-00 00:00:00'),
+(110, 2, 4, 'comment', '2018-06-14 21:08:16', '0000-00-00 00:00:00'),
+(111, 38, 23, 'comment', '2018-06-15 04:47:27', '0000-00-00 00:00:00'),
+(112, 38, 37, 'comment', '2018-06-15 04:47:36', '0000-00-00 00:00:00'),
+(113, 23, 38, 'comment', '2018-06-15 04:52:35', '0000-00-00 00:00:00'),
+(114, 9, 8, 'comment', '2018-06-15 05:02:39', '0000-00-00 00:00:00'),
+(115, 9, 6, 'comment', '2018-06-15 05:02:51', '0000-00-00 00:00:00'),
+(117, 13, 1, 'comment', '2018-06-15 05:54:05', '0000-00-00 00:00:00'),
+(118, 18, 1, 'comment', '2018-06-15 13:13:06', '0000-00-00 00:00:00'),
+(119, 8, 9, 'comment', '2018-06-15 13:14:48', '0000-00-00 00:00:00'),
+(120, 8, 9, 'comment', '2018-06-15 13:14:52', '0000-00-00 00:00:00'),
+(121, 8, 9, 'comment', '2018-06-15 13:14:57', '0000-00-00 00:00:00'),
+(122, 9, 8, 'comment', '2018-06-15 13:20:41', '0000-00-00 00:00:00'),
+(123, 9, 8, 'comment', '2018-06-15 13:21:15', '0000-00-00 00:00:00'),
+(124, 8, 9, 'comment', '2018-06-15 13:22:57', '0000-00-00 00:00:00'),
+(126, 52, 1, 'comment', '2018-06-16 09:07:05', '0000-00-00 00:00:00'),
+(127, 2, 4, 'comment', '2018-06-16 12:47:10', '0000-00-00 00:00:00'),
+(128, 2, 4, 'comment', '2018-06-16 12:47:12', '0000-00-00 00:00:00'),
+(129, 2, 4, 'comment', '2018-06-16 12:47:15', '0000-00-00 00:00:00'),
+(130, 7, 1, 'comment', '2018-06-16 13:10:28', '0000-00-00 00:00:00'),
+(131, 2, 1, 'comment', '2018-06-16 13:11:12', '0000-00-00 00:00:00'),
+(132, 40, 54, 'comment', '2018-06-16 13:40:51', '0000-00-00 00:00:00'),
+(133, 2, 7, 'comment', '2018-06-18 11:29:55', '0000-00-00 00:00:00'),
+(134, 5, 7, 'comment', '2018-06-18 11:30:22', '0000-00-00 00:00:00'),
+(135, 7, 7, 'comment', '2018-06-18 11:30:59', '0000-00-00 00:00:00'),
+(136, 2, 7, 'comment', '2018-06-18 11:31:36', '0000-00-00 00:00:00'),
+(137, 7, 7, 'comment', '2018-06-18 11:32:37', '0000-00-00 00:00:00'),
+(138, 2, 7, 'comment', '2018-06-18 11:33:08', '0000-00-00 00:00:00'),
+(139, 7, 7, 'comment', '2018-06-18 11:33:41', '0000-00-00 00:00:00'),
+(140, 5, 7, 'comment', '2018-06-18 11:34:09', '0000-00-00 00:00:00'),
+(141, 2, 7, 'comment', '2018-06-18 11:34:36', '0000-00-00 00:00:00'),
+(142, 5, 7, 'comment', '2018-06-18 11:35:05', '0000-00-00 00:00:00'),
+(143, 7, 7, 'comment', '2018-06-18 11:36:07', '0000-00-00 00:00:00'),
+(144, 2, 1, 'comment', '2018-06-18 11:38:53', '0000-00-00 00:00:00'),
+(145, 2, 1, 'comment', '2018-06-18 11:39:02', '0000-00-00 00:00:00'),
+(146, 2, 1, 'comment', '2018-06-18 11:39:07', '0000-00-00 00:00:00'),
+(147, 2, 1, 'comment', '2018-06-18 11:39:10', '0000-00-00 00:00:00'),
+(148, 4, 1, 'comment', '2018-06-18 11:40:03', '0000-00-00 00:00:00'),
+(149, 1, 68, 'comment', '2018-06-21 15:55:52', '0000-00-00 00:00:00'),
+(151, 69, 69, 'comment', '2018-06-22 11:41:51', '0000-00-00 00:00:00'),
+(152, 69, 69, 'comment', '2018-06-22 11:46:37', '0000-00-00 00:00:00'),
+(153, 74, 75, 'comment', '2018-06-24 16:28:51', '0000-00-00 00:00:00'),
+(154, 75, 74, 'comment', '2018-06-24 16:29:14', '0000-00-00 00:00:00'),
+(155, 2, 8, 'comment', '2018-06-25 17:45:50', '0000-00-00 00:00:00'),
+(156, 7, 8, 'comment', '2018-06-25 17:46:09', '0000-00-00 00:00:00'),
+(157, 14, 11, 'comment', '2018-06-25 21:00:34', '0000-00-00 00:00:00'),
+(158, 11, 14, 'comment', '2018-06-25 21:09:01', '0000-00-00 00:00:00'),
+(159, 11, 14, 'comment', '2018-06-25 21:09:12', '0000-00-00 00:00:00'),
+(161, 1, 16, 'comment', '2018-06-26 14:32:38', '0000-00-00 00:00:00'),
+(162, 11, 14, 'comment', '2018-06-26 17:52:08', '0000-00-00 00:00:00'),
+(163, 14, 11, 'comment', '2018-06-26 17:53:21', '0000-00-00 00:00:00'),
+(164, 79, 79, 'comment', '2018-06-28 13:41:35', '0000-00-00 00:00:00'),
+(168, 1, 2, 'comment', '2018-07-25 23:26:57', '0000-00-00 00:00:00'),
+(174, 1, 5, 'comment', '2018-07-26 23:01:59', '0000-00-00 00:00:00'),
+(175, 1, 2, 'comment', '2018-07-29 20:42:27', '0000-00-00 00:00:00'),
+(176, 2, 1, 'comment', '2018-07-29 20:47:53', '0000-00-00 00:00:00'),
+(177, 1, 2, 'comment', '2018-07-31 14:18:37', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -514,7 +523,8 @@ INSERT INTO `tbllikes` (`likeid`, `reviewid`, `userid`) VALUES
 (5, 14, 7),
 (8, 12, 1),
 (9, 12, 31),
-(10, 19, 1);
+(10, 19, 1),
+(11, 20, 90);
 
 -- --------------------------------------------------------
 
@@ -866,6 +876,52 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (326, 1, 2, '2018-07-29 20:42:27', 1, 1, 175, 0),
 (327, 2, 1, '2018-07-29 20:47:53', 1, 1, 176, 0),
 (328, 1, 2, '2018-07-31 14:18:37', 1, 1, 177, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblorder`
+--
+
+CREATE TABLE `tblorder` (
+  `orderid` int(11) NOT NULL,
+  `ordernumber` varchar(100) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `billingaddress` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `total` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `datecommit` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblorder`
+--
+
+INSERT INTO `tblorder` (`orderid`, `ordernumber`, `userid`, `billingaddress`, `email`, `phone`, `total`, `status`, `datecommit`) VALUES
+(1, '20180802035448', 1, 'Quezon City', 'admin@gmail.com', '099909090', 580, 0, '2018-08-02 15:54:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblordersummary`
+--
+
+CREATE TABLE `tblordersummary` (
+  `summaryid` int(11) NOT NULL,
+  `orderid` int(11) NOT NULL,
+  `productid` int(11) NOT NULL,
+  `weight` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblordersummary`
+--
+
+INSERT INTO `tblordersummary` (`summaryid`, `orderid`, `productid`, `weight`) VALUES
+(1, 1, 19, 4),
+(2, 1, 20, 5);
 
 -- --------------------------------------------------------
 
@@ -2642,7 +2698,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1761, 90, 71, 'message', '2018-07-30 14:44:21', 0),
 (1762, 71, 90, 'message', '2018-07-30 14:44:21', 1),
 (1763, 1, 2, 'message', '2018-07-31 14:19:02', 1),
-(1764, 2, 1, 'message', '2018-07-31 14:21:45', 0);
+(1764, 2, 1, 'message', '2018-07-31 14:21:45', 1);
 
 -- --------------------------------------------------------
 
@@ -2673,24 +2729,25 @@ CREATE TABLE `tblproduct` (
 INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description`, `farmid`, `userid`, `dateposted`, `price`, `img`, `view`, `rating`, `is_approved`, `is_available`) VALUES
 (1, 1, 'XYZ Amargoso', 'the balsam apple of the Philippines', 1, 2, '2018-07-18 20:23:54', '90.00', 'product/213500944001201.jpg', 11, '60.00', 1, 1),
 (2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '80.00', 'product/food-healthy-summer-green.jpeg', 4, '80.00', 1, 1),
-(3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 14, '50.00', 1, 1),
+(3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 15, '50.00', 1, 1),
 (4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 19, '100.00', 1, 1),
 (5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 14, '100.00', 1, 1),
 (6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 3, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 7, '50.00', 1, 0),
-(7, 15, 'Indian Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mangofruit.jpg', 5, '50.00', 1, 1),
-(8, 3, 'Party Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 3, 5, '2018-07-23 00:25:06', '120.00', 'product/cabbage-vegetable-power-green.jpg', 8, '80.00', 1, 1),
+(7, 15, 'Philippine Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mango.jpg', 6, '50.00', 1, 1),
+(8, 3, 'Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 3, 5, '2018-07-23 00:25:06', '100.00', 'product/cabbage-vegetable-power-green.jpg', 10, '80.00', 1, 1),
 (9, 13, 'Calamansi C', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:10', '50.00', 'product/Calamansi.jpg', 6, '100.00', 1, 1),
 (10, 13, 'Calamansi G', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 3, '50.00', 1, 1),
-(11, 13, 'Calamansi A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 34, '80.00', 1, 1),
-(12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 2, '2018-07-24 15:59:23', '50.00', 'product/potato.jpg', 13, '100.00', 1, 1),
+(11, 13, 'Calamansi A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 37, '80.00', 1, 1),
+(12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 2, '2018-07-24 15:59:23', '50.00', 'product/potato.jpg', 14, '100.00', 1, 1),
 (13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 2, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 30, '70.00', 1, 1),
 (14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 22, '80.00', 1, 1),
-(15, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 1, '2018-07-26 14:30:26', '60.00', 'product/potato.jpg', 86, '75.00', 1, 1),
-(16, 3, 'Pechay Baguio', 'Pechay Pechay Pechay Pechay Pechay Pechay Pechay Pechay ', 3, 90, '2018-07-30 14:47:42', '70.00', 'product/pechay-baguio.jpg', 6, '80.00', 1, 1),
-(17, 10, 'Pechay', 'masarap mura pa kaya bilina kau parang awa nyo na\r\n', 1, 2, '2018-07-30 16:09:03', '60.00', 'product/__original_drawn_by_aoha_twintail__sample-2ae9cf5c6deeeac1dc3e7dde22267dc1.jpg', 9, '50.00', 0, 1),
-(18, 4, 'Carrots', 'Carrots Carrots Carrots Carrots Carrots Carrots Carrots Carrots', 1, 1, '2018-07-31 16:37:55', '100.00', 'product/storecarrots.jpg', 2, '50.00', 1, 1),
-(19, 9, 'Talong', 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 3, 1, '2018-07-31 16:41:58', '80.00', 'product/talong.jpg', 4, '100.00', 1, 1),
-(20, 12, 'Saging na Latundan', 'Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan', 3, 1, '2018-07-31 17:05:46', '40.00', 'product/latundan.jpg', 5, '90.00', 1, 1);
+(15, 8, 'Potato', 'The potato is a starchy, tuberous crop from the perennial nightshade Solanum tuberosum. Potato may be applied to both the plant and the edible tuber. Potatoes have become a staple food in many parts of the world and an integral part of much of the world\'s food supply. Potatoes are the world\'s fourth-largest food crop, following maize (corn), wheat, and rice. Tubers produce glycoalkaloids in small amounts. If green sections (sprouts and skins) of the plant are exposed to light the tuber can produce a high enough concentration of glycoalkaloids to affect human health.', 3, 1, '2018-07-26 14:30:26', '60.00', 'product/potato.jpg', 94, '75.00', 1, 1),
+(16, 10, 'Pechay Baguio', 'Baguio Pechay has light green leaves and a white stalk. It tastes milder than Bok Choy (Pechay Tagalog). Pechay Tagalog has smooth, dark green leaves that look like mustard leaves. ', 3, 90, '2018-07-30 14:47:42', '65.00', 'product/pechay-baguio.jpg', 10, '80.00', 1, 1),
+(17, 10, 'Pechay', 'masarap mura pa kaya bilina kau parang awa nyo na\r\n', 1, 2, '2018-07-30 16:09:03', '60.00', 'product/__original_drawn_by_aoha_twintail__sample-2ae9cf5c6deeeac1dc3e7dde22267dc1.jpg', 10, '50.00', 0, 1),
+(18, 4, 'Carrots', 'Carrots Carrots Carrots Carrots Carrots Carrots Carrots Carrots', 1, 1, '2018-07-31 16:37:55', '100.00', 'product/storecarrots.jpg', 2, '50.00', 1, 0),
+(19, 9, 'Talong', 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 3, 1, '2018-07-31 16:41:58', '80.00', 'product/talong.jpg', 5, '100.00', 1, 1),
+(20, 12, 'Latundan na Saging', 'Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan', 3, 1, '2018-07-31 17:05:46', '40.00', 'product/latundan.jpg', 6, '90.00', 1, 1),
+(21, 10, 'Pechay', 'There has been such a craze over kale in the past years, but did you know that the lowly pechay (chinese chard or bok choy) contains one of the highest nutrients per calorie, second to kale?\r\n\r\nDr. Fuhrmanâ€™s Aggregate Nutrient Density Index (ANDI) ranks the nutrient value of many common foods on the basis of how many nutrients they deliver to your body for each calorie consumed. Foods are ranked on a scale of 1-1000, with the most nutrient-dense cruciferous leafy green vegetables scoring 1000. Pechay has an ANDI rating of 865, higher than spinach (707), carrots (458) and broccoli (340)!\r\n\r\nPhenols and other phytonutrients in pechay represent what is now known to be a full spectrum of over 70 antioxidants in this cruciferous vegetable. The antioxidant richness of pechay also partly explains the ongoing investigation of this leafy green in relationship to cancer prevention since prevention and reduction of oxidative stress has often been linked to decreased cancer risk.\r\n\r\nBecause of its strong beta-carotene content, pechay also ranks as the 11th richest food in vitamin A. This vitamin A richness places pechay ahead of some of its fellow cruciferous vegetables, including cauliflower, cabbage, Brussels sprouts, and broccoli.', 2, 5, '2018-08-02 03:48:04', '60.00', 'product/pechay-n.jpg', 3, '50.00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2780,9 +2837,9 @@ CREATE TABLE `tblreviews` (
 INSERT INTO `tblreviews` (`reviewid`, `review`, `productid`, `userid`, `dateposted`, `likes`) VALUES
 (12, 'Sample Review\n\nConsidered a high-value crop and major agricultural produce in the Cordilleras, annual demand for potato in the country is about 745,000 metric tons.\n\nWith the increasing number of fastfood chains in the country, meeting the countryâ€™s requirement for processing varieties is a great challenge for our potato stakeholders.\n\nThe Northern Philippines Root Crops Research and Training Center is undertaking a project that aims to mass produce, commercialize, and promote approved processing potato varieties of good quality.', 15, 1, '2018-07-28 17:04:49', 3),
 (14, 'Potato contains several phytochemicals such as phenolics, flavonoids, polyamines, and carotenoids, which are highly desirable in diet because of their beneficial effects on human health. The concentration and stability of these constituents are affected by several factors such as genotype, agronomic factors, postharvest storage, cooking and processing conditions. The advances in analytical techniques have made possible the identification and understanding the functions of phytochemicals, particularly their antioxidant properties. The potatoes are stored and processed into a variety of products before consumption. In the present review, phytochemicals present in potatoes, factors affecting their content, stability and health benefits are discussed. Processing the potatoes rich in phytochemicals can play an important role in promoting the health of a large segment of population in the countries where potatoes form a substantial part of daily diet.', 15, 7, '2018-07-29 00:24:24', 1),
-(16, 'Review Review Review Review Review Review Review Review Review ', 16, 90, '2018-07-30 14:48:54', 0),
 (18, 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 19, 1, '2018-07-31 16:48:29', 0),
-(19, 'According to the Department of Agriculture website, there are 57 cultivars of banana in Southeast Asia but only five are common in the Philippines: saba, latundan, lacatan, bungulan and cavendish.\n\nI donâ€™t know where the seÃ±orita bananas went as they seem to be very common in the southern part of Luzon, from Cavite to Batangas, especially, yet they didnâ€™t make it to the list. I remember those trips to Tagaytay when I was young and we would buy a whole piling (arm) of seÃ±orita bananas and tie the handle at the back of the Land Rover so that the bananas were suspended in mid-air all the way back to Manila. SeÃ±orita bananas have very thin skin and they fall off the piling very easily. If left on the floor of the truck, they got bruised easily too.\n\nAll that trouble for seÃ±orita bananas? They were my favorite. My least favorite is the pale latundan. Truth be told, I wasnâ€™t really familiar with banana cultivars until I became a mommy. The girlsâ€™ pediatrician prescribed mashed latundan bananas as a cure for diarrhea. So I learned to tell the difference between lacatan and latundan just by looking at them.\n\n\nTo this day, however, I have not developed any affection for the latundan. I prefer the creamier and sweeter lacatan when seÃ±orita bananas are not available. As for saba bananas, well, they arenâ€™t eaten raw so they fall under a different category. They are cooking bananas and we love them. See the following recipes with saba bananas as an ingredient:\n\nMinatamis na saging (sweetened bananas)\nArroz a la Cubana\nCheesy turon\nGinataang halo-halo\nHalo-halo', 20, 1, '2018-07-31 17:07:23', 1);
+(19, 'According to the Department of Agriculture website, there are 57 cultivars of banana in Southeast Asia but only five are common in the Philippines: saba, latundan, lacatan, bungulan and cavendish.\n\nI donâ€™t know where the seÃ±orita bananas went as they seem to be very common in the southern part of Luzon, from Cavite to Batangas, especially, yet they didnâ€™t make it to the list. I remember those trips to Tagaytay when I was young and we would buy a whole piling (arm) of seÃ±orita bananas and tie the handle at the back of the Land Rover so that the bananas were suspended in mid-air all the way back to Manila. SeÃ±orita bananas have very thin skin and they fall off the piling very easily. If left on the floor of the truck, they got bruised easily too.\n\nAll that trouble for seÃ±orita bananas? They were my favorite. My least favorite is the pale latundan. Truth be told, I wasnâ€™t really familiar with banana cultivars until I became a mommy. The girlsâ€™ pediatrician prescribed mashed latundan bananas as a cure for diarrhea. So I learned to tell the difference between lacatan and latundan just by looking at them.\n\n\nTo this day, however, I have not developed any affection for the latundan. I prefer the creamier and sweeter lacatan when seÃ±orita bananas are not available. As for saba bananas, well, they arenâ€™t eaten raw so they fall under a different category. They are cooking bananas and we love them. See the following recipes with saba bananas as an ingredient:\n\nMinatamis na saging (sweetened bananas)\nArroz a la Cubana\nCheesy turon\nGinataang halo-halo\nHalo-halo', 20, 1, '2018-07-31 17:07:23', 1),
+(20, 'Baguio Pechay is one of my favorite vegetables. I was at the grocery Saturday morning when I came upon a beautiful display of Baguio Pechay (also called Pechay Lombok, Wom Bok, or Chinese Cabbage). I like Baguio Pechay because it has a mild, delicate taste. Itâ€™s been quite a while since Iâ€™ve cooked with Baguio Pechay, so I was super excited to cook it for dinner.', 16, 90, '2018-08-02 04:23:46', 1);
 
 -- --------------------------------------------------------
 
@@ -2800,7 +2857,7 @@ CREATE TABLE `tbluser` (
   `birthday` varchar(20) NOT NULL,
   `datecreated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `email` varchar(100) NOT NULL,
-  `website` varchar(255) NOT NULL,
+  `phone` varchar(100) NOT NULL,
   `location` varchar(255) NOT NULL,
   `usertypeid` int(11) NOT NULL,
   `access` int(11) NOT NULL,
@@ -2817,15 +2874,15 @@ CREATE TABLE `tbluser` (
 -- Dumping data for table `tbluser`
 --
 
-INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `website`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-07-31 16:12:28', 119),
-(2, '959a9424ee49693d', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-01 07:49:46', 188),
+INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `phone`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-02 08:58:52', 119),
+(2, '959a9424ee49693d', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-01 19:48:47', 189),
 (3, 'c24359d3031378f2', '5488d6d6f37a311a1085daf41f2e990c', '8f87ec93bf', '083a24', '6df46230', '2000-07-15', '2018-06-07 01:56:37', '985198f63d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (4, '15092bfa5e2b6e8c', '5f4dcc3b5aa765d61d8327deb882cf99', '7df2090dc6', '0d6c92', 'a401c8f7', '2000-12-04', '2018-06-07 01:56:37', '252d3825ae@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-07-25 16:50:29', 28),
-(5, 'fa86b2c7c8d2f4af', '5f4dcc3b5aa765d61d8327deb882cf99', '87efa34481', 'b17e8d', 'f4120928', '2000-09-19', '2018-06-07 01:56:37', '7182aa0862@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-07-26 15:55:42', 26),
+(5, 'fa86b2c7c8d2f4af', '5f4dcc3b5aa765d61d8327deb882cf99', '87efa34481', 'b17e8d', 'f4120928', '2000-09-19', '2018-06-07 01:56:37', '7182aa0862@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-01 19:48:27', 27),
 (6, 'e9eee15647061a7c', '5f4dcc3b5aa765d61d8327deb882cf99', '1bdd26b9d4', '755678', '505f27a9', '2000-03-15', '2018-06-07 15:32:53', '17f70978e3@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-04 08:07:37', 21),
-(7, 'c222b3b69f9b0d9a', '5f4dcc3b5aa765d61d8327deb882cf99', '22a8f59cd0', 'e1feb5', '8feeb649', '2000-07-15', '2018-06-07 14:08:15', '8010fdd3df@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-08-01 16:13:30', 57),
-(8, 'f3bd37208580dfc0', '5f4dcc3b5aa765d61d8327deb882cf99', '998a862c0d', '74e778', 'dcc92235', '2000-01-31', '2018-06-07 15:31:06', '62e6b92616@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:01', 40),
+(7, 'c222b3b69f9b0d9a', '5f4dcc3b5aa765d61d8327deb882cf99', '22a8f59cd0', 'e1feb5', '8feeb649', '2000-07-15', '2018-06-07 14:08:15', '8010fdd3df@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-08-01 16:13:30', 58),
+(8, 'f3bd37208580dfc0', '5f4dcc3b5aa765d61d8327deb882cf99', '998a862c0d', '74e778', 'dcc92235', '2000-01-31', '2018-06-07 15:31:06', '62e6b92616@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:01', 41),
 (9, '4fce1a441e1b0974', '5f4dcc3b5aa765d61d8327deb882cf99', '27bf39dd02', '7c7e3d', '6673b7c4', '2000-08-03', '2018-06-07 01:56:37', '4b55ca6ddd@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-27 06:08:30', 2),
 (10, '6e352b2a58c60b6a', '5f4dcc3b5aa765d61d8327deb882cf99', '27f4c9247b', 'ea8db1', '013b532f', '2004-04-01', '2018-06-07 15:29:14', 'cb329a0ba9@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-30 08:48:26', 12),
 (11, '950e15143dcccb2a', '5f4dcc3b5aa765d61d8327deb882cf99', 'ccc0105b15', '320a79', 'e8276a86', '1998-03-15', '2018-06-07 15:24:03', '9a4f2a2692@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-10 00:36:50', '2018-07-04 08:59:25', 12),
@@ -2907,7 +2964,7 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (87, '12313asdasd', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:41:01', 'asdada@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:42:02', 0),
 (88, 'fsdfsdf232', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:42:43', 'adasdasf@feadkfdfkdfki', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:46:53', 2),
 (89, 'Chandra Vengeant', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 17:22:42', 'chandra@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-07-25 17:26:37', 0),
-(90, 'username', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-27 05:25:27', 'username@gmail.com', '', '', 3, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-30 07:35:26', 2);
+(90, 'username', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-27 05:25:27', 'username@gmail.com', '', '', 3, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-08-01 20:27:11', 2);
 
 --
 -- Indexes for dumped tables
@@ -2974,6 +3031,18 @@ ALTER TABLE `tblnotif`
   ADD PRIMARY KEY (`notifid`);
 
 --
+-- Indexes for table `tblorder`
+--
+ALTER TABLE `tblorder`
+  ADD PRIMARY KEY (`orderid`);
+
+--
+-- Indexes for table `tblordersummary`
+--
+ALTER TABLE `tblordersummary`
+  ADD PRIMARY KEY (`summaryid`);
+
+--
 -- Indexes for table `tblpm`
 --
 ALTER TABLE `tblpm`
@@ -3035,7 +3104,7 @@ ALTER TABLE `tblcategory`
 -- AUTO_INCREMENT for table `tblchangelog`
 --
 ALTER TABLE `tblchangelog`
-  MODIFY `logid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `logid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `tblcomment`
@@ -3065,13 +3134,25 @@ ALTER TABLE `tblfriend`
 -- AUTO_INCREMENT for table `tbllikes`
 --
 ALTER TABLE `tbllikes`
-  MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
   MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
+
+--
+-- AUTO_INCREMENT for table `tblorder`
+--
+ALTER TABLE `tblorder`
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tblordersummary`
+--
+ALTER TABLE `tblordersummary`
+  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblpm`
@@ -3083,7 +3164,7 @@ ALTER TABLE `tblpm`
 -- AUTO_INCREMENT for table `tblproduct`
 --
 ALTER TABLE `tblproduct`
-  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tblrating`
@@ -3101,7 +3182,7 @@ ALTER TABLE `tblreport`
 -- AUTO_INCREMENT for table `tblreviews`
 --
 ALTER TABLE `tblreviews`
-  MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbluser`

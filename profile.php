@@ -11,7 +11,7 @@
 
 	if(isset($_GET['id'])){
 		$id = $_GET['id'];
-		$sql="SELECT userid,username,firstname,middlename,lastname,birthday,datecreated,email,website,location,usertypeid,imgpath,bio,is_show_email,gender,lastonline,profileviews FROM tbluser WHERE userid='$id'";
+		$sql="SELECT userid,username,firstname,middlename,lastname,birthday,datecreated,email,phone,location,usertypeid,imgpath,bio,is_show_email,gender,lastonline,profileviews FROM tbluser WHERE userid='$id'";
 		
 		$result=$conn->query($sql);
 
@@ -40,7 +40,7 @@
 
 			$birthday=date("M j, Y", strtotime($rows->birthday));
 		}
-		$website=$rows->website;
+		$phone=$rows->phone;
 		$location=$rows->location;
 		$image=$rows->imgpath;
 		$bio=$rows->bio;
@@ -155,7 +155,8 @@ if($imgpath==''){
 									<li><a href="inbox.php?id='.$_GET["id"].'"><i class="fas fa-envelope"></i> Check Inbox</a></li>
 									<li><a href="insertphoto.php"><i class="fas fa-camera"></i> Change Profile Picture</a></li>
 									<li><a href="editinfo.php"><i class="fas fa-pen-square"></i> Edit Personal Info</a></li>
-									<li><a href="accountsetting.php"><i class="fas fa-cog"></i> Account Settings</a></li>';
+									<li><a href="accountsetting.php"><i class="fas fa-cog"></i> Account Settings</a></li>
+									<li><a href="ordertracking.php"><i class="fas fa-shoe-prints"></i> Order Tracking</a></li>';
 							}else{
 								echo'
 								<li>
@@ -191,7 +192,7 @@ if($testR->num_rows!=0){
 						}
 //Products
 if($usertype==3 or $usertype==4){
-echo'<li><a href="myproducts.php?id='.$id.'"><i class="far fa-money-bill-alt"></i> My Products</a></li>';
+echo'<li><a href="myproducts.php?id='.$id.'"><i class="far fa-bookmark"></i> My Products</a></li>';
 }
 						echo'</ul>
 						<table id="profilestats">';
@@ -251,7 +252,7 @@ echo'<li><a href="myproducts.php?id='.$id.'"><i class="far fa-money-bill-alt"></
 								echo'<li>Email: '.$email.'</li>';
 							}
 							echo'<li>Birthday: '.$birthday.'</li>
-							<li>Website: '.createlink(nl2br($website)).'</li>
+							<li>Phone: '.$phone.'</li>
 							<li>Location: '.nl2br($location).'</li>
 							</ul>';
 						?>

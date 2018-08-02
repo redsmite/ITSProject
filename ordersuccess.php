@@ -25,7 +25,7 @@
 	</div>
 	<script src="js/main.js"></script>
 	<script>
-		redirectPage();
+		redirectOrder();
 	</script>
 </body>
 </html>

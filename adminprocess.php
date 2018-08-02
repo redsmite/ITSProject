@@ -222,7 +222,7 @@ if(isset($_POST['addCat'])){
 
 if(isset($_POST['log'])){
 
-	$sql="SELECT log,datecreated FROM tblchangelog ORDER BY logid DESC";
+	$sql="SELECT log,datecreated FROM tblchangelog ORDER BY logid DESC LIMIT 100";
 	$result=$conn->query($sql);
 	while($row=$result->fetch_object()){
 		$log = $row->log;

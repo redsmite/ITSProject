@@ -11,6 +11,13 @@
 	setupCookie();
 	updateStatus();
 	chattab();
+	$userid = $_SESSION['id'];
+	$sql = "SELECT phone,location,email FROM tbluser WHERE userid = '$userid'";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$phone = $fetch->phone;
+	$location = $fetch->location;
+	$email = $fetch->email;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +80,7 @@
 				<ol>
 					<li>1. Minimum of <b>₱500.00</b> worth of purchase.</li>
 					<li>2. Delivery is limited only in <b>Metro Manila</b></li>
-					<li>3. Once you place your order, <br><b>No cancellation</b>.</li>
+					<li>3. There will be <strong>no cancellation</strong> once you place your order</b>.</li>
 				</ol>
 			</div>
 			<div class="payment-option">
@@ -81,16 +88,16 @@
 				<h3>Cash On Delivery</h3>
 				<div>
 				<form id="place-order-form">
-					<p>Enter Billing Address</p>
-					<textarea id="address" cols="30" rows="10" required></textarea>
+					<p>Enter Billing Address (Manila Only)</p>
+					<textarea id="address" cols="30" rows="10" required><?php echo $location?></textarea>
 					</div>
 					<div>
 					<p>Enter Email Address</p>
-					<input type="email" id="email" required>
+					<input type="email" id="email" value="<?php echo $email?>" required>
 					</div>
 					<div>
 					<p>Enter Phone Number</p>
-					<input type="number" id="phone" required>
+					<input type="number" id="phone" value="<?php echo $phone?>" required>
 					</div>
 					<button class="place-order" 
 					final="

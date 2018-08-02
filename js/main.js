@@ -1830,7 +1830,7 @@ function activateProduct(clicked){
 	let id = clicked.getAttribute('value');
 
 	addSpinners();
-	document.getElementById('activate-button').innerHTML='Activating...';
+	document.getElementById('activate-button').innerHTML='Adding...';
 	var myRequest = new XMLHttpRequest();
 	
 	var url = 'productprocess.php';
@@ -1843,7 +1843,7 @@ function activateProduct(clicked){
 	myRequest.onload = function(){
 		var response= this.responseText;
 		removeSpinners();
-		alert('You activate this product');
+		alert('This product is now available');
 	}
 	myRequest.send(formData);
 }
@@ -1852,7 +1852,7 @@ function deactivateProduct(clicked){
 	let id = clicked.getAttribute('value');
 
 	addSpinners();
-	document.getElementById('deactivate-button').innerHTML='Deactivating...';
+	document.getElementById('deactivate-button').innerHTML='Removing...';
 	var myRequest = new XMLHttpRequest();
 	
 	var url = 'productprocess.php';
@@ -1865,7 +1865,7 @@ function deactivateProduct(clicked){
 	myRequest.onload = function(){
 		var response= this.responseText;
 		removeSpinners();
-		alert('You deactivate this product');
+		alert('This product is now not available');
 	}
 	myRequest.send(formData);
 }
@@ -2072,13 +2072,17 @@ function checkoutCart(clicked){
 function placeOrder(clicked){
 	let final = clicked.getAttribute('final').trim();
 	let form = document.getElementById('place-order-form');
+	let address = document.getElementById('address').value;
+	let email = document.getElementById('email').value;
+	let phone = document.getElementById('phone').value;
+
 
 	form.addEventListener('submit',(e)=>{
 		e.preventDefault();
 		var myRequest = new XMLHttpRequest();
 		var url = 'transactionprocess.php';
 
-		var formData = "placeOrder="+final;
+		var formData = "placeOrder="+final+"&address="+address+"&email="+email+"&phone="+phone;
 		
 		myRequest.open('POST', url ,true);
 		myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
@@ -2480,9 +2484,9 @@ function abortHandler(event){
 
 //Redirect Page
 function redirectPage(){
-	document.getElementById('redirectlink').addEventListener('click',historyback);
+	document.getElementById('redirectlink').addEventListener('click',redirect);
 
-	function historyback(){
+	function redirect(){
 		window.location.replace("index.php");
 	}
 	setTimeout(function () {
@@ -2501,6 +2505,19 @@ function goBackPage(){
 	setTimeout(function () {
 		   
     	window.history.back();
+	
+	}, 3000);
+}
+
+function redirectOrder(){
+	document.getElementById('redirectlink').addEventListener('click',redirect);
+
+	function redirect(){
+		window.location.replace("ordertracking.php");
+	}
+	setTimeout(function () {
+		   
+		window.location.replace("ordertracking.php");
 	
 	}, 3000);
 }

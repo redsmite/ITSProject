@@ -51,7 +51,7 @@ if(!$row){
 	$high = $row->high;
 	$approved = $row->is_approved;
 	if($approved == 0 AND $userid!=$tuserid AND $tusertype!=4){
-		die('This product is not approved yet by the admin');
+		die('This product is currently not approved by the admin.');
 	}
 	$available = $row->is_available;
 	if($available == 1){
@@ -195,7 +195,6 @@ chattab();
 				</div>
 				<div class="product-reviews">
 					<br><hr>
-					<h1 class="center">Reviews</h1>
 <?php
 if(isset($_SESSION['id'])){
 	echo'<form id="review-form">
@@ -213,13 +212,63 @@ if(isset($_SESSION['id'])){
 ?>
 					<div id="reviews">
 <?php
+$sql="SELECT reviewid FROM tblreviews WHERE productid='$id'";
+$result=$conn->query($sql);
+
+$rows=$result->num_rows;
+$page_rows = 10;
+$last = ceil($rows/$page_rows);
+if($last < 1){
+	$last = 1;
+}
+$pagenum = 1;
+if(isset($_GET['pn'])){
+	$pagenum = preg_replace('#[^0-9]#', '', $_GET['pn']);
+}
+if ($pagenum < 1) { 
+    $pagenum = 1; 
+} else if ($pagenum > $last) { 
+    $pagenum = $last; 
+}
+$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
+
 $sql = "SELECT t1.userid, reviewid, review, username, imgpath, dateposted, likes
 FROM tblreviews AS t1
 LEFT JOIN tbluser AS t2
 	ON t1.userid = t2.userid
 WHERE productid='$id'
-ORDER BY likes DESC";
+ORDER BY likes DESC $limit";
 $result = $conn->query($sql);
+$textline1 = "<i class='fas fa-comments'></i> Reviews(<b>".number_format($rows)."</b>)";
+$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
+$paginationCtrls = '';
+if($last != 1){
+	if ($pagenum > 1) {
+        $previous = $pagenum - 1;
+		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?id='.$_GET['id'].'&pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
+		// Render clickable number links that should appear on the left of the target page number
+		for($i = $pagenum-4; $i < $pagenum; $i++){
+			if($i > 0){
+		        $paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?id='.$_GET['id'].'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+			}
+	    }
+    }
+    $paginationCtrls .= ''.$pagenum.' &nbsp; ';
+	for($i = $pagenum+1; $i <= $last; $i++){
+		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?id='.$_GET['id'].'&pn='.$i.'">'.$i.'</a> &nbsp; ';
+		if($i >= $pagenum+4){
+			break;
+		}
+	}
+	    if ($pagenum != $last) {
+        $next = $pagenum + 1;
+        $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?id='.$_GET['id'].'&pn='.$next.'">Next</a> ';
+    }
+}
+ echo'<h2>  '.$textline1.'</h2>
+  <p>  '.$textline2.' </p>
+  <div id="pagination_controls"> '.$paginationCtrls.'</div>';
+
 if($result->num_rows==0){
 	echo'<h3>No reviews yet . . .</h3>';
 }
@@ -242,7 +291,7 @@ while($row = $result->fetch_object()){
 		<img src="'.$Rimg.'">
 	</div>
 	<span class="white">'.$Rusername.'</span></a>
-	<span class="review-date">'.date('M j, Y',strtotime($Rdate)).'</span>
+	<span class="review-date">'.date('M j, Y g:i A',strtotime($Rdate)).'</span>
 	</div>
 	<p class="find-this-helpful">'.number_format($likes).' people find this review helpful</p>
 	<p>'.nl2br(createlink($review)).'</p>';
@@ -271,7 +320,7 @@ while($row = $result->fetch_object()){
 			<div class="product-main-right">
 <?php
 	if($approved==0){
-	echo'<h3>This product is not approved yet by the admin.</h3>';
+	echo'<h3>This product is currently not approved by the admin.</h3>';
 	}
 	if(isset($_SESSION['id'])){
 		// Approve Product

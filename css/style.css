@@ -1268,10 +1268,9 @@ li{
 	display: inline-block;
 	border-radius: 10%;
 	margin:5px 3px;
-	background: linear-gradient(to right, var(--secondary-contrast) , var(--primary-color));
-	color: var(--light-color);
+	background: var(--light-color);
 	padding:10px;
-	border: 1px solid var(--light-color);
+	border: 1px solid var(--darkgray);
 	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 	text-align: center;
 }
@@ -1282,18 +1281,18 @@ li{
 }
 
 .fr-div:hover{
-	background: linear-gradient(to right, var(--primary-color) , var(--secondary-contrast));
+	background: var(--gray);
 }
 
 .showfr-tn{
 	display: block;
-	background: var(--light-color);
+	background: var(--secondary-color);
 	margin: 0 auto;
 	height:125px;
 	width:125px;
 	border-radius: 50%;
 	overflow:hidden;
-	border: 1px solid var(--light-color);
+	border: 1px solid var(--darkgray);
 }
 
 .showfr-tn img{
@@ -2096,6 +2095,10 @@ li{
 	padding-left: 10px;
 }
 
+#product-monitoring a:visited{
+	color: var(--darkgray);
+}
+
 /* Report User */
 
 #modal4{
@@ -2405,7 +2408,7 @@ li{
 	z-index: 400;
 	right:0;
 	top: 0;
-	width: 300px;
+	width: 340px;
 	height: 100%;
 	overflow: auto;
 	background: var(--light-color);
@@ -2506,6 +2509,16 @@ li{
 	background: var(--light-color);
 }
 
+.payment-option input{
+	width: 500px;
+	height: 30px;
+}
+
+.payment-option textarea{
+	width: 500px;
+	height: 150px;
+}
+
 .place-order{
 	padding: 1em;
 	background: coral;
@@ -2516,6 +2529,50 @@ li{
 	width: 125px;
 	margin: 5px auto;
 	cursor: pointer;
+}
+
+/* Orders */
+.orders{
+	background: var(--light-color);
+	padding: 10px;
+	margin: 5px;
+	line-height: 1.2em;
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.submitted-info{
+	background: var(--gray);
+	margin: 10px;
+	padding: 5px;
+	border-top: 1px solid var(--darkgray);
+	border-bottom: 1px solid var(--darkgray);
+}
+
+.order-summary{
+	margin: 10px;
+	padding: 5px;
+	border-top: 1px solid var(--darkgray);
+	border-bottom: 1px solid var(--darkgray);
+}
+
+.order-summary table{
+	width: 90%;
+	margin: 0 auto;
+	font-size: 0.8em;
+}
+
+.order-summary tr:first-child{
+	background: var(--dark-color);
+	color: var(--light-color);
+}
+
+.order-summary th{
+	padding: 8px;
+	border-bottom: 1px solid var(--darkgray);
+}
+
+.order-summary th:first-child{
+	width: 75%;
 }
 
 /* Footer */
@@ -2800,5 +2857,8 @@ li{
 		padding: 20px 0;
 		margin: 5px 0;
 		border: 1px solid var(--darkgray);
+	}
+	.payment-option input,.payment-option textarea{
+		width: 100%;
 	}
 }

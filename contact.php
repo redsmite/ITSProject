@@ -55,7 +55,6 @@
 	</div>
 	<script src="js/main.js"></script>
 	<script>
-		activepage('#main-nav4');
 		modal();
 		ajaxLogin();
 	</script>

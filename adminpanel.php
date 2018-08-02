@@ -71,7 +71,7 @@ if($new_products!=0){
 						<h1>Transactions</h1>
 					</div>
 					<div id="product-monitoring">
-						<h1>Approve New Products</h1>
+						<h1>Products to be approved</h1>
 						<div class="refresh-button" onclick="showApproveProduct()"><h2>Refresh <i class="fas fa-sync-alt"></i></h2></div>
 						<div id="product-monitoring-content">
 						</div>

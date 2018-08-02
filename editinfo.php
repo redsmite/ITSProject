@@ -10,8 +10,7 @@
 	
 	if(isset($_SESSION['id'])){
 		$id = $_SESSION['id'];
-		$sql="SELECT userid,firstname,middlename,lastname,birthday,website,location,usertypeid,bio,is_show_email,gender FROM tbluser WHERE userid='$id'";
-		
+		$sql="SELECT userid,firstname,middlename,lastname,birthday,phone,location,usertypeid,bio,is_show_email,gender FROM tbluser WHERE userid='$id'";
 		$result=$conn->query($sql);
 
 		if($result->num_rows == 0){
@@ -28,7 +27,7 @@
 		$gender=$rows->gender;
 		$middlename=$rows->middlename;
 		$birthday=$rows->birthday;
-		$website=$rows->website;
+		$phone=$rows->phone;
 		$location=$rows->location;
 		$bio=$rows->bio;
 	}
@@ -77,8 +76,8 @@
 						<input type="date" <?php echo 'value="'.$birthday.'"'?> id="edit-birthday" name="edit-birthday">
 					</div>
 					<div>
-						<label for="">Website</label><br>
-						<textarea id="edit-website" name="edit-website"><?php echo $website?></textarea>
+						<label for="">Phone</label><br>
+						<input type="number" id="edit-phone" name="edit-phone" placeholder="<?php echo $phone?>">
 					</div>
 					<div>
 						<label for="">Location</label><br>
