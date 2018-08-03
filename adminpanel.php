@@ -52,6 +52,7 @@ chattab();
 				<div class="left-monitoring">
 					<div class="monitoring-option" onclick="showOrders()"><i class="fas fa-book-open"></i>
 <?php
+//counting new orders
 $sql = "SELECT orderid FROM tblorder WHERE status = 0";
 $result = $conn->query($sql);
 $ordercount = $result->num_rows;
@@ -59,7 +60,18 @@ if($ordercount != 0){
 	echo '('.$ordercount.')';
 }
 ?>
-					 Orders</div>
+					 New Orders</div>
+					<div class="monitoring-option" onclick="showTransaction()"><i class="fas fa-clipboard-list"></i>
+<?php
+//Counting approve orders
+$sql = "SELECT orderid FROM tblorder WHERE status = 1";
+$result = $conn->query($sql);
+$ordercount = $result->num_rows;
+if($ordercount != 0){
+	echo '('.$ordercount.')';
+}
+?>
+					 Approved Orders</div>
 					<div class="monitoring-option" onclick="showApproveProduct()"><i class="fas fa-clipboard-check"></i>
 <?php
 $sql = "SELECT productid FROM tblproduct WHERE is_approved = 0";
@@ -77,92 +89,14 @@ if($new_products!=0){
 				<div class="empty"></div>
 				<div class="right-monitoring">
 					<div id="order-body">
-						<h1>Orders</h1>
-<?php
-	$sql = "SELECT orderid, ordernumber, t1.userid, username, billingaddress, t1.email, t1.phone, total, status, datecommit FROM tblorder AS t1
-	LEFT JOIN tbluser AS t2
-		ON t1.userid = t2.userid
-	ORDER BY datecommit DESC";
-	$result = $conn->query($sql);
-	while($row = $result->fetch_object()){
-		$orderid = $row->orderid;
-		$ordernum = $row->ordernumber;
-		$userid = $row->userid;
-		$username = $row->username;
-		$address = $row->billingaddress;
-		$email = $row->email;
-		$phone = $row->phone;
-		$total = $row->total;
-		$status = $row->status;
-		if($status==0){
-			$Sstatus = '<font style="color:orangered;">Reviewing...</font>';
-		}else if($status == 1){
-			$Sstatus = '<font style="color:green;">On delivery...</font>';
-		}else if($status == 2){
-			$Sstatus = '<font style="color:red;">Rejected</font>';
-		}else if($status == 3){
-			$Sstatus = '<font style="color:red;">Cancelled</font>';
-		}else if($status == 4){
-			$Sstatus = '<font style="color:green;">Completed</font>';
-		}
-		$date = $row->datecommit;
-
-		echo '<div class="orders">
-		<p>Order No: '.$ordernum.'</p>
-		<p>User: <a class="black" href=profile.php?id='.$userid.'>'.$username.'</a></p>
-		<p>Status: <b>'.$Sstatus.'</b></p>
-		<p>Submitted: '.date('M j, Y g:i A',strtotime($date)).'</p>
-		<p>Submitted info:</p> 
-		<p class="submitted-info">Billing Address: '.$address.'<br>
-		Email: '.$email.'<br>
-		Phone: '.$phone.'</p>
-		<p>Order Summary</p>
-		<div class="order-summary">
-		<table>
-			<tr>
-				<th>Product</th>
-				<th>Price</th>
-			</tr>';
-// Order Summary
-$sql2 = "SELECT t1.productid, productname, price, weight FROM tblordersummary AS t1
-LEFT JOIN tblproduct AS t2
-	ON t1.productid = t2.productid
-WHERE orderid = '$orderid'";
-$result2 = $conn->query($sql2);
-while($row2 = $result2->fetch_object()){
-	$productid = $row2->productid;
-	$product = $row2->productname;
-	$price = $row2->price;
-	$weight = $row2->weight;
-	$Ptotal = $price*$weight; 
-	
-	echo'<tr>
-		<th><a class="black" href="product.php?id='.$productid.'">'.$product.'</a> (x '.$weight.')
-		</th>';
-	echo'<th>₱'.number_format($Ptotal,2).'</th>
-		</tr>';
-}
-
-		echo'</table></div>
-		<p>Subtotal: <b>₱'.number_format($total-60,2).'</b></p>
-		<p>Shipping Fee: <b>+₱60.00</b></p>
-		<p>Total: <b>₱'.number_format($total,2).'</b></p>';
-		if($status==0){
-		echo'<div id="order-approve-'.$orderid.'" class="add-product-button">
-			<div onclick="approveOrder(this)" value="'.$orderid.'">
-				<i class="far fa-thumbs-up"></i> Approve
-			</div>
-		</div>
-		<div id="order-reject-'.$orderid.'" class="add-product-button">
-			<div onclick="rejectOrder(this)" value="'.$orderid.'">
-				<i class="far fa-thumbs-down"></i> Reject
-			</div>
-		</div>';
-		}
-
-		echo'</div>';
-	}
-?>
+						<h1>New Orders</h1>
+						<div id="order-body-content">
+						</div>
+					</div>
+					<div id="transaction-body">
+						<h1>Approved Orders</h1>
+						<div id="transaction-body-content">
+						</div>
 					</div>
 					<div id="product-monitoring">
 						<h1>Products to be approved</h1>

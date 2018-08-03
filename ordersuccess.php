@@ -19,7 +19,7 @@
 		<div id="thanks-message">
 			<h1><i class="far fa-check-circle"></i>Thanks for ordering!</h1>
 			<p>You have successfully place your order.</p>
-			<p>The product will be delivered within 1-4 days.</p>
+			<p>The product will be delivered within 1-4 days upon approval.</p>
 			<p>This page will be redirected shortly.</p>
 			<a href="#" id='redirectlink'>Click here to redirect</a>
 		</div>

@@ -137,7 +137,24 @@ if($type==1){
 }else if ($type==3){
 	echo'<li><i class="fas fa-ban banned"></i> Sorry, your profile picture has been removed.<br>
 	Please read the rules and guidelines.</li>';
-
+}else if ($type==4){
+	echo'<li> Your order has been <span style="color:green;"><b>approved</b></span><br>'.$date.'.<br>
+	Order No. <b>'.$details.'</b></li>';
+}else if ($type==5){
+	echo'<li> Your order has been <span style="color:red;"><b>rejected</b></span><br>'.$date.'.<br>
+	Order No. <b>'.$details.'</b></li>';
+}else if ($type==6){
+	echo'<li> Your order has been <span style="color:red;"><b>cancelled</b></span><br>'.$date.'.<br>
+	Order No. <b>'.$details.'</b></li>';
+}else if ($type==7){
+	echo'<li> Your order has been <span style="color:green;"><b>completed</b></span><br>'.$date.'.<br>
+	Order No. <b>'.$details.'</b></li>';
+}else if ($type==8){
+	echo'<li> <div class="comment-tn">
+				<img src="'.$imgpath.'">
+			</div>
+			 <a class="n1" href="profile.php?id='.$uid.'">'.$uname.'</a> has place an order '.$date.'.<br>
+	Order No. <b>'.$details.'</b></li>';
 }
 }
 echo '</ul>';

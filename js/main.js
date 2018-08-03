@@ -1225,12 +1225,14 @@ function addNewCategory(){
 	let body3= document.getElementById('history');
 	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
+	let body6= document.getElementById('transaction-body');
 
 	body1.style.display ='block';
 	body2.style.display ='none';
 	body3.style.display ='none';
 	body4.style.display ='none';
 	body5.style.display ='none';
+	body6.style.display ='none';
 }
 
 function setPrice(){
@@ -1239,12 +1241,14 @@ function setPrice(){
 	let body3= document.getElementById('history');
 	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
+	let body6= document.getElementById('transaction-body');
 
 	body1.style.display ='none';
 	body2.style.display ='block';
 	body3.style.display ='none';
 	body4.style.display ='none';
 	body5.style.display ='none';
+	body6.style.display ='none';
 }
 
 function priceHistory(){
@@ -1253,13 +1257,14 @@ function priceHistory(){
 	let body3= document.getElementById('history');
 	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
-
+	let body6= document.getElementById('transaction-body');
 
 	body1.style.display ='none';
 	body2.style.display ='none';
 	body3.style.display ='block';
 	body4.style.display ='none';
 	body5.style.display ='none';
+	body6.style.display ='none';
 
 	var myRequest = new XMLHttpRequest();
 
@@ -1286,12 +1291,30 @@ function showOrders(){
 	let body3= document.getElementById('history');
 	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
+	let body6= document.getElementById('transaction-body');
 
 	body1.style.display ='none';
 	body2.style.display ='none';
 	body3.style.display ='none';
 	body4.style.display ='block';
-	body5.style.display ='none';	
+	body5.style.display ='none';
+	body6.style.display ='none';	
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'transactionprocess.php';
+
+	var formData = "showNewOrders='hello'";
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		console.log(response);
+		document.getElementById('order-body-content').innerHTML=response;
+	}
+	myRequest.send(formData);
 }
 
 function showApproveProduct(){
@@ -1300,12 +1323,14 @@ function showApproveProduct(){
 	let body3= document.getElementById('history');
 	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
+	let body6= document.getElementById('transaction-body');
 
 	body1.style.display ='none';
 	body2.style.display ='none';
 	body3.style.display ='none';
 	body4.style.display ='none';
 	body5.style.display ='block';
+	body6.style.display ='none';
 
 	var myRequest = new XMLHttpRequest();
 
@@ -1319,6 +1344,38 @@ function showApproveProduct(){
 	myRequest.onload = function(){
 		var response= this.responseText;
 		document.getElementById('product-monitoring-content').innerHTML=response;
+	}
+	myRequest.send(formData);
+}
+
+function showTransaction(){
+	let body1= document.getElementById('add-category');
+	let body2= document.getElementById('set-price');
+	let body3= document.getElementById('history');
+	let body4= document.getElementById('order-body');
+	let body5= document.getElementById('product-monitoring');
+	let body6= document.getElementById('transaction-body');
+
+	body1.style.display ='none';
+	body2.style.display ='none';
+	body3.style.display ='none';
+	body4.style.display ='none';
+	body5.style.display ='none';
+	body6.style.display ='block';
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'transactionprocess.php';
+
+	var formData = "showApproveOrders='hello'";
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		console.log(response);
+		document.getElementById('transaction-body-content').innerHTML=response;
 	}
 	myRequest.send(formData);
 }
@@ -2101,11 +2158,13 @@ function placeOrder(clicked){
 
 function approveOrder(clicked){
 	let id = clicked.getAttribute('value');
+	let number = clicked.getAttribute('number');
+	let receiver = clicked.getAttribute('receiver');
 	let buttonid = 'order-approve-'+id;
 	let button = document.getElementById(buttonid);
 	let button2id = 'order-reject-'+id;
 	let button2 = document.getElementById(button2id);
-	
+
 	addSpinners();
 
 	button.innerHTML = 'Approving...';
@@ -2114,7 +2173,7 @@ function approveOrder(clicked){
 	var myRequest = new XMLHttpRequest();
 	var url = 'transactionprocess.php';
 
-	var formData = "approve="+id;
+	var formData = "approve="+id+"&approveNum="+number+"&approveRec="+receiver;
 	
 	myRequest.open('POST', url ,true);
 	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
@@ -2128,6 +2187,8 @@ function approveOrder(clicked){
 
 function rejectOrder(clicked){
 	let id = clicked.getAttribute('value');
+	let number = clicked.getAttribute('number');
+	let receiver = clicked.getAttribute('receiver');
 	let buttonid = 'order-reject-'+id;
 	let button = document.getElementById(buttonid);
 	let button2id = 'order-approve-'+id;
@@ -2139,7 +2200,61 @@ function rejectOrder(clicked){
 	var myRequest = new XMLHttpRequest();
 	var url = 'transactionprocess.php';
 
-	var formData = "reject="+id;
+	var formData = "reject="+id+"&rejectNum="+number+"&rejectRec="+receiver;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+	}
+	myRequest.send(formData);
+}
+
+function cancelOrder(clicked){
+	let id = clicked.getAttribute('value');
+	let number = clicked.getAttribute('number');
+	let receiver = clicked.getAttribute('receiver');
+	let buttonid = 'order-complete-'+id;
+	let button = document.getElementById(buttonid);
+	let button2id = 'order-cancel-'+id;
+	let button2 = document.getElementById(button2id);
+
+	button.style.display = 'none';
+	button2.innerHTML = 'Cancelling...';
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'transactionprocess.php';
+
+	var formData = "cancel="+id+"&cancelNum="+number+"&cancelRec="+receiver;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+	}
+	myRequest.send(formData);
+}
+
+function completeOrder(clicked){
+	let id = clicked.getAttribute('value');
+	let number = clicked.getAttribute('number');
+	let receiver = clicked.getAttribute('receiver');
+	let buttonid = 'order-complete-'+id;
+	let button = document.getElementById(buttonid);
+	let button2id = 'order-cancel-'+id;
+	let button2 = document.getElementById(button2id);
+
+	button.innerHTML = 'Saving...';
+	button2.style.display = 'none';
+
+	var myRequest = new XMLHttpRequest();
+	var url = 'transactionprocess.php';
+
+	var formData = "complete="+id+"&completeNum="+number+"&completeRec="+receiver;
 	
 	myRequest.open('POST', url ,true);
 	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
