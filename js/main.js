@@ -50,6 +50,7 @@ function modal(){
 	//function to open modal
 	function openModal(){
 		modal.style.display = 'block';
+		document.getElementById('log-user').focus();
 	}
 
 	//function to close modal
@@ -271,25 +272,7 @@ function searchdropdown(){
 	} else if (crit==3){
 		modal.style.display='block';
 		src.style.display='block';
-
-		var myRequest = new XMLHttpRequest();
-		var url = 'searchprocess.php';
-		var search = document.getElementById('search-text').value;
-
-		var formData = "search3="+search;
-		
-		myRequest.open('POST', url ,true);
-		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-
-		myRequest.onload = function(){
-			var response= this.responseText;
-			
-			document.getElementById('search-dropdown').innerHTML = response;			
-			
-		}
-		myRequest.send(formData);
-
-	
+		document.getElementById('search-dropdown').innerHTML = "<center>Put your order number then press enter.</center>";
 	}
 	}
 
@@ -1311,7 +1294,6 @@ function showOrders(){
 
 	myRequest.onload = function(){
 		var response= this.responseText;
-		console.log(response);
 		document.getElementById('order-body-content').innerHTML=response;
 	}
 	myRequest.send(formData);
@@ -1452,11 +1434,38 @@ function hideCat(clicked){
 
 	myRequest.onload = function(){
 		var response= this.responseText;
-			
-		console.log(response);
 	}
 	myRequest.send(formData);	
 }
+
+function updateFee(){
+	let form = document.getElementById('update-fee-form');
+
+	form.addEventListener('submit',(e)=>{
+		e.preventDefault();
+		addSpinners();
+
+		let fee = document.getElementById('fee').value;
+
+		if(fee>0){
+			var myRequest = new XMLHttpRequest();
+			var url = 'adminprocess.php';
+
+			var formData = "updateFee="+fee;
+			
+			myRequest.open('POST', url ,true);
+			myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+			myRequest.onload = function(){
+				var response= this.responseText;
+				console.log(response);
+				removeSpinners();
+			}
+			myRequest.send(formData);
+		}
+	});
+}
+
 
 function updatePrice(clicked){
 	addSpinners();
@@ -1538,33 +1547,72 @@ function adminSetting(){
 
 function showFarmTab(){
 	let body1 = document.getElementById('farms');
-	let body2 = document.getElementById('weekly-report');
+	let body2 = document.getElementById('daily-report');
 	let body3 = document.getElementById('monthly-report');
+	let body4 = document.getElementById('weekly-report');
+	let body5 = document.getElementById('yearly-report');
 
 	body1.style.display = 'block';
 	body2.style.display = 'none';
 	body3.style.display = 'none';
+	body4.style.display = 'none';
+	body5.style.display = 'none';
 }
 
 function showDailyTab(){
 	let body1 = document.getElementById('farms');
-	let body2 = document.getElementById('weekly-report');
+	let body2 = document.getElementById('daily-report');
 	let body3 = document.getElementById('monthly-report');
+	let body4 = document.getElementById('weekly-report');
+	let body5 = document.getElementById('yearly-report');
 
 	body1.style.display = 'none';
 	body2.style.display = 'block';
 	body3.style.display = 'none';
-
+	body4.style.display = 'none';
+	body5.style.display = 'none';
 }
 
 function showMonthlyTab(){
 	let body1 = document.getElementById('farms');
-	let body2 = document.getElementById('weekly-report');
+	let body2 = document.getElementById('daily-report');
 	let body3 = document.getElementById('monthly-report');
+	let body4 = document.getElementById('weekly-report');
+	let body5 = document.getElementById('yearly-report');
 
 	body1.style.display = 'none';
 	body2.style.display = 'none';
 	body3.style.display = 'block';
+	body4.style.display = 'none';
+	body5.style.display = 'none';
+}
+
+function showWeeklyTab(){
+	let body1 = document.getElementById('farms');
+	let body2 = document.getElementById('daily-report');
+	let body3 = document.getElementById('monthly-report');
+	let body4 = document.getElementById('weekly-report');
+	let body5 = document.getElementById('yearly-report');
+
+	body1.style.display = 'none';
+	body2.style.display = 'none';
+	body3.style.display = 'none';
+	body4.style.display = 'block';
+	body5.style.display = 'none';
+}
+
+function showYearlyTab(){
+	let body1 = document.getElementById('farms');
+	let body2 = document.getElementById('daily-report');
+	let body3 = document.getElementById('monthly-report');
+	let body4 = document.getElementById('weekly-report');
+	let body5 = document.getElementById('yearly-report');
+
+	body1.style.display = 'none';
+	body2.style.display = 'none';
+	body3.style.display = 'none';
+	body4.style.display = 'none';
+	body5.style.display = 'block';
 }
 
 function addFarm(){
@@ -2126,20 +2174,24 @@ function checkoutCart(clicked){
 
 // Order
 
-function placeOrder(clicked){
-	let final = clicked.getAttribute('final').trim();
+function placeOrder(){
 	let form = document.getElementById('place-order-form');
-	let address = document.getElementById('address').value;
-	let email = document.getElementById('email').value;
-	let phone = document.getElementById('phone').value;
-
 
 	form.addEventListener('submit',(e)=>{
 		e.preventDefault();
+
+		let button = document.getElementById('place-order');
+
 		var myRequest = new XMLHttpRequest();
 		var url = 'transactionprocess.php';
 
-		var formData = "placeOrder="+final+"&address="+address+"&email="+email+"&phone="+phone;
+		let fee = button.getAttribute('fee').trim();
+		let final = button.getAttribute('final').trim();
+		let form = document.getElementById('place-order-form');
+		let address = document.getElementById('address').value;
+		let email = document.getElementById('email').value;
+		let phone = document.getElementById('phone').value;
+		var formData = "placeOrder="+final+"&address="+address+"&email="+email+"&phone="+phone+"&fee="+fee;
 		
 		myRequest.open('POST', url ,true);
 		myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');

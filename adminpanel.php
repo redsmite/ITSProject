@@ -150,6 +150,17 @@ $sql = "SELECT categoryid,status,category FROM tblcategory";
 						</div>
 					</div>
 					<div id="set-price">
+						<h1>Set Shipping Fee</h1>
+						<form align="center" id="update-fee-form">
+<?php
+$sql = "SELECT fee FROM tblfee WHERE feeid=1";
+$result = $conn->query($sql);
+$fetch = $result->fetch_object();
+$fee = $fetch->fee;
+?>
+							<input type="number" id="fee" value="<?php echo $fee?>" step="any" min="0">
+							<button class="price-button">Update</button>
+						</form>
 						<h1>Price Monitoring</h1>
 						<div id="error-message3"></div>
 						<ul class="price-ul">
@@ -334,8 +345,14 @@ if($last != 1){
 	<div class="monitoring-option" onclick="showDailyTab()">
 		<i class="fas fa-chart-bar"></i> Daily Report
 	</div>
+	<div class="monitoring-option" onclick="showWeeklyTab()">
+		<i class="fas fa-chart-bar"></i> Weekly Report
+	</div>
 	<div class="monitoring-option" onclick="showMonthlyTab()">
 		<i class="fas fa-chart-bar"></i> Monthly Report
+	</div>
+	<div class="monitoring-option" onclick="showYearlyTab()">
+		<i class="fas fa-chart-bar"></i> Yearly Report
 	</div>
 	<div class="monitoring-option" onclick="showFarmTab()">
 		<i class="fab fa-pagelines"></i> Farms
@@ -396,11 +413,17 @@ if($last != 1){
 			</table>
 		</div>
 	</div>
-	<div id="weekly-report">
+	<div id="daily-report">
 		<h1><i class="fas fa-chart-bar"></i> Daily Report</h1>
+	</div>
+	<div id="weekly-report">
+		<h1><i class="fas fa-chart-bar"></i> Weekly Report</h1>
 	</div>
 	<div id="monthly-report">
 		<h1><i class="fas fa-chart-bar"></i> Monthly Report</h1>
+	</div>
+	<div id="yearly-report">
+		<h1><i class="fas fa-chart-bar"></i> Yearly Report</h1>
 	</div>
 </div>
 			</div>
@@ -415,6 +438,7 @@ if($last != 1){
 	</div>
 	<script src="js/main.js"></script>
 	<script>
+		updateFee();
 		sendAllUser();
 		showMonitoringTab();
 		sendAnnounce();

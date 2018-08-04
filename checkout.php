@@ -18,6 +18,12 @@
 	$phone = $fetch->phone;
 	$location = $fetch->location;
 	$email = $fetch->email;
+
+	$sql = "SELECT title, fee FROM tblfee WHERE feeid = 1";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$title = $fetch->title;
+	$fee = $fetch->fee;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,9 +73,9 @@
 			$subtotal = 0;
 		}
 		echo '</p>
-		<p>+ Shipping Fee: ₱60.00</p>
+		<p>+ '.$title.': '.$fee.'</p>
 		<hr>';
-		$checkoutFinal = $subtotal+60;
+		$checkoutFinal = $subtotal+$fee;
 		echo'<p><b>Total: ₱'.number_format($checkoutFinal,2).'</b></p>
 		</div>';
 	}
@@ -100,6 +106,7 @@
 					<input type="number" id="phone" value="<?php echo $phone?>" required>
 					</div>
 					<button class="place-order" 
+					id="place-order"
 					final="
 					<?php
 					if(!isset($checkoutFinal)){
@@ -108,7 +115,15 @@
 						echo $checkoutFinal;
 					} 
 					?>"
-					onclick="placeOrder(this)">
+
+					fee="
+					<?php
+					if(!isset($fee)){
+						echo 0;
+					}else{
+						echo $fee;
+					} 
+					?>">
 					<i class="fas fa-truck"></i> Place Order
 					</button>
 					<div id="error-message5"></div>
@@ -124,8 +139,7 @@
 	</div>
 	<script src="js/main.js"></script>
 	<script>
-		modal();
-		ajaxLogin();
+		placeOrder();
 	</script>
 </body>
 </html>

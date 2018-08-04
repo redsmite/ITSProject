@@ -149,6 +149,9 @@ if(isset($_POST['notseller'])){
 	$sql = "UPDATE tbluser SET usertypeid = 1 WHERE userid = '$id'";
 	$result = $conn->query($sql);
 
+	$sql ="UPDATE tblproduct SET is_available = 0 WHERE userid = '$id'";
+	$result = $conn->query($sql);
+
 	echo 'oke-oke-okay';
 }
 
@@ -198,6 +201,14 @@ if(isset($_POST['title'])){
 }
 
 // Price Monitoring
+if(isset($_POST['updateFee'])){
+	$fee = $_POST['updateFee'];
+
+	$sql = "UPDATE tblfee SET fee = '$fee' WHERE feeid=1";
+	$result = $conn->query($sql);
+	echo $sql;
+}
+
 
 if(isset($_POST['addCat'])){
 	$category = $conn->real_escape_string($_POST['addCat']);

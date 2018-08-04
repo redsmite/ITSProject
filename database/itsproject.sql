@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2018 at 06:32 PM
+-- Generation Time: Aug 04, 2018 at 04:56 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -405,6 +405,25 @@ INSERT INTO `tblfarm` (`farmid`, `farmname`, `address`, `status`) VALUES
 (1, 'Pampanga', 'Pampanga', 1),
 (2, 'Cavite', 'Cavite', 1),
 (3, 'Tagaytay', 'Tagaytay', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblfee`
+--
+
+CREATE TABLE `tblfee` (
+  `feeid` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `fee` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblfee`
+--
+
+INSERT INTO `tblfee` (`feeid`, `title`, `fee`) VALUES
+(1, 'Shipping Fee', '60.00');
 
 -- --------------------------------------------------------
 
@@ -876,16 +895,14 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (326, 1, 2, '2018-07-29 20:42:27', 1, 1, '175', 0),
 (327, 2, 1, '2018-07-29 20:47:53', 1, 1, '176', 0),
 (328, 1, 2, '2018-07-31 14:18:37', 1, 1, '177', 0),
-(329, 0, 89, '2018-08-03 11:37:03', 1, 4, '20180803113703', 0),
-(330, 0, 89, '2018-08-03 11:45:03', 1, 5, '20180803114458', 0),
-(331, 0, 89, '2018-08-03 23:58:46', 1, 6, '20180803113703', 0),
-(332, 0, 89, '2018-08-04 00:05:58', 1, 4, '20180804120137', 0),
-(333, 0, 89, '2018-08-04 00:06:04', 1, 7, '20180804120137', 0),
-(334, 0, 89, '2018-08-04 00:08:33', 1, 4, '20180804120742', 0),
-(335, 89, 1, '2018-08-04 00:24:10', 1, 8, '2018080412240989', 0),
-(336, 0, 89, '2018-08-04 00:25:58', 1, 4, '2018080412240989', 0),
-(337, 0, 89, '2018-08-04 00:26:08', 1, 6, '20180804120742', 0),
-(338, 0, 89, '2018-08-04 00:26:10', 1, 6, '2018080412240989', 0);
+(350, 89, 1, '2018-08-04 21:48:52', 1, 8, '2018080409485289', 0),
+(351, 91, 1, '2018-08-04 21:50:18', 1, 8, '2018080409501891', 0),
+(352, 89, 1, '2018-08-04 22:06:51', 1, 8, '2018080410065189', 0),
+(353, 0, 89, '2018-08-04 22:07:48', 1, 5, '2018080410065189', 0),
+(354, 0, 91, '2018-08-04 22:07:50', 0, 4, '2018080409501891', 0),
+(355, 0, 89, '2018-08-04 22:07:56', 1, 4, '2018080409485289', 0),
+(356, 0, 89, '2018-08-04 22:08:09', 1, 6, '2018080409485289', 0),
+(357, 0, 91, '2018-08-04 22:53:40', 0, 7, '2018080409501891', 0);
 
 -- --------------------------------------------------------
 
@@ -900,7 +917,8 @@ CREATE TABLE `tblorder` (
   `billingaddress` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(100) NOT NULL,
-  `total` int(11) NOT NULL,
+  `fee` decimal(10,2) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
   `status` int(11) NOT NULL,
   `datecommit` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -909,16 +927,10 @@ CREATE TABLE `tblorder` (
 -- Dumping data for table `tblorder`
 --
 
-INSERT INTO `tblorder` (`orderid`, `ordernumber`, `userid`, `billingaddress`, `email`, `phone`, `total`, `status`, `datecommit`) VALUES
-(1, '20180802111321', 89, 'Somewhere in Quezon City', 'sample@gmail.com', '09090909090909', 573, 3, '2018-08-02 23:13:21'),
-(2, '20180802112523', 2, 'Quezon City', '3d7d795b2e@gmail.com', '909090909090', 560, 4, '2018-08-02 23:25:23'),
-(3, '20180803104957', 89, 'Quezon City', 'sample@gmail.com', '090909090909', 590, 2, '2018-08-03 22:49:57'),
-(4, '20180803113703', 89, 'Quezon City', 'sample@gmail.com', '0909009090909', 600, 3, '2018-08-03 23:37:03'),
-(5, '20180803114458', 89, 'Quezon City', 'sample@gmail.com', '090909090900', 620, 2, '2018-08-03 23:44:58'),
-(6, '20180804120137', 89, 'Quezon City', 'sample@gmail.com', '0909090909090', 620, 4, '2018-08-04 00:01:37'),
-(7, '20180804120742', 89, 'Quezon City', 'sample@gmail.com', '0909090990090', 560, 3, '2018-08-04 00:07:42'),
-(8, '2018080412153989', 89, 'Quezon City', 'sample@gmail.com', '0909090909090', 610, 0, '2018-08-04 00:15:39'),
-(9, '2018080412240989', 89, 'Quezon City', 'sample@gmail.com', '0909090909090', 690, 3, '2018-08-04 00:24:09');
+INSERT INTO `tblorder` (`orderid`, `ordernumber`, `userid`, `billingaddress`, `email`, `phone`, `fee`, `total`, `status`, `datecommit`) VALUES
+(1, '2018080409485289', 89, 'Quezon City', 'sample@gmail.com', '90090900990', '60.00', '620.00', 3, '2018-08-04 21:48:52'),
+(2, '2018080409501891', 91, 'Quezon City', 'mangjuan@gmail.com', '0909090909090', '60.00', '605.00', 4, '2018-08-04 21:50:18'),
+(3, '2018080410065189', 89, 'Quezon City', 'sample@gmail.com', '0909009090909', '160.00', '670.00', 2, '2018-08-04 22:06:51');
 
 -- --------------------------------------------------------
 
@@ -930,41 +942,21 @@ CREATE TABLE `tblordersummary` (
   `summaryid` int(11) NOT NULL,
   `orderid` int(11) NOT NULL,
   `productid` int(11) NOT NULL,
-  `weight` decimal(10,3) NOT NULL
+  `weight` decimal(10,3) NOT NULL,
+  `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblordersummary`
 --
 
-INSERT INTO `tblordersummary` (`summaryid`, `orderid`, `productid`, `weight`) VALUES
-(1, 1, 21, '0.500'),
-(2, 1, 20, '1.000'),
-(3, 1, 19, '0.500'),
-(4, 1, 16, '2.000'),
-(5, 1, 12, '2.000'),
-(6, 1, 14, '0.125'),
-(7, 1, 9, '0.250'),
-(8, 1, 3, '1.000'),
-(9, 1, 7, '0.500'),
-(10, 2, 8, '5.000'),
-(11, 3, 19, '5.000'),
-(12, 3, 16, '2.000'),
-(13, 4, 16, '2.000'),
-(14, 4, 19, '1.000'),
-(15, 4, 20, '1.000'),
-(16, 4, 21, '1.000'),
-(17, 4, 13, '0.500'),
-(18, 4, 8, '2.000'),
-(19, 5, 19, '7.000'),
-(20, 6, 19, '7.000'),
-(21, 7, 9, '10.000'),
-(22, 8, 19, '5.000'),
-(23, 8, 12, '3.000'),
-(24, 9, 13, '1.000'),
-(25, 9, 15, '2.500'),
-(26, 9, 8, '1.000'),
-(27, 9, 3, '4.000');
+INSERT INTO `tblordersummary` (`summaryid`, `orderid`, `productid`, `weight`, `price`) VALUES
+(1, 1, 19, '7.000', '80.00'),
+(2, 2, 11, '9.000', '55.00'),
+(3, 2, 9, '1.000', '50.00'),
+(4, 3, 19, '2.000', '80.00'),
+(5, 3, 21, '5.000', '60.00'),
+(6, 3, 12, '1.000', '50.00');
 
 -- --------------------------------------------------------
 
@@ -2742,97 +2734,98 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1762, 71, 90, 'message', '2018-07-30 14:44:21', 1),
 (1763, 1, 2, 'message', '2018-07-31 14:19:02', 1),
 (1764, 2, 1, 'message', '2018-07-31 14:21:45', 1),
-(1765, 71, 0, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1766, 71, 1, 'Placing Order is now available.', '2018-08-02 23:22:41', 1),
-(1767, 71, 2, 'Placing Order is now available.', '2018-08-02 23:22:41', 1),
-(1768, 71, 3, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1769, 71, 4, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1770, 71, 5, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1771, 71, 6, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1772, 71, 7, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1773, 71, 8, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1774, 71, 9, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1775, 71, 10, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1776, 71, 11, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1777, 71, 12, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1778, 71, 13, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1779, 71, 14, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1780, 71, 15, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1781, 71, 16, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1782, 71, 17, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1783, 71, 18, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1784, 71, 19, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1785, 71, 20, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1786, 71, 21, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1787, 71, 22, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1788, 71, 23, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1789, 71, 24, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1790, 71, 25, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1791, 71, 26, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1792, 71, 27, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1793, 71, 28, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1794, 71, 29, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1795, 71, 30, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1796, 71, 31, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1797, 71, 32, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1798, 71, 33, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1799, 71, 34, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1800, 71, 35, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1801, 71, 36, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1802, 71, 37, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1803, 71, 38, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1804, 71, 39, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1805, 71, 40, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1806, 71, 41, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1807, 71, 42, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1808, 71, 43, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1809, 71, 44, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1810, 71, 45, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1811, 71, 46, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1812, 71, 47, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1813, 71, 48, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1814, 71, 49, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1815, 71, 50, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1816, 71, 51, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1817, 71, 52, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1818, 71, 53, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1819, 71, 54, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1820, 71, 55, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1821, 71, 56, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1822, 71, 57, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1823, 71, 58, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1824, 71, 59, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1825, 71, 60, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1826, 71, 61, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1827, 71, 62, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1828, 71, 63, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1829, 71, 64, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1830, 71, 65, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1831, 71, 66, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1832, 71, 67, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1833, 71, 68, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1834, 71, 69, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1835, 71, 70, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1836, 71, 71, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1837, 71, 72, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1838, 71, 73, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1839, 71, 74, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1840, 71, 75, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1841, 71, 76, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1842, 71, 77, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1843, 71, 78, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1844, 71, 79, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1845, 71, 80, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1846, 71, 81, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1847, 71, 82, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1848, 71, 83, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1849, 71, 84, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1850, 71, 85, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1851, 71, 86, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1852, 71, 87, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1853, 71, 88, 'Placing Order is now available.', '2018-08-02 23:22:41', 0),
-(1854, 71, 89, 'Placing Order is now available.', '2018-08-02 23:22:41', 1),
-(1855, 71, 90, 'Placing Order is now available.', '2018-08-02 23:22:41', 0);
+(1765, 71, 0, 'message', '2018-08-02 23:22:41', 0),
+(1766, 71, 1, 'message', '2018-08-02 23:22:41', 1),
+(1767, 71, 2, 'message', '2018-08-02 23:22:41', 1),
+(1768, 71, 3, 'message', '2018-08-02 23:22:41', 0),
+(1769, 71, 4, 'message', '2018-08-02 23:22:41', 0),
+(1770, 71, 5, 'message', '2018-08-02 23:22:41', 1),
+(1771, 71, 6, 'message', '2018-08-02 23:22:41', 0),
+(1772, 71, 7, 'message', '2018-08-02 23:22:41', 0),
+(1773, 71, 8, 'message', '2018-08-02 23:22:41', 0),
+(1774, 71, 9, 'message', '2018-08-02 23:22:41', 0),
+(1775, 71, 10, 'message', '2018-08-02 23:22:41', 0),
+(1776, 71, 11, 'message', '2018-08-02 23:22:41', 0),
+(1777, 71, 12, 'message', '2018-08-02 23:22:41', 0),
+(1778, 71, 13, 'message', '2018-08-02 23:22:41', 0),
+(1779, 71, 14, 'message', '2018-08-02 23:22:41', 0),
+(1780, 71, 15, 'message', '2018-08-02 23:22:41', 0),
+(1781, 71, 16, 'message', '2018-08-02 23:22:41', 0),
+(1782, 71, 17, 'message', '2018-08-02 23:22:41', 0),
+(1783, 71, 18, 'message', '2018-08-02 23:22:41', 0),
+(1784, 71, 19, 'message', '2018-08-02 23:22:41', 0),
+(1785, 71, 20, 'message', '2018-08-02 23:22:41', 0),
+(1786, 71, 21, 'message', '2018-08-02 23:22:41', 0),
+(1787, 71, 22, 'message', '2018-08-02 23:22:41', 0),
+(1788, 71, 23, 'message', '2018-08-02 23:22:41', 0),
+(1789, 71, 24, 'message', '2018-08-02 23:22:41', 0),
+(1790, 71, 25, 'message', '2018-08-02 23:22:41', 0),
+(1791, 71, 26, 'message', '2018-08-02 23:22:41', 0),
+(1792, 71, 27, 'message', '2018-08-02 23:22:41', 0),
+(1793, 71, 28, 'message', '2018-08-02 23:22:41', 0),
+(1794, 71, 29, 'message', '2018-08-02 23:22:41', 0),
+(1795, 71, 30, 'message', '2018-08-02 23:22:41', 0),
+(1796, 71, 31, 'message', '2018-08-02 23:22:41', 0),
+(1797, 71, 32, 'message', '2018-08-02 23:22:41', 0),
+(1798, 71, 33, 'message', '2018-08-02 23:22:41', 0),
+(1799, 71, 34, 'message', '2018-08-02 23:22:41', 0),
+(1800, 71, 35, 'message', '2018-08-02 23:22:41', 0),
+(1801, 71, 36, 'message', '2018-08-02 23:22:41', 0),
+(1802, 71, 37, 'message', '2018-08-02 23:22:41', 0),
+(1803, 71, 38, 'message', '2018-08-02 23:22:41', 0),
+(1804, 71, 39, 'message', '2018-08-02 23:22:41', 0),
+(1805, 71, 40, 'message', '2018-08-02 23:22:41', 0),
+(1806, 71, 41, 'message', '2018-08-02 23:22:41', 0),
+(1807, 71, 42, 'message', '2018-08-02 23:22:41', 0),
+(1808, 71, 43, 'message', '2018-08-02 23:22:41', 0),
+(1809, 71, 44, 'message', '2018-08-02 23:22:41', 0),
+(1810, 71, 45, 'message', '2018-08-02 23:22:41', 0),
+(1811, 71, 46, 'message', '2018-08-02 23:22:41', 0),
+(1812, 71, 47, 'message', '2018-08-02 23:22:41', 0),
+(1813, 71, 48, 'message', '2018-08-02 23:22:41', 0),
+(1814, 71, 49, 'message', '2018-08-02 23:22:41', 0),
+(1815, 71, 50, 'message', '2018-08-02 23:22:41', 0),
+(1816, 71, 51, 'message', '2018-08-02 23:22:41', 0),
+(1817, 71, 52, 'message', '2018-08-02 23:22:41', 0),
+(1818, 71, 53, 'message', '2018-08-02 23:22:41', 0),
+(1819, 71, 54, 'message', '2018-08-02 23:22:41', 0),
+(1820, 71, 55, 'message', '2018-08-02 23:22:41', 0),
+(1821, 71, 56, 'message', '2018-08-02 23:22:41', 0),
+(1822, 71, 57, 'message', '2018-08-02 23:22:41', 0),
+(1823, 71, 58, 'message', '2018-08-02 23:22:41', 0),
+(1824, 71, 59, 'message', '2018-08-02 23:22:41', 0),
+(1825, 71, 60, 'message', '2018-08-02 23:22:41', 0),
+(1826, 71, 61, 'message', '2018-08-02 23:22:41', 0),
+(1827, 71, 62, 'message', '2018-08-02 23:22:41', 0),
+(1828, 71, 63, 'message', '2018-08-02 23:22:41', 0),
+(1829, 71, 64, 'message', '2018-08-02 23:22:41', 0),
+(1830, 71, 65, 'message', '2018-08-02 23:22:41', 0),
+(1831, 71, 66, 'message', '2018-08-02 23:22:41', 0),
+(1832, 71, 67, 'message', '2018-08-02 23:22:41', 0),
+(1833, 71, 68, 'message', '2018-08-02 23:22:41', 0),
+(1834, 71, 69, 'message', '2018-08-02 23:22:41', 0),
+(1835, 71, 70, 'message', '2018-08-02 23:22:41', 0),
+(1836, 71, 71, 'message', '2018-08-02 23:22:41', 0),
+(1837, 71, 72, 'message', '2018-08-02 23:22:41', 0),
+(1838, 71, 73, 'message', '2018-08-02 23:22:41', 0),
+(1839, 71, 74, 'message', '2018-08-02 23:22:41', 0),
+(1840, 71, 75, 'message', '2018-08-02 23:22:41', 0),
+(1841, 71, 76, 'message', '2018-08-02 23:22:41', 0),
+(1842, 71, 77, 'message', '2018-08-02 23:22:41', 0),
+(1843, 71, 78, 'message', '2018-08-02 23:22:41', 0),
+(1844, 71, 79, 'message', '2018-08-02 23:22:41', 0),
+(1845, 71, 80, 'message', '2018-08-02 23:22:41', 0),
+(1846, 71, 81, 'message', '2018-08-02 23:22:41', 0),
+(1847, 71, 82, 'message', '2018-08-02 23:22:41', 0),
+(1848, 71, 83, 'message', '2018-08-02 23:22:41', 0),
+(1849, 71, 84, 'message', '2018-08-02 23:22:41', 0),
+(1850, 71, 85, 'message', '2018-08-02 23:22:41', 0),
+(1851, 71, 86, 'message', '2018-08-02 23:22:41', 0),
+(1852, 71, 87, 'message', '2018-08-02 23:22:41', 0),
+(1853, 71, 88, 'message', '2018-08-02 23:22:41', 0),
+(1854, 71, 89, 'message', '2018-08-02 23:22:41', 1),
+(1855, 71, 90, 'message', '2018-08-02 23:22:41', 1),
+(1856, 71, 91, 'message', '2018-08-04 16:40:52', 1);
 
 -- --------------------------------------------------------
 
@@ -2866,18 +2859,18 @@ INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description
 (3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 15, '50.00', 1, 1),
 (4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 19, '100.00', 1, 1),
 (5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 14, '100.00', 1, 1),
-(6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 3, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 7, '50.00', 1, 0),
+(6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 1, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 7, '50.00', 1, 1),
 (7, 15, 'Philippine Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mango.jpg', 6, '50.00', 1, 1),
-(8, 3, 'Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 3, 5, '2018-07-23 00:25:06', '100.00', 'product/cabbage-vegetable-power-green.jpg', 11, '80.00', 1, 1),
-(9, 13, 'Calamansi C', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:10', '50.00', 'product/Calamansi.jpg', 6, '100.00', 1, 1),
-(10, 13, 'Calamansi G', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 3, '50.00', 1, 1),
-(11, 13, 'Calamansi A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 2, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 37, '80.00', 1, 1),
-(12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 3, 2, '2018-07-24 15:59:23', '50.00', 'product/potato.jpg', 14, '100.00', 1, 1),
-(13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 2, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 30, '70.00', 1, 1),
+(8, 3, 'Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 2, 5, '2018-07-23 00:25:06', '100.00', 'product/cabbage-vegetable-power-green.jpg', 11, '80.00', 1, 1),
+(9, 13, 'Calamansi C', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 1, 2, '2018-07-24 15:56:10', '50.00', 'product/Calamansi.jpg', 6, '100.00', 1, 1),
+(10, 13, 'Calamansi G', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 1, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 3, '50.00', 1, 1),
+(11, 13, 'Calamansi A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 1, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 37, '80.00', 1, 1),
+(12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 1, 2, '2018-07-24 15:59:23', '50.00', 'product/potato.jpg', 14, '100.00', 1, 1),
+(13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 1, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 30, '70.00', 1, 0),
 (14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 22, '80.00', 1, 1),
-(15, 8, 'Potato', 'The potato is a starchy, tuberous crop from the perennial nightshade Solanum tuberosum. Potato may be applied to both the plant and the edible tuber. Potatoes have become a staple food in many parts of the world and an integral part of much of the world\'s food supply. Potatoes are the world\'s fourth-largest food crop, following maize (corn), wheat, and rice. Tubers produce glycoalkaloids in small amounts. If green sections (sprouts and skins) of the plant are exposed to light the tuber can produce a high enough concentration of glycoalkaloids to affect human health.', 3, 1, '2018-07-26 14:30:26', '60.00', 'product/potato.jpg', 94, '75.00', 1, 1),
-(16, 10, 'Pechay Baguio', 'Baguio Pechay has light green leaves and a white stalk. It tastes milder than Bok Choy (Pechay Tagalog). Pechay Tagalog has smooth, dark green leaves that look like mustard leaves. ', 3, 90, '2018-07-30 14:47:42', '65.00', 'product/pechay-baguio.jpg', 10, '80.00', 1, 1),
-(17, 10, 'Pechay', 'masarap mura pa kaya bilina kau parang awa nyo na\r\n', 1, 2, '2018-07-30 16:09:03', '60.00', 'product/__original_drawn_by_aoha_twintail__sample-2ae9cf5c6deeeac1dc3e7dde22267dc1.jpg', 10, '50.00', 0, 1),
+(15, 8, 'Potato', 'The potato is a starchy, tuberous crop from the perennial nightshade Solanum tuberosum. Potato may be applied to both the plant and the edible tuber. Potatoes have become a staple food in many parts of the world and an integral part of much of the world\'s food supply. Potatoes are the world\'s fourth-largest food crop, following maize (corn), wheat, and rice. Tubers produce glycoalkaloids in small amounts. If green sections (sprouts and skins) of the plant are exposed to light the tuber can produce a high enough concentration of glycoalkaloids to affect human health.', 3, 1, '2018-07-26 14:30:26', '60.00', 'product/potato.jpg', 95, '75.00', 1, 1),
+(16, 10, 'Pechay Baguio', 'Baguio Pechay has light green leaves and a white stalk. It tastes milder than Bok Choy (Pechay Tagalog). Pechay Tagalog has smooth, dark green leaves that look like mustard leaves. ', 3, 90, '2018-07-30 14:47:42', '65.00', 'product/pechay-baguio.jpg', 11, '80.00', 1, 1),
+(17, 10, 'Pechay', 'masarap mura pa kaya bilina kau parang awa nyo na\r\n', 1, 2, '2018-07-30 16:09:03', '60.00', 'product/pechay-n.jpg', 11, '50.00', 0, 1),
 (18, 4, 'Carrots', 'Carrots Carrots Carrots Carrots Carrots Carrots Carrots Carrots', 1, 1, '2018-07-31 16:37:55', '100.00', 'product/storecarrots.jpg', 2, '50.00', 1, 0),
 (19, 9, 'Talong', 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 3, 1, '2018-07-31 16:41:58', '80.00', 'product/talong.jpg', 5, '100.00', 1, 1),
 (20, 12, 'Latundan na Saging', 'Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan', 3, 1, '2018-07-31 17:05:46', '40.00', 'product/latundan.jpg', 6, '90.00', 1, 1),
@@ -2978,6 +2971,28 @@ INSERT INTO `tblreviews` (`reviewid`, `review`, `productid`, `userid`, `datepost
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tblsales`
+--
+
+CREATE TABLE `tblsales` (
+  `salesid` int(11) NOT NULL,
+  `productid` int(11) NOT NULL,
+  `weight` decimal(10,3) NOT NULL,
+  `sales` int(11) NOT NULL,
+  `datecommit` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblsales`
+--
+
+INSERT INTO `tblsales` (`salesid`, `productid`, `weight`, `sales`, `datecommit`) VALUES
+(1, 11, '9.000', 495, '2018-08-04 22:53:40'),
+(2, 9, '1.000', 50, '2018-08-04 22:53:40');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbluser`
 --
 
@@ -3009,11 +3024,11 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `phone`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-03 16:29:42', 119),
-(2, 'seller1', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-03 15:02:06', 189),
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-04 14:53:35', 119),
+(2, 'Pampanga Seller', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-04 09:01:47', 189),
 (3, 'c24359d3031378f2', '5488d6d6f37a311a1085daf41f2e990c', '8f87ec93bf', '083a24', '6df46230', '2000-07-15', '2018-06-07 01:56:37', '985198f63d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (4, '15092bfa5e2b6e8c', '5f4dcc3b5aa765d61d8327deb882cf99', '7df2090dc6', '0d6c92', 'a401c8f7', '2000-12-04', '2018-06-07 01:56:37', '252d3825ae@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-02 13:47:42', 29),
-(5, 'seller2', '5f4dcc3b5aa765d61d8327deb882cf99', '87efa34481', 'b17e8d', 'f4120928', '2000-09-19', '2018-06-07 01:56:37', '7182aa0862@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-01 19:48:27', 27),
+(5, 'Cavite Seller', '5f4dcc3b5aa765d61d8327deb882cf99', '87efa34481', 'b17e8d', 'f4120928', '2000-09-19', '2018-06-07 01:56:37', '7182aa0862@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-04 09:05:06', 27),
 (6, 'e9eee15647061a7c', '5f4dcc3b5aa765d61d8327deb882cf99', '1bdd26b9d4', '755678', '505f27a9', '2000-03-15', '2018-06-07 15:32:53', '17f70978e3@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-04 08:07:37', 21),
 (7, 'c222b3b69f9b0d9a', '5f4dcc3b5aa765d61d8327deb882cf99', '22a8f59cd0', 'e1feb5', '8feeb649', '2000-07-15', '2018-06-07 14:08:15', '8010fdd3df@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-08-01 16:13:30', 58),
 (8, 'f3bd37208580dfc0', '5f4dcc3b5aa765d61d8327deb882cf99', '998a862c0d', '74e778', 'dcc92235', '2000-01-31', '2018-06-07 15:31:06', '62e6b92616@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:01', 41),
@@ -3097,8 +3112,9 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (86, 'sdasdasdasd', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:38:19', '23234@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:40:31', 0),
 (87, '12313asdasd', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:41:01', 'asdada@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:42:02', 0),
 (88, 'fsdfsdf232', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:42:43', 'adasdasf@feadkfdfkdfki', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:46:53', 2),
-(89, 'Sample', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 17:22:42', 'sample@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-08-03 16:30:18', 0),
-(90, 'username', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-27 05:25:27', 'username@gmail.com', '', '', 3, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-08-01 20:27:11', 2);
+(89, 'Sample', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 17:22:42', 'sample@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-08-04 14:08:47', 0),
+(90, 'Tagaytay Seller', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-27 05:25:27', 'username@gmail.com', '', 'Tagaytay', 3, 1, '', 'Seller from Tagaytay', 1, 4, '0000-00-00 00:00:00', '2018-08-04 09:09:14', 2),
+(91, 'Mang Juan', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-08-04 08:40:52', 'mangjuan@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-08-04 13:50:20', 0);
 
 --
 -- Indexes for dumped tables
@@ -3145,6 +3161,12 @@ ALTER TABLE `tblcommentann`
 --
 ALTER TABLE `tblfarm`
   ADD PRIMARY KEY (`farmid`);
+
+--
+-- Indexes for table `tblfee`
+--
+ALTER TABLE `tblfee`
+  ADD PRIMARY KEY (`feeid`);
 
 --
 -- Indexes for table `tblfriend`
@@ -3207,6 +3229,12 @@ ALTER TABLE `tblreviews`
   ADD PRIMARY KEY (`reviewid`);
 
 --
+-- Indexes for table `tblsales`
+--
+ALTER TABLE `tblsales`
+  ADD PRIMARY KEY (`salesid`);
+
+--
 -- Indexes for table `tbluser`
 --
 ALTER TABLE `tbluser`
@@ -3259,6 +3287,12 @@ ALTER TABLE `tblfarm`
   MODIFY `farmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tblfee`
+--
+ALTER TABLE `tblfee`
+  MODIFY `feeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tblfriend`
 --
 ALTER TABLE `tblfriend`
@@ -3274,25 +3308,25 @@ ALTER TABLE `tbllikes`
 -- AUTO_INCREMENT for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=339;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=358;
 
 --
 -- AUTO_INCREMENT for table `tblorder`
 --
 ALTER TABLE `tblorder`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tblordersummary`
 --
 ALTER TABLE `tblordersummary`
-  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblpm`
 --
 ALTER TABLE `tblpm`
-  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1856;
+  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1857;
 
 --
 -- AUTO_INCREMENT for table `tblproduct`
@@ -3319,10 +3353,16 @@ ALTER TABLE `tblreviews`
   MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT for table `tblsales`
+--
+ALTER TABLE `tblsales`
+  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

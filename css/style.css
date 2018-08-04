@@ -858,6 +858,7 @@ li{
 	min-height: 300px;
 	width: 220px;
 	margin: 10px;
+	padding: 3px;
 	color:var(--light-color);
 	display: inline-block;
 	background: var(--light-color);

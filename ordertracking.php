@@ -28,10 +28,61 @@
 	<!-- Content -->
 	<div class="other-content">
 		<h1><a class="btp" href="profile.php?id=<?php echo $_SESSION['id'] ?>">Back to Your Profile</a></h1>
-		<h3>Order Tracking</h3>
 <?php
 	$userid = $_SESSION['id'];
-	$sql = "SELECT orderid, ordernumber, billingaddress, email, phone, total, status, datecommit FROM tblorder WHERE userid = '$userid' ORDER BY datecommit DESC";
+	$sql="SELECT orderid FROM tblorder WHERE userid = '$userid'";
+	$result=$conn->query($sql);
+
+	$rows=$result->num_rows;
+	$page_rows = 1;
+	$last = ceil($rows/$page_rows);
+	if($last < 1){
+		$last = 1;
+	}
+	$pagenum = 1;
+	if(isset($_GET['pn'])){
+		$pagenum = preg_replace('#[^0-9]#', '', $_GET['pn']);
+	}
+	if ($pagenum < 1) { 
+	    $pagenum = 1; 
+	} else if ($pagenum > $last) { 
+	    $pagenum = $last; 
+	}
+	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
+
+	$sql = "SELECT orderid, ordernumber, billingaddress, email, phone, fee, total, status, datecommit FROM tblorder WHERE userid = '$userid' ORDER BY datecommit DESC $limit";
+
+	$textline1 = "Order Tracking (<b>".number_format($rows)."</b>)";
+$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
+$paginationCtrls = '';
+if($last != 1){
+	if ($pagenum > 1) {
+        $previous = $pagenum - 1;
+		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$previous.'">Previous</a> &nbsp; &nbsp; ';
+		// Render clickable number links that should appear on the left of the target page number
+		for($i = $pagenum-4; $i < $pagenum; $i++){
+			if($i > 0){
+		        $paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp; ';
+			}
+	    }
+    }
+    $paginationCtrls .= ''.$pagenum.' &nbsp; ';
+	for($i = $pagenum+1; $i <= $last; $i++){
+		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp; ';
+		if($i >= $pagenum+4){
+			break;
+		}
+	}
+	    if ($pagenum != $last) {
+        $next = $pagenum + 1;
+        $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next.'">Next</a> ';
+    }
+}
+ echo'<h2>  '.$textline1.'</h2>
+  <p>  '.$textline2.' </p>
+  <div id="pagination_controls"> '.$paginationCtrls.'</div>';
+
+
 	$result = $conn->query($sql);
 	while($row = $result->fetch_object()){
 		$orderid = $row->orderid;
@@ -39,6 +90,7 @@
 		$address = $row->billingaddress;
 		$email = $row->email;
 		$phone = $row->phone;
+		$fee = $row->fee;
 		$total = $row->total;
 		$status = $row->status;
 		if($status==0){
@@ -70,7 +122,7 @@
 				<th>Price</th>
 			</tr>';
 // Order Summary
-$sql2 = "SELECT t1.productid,productname, price, weight FROM tblordersummary AS t1
+$sql2 = "SELECT t1.productid, productname, t1.price, weight FROM tblordersummary AS t1
 LEFT JOIN tblproduct AS t2
 	ON t1.productid = t2.productid
 WHERE orderid = '$orderid'";
@@ -83,15 +135,15 @@ while($row2 = $result2->fetch_object()){
 	$Ptotal = $price*$weight; 
 	
 	echo'<tr>
-		<th><a class="black" href="product.php?id='.$productid.'">'.$product.'</a> (x '.$weight.')
+		<th><a class="black" href="product.php?id='.$productid.'">'.$product.'</a> (x '.$weight.'kg)
 		</th>';
 	echo'<th>₱'.number_format($Ptotal,2).'</th>
 		</tr>';
 }
 
 		echo'</table></div>
-		<p>Subtotal: <b>₱'.number_format($total-60,2).'</b></p>
-		<p>Shipping Fee: <b>+₱60.00</b></p>
+		<p>Subtotal: <b>₱'.number_format($total-$fee,2).'</b></p>
+		<p>Shipping Fee: <b>+₱'.number_format($fee,2).'</b></p>
 		<p>Total: <b>₱'.number_format($total,2).'</b></p>
 		</div>';
 	}

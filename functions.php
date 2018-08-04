@@ -159,6 +159,7 @@ function addSidebar(){
 				<a title="Change your profile picture" href="insertphoto.php"><i class="fas fa-camera"></i></i></a></li>
 				<li><a title="Edit your personal info" href="editinfo.php"><i class="fas fa-pen-square"></i></a></li>
 				<li><a title="Change your account settings" href="accountsetting.php"><i class="fas fa-cog"></i></a></li>
+				<li><a title="Order Tracking" href="ordertracking.php"><i class="fas fa-shoe-prints"></i></a></li>
 				<li><a title="Logout" href="logout.php"><i class="fas fa-power-off"></i></a></li>
 			</ul>
 		</div>';
@@ -325,22 +326,22 @@ if($type==1){
 	Please read the rules and guidelines.</li>';
 }else if ($type==4){
 	echo'<li> Your order has been <span style="color:green;"><b>approved</b></span><br>'.$date.'.<br>
-	Order No. <b>'.$details.'</b></li>';
+	Order No. <a class="black" href="search.php?criteria=3&search-text='.$details.'"><b>'.$details.'</a></b></li>';
 }else if ($type==5){
 	echo'<li> Your order has been <span style="color:red;"><b>rejected</b></span><br>'.$date.'.<br>
-	Order No. <b>'.$details.'</b></li>';
+	Order No. <a class="black" href="search.php?criteria=3&search-text='.$details.'"><b>'.$details.'</a></b></li>';
 }else if ($type==6){
 	echo'<li> Your order has been <span style="color:red;"><b>cancelled</b></span><br>'.$date.'.<br>
-	Order No. <b>'.$details.'</b></li>';
+	Order No. <a class="black" href="search.php?criteria=3&search-text='.$details.'"><b>'.$details.'</a></b></li>';
 }else if ($type==7){
 	echo'<li> Your order has been <span style="color:green;"><b>completed</b></span><br>'.$date.'.<br>
-	Order No. <b>'.$details.'</b></li>';
+	Order No. <a class="black" href="search.php?criteria=3&search-text='.$details.'"><b>'.$details.'</a></b></li>';
 }else if ($type==8){
 	echo'<li> <div class="comment-tn">
 				<img src="'.$imgpath.'">
 			</div>
 			 <a class="n1" href="profile.php?id='.$uid.'">'.$uname.'</a> has place an order '.$date.'.<br>
-	Order No. <b>'.$details.'</b></li>';
+	Order No. <a class="black" href="search.php?criteria=3&search-text='.$details.'"><b>'.$details.'</b></a></li>';
 }
 }
 }
@@ -363,8 +364,11 @@ function search_function(){
 			<i class="fas fa-search"></i>
 			<label>Search</label>
 			<select name="criteria" id="criteria">
-				<option value="1">Product</option>
-				<option value="2">User</option>
+				<option value="1">Product</option>';
+				if(isset($_SESSION['id'])){
+					echo'<option value="3">Order#</option>';
+				}
+			echo'<option value="2">User</option>
 			</select>
 			<input type="text" onkeyup="searchdropdown()" required name="search-text" placeholder="Search..." id="search-text" autocomplete="off">
 		</form>

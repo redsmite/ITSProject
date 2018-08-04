@@ -4,9 +4,58 @@ include'functions.php';
 require_once'connection.php';
 user_access();
 
+if(isset($_POST['placeOrder'])){
+	if(!isset($_SESSION['total'])){
+		echo'<i class="fas fa-exclamation-circle"></i> Your shopping cart is empty.';
+	}else{
+		if($_SESSION['total']==0){
+			echo'<i class="fas fa-exclamation-circle"></i> Your shopping cart is empty.';
+		}else if($_SESSION['total']<500){
+			echo'<i class="fas fa-exclamation-circle"></i> Orders should be a minimum of ₱500.00 worth of purchase.';
+		}else{
+			$total = $_POST['placeOrder'];
+			$userid = $_SESSION['id'];
+			$fee = $_POST['fee'];
+			$address = $_POST['address'];
+			$email = $_POST['email'];
+			$phone = $_POST['phone'];
+			$ordernum = date("Ymdhis").$_SESSION['id'];
+
+			$array = $_SESSION['trans'];
+
+			$sql = "INSERT INTO tblorder (userid, ordernumber, billingaddress, email, phone, fee, total, status, datecommit) VALUES ('$userid','$ordernum','$address','$email','$phone','$fee','$total',0,NOW())";
+			$result = $conn->query($sql);
+
+			$sql='SELECT orderid FROM tblorder ORDER BY orderid DESC LIMIT 1';
+			$result = $conn->query($sql);
+			$fetch = $result->fetch_object();
+			$orderid = $fetch->orderid;
+
+			$values = '';
+			foreach ($array as $key => $value) {
+				$product = $array[$key]['productid'];
+				$weight = $array[$key]['weight'];
+				$price= $array[$key]['price'];
+
+				$values .= "('$orderid','$product','$weight',$price),";
+			}
+			$values = rtrim($values,',');
+
+			$sql = "INSERT INTO tblordersummary (orderid,productid,weight,price) VALUES $values";
+			$result = $conn->query($sql);
+
+			$sql = "INSERT INTO tblnotif (userid, receiverid, notifdate, notiftype, details) VALUES ('$userid', 1, NOW(), 8,'$ordernum')";
+			$result = $conn->query($sql);
+
+			unset($_SESSION['checkout']);
+			echo 'success';
+		}
+	}
+}
+
 function orderMonitoring($where,$condition){
 $conn = new mysqli('localhost','root','','itsproject');
-$sql = "SELECT orderid, ordernumber, t1.userid, username, billingaddress, t1.email, t1.phone, total, status, datecommit FROM tblorder AS t1
+$sql = "SELECT orderid, ordernumber, t1.userid, username, billingaddress, t1.email, t1.phone, fee, total, status, datecommit FROM tblorder AS t1
 LEFT JOIN tbluser AS t2
 	ON t1.userid = t2.userid
 $where
@@ -20,6 +69,7 @@ while($row = $result->fetch_object()){
 	$address = $row->billingaddress;
 	$email = $row->email;
 	$phone = $row->phone;
+	$fee = $row->fee;
 	$total = $row->total;
 	$status = $row->status;
 	if($status==0){
@@ -52,7 +102,7 @@ while($row = $result->fetch_object()){
 			<th>Price</th>
 		</tr>';
 // Order Summary
-$sql2 = "SELECT t1.productid, productname, price, weight FROM tblordersummary AS t1
+$sql2 = "SELECT t1.productid, productname, t1.price, weight FROM tblordersummary AS t1
 LEFT JOIN tblproduct AS t2
 ON t1.productid = t2.productid
 WHERE orderid = '$orderid'";
@@ -65,15 +115,15 @@ $weight = $row2->weight;
 $Ptotal = $price*$weight; 
 
 echo'<tr>
-	<th><a class="black" href="product.php?id='.$productid.'">'.$product.'</a> (x '.$weight.')
+	<th><a class="black" href="product.php?id='.$productid.'">'.$product.'</a> (x '.$weight.'kg)
 	</th>';
 echo'<th>₱'.number_format($Ptotal,2).'</th>
 	</tr>';
 }
 
 	echo'</table></div>
-	<p>Subtotal: <b>₱'.number_format($total-60,2).'</b></p>
-	<p>Shipping Fee: <b>+₱60.00</b></p>
+	<p>Subtotal: <b>₱'.number_format($total-$fee,2).'</b></p>
+	<p>Shipping Fee: <b>+₱'.number_format($fee,2).'</b></p>
 	<p>Total: <b>₱'.number_format($total,2).'</b></p>';
 	if($condition==0){
 	echo'<div id="order-approve-'.$orderid.'" class="add-product-button">
@@ -102,53 +152,6 @@ echo'<th>₱'.number_format($Ptotal,2).'</th>
 
 	echo'</div>';
 }
-}
-
-if(isset($_POST['placeOrder'])){
-	if(!isset($_SESSION['total'])){
-		echo'<i class="fas fa-exclamation-circle"></i> Your shopping cart is empty.';
-	}else{
-		if($_SESSION['total']==0){
-			echo'<i class="fas fa-exclamation-circle"></i> Your shopping cart is empty.';
-		}else if($_SESSION['total']<500){
-			echo'<i class="fas fa-exclamation-circle"></i> Orders should be a minimum of ₱500.00 worth of purchase.';
-		}else{
-			$total = $_POST['placeOrder'];
-			$userid = $_SESSION['id'];
-			$address = $_POST['address'];
-			$email = $_POST['email'];
-			$phone = $_POST['phone'];
-			$ordernum = date("Ymdhis").$_SESSION['id'];
-
-			$array = $_SESSION['trans'];
-
-			$sql = "INSERT INTO tblorder (userid, ordernumber, billingaddress, email, phone, total, status, datecommit) VALUES ('$userid','$ordernum','$address','$email','$phone','$total',0,NOW())";
-			$result = $conn->query($sql);
-
-			$sql='SELECT orderid FROM tblorder ORDER BY orderid DESC LIMIT 1';
-			$result = $conn->query($sql);
-			$fetch = $result->fetch_object();
-			$orderid = $fetch->orderid;
-
-			$values = '';
-			foreach ($array as $key => $value) {
-				$product = $array[$key]['productid'];
-				$weight = $array[$key]['weight'];
-
-				$values .= "('$orderid','$product','$weight'),";
-			}
-			$values = rtrim($values,',');
-
-			$sql = "INSERT INTO tblordersummary (orderid,productid,weight) VALUES $values";
-			$result = $conn->query($sql);
-
-			$sql = "INSERT INTO tblnotif (userid, receiverid, notifdate, notiftype, details) VALUES ('$userid', 1, NOW(), 8,'$ordernum')";
-			$result = $conn->query($sql);
-
-			unset($_SESSION['checkout']);
-			echo 'success';
-		}
-	}
 }
 
 //Orders in admin panel
@@ -206,6 +209,22 @@ if(isset($_POST['complete'])){
 	$sql = "UPDATE tblorder SET status = 4 WHERE orderid = '$id'";
 	$result = $conn->query($sql);
 	$sql = "INSERT INTO tblnotif (receiverid, notifdate, notiftype, details) VALUES ('$receiver', NOW(), 7,'$number')";
+	$result = $conn->query($sql);
+
+	$sql = "SELECT productid, weight, price FROM tblordersummary
+	WHERE orderid='$id'";
+	$result = $conn->query($sql);
+	$values = '';
+	while($row = $result->fetch_object()){
+		$product = $row->productid;
+		$weight = $row->weight;
+		$price = $row->price;
+		$sales = $weight*$price;
+
+		$values .= "('$product','$weight','$sales',NOW()),";
+	}
+	$values = rtrim($values,',');
+	$sql = "INSERT INTO tblsales (productid, weight, sales, datecommit) VALUES $values";
 	$result = $conn->query($sql);
 }
 

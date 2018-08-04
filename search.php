@@ -179,7 +179,93 @@ if(isset($_GET['search-text'])){
 	}
 }
 }else if($crit==3){
+	if(!isset($_SESSION['id'])){
+		die('You\'re not login');
+	}
+	// Order Tracking
+	if(isset($_GET['search-text'])){
+	$userid = $_SESSION['id'];
+	$search = $_GET['search-text'];
 
+	$sql = "SELECT orderid, ordernumber, t1.userid, username, billingaddress, t1.email, t1.phone, fee, total, status, datecommit FROM tblorder AS t1
+	LEFT JOIN tbluser AS t2
+		ON t1.userid = t2.userid
+	WHERE ordernumber='$search'";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_object()){
+		
+		$userid = $row->userid;
+
+		// Check if the user own the order / if user is admin
+
+		if($userid == $_SESSION['id'] or $_SESSION['type']==4){
+		
+			$orderid = $row->orderid;
+			$ordernum = $row->ordernumber;
+			$username = $row->username;
+			$address = $row->billingaddress;
+			$email = $row->email;
+			$phone = $row->phone;
+			$fee = $row->fee;
+			$total = $row->total;
+			$status = $row->status;
+			if($status==0){
+				$status = '<font style="color:orangered;">Reviewing...</font>';
+			}else if($status == 1){
+				$status = '<font style="color:green;">On delivery...</font>';
+			}else if($status == 2){
+				$status = '<font style="color:red;">Rejected</font>';
+			}else if($status == 3){
+				$status = '<font style="color:red;">Cancelled</font>';
+			}else if($status == 4){
+				$status = '<font style="color:green;">Completed</font>';
+			}
+			$date = $row->datecommit;
+
+			echo '<div class="orders">
+			<p>Order No: '.$ordernum.'</p>
+			<p>User: <a class="black" href=profile.php?id='.$userid.'>'.$username.'</a></p>
+			<p>Status: <b>'.$status.'</b></p>
+			<p>Submitted: '.date('M j, Y g:i A',strtotime($date)).'</p>
+			<p>Submitted info:</p> 
+			<p class="submitted-info">Billing Address: '.$address.'<br>
+			Email: '.$email.'<br>
+			Phone: '.$phone.'</p>
+			<p>Order Summary</p>
+			<div class="order-summary">
+			<table>
+				<tr>
+					<th>Product</th>
+					<th>Price</th>
+				</tr>';
+	// Order Summary
+	$sql2 = "SELECT t1.productid,productname, t1.price, weight FROM tblordersummary AS t1
+	LEFT JOIN tblproduct AS t2
+		ON t1.productid = t2.productid
+	WHERE orderid = '$orderid'";
+	$result2 = $conn->query($sql2);
+	while($row2 = $result2->fetch_object()){
+		$productid = $row2->productid;
+		$product = $row2->productname;
+		$price = $row2->price;
+		$weight = $row2->weight;
+		$Ptotal = $price*$weight; 
+		
+		echo'<tr>
+			<th><a class="black" href="product.php?id='.$productid.'">'.$product.'</a> (x '.$weight.'kg)
+			</th>';
+		echo'<th>₱'.number_format($Ptotal,2).'</th>
+			</tr>';
+	}
+
+			echo'</table></div>
+			<p>Subtotal: <b>₱'.number_format($total-$fee,2).'</b></p>
+			<p>Shipping Fee: <b>+₱'.number_format($fee,2).'</b></p>
+			<p>Total: <b>₱'.number_format($total,2).'</b></p>
+			</div>';
+		}
+	}	
+	}
 }
 }
 mysqli_close($conn);
