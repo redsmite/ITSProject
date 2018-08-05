@@ -384,17 +384,23 @@ function salesReport($where,$format,$weekly){
 	
 	if($weekly==0){
 		echo date($format);
-	}else{
-		for($i=6;$i>=0;$i--){
-			if($i==6){
-			$date = strtotime("-$i day");
-			echo date(' M j Y', $date).' - ';
-			}
-			if($i==0){
-			$date = strtotime("-$i day");
-			echo date(' M j Y', $date);
-			}
+	}else if($weekly==1){
+		$monday=date('M j, Y',strtotime('monday this week'));
+		$sunday=date('M j, Y',strtotime('sunday this week'));
+		echo $monday.' - '.$sunday;
+	}else if($weekly==2){
+		$array = explode('|', $format);
+		$year = $array[0];
+		$week = $array[1];
+
+		function getStartAndEndDate($week, $year) {
+		  $dto = new DateTime();
+		  $ret['week_start'] = $dto->setISODate($year, $week)->format('M j, Y');
+		  $ret['week_end'] = $dto->modify('+6 days')->format('M j, Y');
+		  return $ret;
 		}
+
+		echo getStartAndEndDate($week,$year)['week_start'].' - '.getStartAndEndDate($week,$year)['week_end'];
 	}
 
 	echo'</th></tr>
@@ -422,30 +428,88 @@ function salesReport($where,$format,$weekly){
 	$sql = "SELECT SUM(sales) AS total FROM tblsales $where";
 	$result = $conn->query($sql);
 	$fetch = $result->fetch_object();
-	echo '<h1>Total: ₱'.number_format($fetch->total,2).'</h1>';
+	echo '<h3>Total Sales: ₱'.number_format($fetch->total,2).'</h3><br>';
+	$sql = "SELECT SUM(fee) AS shipping FROM tblorder $where AND status = 4";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	echo '<h3>Shipping Revenue: ₱'.number_format($fetch->shipping,2).'</h3>';
 }
 
 if(isset($_POST['daily'])){
-	echo '<h1><i class="fas fa-chart-bar"></i> Daily Report</h1>';
+	echo '<h1><i class="fas fa-chart-bar"></i> Daily Report</h1>
+	<div class="date-report">Select Date<br>
+		<input type="date" id="date-report" onchange="dailyReportSelect()" format="YYYY-MM-DD">
+	</div>';
 
-	$string = 'WHERE day(CURRENT_DATE) = day(datecommit)';
+	$string = 'WHERE day(CURRENT_DATE) = day(datecommit) AND month(CURRENT_DATE) = month(datecommit) AND year(CURRENT_DATE) = year(datecommit)';
 	$format = "M j, Y";
 	salesReport($string,$format,false);
 }
 
-if(isset($_POST['weekly'])){
-	echo '<h1><i class="fas fa-chart-bar"></i> Weekly Report</h1>';
-	$string = "WHERE DATE_SUB(datecommit, INTERVAL 7 DAY)";
-	$format = "M j, Y";
-	salesReport($string,$format,true);
+if(isset($_POST['dateDaily'])){
+	$date=$_POST['dateDaily'];
+	$datearray = explode('-',$date);
+	$year = $datearray[0];
+	$month = $datearray[1];
+	$day = $datearray[2];
+	echo '<h1><i class="fas fa-chart-bar"></i> Daily Report</h1>
+	<div class="date-report">Select Date<br>
+		<input type="date" value="'.$date.'"" id="date-report" onchange="dailyReportSelect()" format="YYYY-MM-DD">
+	</div>';
 
+	$string = "WHERE '$day' = day(datecommit) AND '$month' = month(datecommit) AND '$year' = year(datecommit)";
+	$format = "$month-$day-$year";
+	salesReport($string,$format,false);
+}
+
+if(isset($_POST['weekly'])){
+	echo '<h1><i class="fas fa-chart-bar"></i> Weekly Report
+	</h1><div class="date-report">Select Week<br>
+		<input type="week" id="week-report" onchange="weeklyReportSelect()">
+	</div>';
+	$string = "WHERE week(datecommit) = week(CURRENT_DATE) AND year(datecommit) = year(CURRENT_DATE)";
+	$format = "-";
+	salesReport($string,$format,true);
+}
+
+if(isset($_POST['dateWeekly'])){
+	$date = $_POST['dateWeekly'];
+	$datearray = explode('-', $date);
+	$year = $datearray[0];
+	$week = ltrim($datearray[1],'W');
+	echo '<h1><i class="fas fa-chart-bar"></i> Weekly Report
+	</h1><div class="date-report">Select Week<br>
+		<input type="week" value="'.$date.'"" id="week-report" onchange="weeklyReportSelect()">
+	</div>';
+	$string = "WHERE week(datecommit) = $week AND year(datecommit) = $year";
+	$format = "$year|$week";
+	salesReport($string,$format,2);
 }
 
 if(isset($_POST['monthly'])){
-	echo '<h1><i class="fas fa-chart-bar"></i> Monthly Report</h1>';
+	echo '<h1><i class="fas fa-chart-bar"></i> Monthly Report</h1>
+	<div class="date-report">Select Month<br>
+		<input type="month" id="month-report" onchange="monthlyReportSelect()">
+	</div>';
 
 	$string='WHERE month(CURRENT_DATE) = month(datecommit) AND year(CURRENT_DATE) = year(datecommit)';
 	$format = "F Y";
+	salesReport($string,$format,false);
+}
+
+if(isset($_POST['dateMonthly'])){
+	$date = $_POST['dateMonthly'];
+	$datearray = explode('-',$date);
+	$year = $datearray[0];
+	$month = $datearray[1];
+
+	echo '<h1><i class="fas fa-chart-bar"></i> Monthly Report</h1>
+	<div class="date-report">Select Month<br>
+		<input type="month" value="'.$date.'" id="month-report" onchange="monthlyReportSelect()">
+	</div>';
+
+	$string="WHERE $month = month(datecommit) AND $year = year(datecommit)";
+	$format = "$month-$year";
 	salesReport($string,$format,false);
 }
 

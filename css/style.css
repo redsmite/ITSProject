@@ -2118,6 +2118,18 @@ li{
 	color: var(--light-color);
 }
 
+.date-report{
+	text-align: center;
+	margin: auto;
+	margin-bottom: 15px;
+	background: var(--darkgray);
+	padding: 5px;
+	width: 200px;
+	border-radius: 8px;
+	border: 1px solid var(--light-color);
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
 #product-monitoring p{
 	line-height: 1.5em;
 	font-size: 1.2em;

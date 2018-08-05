@@ -71,7 +71,7 @@ if($ordercount != 0){
 	echo '('.$ordercount.')';
 }
 ?>
-					 Approved Orders</div>
+					 Transactions</div>
 					<div class="monitoring-option" onclick="showApproveProduct()"><i class="fas fa-clipboard-check"></i>
 <?php
 $sql = "SELECT productid FROM tblproduct WHERE is_approved = 0";
@@ -94,7 +94,7 @@ if($new_products!=0){
 						</div>
 					</div>
 					<div id="transaction-body">
-						<h1>Approved Orders</h1>
+						<h1>Transactions</h1>
 						<div id="transaction-body-content">
 						</div>
 					</div>

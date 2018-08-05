@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2018 at 11:49 AM
+-- Generation Time: Aug 05, 2018 at 05:33 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -907,12 +907,15 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (356, 0, 89, '2018-08-04 22:08:09', 1, 6, '2018080409485289', 0),
 (357, 0, 91, '2018-08-04 22:53:40', 0, 7, '2018080409501891', 0),
 (358, 92, 1, '2018-08-05 15:09:39', 1, 8, '2018080503093992', 0),
-(359, 0, 92, '2018-08-05 15:11:09', 0, 4, '2018080503093992', 0),
-(360, 0, 92, '2018-08-05 15:11:14', 0, 7, '2018080503093992', 0),
+(359, 0, 92, '2018-08-05 15:11:09', 1, 4, '2018080503093992', 0),
+(360, 0, 92, '2018-08-05 15:11:14', 1, 7, '2018080503093992', 0),
 (361, 1, 90, '2018-08-05 15:21:49', 1, 2, '159', 2),
 (362, 89, 1, '2018-08-05 17:38:39', 1, 8, '2018080505383989', 0),
 (363, 0, 89, '2018-08-05 17:39:39', 0, 4, '2018080505383989', 0),
-(364, 0, 89, '2018-08-05 17:39:42', 0, 7, '2018080505383989', 0);
+(364, 0, 89, '2018-08-05 17:39:42', 0, 7, '2018080505383989', 0),
+(365, 92, 1, '2018-08-05 23:11:23', 1, 8, '2018080511112292', 0),
+(366, 0, 92, '2018-08-05 23:13:30', 0, 4, '2018080511112292', 0),
+(367, 0, 92, '2018-08-05 23:13:34', 0, 7, '2018080511112292', 0);
 
 -- --------------------------------------------------------
 
@@ -942,7 +945,8 @@ INSERT INTO `tblorder` (`orderid`, `ordernumber`, `userid`, `billingaddress`, `e
 (2, '2018080409501891', 91, 'Quezon City', 'mangjuan@gmail.com', '0909090909090', '60.00', '605.00', 4, '2018-08-04 21:50:18'),
 (3, '2018080410065189', 89, 'Quezon City', 'sample@gmail.com', '0909009090909', '160.00', '670.00', 2, '2018-08-04 22:06:51'),
 (4, '2018080503093992', 92, 'Quezon City', 'user@gmail.com', '09090909090', '60.00', '585.00', 4, '2018-08-05 15:09:39'),
-(5, '2018080505383989', 89, 'Quezon City', 'sample@gmail.com', '0909090909', '60.00', '560.00', 4, '2018-08-05 17:38:39');
+(5, '2018080505383989', 89, 'Quezon City', 'sample@gmail.com', '0909090909', '60.00', '560.00', 4, '2018-08-05 17:38:39'),
+(6, '2018080511112292', 92, 'Quezon City', 'user@gmail.com', '090909090', '60.00', '585.00', 4, '2018-08-05 23:11:22');
 
 -- --------------------------------------------------------
 
@@ -974,7 +978,13 @@ INSERT INTO `tblordersummary` (`summaryid`, `orderid`, `productid`, `weight`, `p
 (9, 4, 8, '1.000', '100.00'),
 (10, 4, 7, '1.000', '135.00'),
 (11, 4, 3, '1.000', '80.00'),
-(12, 5, 12, '10.000', '50.00');
+(12, 5, 12, '10.000', '50.00'),
+(13, 6, 19, '1.000', '80.00'),
+(14, 6, 14, '1.000', '100.00'),
+(15, 6, 16, '1.000', '65.00'),
+(16, 6, 21, '1.000', '60.00'),
+(17, 6, 12, '2.000', '50.00'),
+(18, 6, 4, '2.000', '60.00');
 
 -- --------------------------------------------------------
 
@@ -2844,7 +2854,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1854, 71, 89, 'message', '2018-08-02 23:22:41', 1),
 (1855, 71, 90, 'message', '2018-08-02 23:22:41', 1),
 (1856, 71, 91, 'message', '2018-08-04 16:40:52', 1),
-(1857, 71, 92, 'Hello user! \n Welcome to Bahay Kubo ni Mang Celso. \n Thanks for joining us. \n Please refer for the link for more info \n http://localhost/project/about.php', '2018-08-05 15:06:15', 0);
+(1857, 71, 92, 'Hello user! \n Welcome to Bahay Kubo ni Mang Celso. \n Thanks for joining us. \n Please refer for the link for more info \n http://localhost/project/about.php', '2018-08-05 15:06:15', 1);
 
 -- --------------------------------------------------------
 
@@ -3013,7 +3023,13 @@ INSERT INTO `tblsales` (`salesid`, `productid`, `weight`, `sales`, `datecommit`)
 (5, 8, '1.000', 100, '2018-08-05 15:11:14'),
 (6, 7, '1.000', 135, '2018-08-05 15:11:14'),
 (7, 3, '1.000', 80, '2018-08-05 15:11:14'),
-(8, 12, '10.000', 500, '2018-08-05 17:39:42');
+(8, 12, '10.000', 500, '2018-08-05 17:39:42'),
+(9, 19, '1.000', 80, '2018-08-05 23:13:35'),
+(10, 14, '1.000', 100, '2018-08-05 23:13:35'),
+(11, 16, '1.000', 65, '2018-08-05 23:13:35'),
+(12, 21, '1.000', 60, '2018-08-05 23:13:35'),
+(13, 12, '2.000', 100, '2018-08-05 23:13:35'),
+(14, 4, '2.000', 120, '2018-08-05 23:13:35');
 
 -- --------------------------------------------------------
 
@@ -3049,7 +3065,7 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `phone`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-05 09:44:18', 120),
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-05 15:25:37', 120),
 (2, 'Pampanga Seller', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-04 09:01:47', 189),
 (3, 'c24359d3031378f2', '5488d6d6f37a311a1085daf41f2e990c', '8f87ec93bf', '083a24', '6df46230', '2000-07-15', '2018-06-07 01:56:37', '985198f63d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (4, '15092bfa5e2b6e8c', '5f4dcc3b5aa765d61d8327deb882cf99', '7df2090dc6', '0d6c92', 'a401c8f7', '2000-12-04', '2018-06-07 01:56:37', '252d3825ae@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-02 13:47:42', 29),
@@ -3140,7 +3156,7 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (89, 'Sample', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 17:22:42', 'sample@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-08-05 09:38:52', 0),
 (90, 'Tagaytay Seller', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-27 05:25:27', 'username@gmail.com', '', 'Tagaytay', 3, 1, 'upload/FXU2NrXO_400x400.jpg', 'Seller from Tagaytay', 1, 4, '0000-00-00 00:00:00', '2018-08-05 07:38:52', 3),
 (91, 'Mang Juan', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-08-04 08:40:52', 'mangjuan@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-08-04 13:50:20', 0),
-(92, 'user', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-08-05 07:06:14', 'user@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-08-05 07:09:43', 0);
+(92, 'user', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-08-05 07:06:14', 'user@gmail.com', '090909090', 'Cubao', 1, 1, '', '', 1, 4, '0000-00-00 00:00:00', '2018-08-05 15:13:02', 0);
 
 --
 -- Indexes for dumped tables
@@ -3334,19 +3350,19 @@ ALTER TABLE `tbllikes`
 -- AUTO_INCREMENT for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=365;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=368;
 
 --
 -- AUTO_INCREMENT for table `tblorder`
 --
 ALTER TABLE `tblorder`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblordersummary`
 --
 ALTER TABLE `tblordersummary`
-  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tblpm`
@@ -3382,7 +3398,7 @@ ALTER TABLE `tblreviews`
 -- AUTO_INCREMENT for table `tblsales`
 --
 ALTER TABLE `tblsales`
-  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbluser`

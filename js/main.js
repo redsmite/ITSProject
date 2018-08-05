@@ -1465,7 +1465,6 @@ function updateFee(){
 	});
 }
 
-
 function updatePrice(clicked){
 	addSpinners();
 
@@ -1670,6 +1669,61 @@ function showYearlyTab(){
 	myRequest.onload = function(){
 		var response= this.responseText;
 		document.getElementById('yearly-report').innerHTML=response;
+	}
+	myRequest.send(formData);
+}
+
+
+function dailyReportSelect(){
+	let date = document.getElementById('date-report').value;
+	
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'adminprocess.php';
+
+	var formData = "dateDaily="+date;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.getElementById('daily-report').innerHTML=response;
+	}
+	myRequest.send(formData);
+}
+
+function weeklyReportSelect(){
+	let week = document.getElementById('week-report').value;
+	var myRequest = new XMLHttpRequest();
+	var url = 'adminprocess.php';
+
+	var formData = "dateWeekly="+week;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.getElementById('weekly-report').innerHTML=response;
+	}
+	myRequest.send(formData);
+}
+
+function monthlyReportSelect(){
+	let month = document.getElementById('month-report').value;
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'adminprocess.php';
+
+	var formData = "dateMonthly="+month;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.getElementById('monthly-report').innerHTML=response;
 	}
 	myRequest.send(formData);
 }
