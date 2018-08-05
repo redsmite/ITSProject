@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2018 at 04:56 PM
+-- Generation Time: Aug 05, 2018 at 11:49 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -193,7 +193,9 @@ INSERT INTO `tblchangelog` (`logid`, `log`, `datecreated`) VALUES
 (68, 'Update price of White Potato', '2018-08-02 04:32:18'),
 (69, 'Update price of Eggplant', '2018-08-02 04:32:41'),
 (70, 'Update price of Pechay, Native', '2018-08-02 04:32:52'),
-(71, 'Update price of Calamansi', '2018-08-02 04:33:19');
+(71, 'Update price of Calamansi', '2018-08-02 04:33:19'),
+(72, 'Update price of Shipping fee', '2018-08-05 17:46:37'),
+(73, 'Update price of Shipping fee', '2018-08-05 17:46:50');
 
 -- --------------------------------------------------------
 
@@ -519,7 +521,8 @@ INSERT INTO `tblfriend` (`friendid`, `user1`, `user2`, `accepted`, `friendsince`
 (154, 8, 7, 2, '2018-06-25'),
 (155, 79, 1, 1, NULL),
 (156, 73, 81, 2, '2018-07-10'),
-(158, 7, 1, 2, '2018-07-26');
+(158, 7, 1, 2, '2018-07-26'),
+(159, 1, 90, 2, '2018-08-05');
 
 -- --------------------------------------------------------
 
@@ -902,7 +905,14 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (354, 0, 91, '2018-08-04 22:07:50', 0, 4, '2018080409501891', 0),
 (355, 0, 89, '2018-08-04 22:07:56', 1, 4, '2018080409485289', 0),
 (356, 0, 89, '2018-08-04 22:08:09', 1, 6, '2018080409485289', 0),
-(357, 0, 91, '2018-08-04 22:53:40', 0, 7, '2018080409501891', 0);
+(357, 0, 91, '2018-08-04 22:53:40', 0, 7, '2018080409501891', 0),
+(358, 92, 1, '2018-08-05 15:09:39', 1, 8, '2018080503093992', 0),
+(359, 0, 92, '2018-08-05 15:11:09', 0, 4, '2018080503093992', 0),
+(360, 0, 92, '2018-08-05 15:11:14', 0, 7, '2018080503093992', 0),
+(361, 1, 90, '2018-08-05 15:21:49', 1, 2, '159', 2),
+(362, 89, 1, '2018-08-05 17:38:39', 1, 8, '2018080505383989', 0),
+(363, 0, 89, '2018-08-05 17:39:39', 0, 4, '2018080505383989', 0),
+(364, 0, 89, '2018-08-05 17:39:42', 0, 7, '2018080505383989', 0);
 
 -- --------------------------------------------------------
 
@@ -930,7 +940,9 @@ CREATE TABLE `tblorder` (
 INSERT INTO `tblorder` (`orderid`, `ordernumber`, `userid`, `billingaddress`, `email`, `phone`, `fee`, `total`, `status`, `datecommit`) VALUES
 (1, '2018080409485289', 89, 'Quezon City', 'sample@gmail.com', '90090900990', '60.00', '620.00', 3, '2018-08-04 21:48:52'),
 (2, '2018080409501891', 91, 'Quezon City', 'mangjuan@gmail.com', '0909090909090', '60.00', '605.00', 4, '2018-08-04 21:50:18'),
-(3, '2018080410065189', 89, 'Quezon City', 'sample@gmail.com', '0909009090909', '160.00', '670.00', 2, '2018-08-04 22:06:51');
+(3, '2018080410065189', 89, 'Quezon City', 'sample@gmail.com', '0909009090909', '160.00', '670.00', 2, '2018-08-04 22:06:51'),
+(4, '2018080503093992', 92, 'Quezon City', 'user@gmail.com', '09090909090', '60.00', '585.00', 4, '2018-08-05 15:09:39'),
+(5, '2018080505383989', 89, 'Quezon City', 'sample@gmail.com', '0909090909', '60.00', '560.00', 4, '2018-08-05 17:38:39');
 
 -- --------------------------------------------------------
 
@@ -956,7 +968,13 @@ INSERT INTO `tblordersummary` (`summaryid`, `orderid`, `productid`, `weight`, `p
 (3, 2, 9, '1.000', '50.00'),
 (4, 3, 19, '2.000', '80.00'),
 (5, 3, 21, '5.000', '60.00'),
-(6, 3, 12, '1.000', '50.00');
+(6, 3, 12, '1.000', '50.00'),
+(7, 4, 11, '2.000', '55.00'),
+(8, 4, 14, '1.000', '100.00'),
+(9, 4, 8, '1.000', '100.00'),
+(10, 4, 7, '1.000', '135.00'),
+(11, 4, 3, '1.000', '80.00'),
+(12, 5, 12, '10.000', '50.00');
 
 -- --------------------------------------------------------
 
@@ -2825,7 +2843,8 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1853, 71, 88, 'message', '2018-08-02 23:22:41', 0),
 (1854, 71, 89, 'message', '2018-08-02 23:22:41', 1),
 (1855, 71, 90, 'message', '2018-08-02 23:22:41', 1),
-(1856, 71, 91, 'message', '2018-08-04 16:40:52', 1);
+(1856, 71, 91, 'message', '2018-08-04 16:40:52', 1),
+(1857, 71, 92, 'Hello user! \n Welcome to Bahay Kubo ni Mang Celso. \n Thanks for joining us. \n Please refer for the link for more info \n http://localhost/project/about.php', '2018-08-05 15:06:15', 0);
 
 -- --------------------------------------------------------
 
@@ -2860,7 +2879,7 @@ INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description
 (4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 19, '100.00', 1, 1),
 (5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 14, '100.00', 1, 1),
 (6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 1, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 7, '50.00', 1, 1),
-(7, 15, 'Philippine Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mango.jpg', 6, '50.00', 1, 1),
+(7, 15, 'Philippine Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mango.jpg', 7, '50.00', 1, 1),
 (8, 3, 'Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 2, 5, '2018-07-23 00:25:06', '100.00', 'product/cabbage-vegetable-power-green.jpg', 11, '80.00', 1, 1),
 (9, 13, 'Calamansi C', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 1, 2, '2018-07-24 15:56:10', '50.00', 'product/Calamansi.jpg', 6, '100.00', 1, 1),
 (10, 13, 'Calamansi G', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 1, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 3, '50.00', 1, 1),
@@ -2988,7 +3007,13 @@ CREATE TABLE `tblsales` (
 
 INSERT INTO `tblsales` (`salesid`, `productid`, `weight`, `sales`, `datecommit`) VALUES
 (1, 11, '9.000', 495, '2018-08-04 22:53:40'),
-(2, 9, '1.000', 50, '2018-08-04 22:53:40');
+(2, 9, '1.000', 50, '2018-08-04 22:53:40'),
+(3, 11, '2.000', 110, '2018-08-05 15:11:14'),
+(4, 14, '1.000', 100, '2018-08-05 15:11:14'),
+(5, 8, '1.000', 100, '2018-08-05 15:11:14'),
+(6, 7, '1.000', 135, '2018-08-05 15:11:14'),
+(7, 3, '1.000', 80, '2018-08-05 15:11:14'),
+(8, 12, '10.000', 500, '2018-08-05 17:39:42');
 
 -- --------------------------------------------------------
 
@@ -3024,7 +3049,7 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `phone`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-04 14:53:35', 119),
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-05 09:44:18', 120),
 (2, 'Pampanga Seller', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-04 09:01:47', 189),
 (3, 'c24359d3031378f2', '5488d6d6f37a311a1085daf41f2e990c', '8f87ec93bf', '083a24', '6df46230', '2000-07-15', '2018-06-07 01:56:37', '985198f63d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (4, '15092bfa5e2b6e8c', '5f4dcc3b5aa765d61d8327deb882cf99', '7df2090dc6', '0d6c92', 'a401c8f7', '2000-12-04', '2018-06-07 01:56:37', '252d3825ae@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-02 13:47:42', 29),
@@ -3112,9 +3137,10 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (86, 'sdasdasdasd', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:38:19', '23234@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:40:31', 0),
 (87, '12313asdasd', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:41:01', 'asdada@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:42:02', 0),
 (88, 'fsdfsdf232', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:42:43', 'adasdasf@feadkfdfkdfki', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:46:53', 2),
-(89, 'Sample', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 17:22:42', 'sample@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-08-04 14:08:47', 0),
-(90, 'Tagaytay Seller', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-27 05:25:27', 'username@gmail.com', '', 'Tagaytay', 3, 1, '', 'Seller from Tagaytay', 1, 4, '0000-00-00 00:00:00', '2018-08-04 09:09:14', 2),
-(91, 'Mang Juan', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-08-04 08:40:52', 'mangjuan@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-08-04 13:50:20', 0);
+(89, 'Sample', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 17:22:42', 'sample@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-08-05 09:38:52', 0),
+(90, 'Tagaytay Seller', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-27 05:25:27', 'username@gmail.com', '', 'Tagaytay', 3, 1, 'upload/FXU2NrXO_400x400.jpg', 'Seller from Tagaytay', 1, 4, '0000-00-00 00:00:00', '2018-08-05 07:38:52', 3),
+(91, 'Mang Juan', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-08-04 08:40:52', 'mangjuan@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-08-04 13:50:20', 0),
+(92, 'user', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-08-05 07:06:14', 'user@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-08-05 07:09:43', 0);
 
 --
 -- Indexes for dumped tables
@@ -3266,7 +3292,7 @@ ALTER TABLE `tblcategory`
 -- AUTO_INCREMENT for table `tblchangelog`
 --
 ALTER TABLE `tblchangelog`
-  MODIFY `logid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `logid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `tblcomment`
@@ -3296,7 +3322,7 @@ ALTER TABLE `tblfee`
 -- AUTO_INCREMENT for table `tblfriend`
 --
 ALTER TABLE `tblfriend`
-  MODIFY `friendid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `friendid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT for table `tbllikes`
@@ -3308,25 +3334,25 @@ ALTER TABLE `tbllikes`
 -- AUTO_INCREMENT for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=358;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=365;
 
 --
 -- AUTO_INCREMENT for table `tblorder`
 --
 ALTER TABLE `tblorder`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblordersummary`
 --
 ALTER TABLE `tblordersummary`
-  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tblpm`
 --
 ALTER TABLE `tblpm`
-  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1857;
+  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1858;
 
 --
 -- AUTO_INCREMENT for table `tblproduct`
@@ -3356,13 +3382,13 @@ ALTER TABLE `tblreviews`
 -- AUTO_INCREMENT for table `tblsales`
 --
 ALTER TABLE `tblsales`
-  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

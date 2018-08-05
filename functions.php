@@ -249,7 +249,7 @@ $sql="SELECT notifid FROM tblnotif
 $result=$conn->query($sql);
 $count=$result->num_rows;
 
-		echo'<a class="button" id="notifbtn" title="Check your notifications" onclick="toggleNotif()""><i class="far fa-bell"></i><span id="notifnum">'.$count.'</span></a>
+		echo'<a class="button" id="notifbtn" title="Check your notifications" onclick="showNotif()""><i class="far fa-bell"></i><span id="notifnum">'.$count.'</span></a>
 		<a class="button" href=profile.php?id='.$_SESSION['id'].'>
 		'.$_SESSION["name"].'\'s Profile<div class="top-tn"><img src="'.$tn_image.'""></div></a>';
 		echo'<div id="notifdrop">
@@ -354,7 +354,7 @@ if($type==1){
 		<a href ="register.php" class="button"><i class="fas fa-pencil-alt"></i></i>Sign Up</a>
 		<a id="modalBtn" class="button"><i class="fas fa-sign-in-alt"></i>Login</a>';
 	}
-	echo'<div id="modal3" onclick="toggleNotif()">
+	echo'<div id="modal3" onclick="hideNotif()">
 	</div>';
 }
 
@@ -366,7 +366,7 @@ function search_function(){
 			<select name="criteria" id="criteria">
 				<option value="1">Product</option>';
 				if(isset($_SESSION['id'])){
-					echo'<option value="3">Order#</option>';
+					echo'<option value="3">Order No</option>';
 				}
 			echo'<option value="2">User</option>
 			</select>

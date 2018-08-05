@@ -121,7 +121,7 @@
 					</div>
 					<div class="friends">
 						<h1>Friends</h1>
-						<a href="profilefriends.php?id=<?php echo $id; ?>"><p id="showallfr">Show all friends</p></a>
+						<a href="profilefriends.php?id=<?php echo $id; ?>"><p class="black">Show all friends</p></a>
 <?php
 // Show friends
 $sql="SELECT tbluser.userid,user1,user2,username,imgpath FROM tblfriend

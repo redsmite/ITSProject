@@ -414,16 +414,13 @@ if($last != 1){
 		</div>
 	</div>
 	<div id="daily-report">
-		<h1><i class="fas fa-chart-bar"></i> Daily Report</h1>
 	</div>
 	<div id="weekly-report">
 		<h1><i class="fas fa-chart-bar"></i> Weekly Report</h1>
 	</div>
 	<div id="monthly-report">
-		<h1><i class="fas fa-chart-bar"></i> Monthly Report</h1>
 	</div>
 	<div id="yearly-report">
-		<h1><i class="fas fa-chart-bar"></i> Yearly Report</h1>
 	</div>
 </div>
 			</div>

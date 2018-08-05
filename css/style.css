@@ -1123,7 +1123,7 @@ li{
 }
 
 .profile-pic-wrap{
-	margin-top: 2px;
+	margin-top: 5px;
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
@@ -1133,7 +1133,6 @@ li{
 	background: var(--secondary-color);
 	border:1px solid var(--dark-color);
 	overflow:hidden;
-	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .profile-pic-wrap img{
@@ -1257,11 +1256,6 @@ li{
 
 .friends-tn img{
 	max-width: 100%;
-}
-
-
-#showallfr:hover{
-	color:var(--dark-color);
 }
 
 .wrap-center{
@@ -2074,6 +2068,8 @@ li{
 	color: var(--light-color);
 }
 
+/* Sales */
+
 #sales{
 	display:grid;
 	grid-template-areas: 
@@ -2092,6 +2088,34 @@ li{
 	border-radius: 8px;
 	min-height: 80vh;
 	padding: 5px;
+}
+
+.sales-table{
+	font-size: 1.2em;
+	margin: 0 auto;
+	text-align: center;
+	width: 90%;
+	border-collapse: collapse;
+	border: 1px solid var(--darkgray);
+	margin-bottom: 20px;
+}
+
+.sales-table th{
+	box-sizing: border-box;
+	border: 1px solid var(--darkgray);
+	padding: 5px 0;
+}
+
+.sales-table tr:first-child{
+	background: var(--dark-red);
+	color: var(--light-color);
+	padding: 20px;
+	font-size: 1.5em;
+}
+
+.sales-table tr:nth-child(2){
+	background: var(--dark-color);
+	color: var(--light-color);
 }
 
 #product-monitoring p{

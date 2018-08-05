@@ -206,7 +206,11 @@ if(isset($_POST['updateFee'])){
 
 	$sql = "UPDATE tblfee SET fee = '$fee' WHERE feeid=1";
 	$result = $conn->query($sql);
-	echo $sql;
+
+	$log = 'Update price of Shipping fee';
+
+	$sql = "INSERT INTO tblchangelog (log,datecreated) VALUES ('$log',NOW())";
+	$result= $conn->query($sql);
 }
 
 
@@ -370,6 +374,87 @@ if(isset($_POST['updatefarm'])){
 	$sql = "UPDATE tblfarm SET farmname='$name', address='$address', status='$status' WHERE farmid = '$id'";
 	$result = $conn->query($sql);
 	echo 'success';
+}
+
+//Sales Report Function
+function salesReport($where,$format,$weekly){
+	$conn = new mysqli('localhost','root','','itsproject');
+	echo'<table class="sales-table">
+	<tr><th colspan="3">';
+	
+	if($weekly==0){
+		echo date($format);
+	}else{
+		for($i=6;$i>=0;$i--){
+			if($i==6){
+			$date = strtotime("-$i day");
+			echo date(' M j Y', $date).' - ';
+			}
+			if($i==0){
+			$date = strtotime("-$i day");
+			echo date(' M j Y', $date);
+			}
+		}
+	}
+
+	echo'</th></tr>
+	<tr><th>Product</th><th>Unit</th><th>Sales</th></tr>';
+
+	$sql = "SELECT t1.productid, productname, weight, sales FROM tblsales AS t1
+	LEFT JOIN tblproduct AS t2
+		ON t1.productid = t2.productid
+	$where
+	GROUP BY t1.productid
+	ORDER BY sales DESC";
+	$result = $conn->query($sql);
+	while($row=$result->fetch_object()){
+		$productid = $row->productid;
+		$product = $row->productname;
+		$weight = $row->weight;
+		$sales = $row->sales;
+		echo'<tr>
+		<th><a class="black" href="product.php?id='.$productid.'">'.$product.'</a></th>
+		<th>'.$weight.'kg</th>
+		<th>₱'.number_format($sales,2).'</th>
+		</tr>';
+	}
+	echo'</table>';
+	$sql = "SELECT SUM(sales) AS total FROM tblsales $where";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	echo '<h1>Total: ₱'.number_format($fetch->total,2).'</h1>';
+}
+
+if(isset($_POST['daily'])){
+	echo '<h1><i class="fas fa-chart-bar"></i> Daily Report</h1>';
+
+	$string = 'WHERE day(CURRENT_DATE) = day(datecommit)';
+	$format = "M j, Y";
+	salesReport($string,$format,false);
+}
+
+if(isset($_POST['weekly'])){
+	echo '<h1><i class="fas fa-chart-bar"></i> Weekly Report</h1>';
+	$string = "WHERE DATE_SUB(datecommit, INTERVAL 7 DAY)";
+	$format = "M j, Y";
+	salesReport($string,$format,true);
+
+}
+
+if(isset($_POST['monthly'])){
+	echo '<h1><i class="fas fa-chart-bar"></i> Monthly Report</h1>';
+
+	$string='WHERE month(CURRENT_DATE) = month(datecommit) AND year(CURRENT_DATE) = year(datecommit)';
+	$format = "F Y";
+	salesReport($string,$format,false);
+}
+
+if(isset($_POST['yearly'])){
+	echo '<h1><i class="fas fa-chart-bar"></i> Yearly Report</h1>';
+
+	$string='WHERE month(CURRENT_DATE) = month(datecommit) AND year(CURRENT_DATE) = year(datecommit)';
+	$format = "Y";
+	salesReport($string,$format,false);
 }
 
 ?>

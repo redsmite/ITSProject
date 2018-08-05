@@ -94,15 +94,15 @@
 				<h3>Cash On Delivery</h3>
 				<div>
 				<form id="place-order-form">
-					<p>Enter Billing Address (Manila Only)</p>
+					<p>Billing Address (Manila Only)</p>
 					<textarea id="address" cols="30" rows="10" required><?php echo $location?></textarea>
 					</div>
 					<div>
-					<p>Enter Email Address</p>
+					<p>Email Address</p>
 					<input type="email" id="email" value="<?php echo $email?>" required>
 					</div>
 					<div>
-					<p>Enter Phone Number</p>
+					<p>Phone Number</p>
 					<input type="number" id="phone" value="<?php echo $phone?>" required>
 					</div>
 					<button class="place-order" 

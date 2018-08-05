@@ -96,18 +96,12 @@ if(z.innerText!=0){
 	z.style.display="inline";
 }
 
-function toggleNotif(){
-	  var dropdown = document.getElementById("notifdrop");
-	  var modal3 =  document.getElementById("modal3");
+function showNotif(){
+	var dropdown = document.getElementById("notifdrop");
+	var modal3 =  document.getElementById("modal3");
 
-    if (dropdown.style.display === "none") {
-        dropdown.style.display = "block";
-       	modal3.style.display = "block";
-
-    } else {
-        dropdown.style.display = "none";
-        modal3.style.display = "none";
-    }
+    dropdown.style.display = "block";
+   	modal3.style.display = "block";
 
 	var myRequest = new XMLHttpRequest();
 	var url = 'edituserprocess.php';
@@ -125,8 +119,14 @@ function toggleNotif(){
 		}
 	}
 	myRequest.send(formData);
+}
 
+function hideNotif(){
+	var dropdown = document.getElementById("notifdrop");
+	var modal3 =  document.getElementById("modal3");
 
+    dropdown.style.display = "none";
+   	modal3.style.display = "none";
 }
 
 // Index Page
@@ -1458,7 +1458,6 @@ function updateFee(){
 
 			myRequest.onload = function(){
 				var response= this.responseText;
-				console.log(response);
 				removeSpinners();
 			}
 			myRequest.send(formData);
@@ -1571,6 +1570,21 @@ function showDailyTab(){
 	body3.style.display = 'none';
 	body4.style.display = 'none';
 	body5.style.display = 'none';
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'adminprocess.php';
+
+	var formData = "daily='hello'";
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.getElementById('daily-report').innerHTML=response;
+	}
+	myRequest.send(formData);
 }
 
 function showMonthlyTab(){
@@ -1585,6 +1599,21 @@ function showMonthlyTab(){
 	body3.style.display = 'block';
 	body4.style.display = 'none';
 	body5.style.display = 'none';
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'adminprocess.php';
+
+	var formData = "monthly='hello'";
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.getElementById('monthly-report').innerHTML=response;
+	}
+	myRequest.send(formData);
 }
 
 function showWeeklyTab(){
@@ -1599,6 +1628,21 @@ function showWeeklyTab(){
 	body3.style.display = 'none';
 	body4.style.display = 'block';
 	body5.style.display = 'none';
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'adminprocess.php';
+
+	var formData = "weekly='hello'";
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.getElementById('weekly-report').innerHTML=response;
+	}
+	myRequest.send(formData);
 }
 
 function showYearlyTab(){
@@ -1613,6 +1657,21 @@ function showYearlyTab(){
 	body3.style.display = 'none';
 	body4.style.display = 'none';
 	body5.style.display = 'block';
+
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'adminprocess.php';
+
+	var formData = "yearly='hello'";
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.getElementById('yearly-report').innerHTML=response;
+	}
+	myRequest.send(formData);
 }
 
 function addFarm(){
