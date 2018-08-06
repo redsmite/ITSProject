@@ -303,7 +303,8 @@ if(isset($_POST['showcart'])){
 
 	}else{
 	
-	echo'<ul>';
+	echo'<p>Enter unit in kg (min:0.5; max:99)</p>
+	<ul>';
 	//Cart - weight defined
 	if(isset($_SESSION['trans'])){
 		$array = $_SESSION['trans'];
@@ -334,7 +335,7 @@ if(isset($_POST['showcart'])){
 		</div>
 		<a class="black" href="product.php?id='.$value.'">'.$name.'</a><br>
 		₱'.number_format($price,2).' / kg x
-		<input type="number" min="0" class="kg-input" id="input-'.$value.'" step="any">
+		<input type="number" min="0.5" value="1" class="kg-input" id="input-'.$value.'" step="any">
 		<button class="button-control" onclick="addWeight(this)" value='.$key.' id="'.$value.'">Go</button><br>
 		<input type="hidden" id="price-'.$value.'" value="'.$price.'"">
 		</li>';

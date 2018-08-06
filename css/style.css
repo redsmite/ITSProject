@@ -2130,6 +2130,11 @@ li{
 	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
+#year-report{
+	height: 30px;
+	width: 60px;
+}
+
 #product-monitoring p{
 	line-height: 1.5em;
 	font-size: 1.2em;
@@ -2322,9 +2327,12 @@ li{
 	text-align: center;
 	font-size: 1.5em;
 	margin: 0 auto;
-	cursor: pointer;
 	width: 250px;
 	padding: 5px 0;
+}
+
+#star1,#star2,#star3,#star4,#star5{
+	cursor:pointer;
 }
 
 #reviews{
@@ -2484,6 +2492,7 @@ li{
 
 .kg-input{
 	width: 50px;
+	height: 30px;
 }
 
 #top-total{

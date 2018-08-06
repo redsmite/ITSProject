@@ -96,7 +96,7 @@ function addfooter(){
 				<p><a href="about.php">About Us</a>
 				<a href="contact.php">Contact Us</a>
 				</p>
-				<p>Copyright &copy; <span id="company">Bahay Kubo ni Mang Celso</span> | 2018</p>
+				<p>Copyright &copy; '.date('Y').' - <span id="company">Bahay Kubo ni Mang Celso</span></p>
 			</div>
 		</footer>';
 }

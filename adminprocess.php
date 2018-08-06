@@ -458,7 +458,7 @@ if(isset($_POST['dateDaily'])){
 	</div>';
 
 	$string = "WHERE '$day' = day(datecommit) AND '$month' = month(datecommit) AND '$year' = year(datecommit)";
-	$format = "$month-$day-$year";
+	$format = "$month/$day/$year";
 	salesReport($string,$format,false);
 }
 
@@ -467,7 +467,7 @@ if(isset($_POST['weekly'])){
 	</h1><div class="date-report">Select Week<br>
 		<input type="week" id="week-report" onchange="weeklyReportSelect()">
 	</div>';
-	$string = "WHERE week(datecommit) = week(CURRENT_DATE) AND year(datecommit) = year(CURRENT_DATE)";
+	$string = "WHERE week(datecommit,1) = week(CURRENT_DATE,1) AND year(datecommit) = year(CURRENT_DATE)";
 	$format = "-";
 	salesReport($string,$format,true);
 }
@@ -481,7 +481,7 @@ if(isset($_POST['dateWeekly'])){
 	</h1><div class="date-report">Select Week<br>
 		<input type="week" value="'.$date.'"" id="week-report" onchange="weeklyReportSelect()">
 	</div>';
-	$string = "WHERE week(datecommit) = $week AND year(datecommit) = $year";
+	$string = "WHERE week(datecommit,1) = $week AND year(datecommit) = $year";
 	$format = "$year|$week";
 	salesReport($string,$format,2);
 }
@@ -509,15 +509,47 @@ if(isset($_POST['dateMonthly'])){
 	</div>';
 
 	$string="WHERE $month = month(datecommit) AND $year = year(datecommit)";
-	$format = "$month-$year";
+	$format = "$month, $year";
 	salesReport($string,$format,false);
 }
 
 if(isset($_POST['yearly'])){
-	echo '<h1><i class="fas fa-chart-bar"></i> Yearly Report</h1>';
+	$date = date('Y');
+	echo '<h1><i class="fas fa-chart-bar"></i> Yearly Report</h1>
+	<div class="date-report">Select Year<br>
+		<select id="year-report" onchange="yearlyReportSelect()">';
+		for($i=1970;$i<2100;$i++){
+			if($i==$date){
+			echo'<option selected value="'.$i.'">'.$i.'</option>';
+			}else{
+			echo'<option value="'.$i.'">'.$i.'</option>';
+			}
+		}
+		echo'</select>
+	</div>';
 
-	$string='WHERE month(CURRENT_DATE) = month(datecommit) AND year(CURRENT_DATE) = year(datecommit)';
+	$string='WHERE year(CURRENT_DATE) = year(datecommit)';
 	$format = "Y";
+	salesReport($string,$format,false);
+}
+
+if(isset($_POST['dateYearly'])){
+	$date = $_POST['dateYearly'];
+	echo '<h1><i class="fas fa-chart-bar"></i> Yearly Report</h1>
+	<div class="date-report">Select Year<br>
+		<select id="year-report" onchange="yearlyReportSelect()">';
+		for($i=1970;$i<2100;$i++){
+			if($i==$date){
+			echo'<option selected value="'.$i.'">'.$i.'</option>';
+			}else{
+			echo'<option value="'.$i.'">'.$i.'</option>';
+			}
+		}
+		echo'</select>
+	</div>';
+
+	$string='WHERE '.$date.' = year(datecommit)';
+	$format = $date;
 	salesReport($string,$format,false);
 }
 

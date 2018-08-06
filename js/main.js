@@ -1728,6 +1728,24 @@ function monthlyReportSelect(){
 	myRequest.send(formData);
 }
 
+function yearlyReportSelect(){
+	let year = document.getElementById('year-report').value;
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'adminprocess.php';
+
+	var formData = "dateYearly="+year;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.getElementById('yearly-report').innerHTML=response;
+	}
+	myRequest.send(formData);
+}
+
 function addFarm(){
 	let form = document.getElementById('add-farm-form');
 	form.addEventListener('submit',add);
@@ -2151,7 +2169,7 @@ function addWeight(click){
 	let input = document.getElementById(inputid);
 	let weight = input.value;
 
-	if(weight<=0 || weight==''){
+	if(weight<=0 || weight=='' || weight< 0.5 || weight > 99){
 
 	}else{
 
