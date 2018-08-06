@@ -147,9 +147,6 @@ if($type==1){
 	echo'<li> Your order has been <span style="color:red;"><b>cancelled</b></span><br>'.$date.'.<br>
 	Order No. <a class="black" href="search.php?criteria=3&search-text='.$details.'"><b>'.$details.'</a></b></li>';
 }else if ($type==7){
-	echo'<li> Your order has been <span style="color:green;"><b>completed</b></span><br>'.$date.'.<br>
-	Order No. <a class="black" href="search.php?criteria=3&search-text='.$details.'"><b>'.$details.'</a></b></li>';
-}else if ($type==8){
 	echo'<li> <div class="comment-tn">
 				<img src="'.$imgpath.'">
 			</div>

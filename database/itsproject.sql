@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2018 at 05:33 PM
+-- Generation Time: Aug 06, 2018 at 08:42 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -546,7 +546,8 @@ INSERT INTO `tbllikes` (`likeid`, `reviewid`, `userid`) VALUES
 (8, 12, 1),
 (9, 12, 31),
 (10, 19, 1),
-(11, 20, 90);
+(11, 20, 90),
+(12, 19, 89);
 
 -- --------------------------------------------------------
 
@@ -898,24 +899,26 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (326, 1, 2, '2018-07-29 20:42:27', 1, 1, '175', 0),
 (327, 2, 1, '2018-07-29 20:47:53', 1, 1, '176', 0),
 (328, 1, 2, '2018-07-31 14:18:37', 1, 1, '177', 0),
-(350, 89, 1, '2018-08-04 21:48:52', 1, 8, '2018080409485289', 0),
-(351, 91, 1, '2018-08-04 21:50:18', 1, 8, '2018080409501891', 0),
-(352, 89, 1, '2018-08-04 22:06:51', 1, 8, '2018080410065189', 0),
+(350, 89, 1, '2018-08-04 21:48:52', 1, 7, '2018080409485289', 0),
+(351, 91, 1, '2018-08-04 21:50:18', 1, 7, '2018080409501891', 0),
+(352, 89, 1, '2018-08-04 22:06:51', 1, 7, '2018080410065189', 0),
 (353, 0, 89, '2018-08-04 22:07:48', 1, 5, '2018080410065189', 0),
 (354, 0, 91, '2018-08-04 22:07:50', 0, 4, '2018080409501891', 0),
 (355, 0, 89, '2018-08-04 22:07:56', 1, 4, '2018080409485289', 0),
 (356, 0, 89, '2018-08-04 22:08:09', 1, 6, '2018080409485289', 0),
-(357, 0, 91, '2018-08-04 22:53:40', 0, 7, '2018080409501891', 0),
-(358, 92, 1, '2018-08-05 15:09:39', 1, 8, '2018080503093992', 0),
+(358, 92, 1, '2018-08-05 15:09:39', 1, 7, '2018080503093992', 0),
 (359, 0, 92, '2018-08-05 15:11:09', 1, 4, '2018080503093992', 0),
-(360, 0, 92, '2018-08-05 15:11:14', 1, 7, '2018080503093992', 0),
 (361, 1, 90, '2018-08-05 15:21:49', 1, 2, '159', 2),
-(362, 89, 1, '2018-08-05 17:38:39', 1, 8, '2018080505383989', 0),
-(363, 0, 89, '2018-08-05 17:39:39', 0, 4, '2018080505383989', 0),
-(364, 0, 89, '2018-08-05 17:39:42', 0, 7, '2018080505383989', 0),
-(365, 92, 1, '2018-08-05 23:11:23', 1, 8, '2018080511112292', 0),
-(366, 0, 92, '2018-08-05 23:13:30', 0, 4, '2018080511112292', 0),
-(367, 0, 92, '2018-08-05 23:13:34', 0, 7, '2018080511112292', 0);
+(362, 89, 1, '2018-08-05 17:38:39', 1, 7, '2018080505383989', 0),
+(363, 0, 89, '2018-08-05 17:39:39', 1, 4, '2018080505383989', 0),
+(365, 92, 1, '2018-08-05 23:11:23', 1, 7, '2018080511112292', 0),
+(366, 0, 92, '2018-08-05 23:13:30', 1, 4, '2018080511112292', 0),
+(368, 89, 1, '2018-08-06 11:12:34', 1, 7, '2018080611123389', 0),
+(369, 0, 89, '2018-08-06 11:13:20', 0, 4, '2018080611123389', 0),
+(371, 92, 1, '2018-08-06 19:38:39', 1, 7, '2018080607383992', 0),
+(372, 0, 92, '2018-08-06 19:39:15', 0, 4, '2018080607383992', 0),
+(374, 9, 1, '2018-08-07 00:37:38', 1, 7, '201808071237379', 0),
+(375, 0, 9, '2018-08-07 00:38:07', 1, 4, '201808071237379', 0);
 
 -- --------------------------------------------------------
 
@@ -946,7 +949,10 @@ INSERT INTO `tblorder` (`orderid`, `ordernumber`, `userid`, `billingaddress`, `e
 (3, '2018080410065189', 89, 'Quezon City', 'sample@gmail.com', '0909009090909', '160.00', '670.00', 2, '2018-08-04 22:06:51'),
 (4, '2018080503093992', 92, 'Quezon City', 'user@gmail.com', '09090909090', '60.00', '585.00', 4, '2018-08-05 15:09:39'),
 (5, '2018080505383989', 89, 'Quezon City', 'sample@gmail.com', '0909090909', '60.00', '560.00', 4, '2018-08-05 17:38:39'),
-(6, '2018080511112292', 92, 'Quezon City', 'user@gmail.com', '090909090', '60.00', '585.00', 4, '2018-08-05 23:11:22');
+(6, '2018080511112292', 92, 'Quezon City', 'user@gmail.com', '090909090', '60.00', '585.00', 4, '2018-08-05 23:11:22'),
+(7, '2018080611123389', 89, 'Quezon City', 'sample@gmail.com', '0909090909090', '60.00', '565.00', 4, '2018-08-06 11:12:33'),
+(8, '2018080607383992', 92, 'Cubao', 'user@gmail.com', '090909090', '60.00', '610.00', 4, '2018-08-06 19:38:39'),
+(9, '201808071237379', 9, 'Quezon City', 'useremail9@gmail.com', '0909900009090', '60.00', '580.00', 4, '2018-08-07 00:37:37');
 
 -- --------------------------------------------------------
 
@@ -984,7 +990,22 @@ INSERT INTO `tblordersummary` (`summaryid`, `orderid`, `productid`, `weight`, `p
 (15, 6, 16, '1.000', '65.00'),
 (16, 6, 21, '1.000', '60.00'),
 (17, 6, 12, '2.000', '50.00'),
-(18, 6, 4, '2.000', '60.00');
+(18, 6, 4, '2.000', '60.00'),
+(19, 7, 21, '2.000', '60.00'),
+(20, 7, 16, '1.000', '65.00'),
+(21, 7, 20, '0.500', '40.00'),
+(22, 7, 9, '6.000', '50.00'),
+(23, 8, 20, '1.000', '40.00'),
+(24, 8, 14, '0.500', '100.00'),
+(25, 8, 10, '0.500', '40.00'),
+(26, 8, 5, '2.000', '120.00'),
+(27, 8, 4, '2.000', '60.00'),
+(28, 8, 3, '1.000', '80.00'),
+(29, 9, 19, '1.000', '80.00'),
+(30, 9, 14, '2.000', '100.00'),
+(31, 9, 9, '2.000', '50.00'),
+(32, 9, 6, '1.000', '80.00'),
+(33, 9, 21, '1.000', '60.00');
 
 -- --------------------------------------------------------
 
@@ -2204,7 +2225,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1204, 71, 6, 'message', '2018-06-28 13:22:47', 1),
 (1205, 71, 7, 'message', '2018-06-28 13:22:47', 1),
 (1206, 71, 8, 'message', '2018-06-28 13:22:47', 1),
-(1207, 71, 9, 'message', '2018-06-28 13:22:48', 0),
+(1207, 71, 9, 'message', '2018-06-28 13:22:48', 1),
 (1208, 71, 10, 'message', '2018-06-28 13:22:48', 1),
 (1209, 71, 11, 'message', '2018-06-28 13:22:48', 1),
 (1210, 71, 12, 'message', '2018-06-28 13:22:48', 1),
@@ -2290,7 +2311,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1290, 71, 6, 'message', '2018-07-01 17:41:08', 1),
 (1291, 71, 7, 'message', '2018-07-01 17:41:08', 1),
 (1292, 71, 8, 'message', '2018-07-01 17:41:08', 1),
-(1293, 71, 9, 'message', '2018-07-01 17:41:08', 0),
+(1293, 71, 9, 'message', '2018-07-01 17:41:08', 1),
 (1294, 71, 10, 'message', '2018-07-01 17:41:08', 0),
 (1295, 71, 11, 'message', '2018-07-01 17:41:08', 1),
 (1296, 71, 12, 'message', '2018-07-01 17:41:08', 1),
@@ -2434,7 +2455,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1434, 71, 6, 'message', '2018-07-10 22:54:44', 0),
 (1435, 71, 7, 'message', '2018-07-10 22:54:44', 1),
 (1436, 71, 8, 'message', '2018-07-10 22:54:44', 0),
-(1437, 71, 9, 'message', '2018-07-10 22:54:44', 0),
+(1437, 71, 9, 'message', '2018-07-10 22:54:44', 1),
 (1438, 71, 10, 'message', '2018-07-10 22:54:44', 0),
 (1439, 71, 11, 'message', '2018-07-10 22:54:44', 0),
 (1440, 71, 12, 'message', '2018-07-10 22:54:44', 0),
@@ -2522,7 +2543,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1522, 71, 6, 'message', '2018-07-20 15:04:16', 0),
 (1523, 71, 7, 'message', '2018-07-20 15:04:16', 1),
 (1524, 71, 8, 'message', '2018-07-20 15:04:16', 0),
-(1525, 71, 9, 'message', '2018-07-20 15:04:16', 0),
+(1525, 71, 9, 'message', '2018-07-20 15:04:16', 1),
 (1526, 71, 10, 'message', '2018-07-20 15:04:16', 0),
 (1527, 71, 11, 'message', '2018-07-20 15:04:16', 0),
 (1528, 71, 12, 'message', '2018-07-20 15:04:16', 0),
@@ -2660,7 +2681,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1660, 71, 6, 'message', '2018-07-26 00:24:42', 0),
 (1661, 71, 7, 'message', '2018-07-26 00:24:42', 1),
 (1662, 71, 8, 'message', '2018-07-26 00:24:42', 0),
-(1663, 71, 9, 'message', '2018-07-26 00:24:42', 0),
+(1663, 71, 9, 'message', '2018-07-26 00:24:42', 1),
 (1664, 71, 10, 'message', '2018-07-26 00:24:42', 0),
 (1665, 71, 11, 'message', '2018-07-26 00:24:42', 0),
 (1666, 71, 12, 'message', '2018-07-26 00:24:42', 0),
@@ -2771,7 +2792,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1771, 71, 6, 'message', '2018-08-02 23:22:41', 0),
 (1772, 71, 7, 'message', '2018-08-02 23:22:41', 0),
 (1773, 71, 8, 'message', '2018-08-02 23:22:41', 0),
-(1774, 71, 9, 'message', '2018-08-02 23:22:41', 0),
+(1774, 71, 9, 'message', '2018-08-02 23:22:41', 1),
 (1775, 71, 10, 'message', '2018-08-02 23:22:41', 0),
 (1776, 71, 11, 'message', '2018-08-02 23:22:41', 0),
 (1777, 71, 12, 'message', '2018-08-02 23:22:41', 0),
@@ -2884,9 +2905,9 @@ CREATE TABLE `tblproduct` (
 
 INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description`, `farmid`, `userid`, `dateposted`, `price`, `img`, `view`, `rating`, `is_approved`, `is_available`) VALUES
 (1, 1, 'XYZ Amargoso', 'the balsam apple of the Philippines', 1, 2, '2018-07-18 20:23:54', '90.00', 'product/213500944001201.jpg', 11, '60.00', 1, 1),
-(2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '80.00', 'product/food-healthy-summer-green.jpeg', 4, '80.00', 1, 1),
+(2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '80.00', 'product/food-healthy-summer-green.jpeg', 5, '80.00', 1, 1),
 (3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 15, '50.00', 1, 1),
-(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 19, '100.00', 1, 1),
+(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 20, '100.00', 1, 1),
 (5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 14, '100.00', 1, 1),
 (6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 1, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 7, '50.00', 1, 1),
 (7, 15, 'Philippine Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mango.jpg', 7, '50.00', 1, 1),
@@ -2898,12 +2919,12 @@ INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description
 (13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 1, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 30, '70.00', 1, 0),
 (14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 22, '80.00', 1, 1),
 (15, 8, 'Potato', 'The potato is a starchy, tuberous crop from the perennial nightshade Solanum tuberosum. Potato may be applied to both the plant and the edible tuber. Potatoes have become a staple food in many parts of the world and an integral part of much of the world\'s food supply. Potatoes are the world\'s fourth-largest food crop, following maize (corn), wheat, and rice. Tubers produce glycoalkaloids in small amounts. If green sections (sprouts and skins) of the plant are exposed to light the tuber can produce a high enough concentration of glycoalkaloids to affect human health.', 3, 1, '2018-07-26 14:30:26', '60.00', 'product/potato.jpg', 95, '75.00', 1, 1),
-(16, 10, 'Pechay Baguio', 'Baguio Pechay has light green leaves and a white stalk. It tastes milder than Bok Choy (Pechay Tagalog). Pechay Tagalog has smooth, dark green leaves that look like mustard leaves. ', 3, 90, '2018-07-30 14:47:42', '65.00', 'product/pechay-baguio.jpg', 11, '80.00', 1, 1),
+(16, 10, 'Pechay Baguio', 'Baguio Pechay has light green leaves and a white stalk. It tastes milder than Bok Choy (Pechay Tagalog). Pechay Tagalog has smooth, dark green leaves that look like mustard leaves. ', 3, 90, '2018-07-30 14:47:42', '65.00', 'product/pechay-baguio.jpg', 12, '80.00', 1, 1),
 (17, 10, 'Pechay', 'masarap mura pa kaya bilina kau parang awa nyo na\r\n', 1, 2, '2018-07-30 16:09:03', '60.00', 'product/pechay-n.jpg', 11, '50.00', 0, 1),
 (18, 4, 'Carrots', 'Carrots Carrots Carrots Carrots Carrots Carrots Carrots Carrots', 1, 1, '2018-07-31 16:37:55', '100.00', 'product/storecarrots.jpg', 2, '50.00', 1, 0),
 (19, 9, 'Talong', 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 3, 1, '2018-07-31 16:41:58', '80.00', 'product/talong.jpg', 5, '100.00', 1, 1),
-(20, 12, 'Latundan na Saging', 'Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan', 3, 1, '2018-07-31 17:05:46', '40.00', 'product/latundan.jpg', 6, '90.00', 1, 1),
-(21, 10, 'Pechay', 'There has been such a craze over kale in the past years, but did you know that the lowly pechay (chinese chard or bok choy) contains one of the highest nutrients per calorie, second to kale?\r\n\r\nDr. Fuhrmanâ€™s Aggregate Nutrient Density Index (ANDI) ranks the nutrient value of many common foods on the basis of how many nutrients they deliver to your body for each calorie consumed. Foods are ranked on a scale of 1-1000, with the most nutrient-dense cruciferous leafy green vegetables scoring 1000. Pechay has an ANDI rating of 865, higher than spinach (707), carrots (458) and broccoli (340)!\r\n\r\nPhenols and other phytonutrients in pechay represent what is now known to be a full spectrum of over 70 antioxidants in this cruciferous vegetable. The antioxidant richness of pechay also partly explains the ongoing investigation of this leafy green in relationship to cancer prevention since prevention and reduction of oxidative stress has often been linked to decreased cancer risk.\r\n\r\nBecause of its strong beta-carotene content, pechay also ranks as the 11th richest food in vitamin A. This vitamin A richness places pechay ahead of some of its fellow cruciferous vegetables, including cauliflower, cabbage, Brussels sprouts, and broccoli.', 2, 5, '2018-08-02 03:48:04', '60.00', 'product/pechay-n.jpg', 3, '50.00', 1, 1);
+(20, 12, 'Latundan na Saging', 'Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan', 3, 1, '2018-07-31 17:05:46', '40.00', 'product/latundan.jpg', 10, '93.33', 1, 1),
+(21, 10, 'Pechay', 'There has been such a craze over kale in the past years, but did you know that the lowly pechay (chinese chard or bok choy) contains one of the highest nutrients per calorie, second to kale?\r\n\r\nDr. Fuhrmanâ€™s Aggregate Nutrient Density Index (ANDI) ranks the nutrient value of many common foods on the basis of how many nutrients they deliver to your body for each calorie consumed. Foods are ranked on a scale of 1-1000, with the most nutrient-dense cruciferous leafy green vegetables scoring 1000. Pechay has an ANDI rating of 865, higher than spinach (707), carrots (458) and broccoli (340)!\r\n\r\nPhenols and other phytonutrients in pechay represent what is now known to be a full spectrum of over 70 antioxidants in this cruciferous vegetable. The antioxidant richness of pechay also partly explains the ongoing investigation of this leafy green in relationship to cancer prevention since prevention and reduction of oxidative stress has often been linked to decreased cancer risk.\r\n\r\nBecause of its strong beta-carotene content, pechay also ranks as the 11th richest food in vitamin A. This vitamin A richness places pechay ahead of some of its fellow cruciferous vegetables, including cauliflower, cabbage, Brussels sprouts, and broccoli.', 2, 5, '2018-08-02 03:48:04', '60.00', 'product/pechay-n.jpg', 4, '50.00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2942,7 +2963,8 @@ INSERT INTO `tblrating` (`ratingid`, `productid`, `userid`, `rating`) VALUES
 (17, 16, 90, 4),
 (18, 19, 1, 5),
 (19, 20, 1, 5),
-(20, 20, 7, 4);
+(20, 20, 7, 4),
+(21, 20, 89, 5);
 
 -- --------------------------------------------------------
 
@@ -2994,7 +3016,7 @@ INSERT INTO `tblreviews` (`reviewid`, `review`, `productid`, `userid`, `datepost
 (12, 'Sample Review\n\nConsidered a high-value crop and major agricultural produce in the Cordilleras, annual demand for potato in the country is about 745,000 metric tons.\n\nWith the increasing number of fastfood chains in the country, meeting the countryâ€™s requirement for processing varieties is a great challenge for our potato stakeholders.\n\nThe Northern Philippines Root Crops Research and Training Center is undertaking a project that aims to mass produce, commercialize, and promote approved processing potato varieties of good quality.', 15, 1, '2018-07-28 17:04:49', 3),
 (14, 'Potato contains several phytochemicals such as phenolics, flavonoids, polyamines, and carotenoids, which are highly desirable in diet because of their beneficial effects on human health. The concentration and stability of these constituents are affected by several factors such as genotype, agronomic factors, postharvest storage, cooking and processing conditions. The advances in analytical techniques have made possible the identification and understanding the functions of phytochemicals, particularly their antioxidant properties. The potatoes are stored and processed into a variety of products before consumption. In the present review, phytochemicals present in potatoes, factors affecting their content, stability and health benefits are discussed. Processing the potatoes rich in phytochemicals can play an important role in promoting the health of a large segment of population in the countries where potatoes form a substantial part of daily diet.', 15, 7, '2018-07-29 00:24:24', 1),
 (18, 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 19, 1, '2018-07-31 16:48:29', 0),
-(19, 'According to the Department of Agriculture website, there are 57 cultivars of banana in Southeast Asia but only five are common in the Philippines: saba, latundan, lacatan, bungulan and cavendish.\n\nI donâ€™t know where the seÃ±orita bananas went as they seem to be very common in the southern part of Luzon, from Cavite to Batangas, especially, yet they didnâ€™t make it to the list. I remember those trips to Tagaytay when I was young and we would buy a whole piling (arm) of seÃ±orita bananas and tie the handle at the back of the Land Rover so that the bananas were suspended in mid-air all the way back to Manila. SeÃ±orita bananas have very thin skin and they fall off the piling very easily. If left on the floor of the truck, they got bruised easily too.\n\nAll that trouble for seÃ±orita bananas? They were my favorite. My least favorite is the pale latundan. Truth be told, I wasnâ€™t really familiar with banana cultivars until I became a mommy. The girlsâ€™ pediatrician prescribed mashed latundan bananas as a cure for diarrhea. So I learned to tell the difference between lacatan and latundan just by looking at them.\n\n\nTo this day, however, I have not developed any affection for the latundan. I prefer the creamier and sweeter lacatan when seÃ±orita bananas are not available. As for saba bananas, well, they arenâ€™t eaten raw so they fall under a different category. They are cooking bananas and we love them. See the following recipes with saba bananas as an ingredient:\n\nMinatamis na saging (sweetened bananas)\nArroz a la Cubana\nCheesy turon\nGinataang halo-halo\nHalo-halo', 20, 1, '2018-07-31 17:07:23', 1),
+(19, 'According to the Department of Agriculture website, there are 57 cultivars of banana in Southeast Asia but only five are common in the Philippines: saba, latundan, lacatan, bungulan and cavendish.\n\nI donâ€™t know where the seÃ±orita bananas went as they seem to be very common in the southern part of Luzon, from Cavite to Batangas, especially, yet they didnâ€™t make it to the list. I remember those trips to Tagaytay when I was young and we would buy a whole piling (arm) of seÃ±orita bananas and tie the handle at the back of the Land Rover so that the bananas were suspended in mid-air all the way back to Manila. SeÃ±orita bananas have very thin skin and they fall off the piling very easily. If left on the floor of the truck, they got bruised easily too.\n\nAll that trouble for seÃ±orita bananas? They were my favorite. My least favorite is the pale latundan. Truth be told, I wasnâ€™t really familiar with banana cultivars until I became a mommy. The girlsâ€™ pediatrician prescribed mashed latundan bananas as a cure for diarrhea. So I learned to tell the difference between lacatan and latundan just by looking at them.\n\n\nTo this day, however, I have not developed any affection for the latundan. I prefer the creamier and sweeter lacatan when seÃ±orita bananas are not available. As for saba bananas, well, they arenâ€™t eaten raw so they fall under a different category. They are cooking bananas and we love them. See the following recipes with saba bananas as an ingredient:\n\nMinatamis na saging (sweetened bananas)\nArroz a la Cubana\nCheesy turon\nGinataang halo-halo\nHalo-halo', 20, 1, '2018-07-31 17:07:23', 2),
 (20, 'Baguio Pechay is one of my favorite vegetables. I was at the grocery Saturday morning when I came upon a beautiful display of Baguio Pechay (also called Pechay Lombok, Wom Bok, or Chinese Cabbage). I like Baguio Pechay because it has a mild, delicate taste. Itâ€™s been quite a while since Iâ€™ve cooked with Baguio Pechay, so I was super excited to cook it for dinner.', 16, 90, '2018-08-02 04:23:46', 1);
 
 -- --------------------------------------------------------
@@ -3029,7 +3051,22 @@ INSERT INTO `tblsales` (`salesid`, `productid`, `weight`, `sales`, `datecommit`)
 (11, 16, '1.000', 65, '2018-08-05 23:13:35'),
 (12, 21, '1.000', 60, '2018-08-05 23:13:35'),
 (13, 12, '2.000', 100, '2018-08-05 23:13:35'),
-(14, 4, '2.000', 120, '2018-08-05 23:13:35');
+(14, 4, '2.000', 120, '2018-08-05 23:13:35'),
+(15, 21, '2.000', 120, '2018-08-06 11:17:09'),
+(16, 16, '1.000', 65, '2018-08-06 11:17:09'),
+(17, 20, '0.500', 20, '2018-08-06 11:17:09'),
+(18, 9, '6.000', 300, '2018-08-06 11:17:09'),
+(19, 20, '1.000', 40, '2018-08-06 19:39:26'),
+(20, 14, '0.500', 50, '2018-08-06 19:39:26'),
+(21, 10, '0.500', 20, '2018-08-06 19:39:26'),
+(22, 5, '2.000', 240, '2018-08-06 19:39:26'),
+(23, 4, '2.000', 120, '2018-08-06 19:39:26'),
+(24, 3, '1.000', 80, '2018-08-06 19:39:26'),
+(25, 19, '1.000', 80, '2018-08-07 00:38:14'),
+(26, 14, '2.000', 200, '2018-08-07 00:38:14'),
+(27, 9, '2.000', 100, '2018-08-07 00:38:14'),
+(28, 6, '1.000', 80, '2018-08-07 00:38:14'),
+(29, 21, '1.000', 60, '2018-08-07 00:38:14');
 
 -- --------------------------------------------------------
 
@@ -3065,98 +3102,98 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `phone`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '3e567a0385', 'ce8e14', 'c550fadf', '2000-02-14', '2018-06-07 04:44:35', 'admin@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-05 15:25:37', 120),
-(2, 'Pampanga Seller', '5f4dcc3b5aa765d61d8327deb882cf99', '5152ab1d31', '524f15', '5c90e9b6', '2000-04-10', '2018-06-07 04:47:31', '3d7d795b2e@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-04 09:01:47', 189),
-(3, 'c24359d3031378f2', '5488d6d6f37a311a1085daf41f2e990c', '8f87ec93bf', '083a24', '6df46230', '2000-07-15', '2018-06-07 01:56:37', '985198f63d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(4, '15092bfa5e2b6e8c', '5f4dcc3b5aa765d61d8327deb882cf99', '7df2090dc6', '0d6c92', 'a401c8f7', '2000-12-04', '2018-06-07 01:56:37', '252d3825ae@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-02 13:47:42', 29),
-(5, 'Cavite Seller', '5f4dcc3b5aa765d61d8327deb882cf99', '87efa34481', 'b17e8d', 'f4120928', '2000-09-19', '2018-06-07 01:56:37', '7182aa0862@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-04 09:05:06', 27),
-(6, 'e9eee15647061a7c', '5f4dcc3b5aa765d61d8327deb882cf99', '1bdd26b9d4', '755678', '505f27a9', '2000-03-15', '2018-06-07 15:32:53', '17f70978e3@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-04 08:07:37', 21),
-(7, 'c222b3b69f9b0d9a', '5f4dcc3b5aa765d61d8327deb882cf99', '22a8f59cd0', 'e1feb5', '8feeb649', '2000-07-15', '2018-06-07 14:08:15', '8010fdd3df@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-08-01 16:13:30', 58),
-(8, 'f3bd37208580dfc0', '5f4dcc3b5aa765d61d8327deb882cf99', '998a862c0d', '74e778', 'dcc92235', '2000-01-31', '2018-06-07 15:31:06', '62e6b92616@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:01', 41),
-(9, '4fce1a441e1b0974', '5f4dcc3b5aa765d61d8327deb882cf99', '27bf39dd02', '7c7e3d', '6673b7c4', '2000-08-03', '2018-06-07 01:56:37', '4b55ca6ddd@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-27 06:08:30', 2),
-(10, '6e352b2a58c60b6a', '5f4dcc3b5aa765d61d8327deb882cf99', '27f4c9247b', 'ea8db1', '013b532f', '2004-04-01', '2018-06-07 15:29:14', 'cb329a0ba9@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-30 08:48:26', 12),
-(11, '950e15143dcccb2a', '5f4dcc3b5aa765d61d8327deb882cf99', 'ccc0105b15', '320a79', 'e8276a86', '1998-03-15', '2018-06-07 15:24:03', '9a4f2a2692@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-10 00:36:50', '2018-07-04 08:59:25', 12),
-(12, '6a75750b38535cc1', '5f4dcc3b5aa765d61d8327deb882cf99', '414de09b71', '0929b2', '651262e6', '2002-03-03', '2018-06-07 15:21:12', '701d6ac436@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-09 12:38:45', 16),
-(13, 'b56ea0d629d972a7', '5f4dcc3b5aa765d61d8327deb882cf99', '4e299d9661', 'f5eba6', 'c9902903', '1998-07-22', '2018-06-07 14:51:46', 'a51ca5f41b@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-08 09:34:46', 24),
-(14, '516e910ba83a8eac', '5f4dcc3b5aa765d61d8327deb882cf99', 'a4db2274f1', '820add', '0dbb9824', '1998-08-03', '2018-06-07 15:12:55', 'a46cafd661@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:43', 48),
-(15, '71696ce700262a3a', '5f4dcc3b5aa765d61d8327deb882cf99', '3530438189', 'a30f58', '4ea863cb', '1999-04-19', '2018-06-07 15:20:30', 'b952d4f9fc@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:18:43', 6),
-(16, 'a', '5f4dcc3b5aa765d61d8327deb882cf99', '4b316218cf', '55cd83', '2e1efb17', '1997-10-21', '2018-06-07 15:22:29', 'ae82c791ef@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-07-25 06:35:08', '2018-07-25 06:35:23', 6),
-(17, '2ce9e05e64963a6a', '5f4dcc3b5aa765d61d8327deb882cf99', 'f081333eb5', 'ef5907', 'a64550fd', '1999-05-15', '2018-06-07 15:17:15', '65898c7ce4@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-26 06:30:22', 4),
-(18, '0fb0d3a8d92f3c90', '5f4dcc3b5aa765d61d8327deb882cf99', '84cfdb54b4', 'e14c3d', '53e2808a', '2006-07-20', '2018-06-07 15:16:46', '7b15338b97@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-17 19:06:28', 2),
-(19, 'f77a63e0678e5627', '5f4dcc3b5aa765d61d8327deb882cf99', 'ef535e27ae', '194662', '4c89c258', '2002-01-01', '2018-06-08 05:00:27', '7eaa07f3d2@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:28:01', 5),
-(20, '88a681c983cc80dc', '5f4dcc3b5aa765d61d8327deb882cf99', 'c552c8ec79', '08573c', '35795dd0', '1995-01-15', '2018-06-08 05:14:22', '69a6f0d936@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 20:44:18', 1),
-(21, 'c986b695de95e06f', '5f4dcc3b5aa765d61d8327deb882cf99', '591ce25e09', '7b6039', '44ecef96', '1992-03-27', '2018-06-08 05:18:01', 'a9126cce5f@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
-(22, '0954aa0cfd95da10', '5f4dcc3b5aa765d61d8327deb882cf99', '9639b8bb44', '2018d2', '1160a802', '1996-10-23', '2018-06-08 05:28:17', '8f8cfa041f@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-08 05:29:38', '2018-06-15 05:07:51', 0),
-(23, '34a5af5c9b4a8287', '5f4dcc3b5aa765d61d8327deb882cf99', '337fb8743a', '525ccc', 'd6221cdd', '1997-04-26', '2018-06-08 21:03:43', '910bc8e93d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-16 00:00:26', 0),
-(24, '5dd646bc14b6628c', '5f4dcc3b5aa765d61d8327deb882cf99', '761e0bf11e', '5a68b8', '18e2aa13', '1996-12-01', '2018-06-08 21:10:39', '4795889861@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(25, '41bad328bd13ef8d', '5f4dcc3b5aa765d61d8327deb882cf99', '649d456b74', '0d8eb8', '6c9eb898', '2002-12-14', '2018-06-09 01:37:59', '8fdde69e29@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-16 06:41:06', 1),
-(26, '568ad715f48211bd', '5f4dcc3b5aa765d61d8327deb882cf99', '9b57a6c64d', 'c0ab9c', '703575f8', '', '2018-06-09 23:49:52', '042c5891cb@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(27, '0c2b94ea904a79d7', '5f4dcc3b5aa765d61d8327deb882cf99', 'bfeac5f6d9', 'f89539', '27d100e1', '', '2018-06-09 23:52:55', '549bf70879@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
-(28, '2c6e469c9828ca6e', '5f4dcc3b5aa765d61d8327deb882cf99', '257b0f4fdd', '1fdf37', '845b56b6', '', '2018-06-09 23:54:40', '52ea7712fc@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
-(29, 'dfb93848736ab669', '5f4dcc3b5aa765d61d8327deb882cf99', '66354c849a', '0cc8a3', '954c9508', '', '2018-06-09 23:55:56', '33afbd0748@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(30, '9cfce5d493fa9826', '5f4dcc3b5aa765d61d8327deb882cf99', 'ba7a8f53b6', 'a04004', 'ef94975e', '', '2018-06-10 00:01:55', '24c73bc8a2@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(31, '492a9ac0b8d4ce2a', '5f4dcc3b5aa765d61d8327deb882cf99', '6e4d02d2b6', '18a4fd', 'd57fd742', '', '2018-06-10 00:11:13', 'f7a260bb17@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '2018-06-10 00:17:42', '2018-07-31 16:36:48', 2),
-(32, '7330df500d2b0a6e', '5f4dcc3b5aa765d61d8327deb882cf99', 'c480fa9406', 'e6f615', 'b31a913c', '', '2018-06-11 16:47:15', '1ca3cafaba@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(33, 'f352923168ec4e75', '5f4dcc3b5aa765d61d8327deb882cf99', '4eb7b9072c', 'd01ae9', '8e89de1c', '1990-01-19', '2018-06-12 05:01:54', '3ef8cc6bda@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(34, 'f3659d1a891da5ee', '5f4dcc3b5aa765d61d8327deb882cf99', 'b7cd597036', 'af0ec6', '9d08b654', '2004-02-14', '2018-06-12 05:08:10', 'b957f8ce32@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(35, '2a348f8073a3479e', '5f4dcc3b5aa765d61d8327deb882cf99', 'ede36a971f', '3d3141', '4eef9a8e', '', '2018-06-12 20:55:34', '7542465ee7@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(36, '65fd93212e0d5241', '5f4dcc3b5aa765d61d8327deb882cf99', '7c61bd5309', '69a946', 'cf1b8739', '', '2018-06-12 20:58:37', '5c851c3b2a@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(37, '544218e9aab43533', '5f4dcc3b5aa765d61d8327deb882cf99', '0d46ec3438', '15fb39', 'ef6dd377', '1999-10-10', '2018-06-14 20:34:16', 'dcf4ccbaa6@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:35:37', 0),
-(38, '60565aefa058dc42', '5f4dcc3b5aa765d61d8327deb882cf99', '5cdfdbc119', '202290', '3288cf58', '1999-12-01', '2018-06-14 20:45:46', '33927b439c@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 20:58:15', 0),
-(39, 'fd25cf9735b6e2a1', '5f4dcc3b5aa765d61d8327deb882cf99', '99f94f44a6', 'cbb560', 'd69a613e', '1998-09-12', '2018-06-14 21:57:30', '3feb8237d4@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-01 09:22:24', 10),
-(40, '4dc85870be602e31', '5f4dcc3b5aa765d61d8327deb882cf99', '9c585908b0', 'b7b44e', 'ca5e787a', '1999-11-01', '2018-06-14 22:18:31', 'bf721ea5b5@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-16 05:42:27', '2018-06-16 20:50:46', 3),
-(41, '1673923a6d640546', '5f4dcc3b5aa765d61d8327deb882cf99', '61b42f4ae2', '0fdeca', 'b8b52074', '', '2018-06-15 23:41:00', 'ab29ad257f@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:42:12', 1),
-(42, 'd994a11eeddac808', '5f4dcc3b5aa765d61d8327deb882cf99', '06b8692b3b', '5e651b', 'ac9945e0', '', '2018-06-16 00:01:49', '59ca0e6f7c@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:02:18', 0),
-(43, 'e2ab828ebe5fb079', '5f4dcc3b5aa765d61d8327deb882cf99', '07f6e600eb', 'c01863', 'a981207e', '', '2018-06-16 00:19:53', 'fa83bd0177@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '2018-06-16 01:16:57', '2018-06-16 01:28:27', 3),
-(44, '118214f7991ce93b', '5f4dcc3b5aa765d61d8327deb882cf99', '37ac0bd76d', 'd7903c', '5f7bbf3f', '', '2018-06-16 00:25:54', '1ea255e028@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:28:53', 1),
-(45, '5d68f67caec5844a', '5f4dcc3b5aa765d61d8327deb882cf99', '64b22a2b2f', '67ca42', '8118fc39', '', '2018-06-16 00:29:25', 'c3a0bce82e@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:30:22', 0),
-(46, '9c225ee990244a20', '5f4dcc3b5aa765d61d8327deb882cf99', '82cc8f002d', '543224', 'dcbe8b8e', '', '2018-06-16 00:30:48', '9d2348633c@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:32:15', 0),
-(47, '81eccf832dd74bb7', '5f4dcc3b5aa765d61d8327deb882cf99', '4517afe8f6', '45e493', '5c021e61', '', '2018-06-16 00:32:37', '61dd4d6706@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:36:29', 0),
-(48, '1e2f4ab9fb8edc29', '5f4dcc3b5aa765d61d8327deb882cf99', '814f89067c', 'd7733e', 'e024e294', '', '2018-06-16 00:37:00', '4995c64f7b@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:37:18', 0),
-(49, '000a06915f0b0b94', '5f4dcc3b5aa765d61d8327deb882cf99', 'bad39fd945', '241e86', 'e4488210', '', '2018-06-16 00:39:08', '811b8a1121@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:39:33', 0),
-(50, '350678fec48b5bb0', '5f4dcc3b5aa765d61d8327deb882cf99', 'bd24cbc45f', '62903d', '92e86909', '', '2018-06-16 00:45:11', '1efdf324a6@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:45:21', 1),
-(51, '0df2e46b223cd45b', '5f4dcc3b5aa765d61d8327deb882cf99', '7e5397d828', 'cab35c', '0c23b067', '', '2018-06-16 00:48:13', '24909decdf@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-28 16:34:30', 1),
-(52, 'ba6fdb5010e83c12', '5f4dcc3b5aa765d61d8327deb882cf99', '352a1fd40c', '0a4c7f', '8f32e680', '1991-11-27', '2018-06-16 00:50:39', '675f232d80@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-18 03:13:11', 2),
-(53, '5c736ce85356d4c9', '5f4dcc3b5aa765d61d8327deb882cf99', '406034602d', '8d9ed0', '5a92e355', '', '2018-06-16 00:52:21', '9dca9b5ed2@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 4, '2018-06-16 05:43:52', '2018-06-16 05:44:20', 0),
-(54, '2c389830e5f9c1d5', '5f4dcc3b5aa765d61d8327deb882cf99', '7b67ee15fa', 'e24275', '328a4faa', '1999-01-17', '2018-06-16 05:28:28', '09b589ac64@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:34:10', 5),
-(55, '0143766a78f54a40', '5f4dcc3b5aa765d61d8327deb882cf99', 'ed7260832c', 'b0f0b7', 'a423e5cf', '', '2018-06-16 05:52:17', '76ef1ec2ba@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 05:52:36', 0),
-(56, 'ca9232797a9e3c00', '5f4dcc3b5aa765d61d8327deb882cf99', 'a73bacff9f', 'e675a3', '038b7e6e', '', '2018-06-16 06:04:54', '4cc4260aba@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 06:15:35', 0),
-(57, '205e70f06e40a2ea', '5f4dcc3b5aa765d61d8327deb882cf99', 'b628208c28', 'ff4816', 'de467750', '1997-06-09', '2018-06-16 20:32:55', 'e23368974e@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:20:05', 3),
-(58, 'c2f4eede7f130ef6', '5f4dcc3b5aa765d61d8327deb882cf99', '64b51dda8f', '7b50f1', 'd5002158', '', '2018-06-16 20:49:30', 'f11a5a4ac8@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 20:50:17', 0),
-(59, '8902140826da47ae', '5f4dcc3b5aa765d61d8327deb882cf99', '501b76c9f4', 'd5c395', '409a8ab5', '', '2018-06-16 21:00:15', '6115ae70ce@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 21:00:32', 0),
-(60, 'dc87277d4990bdd0', '5f4dcc3b5aa765d61d8327deb882cf99', '1d49726d0b', '75ccca', '56327846', '', '2018-06-16 21:04:19', '3b53c0c456@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 21:04:46', 0),
-(61, '72833eca6b761f0e', '5f4dcc3b5aa765d61d8327deb882cf99', '4f106e124f', 'fc16d0', '47d1ca1d', '', '2018-06-16 21:11:20', '47ae344545@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 21:11:37', 0),
-(62, '360a6bf78d44a68e', '5f4dcc3b5aa765d61d8327deb882cf99', 'abeac29c82', 'ba2c70', '8f062aa3', '', '2018-06-16 21:12:15', 'ee0f94a707@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 21:16:52', 0),
-(63, 'e251dc557124bcb3', '5f4dcc3b5aa765d61d8327deb882cf99', '0f665200f1', 'd1019b', '9f02fcb7', '', '2018-06-16 21:17:39', '79c1633772@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-17 03:38:52', 0),
-(64, '06252d6662f7b1a3', '5f4dcc3b5aa765d61d8327deb882cf99', '6301815b4d', '4bfd44', '304a6872', '', '2018-06-16 21:18:50', '3ab8b4d95f@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-15 05:04:26', 2),
-(65, 'a01b4465dc123807', '5f4dcc3b5aa765d61d8327deb882cf99', '895ecc8b6a', 'bdc04b', 'c211e526', '', '2018-06-17 03:39:18', '25ee135826@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-17 03:48:41', 0),
-(66, '7a2722c44e4c9f5f', '5f4dcc3b5aa765d61d8327deb882cf99', '4794da5828', '4d2c53', '01ba4939', '', '2018-06-17 11:35:20', '98c6ab5477@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 4, '0000-00-00 00:00:00', '2018-06-17 11:39:07', 1),
-(67, 'd1036f0be81da51d', '5f4dcc3b5aa765d61d8327deb882cf99', 'c479d36ff9', 'fbb2b9', 'f4bae6bf', '2007-09-03', '2018-06-17 12:39:36', 'e372e392ed@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-17 18:41:20', 0),
-(68, 'a5100ae5965eeac0', '5f4dcc3b5aa765d61d8327deb882cf99', '4d0b3daa58', 'e5a250', '847b31f3', '', '2018-06-21 06:01:06', '2696337211@gmail.com', '', 'Quezon City', 1, 1, '', '', 0, 4, '0000-00-00 00:00:00', '2018-06-21 15:25:19', 7),
-(69, '447ab0fe9db2fecc', '5f4dcc3b5aa765d61d8327deb882cf99', '6bebb77137', 'bb3f9b', '6076f22a', '2000-07-07', '2018-06-21 15:47:24', 'c2920496ca@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-25 10:11:15', 3),
-(70, 'd1ae9373014dbe15', '5f4dcc3b5aa765d61d8327deb882cf99', '0ff62ec3f4', '76ab55', '8289478a', '1993-07-07', '2018-06-22 04:45:25', '4e77d5a229@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-22 22:48:59', 2),
-(71, 'Mang Celso', '5f4dcc3b5aa765d61d8327deb882cf99', '50c12812b7', '5ee0ef', '120b5e7a', '', '2018-06-22 20:41:16', '4e091bcdd3@gmail.com', '', 'Quezon City', 2, 1, 'upload/manwithrooster-Navarro.jpg', 'I am a bot...\r\n\r\nCommand\r\n\r\n!hello\r\n!thanks\r\n!time\r\n!bye', 0, 4, '2018-07-25 17:29:26', '2018-08-02 13:49:36', 41),
-(72, 'd40a050b4002b723', '5f4dcc3b5aa765d61d8327deb882cf99', '268271afb7', '52ae99', 'd539596a', '1995-10-03', '2018-06-22 21:19:59', '3953f5ff3e@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-23 20:11:44', 1),
-(73, '1433a047b99297b6', '5f4dcc3b5aa765d61d8327deb882cf99', '1a52effec7', '52784e', '296cb18f', '2002-10-01', '2018-06-24 03:17:01', '6447e32d95@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-08 11:57:19', 5),
-(74, '500d7d4f1047d9fd', '5f4dcc3b5aa765d61d8327deb882cf99', '6730b069d6', '11a7c9', 'eed303b4', '2003-09-19', '2018-06-24 08:08:28', '670c2358d1@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:34:51', 8),
-(75, 'db49201c4e5c4ff4', '5f4dcc3b5aa765d61d8327deb882cf99', 'd6b8a62783', 'ec1bdb', '845a2e17', '2004-07-13', '2018-06-24 08:19:39', '9ce8791dc6@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-02 00:34:28', 8),
-(76, '7574e4132e87e4a2', '5f4dcc3b5aa765d61d8327deb882cf99', '003adf2bb3', '5552c6', 'e4e8a96b', '2004-03-04', '2018-06-24 08:24:31', 'db7c63565d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-01 12:56:59', 8),
-(77, '86747fe6660ab370', '5f4dcc3b5aa765d61d8327deb882cf99', '9d8642e5ac', 'c6b06d', '04aca5a5', '1999-04-16', '2018-06-27 06:25:50', 'ae9d2f6042@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-27 06:41:55', 1),
-(78, '814bc78600ebc4c1', '5f4dcc3b5aa765d61d8327deb882cf99', '3fae421be2', 'ad525f', '6d0d9326', '2001-04-20', '2018-06-27 06:43:22', 'ed8ccd8d08@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-27 06:43:30', '2018-07-21 09:32:35', 2),
-(79, 'd45ebf1dbd03f779', '5f4dcc3b5aa765d61d8327deb882cf99', 'cf278dad9e', '549498', '6cf61420', '', '2018-06-28 05:06:19', 'aad4d89df5@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '2018-06-28 05:18:06', '2018-06-28 05:41:35', 2),
-(80, 'c8e6526314751af8', '5f4dcc3b5aa765d61d8327deb882cf99', '14b0537caa', 'a31c7c', '9dec0425', '', '2018-06-29 10:43:10', 'e041a91ca2@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '2018-06-29 10:45:44', '2018-07-02 10:22:28', 2),
-(81, '09691422e6b2fd20', '5f4dcc3b5aa765d61d8327deb882cf99', '61574ec5f2', '5d825a', '14e11602', '', '2018-07-08 00:59:09', '0c6f64476d@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-15 14:52:27', 7),
-(82, '19e9c816e277f248', '5f4dcc3b5aa765d61d8327deb882cf99', '3386367d59', '49993b', '3889a5b6', '', '2018-07-15 13:21:04', '39b373d7eb@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-15 13:22:59', 0),
-(83, '6a133b5a8c375a0e', '5f4dcc3b5aa765d61d8327deb882cf99', '8eb9c10bf1', '1560d4', 'c5e1b910', '', '2018-07-15 13:24:41', '012e8f75f8@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-15 13:58:02', 0),
-(84, '7dd9995bc3d47230', '5f4dcc3b5aa765d61d8327deb882cf99', '70aedf86d4', 'f1a18a', '0e988bf9', '', '2018-07-22 12:31:50', '972c0dcf69@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-22 16:19:54', 0),
-(85, 'dfsfssfa', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:34:12', 'ranadasd@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 06:34:19', '2018-07-25 06:34:24', 0),
-(86, 'sdasdasdasd', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:38:19', '23234@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:40:31', 0),
-(87, '12313asdasd', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:41:01', 'asdada@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:42:02', 0),
-(88, 'fsdfsdf232', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 06:42:43', 'adasdasf@feadkfdfkdfki', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:46:53', 2),
-(89, 'Sample', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-25 17:22:42', 'sample@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-08-05 09:38:52', 0),
-(90, 'Tagaytay Seller', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-07-27 05:25:27', 'username@gmail.com', '', 'Tagaytay', 3, 1, 'upload/FXU2NrXO_400x400.jpg', 'Seller from Tagaytay', 1, 4, '0000-00-00 00:00:00', '2018-08-05 07:38:52', 3),
-(91, 'Mang Juan', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-08-04 08:40:52', 'mangjuan@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-08-04 13:50:20', 0),
-(92, 'user', '5f4dcc3b5aa765d61d8327deb882cf99', '', '', '', '', '2018-08-05 07:06:14', 'user@gmail.com', '090909090', 'Cubao', 1, 1, '', '', 1, 4, '0000-00-00 00:00:00', '2018-08-05 15:13:02', 0);
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'first1', 'mid1', 'last1', '2000-02-14', '2018-06-07 04:44:35', 'useremail1@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-06 18:42:01', 121),
+(2, 'seller1', '5f4dcc3b5aa765d61d8327deb882cf99', 'first2', 'mid2', 'last2', '2000-04-10', '2018-06-07 04:47:31', 'useremail2@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-06 16:32:56', 190),
+(3, 'user3', '5488d6d6f37a311a1085daf41f2e990c', 'first3', 'mid3', 'last3', '2000-07-15', '2018-06-07 01:56:37', 'useremail3@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(4, 'user4', '5f4dcc3b5aa765d61d8327deb882cf99', 'first4', 'mid4', 'last4', '2000-12-04', '2018-06-07 01:56:37', 'useremail4@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-02 13:47:42', 29),
+(5, 'seller2', '5f4dcc3b5aa765d61d8327deb882cf99', 'first5', 'mid5', 'last5', '2000-09-19', '2018-06-07 01:56:37', 'useremail5@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-04 09:05:06', 27),
+(6, 'user6', '5f4dcc3b5aa765d61d8327deb882cf99', 'first6', 'mid6', 'last6', '2000-03-15', '2018-06-07 15:32:53', 'useremail6@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-04 08:07:37', 21),
+(7, 'user7', '5f4dcc3b5aa765d61d8327deb882cf99', 'first7', 'mid7', 'last7', '2000-07-15', '2018-06-07 14:08:15', 'useremail7@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-08-01 16:13:30', 58),
+(8, 'user8', '5f4dcc3b5aa765d61d8327deb882cf99', 'first8', 'mid8', 'last8', '2000-01-31', '2018-06-07 15:31:06', 'useremail8@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:01', 41),
+(9, 'user9', '5f4dcc3b5aa765d61d8327deb882cf99', 'first9', 'mid9', 'last9', '2000-08-03', '2018-06-07 01:56:37', 'useremail9@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-06 17:30:09', 2),
+(10, 'user10', '5f4dcc3b5aa765d61d8327deb882cf99', 'first10', 'mid10', 'last10', '2004-04-01', '2018-06-07 15:29:14', 'useremail10@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-30 08:48:26', 12),
+(11, 'user11', '5f4dcc3b5aa765d61d8327deb882cf99', 'first11', 'mid11', 'last11', '1998-03-15', '2018-06-07 15:24:03', 'useremail11@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-10 00:36:50', '2018-07-04 08:59:25', 12),
+(12, 'user12', '5f4dcc3b5aa765d61d8327deb882cf99', 'first12', 'mid12', 'last12', '2002-03-03', '2018-06-07 15:21:12', 'useremail12@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-09 12:38:45', 16),
+(13, 'user13', '5f4dcc3b5aa765d61d8327deb882cf99', 'first13', 'mid13', 'last13', '1998-07-22', '2018-06-07 14:51:46', 'useremail13@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-08 09:34:46', 24),
+(14, 'user14', '5f4dcc3b5aa765d61d8327deb882cf99', 'first14', 'mid14', 'last14', '1998-08-03', '2018-06-07 15:12:55', 'useremail14@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:43', 48),
+(15, 'user15', '5f4dcc3b5aa765d61d8327deb882cf99', 'first15', 'mid15', 'last15', '1999-04-19', '2018-06-07 15:20:30', 'useremail15@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:18:43', 6),
+(16, 'user16', '5f4dcc3b5aa765d61d8327deb882cf99', 'first16', 'mid16', 'last16', '1997-10-21', '2018-06-07 15:22:29', 'useremail16@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-07-25 06:35:08', '2018-07-25 06:35:23', 6),
+(17, 'user17', '5f4dcc3b5aa765d61d8327deb882cf99', 'first17', 'mid17', 'last17', '1999-05-15', '2018-06-07 15:17:15', 'useremail17@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-26 06:30:22', 4),
+(18, 'user18', '5f4dcc3b5aa765d61d8327deb882cf99', 'first18', 'mid18', 'last18', '2006-07-20', '2018-06-07 15:16:46', 'useremail18@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-17 19:06:28', 2),
+(19, 'user19', '5f4dcc3b5aa765d61d8327deb882cf99', 'first19', 'mid19', 'last19', '2002-01-01', '2018-06-08 05:00:27', 'useremail19@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:28:01', 5),
+(20, 'user20', '5f4dcc3b5aa765d61d8327deb882cf99', 'first20', 'mid20', 'last20', '1995-01-15', '2018-06-08 05:14:22', 'useremail20@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 20:44:18', 1),
+(21, 'user21', '5f4dcc3b5aa765d61d8327deb882cf99', 'first21', 'mid21', 'last21', '1992-03-27', '2018-06-08 05:18:01', 'useremail21@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
+(22, 'user22', '5f4dcc3b5aa765d61d8327deb882cf99', 'first22', 'mid22', 'last22', '1996-10-23', '2018-06-08 05:28:17', 'useremail22@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-08 05:29:38', '2018-06-15 05:07:51', 0),
+(23, 'user23', '5f4dcc3b5aa765d61d8327deb882cf99', 'first23', 'mid23', 'last23', '1997-04-26', '2018-06-08 21:03:43', 'useremail23@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-16 00:00:26', 0),
+(24, 'user24', '5f4dcc3b5aa765d61d8327deb882cf99', 'first24', 'mid24', 'last24', '1996-12-01', '2018-06-08 21:10:39', 'useremail24@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(25, 'user25', '5f4dcc3b5aa765d61d8327deb882cf99', 'first25', 'mid25', 'last25', '2002-12-14', '2018-06-09 01:37:59', 'useremail25@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-16 06:41:06', 1),
+(26, 'user26', '5f4dcc3b5aa765d61d8327deb882cf99', 'first26', 'mid26', 'last26', '', '2018-06-09 23:49:52', 'useremail26@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(27, 'user27', '5f4dcc3b5aa765d61d8327deb882cf99', 'first27', 'mid27', 'last27', '', '2018-06-09 23:52:55', 'useremail27@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
+(28, 'user28', '5f4dcc3b5aa765d61d8327deb882cf99', 'first28', 'mid28', 'last28', '', '2018-06-09 23:54:40', 'useremail28@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
+(29, 'user29', '5f4dcc3b5aa765d61d8327deb882cf99', 'first29', 'mid29', 'last29', '', '2018-06-09 23:55:56', 'useremail29@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(30, 'user30', '5f4dcc3b5aa765d61d8327deb882cf99', 'first30', 'mid30', 'last30', '', '2018-06-10 00:01:55', 'useremail30@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(31, 'user31', '5f4dcc3b5aa765d61d8327deb882cf99', 'first31', 'mid31', 'last31', '', '2018-06-10 00:11:13', 'useremail31@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '2018-06-10 00:17:42', '2018-07-31 16:36:48', 2),
+(32, 'user32', '5f4dcc3b5aa765d61d8327deb882cf99', 'first32', 'mid32', 'last32', '', '2018-06-11 16:47:15', 'useremail32@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(33, 'user33', '5f4dcc3b5aa765d61d8327deb882cf99', 'first33', 'mid33', 'last33', '1990-01-19', '2018-06-12 05:01:54', 'useremail33@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(34, 'user34', '5f4dcc3b5aa765d61d8327deb882cf99', 'first34', 'mid34', 'last34', '2004-02-14', '2018-06-12 05:08:10', 'useremail34@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(35, 'user35', '5f4dcc3b5aa765d61d8327deb882cf99', 'first35', 'mid35', 'last35', '', '2018-06-12 20:55:34', 'useremail35@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(36, 'user36', '5f4dcc3b5aa765d61d8327deb882cf99', 'first36', 'mid36', 'last36', '', '2018-06-12 20:58:37', 'useremail36@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(37, 'user37', '5f4dcc3b5aa765d61d8327deb882cf99', 'first37', 'mid37', 'last37', '1999-10-10', '2018-06-14 20:34:16', 'useremail37@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:35:37', 0),
+(38, 'user38', '5f4dcc3b5aa765d61d8327deb882cf99', 'first38', 'mid38', 'last38', '1999-12-01', '2018-06-14 20:45:46', 'useremail38@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 20:58:15', 0),
+(39, 'user39', '5f4dcc3b5aa765d61d8327deb882cf99', 'first39', 'mid39', 'last39', '1998-09-12', '2018-06-14 21:57:30', 'useremail39@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-01 09:22:24', 10),
+(40, 'user40', '5f4dcc3b5aa765d61d8327deb882cf99', 'first40', 'mid40', 'last40', '1999-11-01', '2018-06-14 22:18:31', 'useremail40@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-16 05:42:27', '2018-06-16 20:50:46', 3),
+(41, 'user41', '5f4dcc3b5aa765d61d8327deb882cf99', 'first41', 'mid41', 'last41', '', '2018-06-15 23:41:00', 'useremail41@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:42:12', 1),
+(42, 'user42', '5f4dcc3b5aa765d61d8327deb882cf99', 'first42', 'mid42', 'last42', '', '2018-06-16 00:01:49', 'useremail42@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:02:18', 0),
+(43, 'user43', '5f4dcc3b5aa765d61d8327deb882cf99', 'first43', 'mid43', 'last43', '', '2018-06-16 00:19:53', 'useremail43@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '2018-06-16 01:16:57', '2018-06-16 01:28:27', 3),
+(44, 'user44', '5f4dcc3b5aa765d61d8327deb882cf99', 'first44', 'mid44', 'last44', '', '2018-06-16 00:25:54', 'useremail44@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:28:53', 1),
+(45, 'user45', '5f4dcc3b5aa765d61d8327deb882cf99', 'first45', 'mid45', 'last45', '', '2018-06-16 00:29:25', 'useremail45@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:30:22', 0),
+(46, 'user46', '5f4dcc3b5aa765d61d8327deb882cf99', 'first46', 'mid46', 'last46', '', '2018-06-16 00:30:48', 'useremail46@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:32:15', 0),
+(47, 'user47', '5f4dcc3b5aa765d61d8327deb882cf99', 'first47', 'mid47', 'last47', '', '2018-06-16 00:32:37', 'useremail47@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:36:29', 0),
+(48, 'user48', '5f4dcc3b5aa765d61d8327deb882cf99', 'first48', 'mid48', 'last48', '', '2018-06-16 00:37:00', 'useremail48@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:37:18', 0),
+(49, 'user49', '5f4dcc3b5aa765d61d8327deb882cf99', 'first49', 'mid49', 'last49', '', '2018-06-16 00:39:08', 'useremail49@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:39:33', 0),
+(50, 'user50', '5f4dcc3b5aa765d61d8327deb882cf99', 'first50', 'mid50', 'last50', '', '2018-06-16 00:45:11', 'useremail50@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 00:45:21', 1),
+(51, 'user51', '5f4dcc3b5aa765d61d8327deb882cf99', 'first51', 'mid51', 'last51', '', '2018-06-16 00:48:13', 'useremail51@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-28 16:34:30', 1),
+(52, 'user52', '5f4dcc3b5aa765d61d8327deb882cf99', 'first52', 'mid52', 'last52', '1991-11-27', '2018-06-16 00:50:39', 'useremail52@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-18 03:13:11', 2),
+(53, 'user53', '5f4dcc3b5aa765d61d8327deb882cf99', 'first53', 'mid53', 'last53', '', '2018-06-16 00:52:21', 'useremail53@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 4, '2018-06-16 05:43:52', '2018-06-16 05:44:20', 0),
+(54, 'user54', '5f4dcc3b5aa765d61d8327deb882cf99', 'first54', 'mid54', 'last54', '1999-01-17', '2018-06-16 05:28:28', 'useremail54@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:34:10', 5),
+(55, 'user55', '5f4dcc3b5aa765d61d8327deb882cf99', 'first55', 'mid55', 'last55', '', '2018-06-16 05:52:17', 'useremail55@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 05:52:36', 0),
+(56, 'user56', '5f4dcc3b5aa765d61d8327deb882cf99', 'first56', 'mid56', 'last56', '', '2018-06-16 06:04:54', 'useremail56@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 06:15:35', 0),
+(57, 'user57', '5f4dcc3b5aa765d61d8327deb882cf99', 'first57', 'mid57', 'last57', '1997-06-09', '2018-06-16 20:32:55', 'useremail57@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:20:05', 3),
+(58, 'user58', '5f4dcc3b5aa765d61d8327deb882cf99', 'first58', 'mid58', 'last58', '', '2018-06-16 20:49:30', 'useremail58@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 20:50:17', 0),
+(59, 'user59', '5f4dcc3b5aa765d61d8327deb882cf99', 'first59', 'mid59', 'last59', '', '2018-06-16 21:00:15', 'useremail59@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 21:00:32', 0),
+(60, 'user60', '5f4dcc3b5aa765d61d8327deb882cf99', 'first60', 'mid60', 'last60', '', '2018-06-16 21:04:19', 'useremail60@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 21:04:46', 0),
+(61, 'user61', '5f4dcc3b5aa765d61d8327deb882cf99', 'first61', 'mid61', 'last61', '', '2018-06-16 21:11:20', 'useremail61@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 21:11:37', 0),
+(62, 'user62', '5f4dcc3b5aa765d61d8327deb882cf99', 'first62', 'mid62', 'last62', '', '2018-06-16 21:12:15', 'useremail62@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-16 21:16:52', 0),
+(63, 'user63', '5f4dcc3b5aa765d61d8327deb882cf99', 'first63', 'mid63', 'last63', '', '2018-06-16 21:17:39', 'useremail63@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-17 03:38:52', 0),
+(64, 'user64', '5f4dcc3b5aa765d61d8327deb882cf99', 'first64', 'mid64', 'last64', '', '2018-06-16 21:18:50', 'useremail64@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-15 05:04:26', 2),
+(65, 'user65', '5f4dcc3b5aa765d61d8327deb882cf99', 'first65', 'mid65', 'last65', '', '2018-06-17 03:39:18', 'useremail65@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-06-17 03:48:41', 0),
+(66, 'user66', '5f4dcc3b5aa765d61d8327deb882cf99', 'first66', 'mid66', 'last66', '', '2018-06-17 11:35:20', 'useremail66@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 4, '0000-00-00 00:00:00', '2018-06-17 11:39:07', 1),
+(67, 'user67', '5f4dcc3b5aa765d61d8327deb882cf99', 'first67', 'mid67', 'last67', '2007-09-03', '2018-06-17 12:39:36', 'useremail67@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-17 18:41:20', 0),
+(68, 'user68', '5f4dcc3b5aa765d61d8327deb882cf99', 'first68', 'mid68', 'last68', '', '2018-06-21 06:01:06', 'useremail68@gmail.com', '', 'Quezon City', 1, 1, '', '', 0, 4, '0000-00-00 00:00:00', '2018-06-21 15:25:19', 7),
+(69, 'user69', '5f4dcc3b5aa765d61d8327deb882cf99', 'first69', 'mid69', 'last69', '2000-07-07', '2018-06-21 15:47:24', 'useremail69@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-25 10:11:15', 3),
+(70, 'user70', '5f4dcc3b5aa765d61d8327deb882cf99', 'first70', 'mid70', 'last70', '1993-07-07', '2018-06-22 04:45:25', 'useremail70@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-22 22:48:59', 2),
+(71, 'Mang Celso', '5f4dcc3b5aa765d61d8327deb882cf99', 'first71', 'mid71', 'last71', '', '2018-06-22 20:41:16', 'useremail71@gmail.com', '', 'Quezon City', 2, 1, 'upload/manwithrooster-Navarro.jpg', 'I am a bot...\r\n\r\nCommand\r\n\r\n!hello\r\n!thanks\r\n!time\r\n!bye', 0, 4, '2018-07-25 17:29:26', '2018-08-02 13:49:36', 41),
+(72, 'user72', '5f4dcc3b5aa765d61d8327deb882cf99', 'first72', 'mid72', 'last72', '1995-10-03', '2018-06-22 21:19:59', 'useremail72@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-23 20:11:44', 1),
+(73, 'user73', '5f4dcc3b5aa765d61d8327deb882cf99', 'first73', 'mid73', 'last73', '2002-10-01', '2018-06-24 03:17:01', 'useremail73@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-08 11:57:19', 5),
+(74, 'user74', '5f4dcc3b5aa765d61d8327deb882cf99', 'first74', 'mid74', 'last74', '2003-09-19', '2018-06-24 08:08:28', 'useremail74@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:34:51', 8),
+(75, 'user75', '5f4dcc3b5aa765d61d8327deb882cf99', 'first75', 'mid75', 'last75', '2004-07-13', '2018-06-24 08:19:39', 'useremail75@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-02 00:34:28', 8),
+(76, 'user76', '5f4dcc3b5aa765d61d8327deb882cf99', 'first76', 'mid76', 'last76', '2004-03-04', '2018-06-24 08:24:31', 'useremail76@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-01 12:56:59', 8),
+(77, 'user77', '5f4dcc3b5aa765d61d8327deb882cf99', 'first77', 'mid77', 'last77', '1999-04-16', '2018-06-27 06:25:50', 'useremail77@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-27 06:41:55', 1),
+(78, 'user78', '5f4dcc3b5aa765d61d8327deb882cf99', 'first78', 'mid78', 'last78', '2001-04-20', '2018-06-27 06:43:22', 'useremail78@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-27 06:43:30', '2018-07-21 09:32:35', 2),
+(79, 'user79', '5f4dcc3b5aa765d61d8327deb882cf99', 'first79', 'mid79', 'last79', '', '2018-06-28 05:06:19', 'useremail79@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '2018-06-28 05:18:06', '2018-06-28 05:41:35', 2),
+(80, 'user80', '5f4dcc3b5aa765d61d8327deb882cf99', 'first80', 'mid80', 'last80', '', '2018-06-29 10:43:10', 'useremail80@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '2018-06-29 10:45:44', '2018-07-02 10:22:28', 2),
+(81, 'user81', '5f4dcc3b5aa765d61d8327deb882cf99', 'first81', 'mid81', 'last81', '', '2018-07-08 00:59:09', 'useremail81@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-15 14:52:27', 7),
+(82, 'user82', '5f4dcc3b5aa765d61d8327deb882cf99', 'first82', 'mid82', 'last82', '', '2018-07-15 13:21:04', 'useremail82@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-15 13:22:59', 0),
+(83, 'user83', '5f4dcc3b5aa765d61d8327deb882cf99', 'first83', 'mid83', 'last83', '', '2018-07-15 13:24:41', 'useremail83@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-15 13:58:02', 0),
+(84, 'user84', '5f4dcc3b5aa765d61d8327deb882cf99', 'first84', 'mid84', 'last84', '', '2018-07-22 12:31:50', 'useremail84@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-22 16:19:54', 0),
+(85, 'user85', '5f4dcc3b5aa765d61d8327deb882cf99', 'first85', 'mid85', 'last85', '', '2018-07-25 06:34:12', 'useremail85@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 06:34:19', '2018-07-25 06:34:24', 0),
+(86, 'user86', '5f4dcc3b5aa765d61d8327deb882cf99', 'first86', 'mid86', 'last86', '', '2018-07-25 06:38:19', 'useremail86@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:40:31', 0),
+(87, 'user87', '5f4dcc3b5aa765d61d8327deb882cf99', 'first87', 'mid87', 'last87', '', '2018-07-25 06:41:01', 'useremail87@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:42:02', 0),
+(88, 'user88', '5f4dcc3b5aa765d61d8327deb882cf99', 'first88', 'mid88', 'last88', '', '2018-07-25 06:42:43', 'useremail88@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:46:53', 2),
+(89, 'user89', '5f4dcc3b5aa765d61d8327deb882cf99', 'first89', 'mid89', 'last89', '', '2018-07-25 17:22:42', 'useremail89@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-08-06 03:12:36', 0),
+(90, 'seller3', '5f4dcc3b5aa765d61d8327deb882cf99', 'first90', 'mid90', 'last90', '', '2018-07-27 05:25:27', 'useremail90@gmail.com', '', 'Tagaytay', 3, 1, 'upload/FXU2NrXO_400x400.jpg', 'Seller from Tagaytay', 1, 4, '0000-00-00 00:00:00', '2018-08-05 07:38:52', 5),
+(91, 'user91', '5f4dcc3b5aa765d61d8327deb882cf99', 'first91', 'mid91', 'last91', '', '2018-08-04 08:40:52', 'useremail91@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-08-04 13:50:20', 0),
+(92, 'user92', '5f4dcc3b5aa765d61d8327deb882cf99', 'first92', 'mid92', 'last92', '', '2018-08-05 07:06:14', 'useremail92@gmail.com', '090909090', 'Cubao', 1, 1, '', '', 1, 4, '0000-00-00 00:00:00', '2018-08-06 11:38:49', 0);
 
 --
 -- Indexes for dumped tables
@@ -3344,25 +3381,25 @@ ALTER TABLE `tblfriend`
 -- AUTO_INCREMENT for table `tbllikes`
 --
 ALTER TABLE `tbllikes`
-  MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=368;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=377;
 
 --
 -- AUTO_INCREMENT for table `tblorder`
 --
 ALTER TABLE `tblorder`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tblordersummary`
 --
 ALTER TABLE `tblordersummary`
-  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `tblpm`
@@ -3380,7 +3417,7 @@ ALTER TABLE `tblproduct`
 -- AUTO_INCREMENT for table `tblrating`
 --
 ALTER TABLE `tblrating`
-  MODIFY `ratingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ratingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tblreport`
@@ -3398,7 +3435,7 @@ ALTER TABLE `tblreviews`
 -- AUTO_INCREMENT for table `tblsales`
 --
 ALTER TABLE `tblsales`
-  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tbluser`

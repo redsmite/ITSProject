@@ -133,4 +133,41 @@ if(isset($_POST['mainsearch'])){
 	}
 	echo '</ul>';
 }
+
+if(isset($_POST['selectFarm'])){
+	$farm = $_POST['selectFarm'];
+	$search = $_POST['farmSearch'];
+	$limit = $_POST['farmCategory'];
+	$order = $_POST['farmOrder'];
+	if($order==1){
+		$order='ORDER BY price ASC';
+	}else if($order==2){
+		$order='ORDER BY price DESC';
+	}else{
+		$order='ORDER BY view,dateposted DESC';
+	}
+
+	$string = "WHERE productname LIKE '%$search%' $limit AND is_approved = 1 AND is_available = 1 AND t1.farmid = $farm $order";
+	showProduct($string);
+}
+
+if(isset($_POST['priceOrder'])){
+	$order = $_POST['priceOrder'];
+	if($order==1){
+		$order='ASC';
+	}else{
+		$order='DESC';
+	}
+	$search = $_POST['priceSearch'];
+	$limit = $_POST['priceCategory'];
+	$farm = $_POST['orderFarm'];
+	if($farm=='Select Farm'){
+		$farm='';
+	}else{
+		$farm="AND t1.farmid=$farm";
+	}
+
+	$string = "WHERE productname LIKE '%$search%' $limit AND is_approved = 1 AND is_available = 1 $farm ORDER BY price $order";
+	showProduct($string);
+}
 ?>

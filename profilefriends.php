@@ -36,7 +36,7 @@ if(!isset($_GET['id'])){
 	?>
 	<!-- Main Content -->
 		<div class="other-content">
-			<h1><a class="btp" href="profile.php?name=<?php echo $name ?>">Back to <?php echo $name ?>'s Profile</a></h1>
+			<h1><a class="btp" href="profile.php?id=<?php echo $id ?>">Back to <?php echo $name ?>'s Profile</a></h1>
 			<div class="wrap-center">
 <?php
 // Show friends

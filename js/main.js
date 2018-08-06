@@ -322,6 +322,50 @@ function browseCategory(click){
 	window.location.href = "searchproduct.php?search=&select="+id;
 }
 
+function selectFarm(){
+	var myRequest = new XMLHttpRequest();
+	var url = 'searchprocess.php';
+
+	let select = document.getElementById('selectFarm'); 
+	let farm = select.value;
+	let farmSearch = select.getAttribute('search');
+	let farmCategory = select.getAttribute('select');
+	let priceOrder = document.getElementById('selectPriceOrder').value;
+
+	var formData = "selectFarm="+farm+"&farmSearch="+farmSearch+"&farmCategory="+farmCategory+"&farmOrder="+priceOrder;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.querySelector('.my-products').innerHTML=response;
+	}
+	myRequest.send(formData);
+}
+
+function selectPriceOrder(){
+	var myRequest = new XMLHttpRequest();
+	var url = 'searchprocess.php';
+
+	let select = document.getElementById('selectPriceOrder'); 
+	let priceOrder = select.value;
+	let priceSearch = select.getAttribute('search');
+	let priceCategory = select.getAttribute('select');
+	let orderFarm = document.getElementById('selectFarm').value;
+	
+	var formData = "priceOrder="+priceOrder+"&priceSearch="+priceSearch+"&priceCategory="+priceCategory+"&orderFarm="+orderFarm;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.querySelector('.my-products').innerHTML=response;
+	}
+	myRequest.send(formData);
+}
+
 // friend
 
 function friendprocess(){
@@ -400,7 +444,6 @@ function friendyesb(clickedid){
 	}
 	myRequest.send(formData);
 }
-
 
 function friendno(clickedid){
 	var nid = clickedid.getAttribute('value');

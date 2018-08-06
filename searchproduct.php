@@ -26,15 +26,87 @@ chattab();
 	?>
 	<!-- Main Content -->
 	<div class="other-content">
-		<div class="my-products">
 <?php
-	if(isset($_SESSION['id'])){
-		if($_SESSION['type']==3 OR $_SESSION['type']==4){
-			echo'<a href="addproduct.php" class="white"><div class="add-product-button">
-			<i class="fas fa-plus"></i> Add Product
-			</div></a>';
+if(isset($_SESSION['id'])){
+	if($_SESSION['type']==3 OR $_SESSION['type']==4){
+		echo'<a href="addproduct.php" class="white"><div class="add-product-button">
+		<i class="fas fa-plus"></i> Add Product
+		</div></a>';
+	}
+}
+// Sort by Farm
+echo'<div class="select-farm">
+Select Farm: <select id="selectFarm"';
+
+if(isset($_GET['search'])){
+	$search = $_GET['search'];
+
+	if(isset($_GET['select'])){
+		$criteria = $_GET['select'];
+		$sql = "SELECT category FROM tblcategory WHERE categoryid='$criteria'";
+		$result = $conn->query($sql);
+		$fetch = $result->fetch_object();
+		if(!$fetch){
+			die('This category doesn\'t exists.');
 		}
 	}
+
+	if(!isset($criteria)){
+		$limit = "";
+	}else{
+		$limit = " AND t1.categoryid='$criteria'";			
+	}
+	echo 'search="'.$search.'"';
+	echo 'select="'.$limit.'"';
+}
+
+echo'onchange="selectFarm()">
+<option disabled selected>Select Farm</option>';
+
+$sql = "SELECT farmid, farmname FROM tblfarm";
+$result = $conn->query($sql);
+while($row = $result->fetch_object()){
+	$farmid = $row->farmid;
+	$farm = $row->farmname;
+	echo '<option value="'.$farmid.'">'.$farm.'</option>';
+}
+echo'</select></div>';
+// Sort by Price
+echo'<div class="select-farm">
+Sort by Price: <select id="selectPriceOrder"';
+
+if(isset($_GET['search'])){
+	$search = $_GET['search'];
+
+	if(isset($_GET['select'])){
+		$criteria = $_GET['select'];
+		$sql = "SELECT category FROM tblcategory WHERE categoryid='$criteria'";
+		$result = $conn->query($sql);
+		$fetch = $result->fetch_object();
+		if(!$fetch){
+			die('This category doesn\'t exists.');
+		}
+	}
+
+	if(!isset($criteria)){
+		$limit = "";
+	}else{
+		$limit = " AND t1.categoryid='$criteria'";			
+	}
+	echo 'search="'.$search.'"';
+	echo 'select="'.$limit.'"';
+}
+
+echo'onchange="selectPriceOrder()">
+<option disabled selected>Select Order</option>
+<option value="1">from lowest</option>
+<option value="2">from highest</option>
+</select></div>';
+?>
+		</select>
+		<div class="my-products">
+<?php
+	
 	if(isset($_GET['search'])){
 		$search = $_GET['search'];
 
@@ -55,57 +127,9 @@ chattab();
 		}else{
 			$limit = " AND t1.categoryid='$criteria'";			
 		}
-
-		$sql = "SELECT productid,category, productname, description, farmname, username, dateposted, price, img, rating FROM tblproduct as t1
-LEFT JOIN tblcategory as t2
-	ON t1.categoryid = t2.categoryid
-LEFT JOIN tbluser as t3
-	ON t1.userid = t3.userid
-LEFT JOIN tblfarm as t4
-	ON t1.farmid = t4.farmid
-WHERE productname LIKE '%$search%' $limit AND is_approved = 1 AND is_available = 1
-ORDER BY view,dateposted DESC";
-$result = $conn->query($sql);
-while($row = $result->fetch_object()){
-	$id = $row->productid;
-	$category = $row->category;
-	$product = $row->productname;
-	$desc = $row->description;
-	$farm = $row->farmname;
-	$user = $row->username;
-	$date = date('F j, Y',strtotime($row->dateposted));
-	$price = $row->price;
-	$img = $row->img;
-	if(!$img){
-		$img='img/default2.jpg';
-	}
-	$rating = $row->rating;
-
-	echo'
-	<div class="product">
-	<a href="product.php?id='.$id.'">
-	<div class="product-img-wrap">
-		<img src="'.$img.'" alt="Product Image">
-	</div>
-	<p class="product-title">'.$product.'</p>
-	</a>
-	<div class="product-content">
-	<a href="product.php?id='.$id.'">
-	<p>';
-
-	starsystem($rating);
-
-	echo'
-	</p>
-
-	<p class="product-category">'.$category.'</p>
-	<p class="product-desc">Description: '.substr($desc,0,30).' ...</p>
-	</a>
-	<p class="product-price">₱'.number_format($price,2).' / kg</p>
-	<div class="add-to-cart" value="'.$id.'" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart</div>
-	</div>
-	</div>';
-}
+		$string = "WHERE productname LIKE '%$search%' $limit AND is_approved = 1 AND is_available = 1
+			ORDER BY view,dateposted DESC";
+		showProduct($string);
 	}
 ?>
 		</div>

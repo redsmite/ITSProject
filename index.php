@@ -115,58 +115,10 @@ echo'<p>Comments ('.number_format($comments).')</p>
 					<h2><i class="fas fa-leaf"></i> Freshly Picked<br>
 					<small>What's New</small></h2>
 <?php
-$sql = "SELECT productid,category, productname, description, farmname, username, dateposted, price, img, rating FROM tblproduct as t1
-LEFT JOIN tblcategory as t2
-	ON t1.categoryid = t2.categoryid
-LEFT JOIN tbluser as t3
-	ON t1.userid = t3.userid
-LEFT JOIN tblfarm as t4
-	ON t1.farmid = t4.farmid
-WHERE is_approved = 1 AND is_available = 1
-ORDER BY dateposted DESC
-LIMIT 16";
-$result = $conn->query($sql);
-while($row = $result->fetch_object()){
-	$id = $row->productid;
-	$category = $row->category;
-	$product = $row->productname;
-	$desc = $row->description;
-	$farm = $row->farmname;
-	$user = $row->username;
-	$date = date('F j, Y',strtotime($row->dateposted));
-	$price = $row->price;
-	$img = $row->img;
-	if(!$img){
-		$img='img/default2.jpg';
-	}
-	$rating = $row->rating;
-
-	echo'
-	<div class="product">
-	<a href="product.php?id='.$id.'">
-	<div class="product-img-wrap">
-		<img src="'.$img.'" alt="Product Image">
-	</div>
-	<p class="product-title">'.$product.'</p>
-	</a>
-	<div class="product-content">
-	<a href="product.php?id='.$id.'">
-	<p>';
-
-	starsystem($rating);
-
-	echo'
-	</p>
-
-	<p class="product-category">'.$category.'</p>
-	<p class="product-desc">Description: '.substr($desc,0,30).' ...</p>
-	</a>
-	<p class="product-price">₱'.number_format($price,2).' / kg</p>
-	<div class="add-to-cart" value="'.$id.'" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart</div>
-	</div>
-	</div>';
-}
-
+$string = 'WHERE is_approved = 1 AND is_available = 1
+	ORDER BY dateposted DESC
+	LIMIT 16';
+showProduct($string);
 ?>
 				</div>
 		</div>

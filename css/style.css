@@ -2317,6 +2317,17 @@ li{
 	min-height: 100vh;
 }
 
+.select-farm{
+	float:right;
+	margin-right: 10px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.select-farm select{
+	height: 30px;
+}
+
 /* Review */
 .product-reviews{
 	grid-area: reviews;

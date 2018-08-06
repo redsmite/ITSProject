@@ -2,15 +2,6 @@
 	session_start();
 	require_once'connection.php';
 	include'functions.php';
-function getStartAndEndDate($week, $year) {
-  $dto = new DateTime();
-  $ret['week_start'] = $dto->setISODate($year, $week)->format('Y-m-d');
-  $ret['week_end'] = $dto->modify('+6 days')->format('Y-m-d');
-  return $ret;
-}
-
-
-echo getStartAndEndDate(31,2018)['week_end'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

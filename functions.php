@@ -334,9 +334,6 @@ if($type==1){
 	echo'<li> Your order has been <span style="color:red;"><b>cancelled</b></span><br>'.$date.'.<br>
 	Order No. <a class="black" href="search.php?criteria=3&search-text='.$details.'"><b>'.$details.'</a></b></li>';
 }else if ($type==7){
-	echo'<li> Your order has been <span style="color:green;"><b>completed</b></span><br>'.$date.'.<br>
-	Order No. <a class="black" href="search.php?criteria=3&search-text='.$details.'"><b>'.$details.'</a></b></li>';
-}else if ($type==8){
 	echo'<li> <div class="comment-tn">
 				<img src="'.$imgpath.'">
 			</div>
@@ -558,6 +555,60 @@ function starsystem($percent){
 	';
 	}
 	echo'</div>';
+}
+
+function showProduct($where){
+	$conn = new mysqli('localhost','root','','itsproject');
+
+	$sql = "SELECT productid,category, productname, description, farmname, username, dateposted, price, img, rating FROM tblproduct as t1
+	LEFT JOIN tblcategory as t2
+		ON t1.categoryid = t2.categoryid
+	LEFT JOIN tbluser as t3
+		ON t1.userid = t3.userid
+	LEFT JOIN tblfarm as t4
+		ON t1.farmid = t4.farmid
+	$where";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_object()){
+		$id = $row->productid;
+		$category = $row->category;
+		$product = $row->productname;
+		$desc = $row->description;
+		$farm = $row->farmname;
+		$user = $row->username;
+		$date = date('F j, Y',strtotime($row->dateposted));
+		$price = $row->price;
+		$img = $row->img;
+		if(!$img){
+			$img='img/default2.jpg';
+		}
+		$rating = $row->rating;
+
+		echo'
+		<div class="product">
+		<a href="product.php?id='.$id.'">
+		<div class="product-img-wrap">
+			<img src="'.$img.'" alt="Product Image">
+		</div>
+		<p class="product-title">'.$product.'</p>
+		</a>
+		<div class="product-content">
+		<a href="product.php?id='.$id.'">
+		<p>';
+
+		starsystem($rating);
+
+		echo'
+		</p>
+
+		<p class="product-category">'.$category.'</p>
+		<p class="product-desc">Description: '.substr($desc,0,30).' ...</p>
+		</a>
+		<p class="product-price">₱'.number_format($price,2).' / kg</p>
+		<div class="add-to-cart" value="'.$id.'" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart</div>
+		</div>
+		</div>';
+	}
 }
 
 function setupCookie(){

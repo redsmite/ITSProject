@@ -44,7 +44,7 @@ if(isset($_POST['placeOrder'])){
 			$sql = "INSERT INTO tblordersummary (orderid,productid,weight,price) VALUES $values";
 			$result = $conn->query($sql);
 
-			$sql = "INSERT INTO tblnotif (userid, receiverid, notifdate, notiftype, details) VALUES ('$userid', 1, NOW(), 8,'$ordernum')";
+			$sql = "INSERT INTO tblnotif (userid, receiverid, notifdate, notiftype, details) VALUES ('$userid', 1, NOW(), 7,'$ordernum')";
 			$result = $conn->query($sql);
 
 			unset($_SESSION['checkout']);
@@ -207,8 +207,6 @@ if(isset($_POST['complete'])){
 	$receiver = $_POST['completeRec'];
 
 	$sql = "UPDATE tblorder SET status = 4 WHERE orderid = '$id'";
-	$result = $conn->query($sql);
-	$sql = "INSERT INTO tblnotif (receiverid, notifdate, notiftype, details) VALUES ('$receiver', NOW(), 7,'$number')";
 	$result = $conn->query($sql);
 
 	$sql = "SELECT productid, weight, price FROM tblordersummary
