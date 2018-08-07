@@ -24,7 +24,7 @@
 	<?php
 		addheader();
 	?>
-	<!-- Showcase -->
+	<!-- Main Search -->
 		<div class="main-search">
 			<div id="browse-category" onclick="showCategory()">Browse Category
 			</div>
@@ -110,6 +110,20 @@ echo'<p>Comments ('.number_format($comments).')</p>
 						<img src="img/logo.jpg" alt="advertisement">
 					</div>
 					</a>
+				</div>
+				<div class="farm-select-div">
+					<h3><i class="fas fa-leaf"></i> Farms</h3>
+					<ul>
+<?php
+$sql = "SELECT farmid, farmname FROM tblfarm WHERE status=1";
+$result = $conn->query($sql);
+while($row = $result->fetch_object()){
+	$farmid = $row->farmid;
+	$farmname = $row->farmname;
+	echo '<li><a href="searchfarm.php?id='.$farmid.'">'.$farmname.'</a></li>';
+}
+?>
+					</ul>
 				</div>
 				<div class="content-body">
 					<h2><i class="fas fa-leaf"></i> Freshly Picked<br>

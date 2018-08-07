@@ -229,10 +229,11 @@ if(isset($_POST['weight'])){
 	$id = $_POST['listid'];
 	$key = $_POST['key'];
 
-	$sql = "SELECT productname FROM tblproduct WHERE productid = '$id'";
+	$sql = "SELECT productname,userid FROM tblproduct WHERE productid = '$id'";
 	$result = $conn->query($sql);
 	$fetch = $result->fetch_object();
 	$product = $fetch->productname;
+	$seller = $fetch->userid;
 
 	$weight= $_POST['weight'];
 	$price=$_POST['price'];
@@ -256,7 +257,8 @@ if(isset($_POST['weight'])){
 		'product'=> $product,
 		'price'=> $price,
 		'weight'=> $weight,
-		'unitprice'=>$unitprice
+		'unitprice'=>$unitprice,
+		'seller'=>$seller
 		);
 
 		array_push($_SESSION['trans'], $new_array);	
@@ -276,7 +278,8 @@ if(isset($_POST['weight'])){
 			'product'=> $product,
 			'price'=> $price,
 			'weight'=> $weight,
-			'unitprice'=>$unitprice
+			'unitprice'=>$unitprice,
+			'seller'=>$seller
 			);
 
 			array_push($_SESSION['trans'], $new_array);
@@ -303,7 +306,7 @@ if(isset($_POST['showcart'])){
 
 	}else{
 	
-	echo'<p>Enter unit in kg (min:0.5; max:99)</p>
+	echo'<p class="cart-notice">Enter unit in kg (<b>min: 0.5kg</b>; <b>max: 99kg</b>)</p>
 	<ul>';
 	//Cart - weight defined
 	if(isset($_SESSION['trans'])){
@@ -336,7 +339,7 @@ if(isset($_POST['showcart'])){
 		<a class="black" href="product.php?id='.$value.'">'.$name.'</a><br>
 		₱'.number_format($price,2).' / kg x
 		<input type="number" min="0.5" value="1" class="kg-input" id="input-'.$value.'" step="any">
-		<button class="button-control" onclick="addWeight(this)" value='.$key.' id="'.$value.'">Go</button><br>
+		<button class="button-control" onclick="addWeight(this)" value='.$key.' id="'.$value.'">Add</button><br>
 		<input type="hidden" id="price-'.$value.'" value="'.$price.'"">
 		</li>';
 	}

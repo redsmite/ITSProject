@@ -111,8 +111,7 @@ function time_elapsed_string($datetime, $full = false) {
         'm' => 'month',
         'd' => 'day',
         'h' => 'hour',
-        'i' => 'minute',
-        's' => 'second',
+        'i' => 'minute'
     );
     foreach ($string as $k => &$v) {
         if ($diff->$k) {
@@ -123,7 +122,7 @@ function time_elapsed_string($datetime, $full = false) {
     }
 
     if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? implode(', ', $string) . ' ago' : 'just now';
+    return $string ? implode(', ', $string) . ' ago' : '< 1 minute ago';
 }
 
 function createlink($string){
@@ -219,7 +218,7 @@ function session_button(){
 		echo '₱'.number_format($_SESSION['total'],2);
 	}
 	echo'</div>
-	<div id="cart-panel" onmouseleave="hideCartPanel()">
+	<div id="cart-panel"">
 		<h1 onclick="hideCartPanel()" class="close-heading">Shopping Cart <i style="float:right; padding-right:10px" class="fas fa-times"></i></h1>
 		<div id="shopping-cart-content"></div>
 	</div>

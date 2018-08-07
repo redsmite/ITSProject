@@ -19,7 +19,7 @@
 	$location = $fetch->location;
 	$email = $fetch->email;
 
-	$sql = "SELECT title, fee FROM tblfee WHERE feeid = 1";
+	$sql = "SELECT title, fee FROM tblshippingfee WHERE feeid = 1";
 	$result = $conn->query($sql);
 	$fetch = $result->fetch_object();
 	$title = $fetch->title;
@@ -86,7 +86,7 @@
 				<ol>
 					<li>1. Minimum of <b>₱500.00</b> worth of purchase.</li>
 					<li>2. Delivery is limited only in <b>Metro Manila</b></li>
-					<li>3. There will be <strong>no cancellation</strong> when the goods starts to deliver.</li>
+					<li>3. Cut off time of 4:00 p.m.</li>
 				</ol>
 			</div>
 			<div class="payment-option">

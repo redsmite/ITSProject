@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2018 at 08:42 PM
+-- Generation Time: Aug 07, 2018 at 04:04 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -407,25 +407,6 @@ INSERT INTO `tblfarm` (`farmid`, `farmname`, `address`, `status`) VALUES
 (1, 'Pampanga', 'Pampanga', 1),
 (2, 'Cavite', 'Cavite', 1),
 (3, 'Tagaytay', 'Tagaytay', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tblfee`
---
-
-CREATE TABLE `tblfee` (
-  `feeid` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `fee` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tblfee`
---
-
-INSERT INTO `tblfee` (`feeid`, `title`, `fee`) VALUES
-(1, 'Shipping Fee', '60.00');
 
 -- --------------------------------------------------------
 
@@ -918,7 +899,23 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (371, 92, 1, '2018-08-06 19:38:39', 1, 7, '2018080607383992', 0),
 (372, 0, 92, '2018-08-06 19:39:15', 0, 4, '2018080607383992', 0),
 (374, 9, 1, '2018-08-07 00:37:38', 1, 7, '201808071237379', 0),
-(375, 0, 9, '2018-08-07 00:38:07', 1, 4, '201808071237379', 0);
+(375, 0, 9, '2018-08-07 00:38:07', 1, 4, '201808071237379', 0),
+(376, 1, 1, '2018-08-07 14:47:12', 1, 7, '201808070247121', 0),
+(377, 4, 1, '2018-08-07 21:38:12', 1, 7, '201808070938124', 0),
+(378, 4, 2, '2018-08-07 21:38:12', 1, 7, '201808070938124', 0),
+(379, 4, 5, '2018-08-07 21:38:12', 1, 7, '201808070938124', 0),
+(380, 4, 90, '2018-08-07 21:38:12', 1, 7, '201808070938124', 0),
+(381, 0, 4, '2018-08-07 21:42:11', 1, 5, '201808070938124', 0),
+(382, 0, 1, '2018-08-07 21:42:14', 1, 4, '201808070247121', 0),
+(383, 4, 1, '2018-08-07 21:56:02', 1, 7, '201808070956024', 0),
+(384, 4, 5, '2018-08-07 21:56:02', 1, 7, '201808070956024', 0),
+(385, 4, 90, '2018-08-07 21:56:02', 1, 7, '201808070956024', 0),
+(386, 4, 2, '2018-08-07 21:56:02', 1, 7, '201808070956024', 0),
+(387, 4, 1, '2018-08-07 21:57:45', 1, 7, '201808070957444', 0),
+(388, 4, 5, '2018-08-07 21:57:45', 1, 7, '201808070957444', 0),
+(389, 4, 2, '2018-08-07 21:57:45', 1, 7, '201808070957444', 0),
+(390, 0, 4, '2018-08-07 21:59:02', 0, 4, '201808070957444', 0),
+(391, 0, 4, '2018-08-07 21:59:04', 0, 5, '201808070956024', 0);
 
 -- --------------------------------------------------------
 
@@ -952,7 +949,11 @@ INSERT INTO `tblorder` (`orderid`, `ordernumber`, `userid`, `billingaddress`, `e
 (6, '2018080511112292', 92, 'Quezon City', 'user@gmail.com', '090909090', '60.00', '585.00', 4, '2018-08-05 23:11:22'),
 (7, '2018080611123389', 89, 'Quezon City', 'sample@gmail.com', '0909090909090', '60.00', '565.00', 4, '2018-08-06 11:12:33'),
 (8, '2018080607383992', 92, 'Cubao', 'user@gmail.com', '090909090', '60.00', '610.00', 4, '2018-08-06 19:38:39'),
-(9, '201808071237379', 9, 'Quezon City', 'useremail9@gmail.com', '0909900009090', '60.00', '580.00', 4, '2018-08-07 00:37:37');
+(9, '201808071237379', 9, 'Quezon City', 'useremail9@gmail.com', '0909900009090', '60.00', '580.00', 4, '2018-08-07 00:37:37'),
+(10, '201808070247121', 1, 'Quezon City', 'useremail1@gmail.com', '099909090', '60.00', '1895.00', 4, '2018-08-07 14:47:12'),
+(11, '201808070938124', 4, 'Quezon City', 'useremail4@gmail.com', '00909090909', '60.00', '670.00', 2, '2018-08-07 21:38:12'),
+(12, '201808070956024', 4, 'Quezon City', 'useremail4@gmail.com', '09090909090', '60.00', '635.00', 2, '2018-08-07 21:56:02'),
+(13, '201808070957444', 4, 'Quezon City', 'useremail4@gmail.com', '090909000909', '60.00', '590.00', 4, '2018-08-07 21:57:44');
 
 -- --------------------------------------------------------
 
@@ -1005,7 +1006,17 @@ INSERT INTO `tblordersummary` (`summaryid`, `orderid`, `productid`, `weight`, `p
 (30, 9, 14, '2.000', '100.00'),
 (31, 9, 9, '2.000', '50.00'),
 (32, 9, 6, '1.000', '80.00'),
-(33, 9, 21, '1.000', '60.00');
+(33, 9, 21, '1.000', '60.00'),
+(34, 10, 20, '3.000', '40.00'),
+(35, 10, 16, '1.000', '65.00'),
+(36, 10, 15, '2.000', '60.00'),
+(37, 10, 12, '3.000', '50.00'),
+(38, 10, 4, '23.000', '60.00'),
+(39, 13, 8, '2.000', '100.00'),
+(40, 13, 21, '2.000', '60.00'),
+(41, 13, 3, '1.000', '80.00'),
+(42, 13, 20, '2.000', '40.00'),
+(43, 13, 12, '1.000', '50.00');
 
 -- --------------------------------------------------------
 
@@ -2787,7 +2798,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1766, 71, 1, 'message', '2018-08-02 23:22:41', 1),
 (1767, 71, 2, 'message', '2018-08-02 23:22:41', 1),
 (1768, 71, 3, 'message', '2018-08-02 23:22:41', 0),
-(1769, 71, 4, 'message', '2018-08-02 23:22:41', 0),
+(1769, 71, 4, 'message', '2018-08-02 23:22:41', 1),
 (1770, 71, 5, 'message', '2018-08-02 23:22:41', 1),
 (1771, 71, 6, 'message', '2018-08-02 23:22:41', 0),
 (1772, 71, 7, 'message', '2018-08-02 23:22:41', 0),
@@ -2875,7 +2886,12 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1854, 71, 89, 'message', '2018-08-02 23:22:41', 1),
 (1855, 71, 90, 'message', '2018-08-02 23:22:41', 1),
 (1856, 71, 91, 'message', '2018-08-04 16:40:52', 1),
-(1857, 71, 92, 'Hello user! \n Welcome to Bahay Kubo ni Mang Celso. \n Thanks for joining us. \n Please refer for the link for more info \n http://localhost/project/about.php', '2018-08-05 15:06:15', 1);
+(1857, 71, 92, 'Hello user! \n Welcome to Bahay Kubo ni Mang Celso. \n Thanks for joining us. \n Please refer for the link for more info \n http://localhost/project/about.php', '2018-08-05 15:06:15', 1),
+(1858, 1, 2, 'ghfhfgh', '2018-08-07 14:28:48', 1),
+(1859, 2, 1, 'message', '2018-08-07 20:10:49', 1),
+(1860, 2, 1, 'message', '2018-08-07 20:12:28', 1),
+(1861, 2, 1, 'message', '2018-08-07 20:20:47', 1),
+(1862, 1, 2, 'message', '2018-08-07 20:42:20', 1);
 
 -- --------------------------------------------------------
 
@@ -2915,16 +2931,16 @@ INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description
 (9, 13, 'Calamansi C', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 1, 2, '2018-07-24 15:56:10', '50.00', 'product/Calamansi.jpg', 6, '100.00', 1, 1),
 (10, 13, 'Calamansi G', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 1, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 3, '50.00', 1, 1),
 (11, 13, 'Calamansi A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 1, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 37, '80.00', 1, 1),
-(12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 1, 2, '2018-07-24 15:59:23', '50.00', 'product/potato.jpg', 14, '100.00', 1, 1),
+(12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 1, 2, '2018-07-24 15:59:23', '50.00', 'product/potato.jpg', 15, '100.00', 1, 1),
 (13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 1, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 30, '70.00', 1, 0),
 (14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 22, '80.00', 1, 1),
 (15, 8, 'Potato', 'The potato is a starchy, tuberous crop from the perennial nightshade Solanum tuberosum. Potato may be applied to both the plant and the edible tuber. Potatoes have become a staple food in many parts of the world and an integral part of much of the world\'s food supply. Potatoes are the world\'s fourth-largest food crop, following maize (corn), wheat, and rice. Tubers produce glycoalkaloids in small amounts. If green sections (sprouts and skins) of the plant are exposed to light the tuber can produce a high enough concentration of glycoalkaloids to affect human health.', 3, 1, '2018-07-26 14:30:26', '60.00', 'product/potato.jpg', 95, '75.00', 1, 1),
-(16, 10, 'Pechay Baguio', 'Baguio Pechay has light green leaves and a white stalk. It tastes milder than Bok Choy (Pechay Tagalog). Pechay Tagalog has smooth, dark green leaves that look like mustard leaves. ', 3, 90, '2018-07-30 14:47:42', '65.00', 'product/pechay-baguio.jpg', 12, '80.00', 1, 1),
+(16, 10, 'Pechay Baguio', 'Baguio Pechay has light green leaves and a white stalk. It tastes milder than Bok Choy (Pechay Tagalog). Pechay Tagalog has smooth, dark green leaves that look like mustard leaves. ', 3, 90, '2018-07-30 14:47:42', '65.00', 'product/pechay-baguio.jpg', 13, '80.00', 1, 1),
 (17, 10, 'Pechay', 'masarap mura pa kaya bilina kau parang awa nyo na\r\n', 1, 2, '2018-07-30 16:09:03', '60.00', 'product/pechay-n.jpg', 11, '50.00', 0, 1),
 (18, 4, 'Carrots', 'Carrots Carrots Carrots Carrots Carrots Carrots Carrots Carrots', 1, 1, '2018-07-31 16:37:55', '100.00', 'product/storecarrots.jpg', 2, '50.00', 1, 0),
-(19, 9, 'Talong', 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 3, 1, '2018-07-31 16:41:58', '80.00', 'product/talong.jpg', 5, '100.00', 1, 1),
+(19, 9, 'Talong', 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 3, 1, '2018-07-31 16:41:58', '80.00', 'product/talong.jpg', 7, '100.00', 1, 1),
 (20, 12, 'Latundan na Saging', 'Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan', 3, 1, '2018-07-31 17:05:46', '40.00', 'product/latundan.jpg', 10, '93.33', 1, 1),
-(21, 10, 'Pechay', 'There has been such a craze over kale in the past years, but did you know that the lowly pechay (chinese chard or bok choy) contains one of the highest nutrients per calorie, second to kale?\r\n\r\nDr. Fuhrmanâ€™s Aggregate Nutrient Density Index (ANDI) ranks the nutrient value of many common foods on the basis of how many nutrients they deliver to your body for each calorie consumed. Foods are ranked on a scale of 1-1000, with the most nutrient-dense cruciferous leafy green vegetables scoring 1000. Pechay has an ANDI rating of 865, higher than spinach (707), carrots (458) and broccoli (340)!\r\n\r\nPhenols and other phytonutrients in pechay represent what is now known to be a full spectrum of over 70 antioxidants in this cruciferous vegetable. The antioxidant richness of pechay also partly explains the ongoing investigation of this leafy green in relationship to cancer prevention since prevention and reduction of oxidative stress has often been linked to decreased cancer risk.\r\n\r\nBecause of its strong beta-carotene content, pechay also ranks as the 11th richest food in vitamin A. This vitamin A richness places pechay ahead of some of its fellow cruciferous vegetables, including cauliflower, cabbage, Brussels sprouts, and broccoli.', 2, 5, '2018-08-02 03:48:04', '60.00', 'product/pechay-n.jpg', 4, '50.00', 1, 1);
+(21, 10, 'Pechay', 'There has been such a craze over kale in the past years, but did you know that the lowly pechay (chinese chard or bok choy) contains one of the highest nutrients per calorie, second to kale?\r\n\r\nDr. Fuhrmanâ€™s Aggregate Nutrient Density Index (ANDI) ranks the nutrient value of many common foods on the basis of how many nutrients they deliver to your body for each calorie consumed. Foods are ranked on a scale of 1-1000, with the most nutrient-dense cruciferous leafy green vegetables scoring 1000. Pechay has an ANDI rating of 865, higher than spinach (707), carrots (458) and broccoli (340)!\r\n\r\nPhenols and other phytonutrients in pechay represent what is now known to be a full spectrum of over 70 antioxidants in this cruciferous vegetable. The antioxidant richness of pechay also partly explains the ongoing investigation of this leafy green in relationship to cancer prevention since prevention and reduction of oxidative stress has often been linked to decreased cancer risk.\r\n\r\nBecause of its strong beta-carotene content, pechay also ranks as the 11th richest food in vitamin A. This vitamin A richness places pechay ahead of some of its fellow cruciferous vegetables, including cauliflower, cabbage, Brussels sprouts, and broccoli.', 2, 5, '2018-08-02 03:48:04', '60.00', 'product/pechay-n.jpg', 5, '50.00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -3029,7 +3045,7 @@ CREATE TABLE `tblsales` (
   `salesid` int(11) NOT NULL,
   `productid` int(11) NOT NULL,
   `weight` decimal(10,3) NOT NULL,
-  `sales` int(11) NOT NULL,
+  `sales` decimal(10,2) NOT NULL,
   `datecommit` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -3038,35 +3054,64 @@ CREATE TABLE `tblsales` (
 --
 
 INSERT INTO `tblsales` (`salesid`, `productid`, `weight`, `sales`, `datecommit`) VALUES
-(1, 11, '9.000', 495, '2018-08-04 22:53:40'),
-(2, 9, '1.000', 50, '2018-08-04 22:53:40'),
-(3, 11, '2.000', 110, '2018-08-05 15:11:14'),
-(4, 14, '1.000', 100, '2018-08-05 15:11:14'),
-(5, 8, '1.000', 100, '2018-08-05 15:11:14'),
-(6, 7, '1.000', 135, '2018-08-05 15:11:14'),
-(7, 3, '1.000', 80, '2018-08-05 15:11:14'),
-(8, 12, '10.000', 500, '2018-08-05 17:39:42'),
-(9, 19, '1.000', 80, '2018-08-05 23:13:35'),
-(10, 14, '1.000', 100, '2018-08-05 23:13:35'),
-(11, 16, '1.000', 65, '2018-08-05 23:13:35'),
-(12, 21, '1.000', 60, '2018-08-05 23:13:35'),
-(13, 12, '2.000', 100, '2018-08-05 23:13:35'),
-(14, 4, '2.000', 120, '2018-08-05 23:13:35'),
-(15, 21, '2.000', 120, '2018-08-06 11:17:09'),
-(16, 16, '1.000', 65, '2018-08-06 11:17:09'),
-(17, 20, '0.500', 20, '2018-08-06 11:17:09'),
-(18, 9, '6.000', 300, '2018-08-06 11:17:09'),
-(19, 20, '1.000', 40, '2018-08-06 19:39:26'),
-(20, 14, '0.500', 50, '2018-08-06 19:39:26'),
-(21, 10, '0.500', 20, '2018-08-06 19:39:26'),
-(22, 5, '2.000', 240, '2018-08-06 19:39:26'),
-(23, 4, '2.000', 120, '2018-08-06 19:39:26'),
-(24, 3, '1.000', 80, '2018-08-06 19:39:26'),
-(25, 19, '1.000', 80, '2018-08-07 00:38:14'),
-(26, 14, '2.000', 200, '2018-08-07 00:38:14'),
-(27, 9, '2.000', 100, '2018-08-07 00:38:14'),
-(28, 6, '1.000', 80, '2018-08-07 00:38:14'),
-(29, 21, '1.000', 60, '2018-08-07 00:38:14');
+(1, 11, '9.000', '495.00', '2018-08-04 22:53:40'),
+(2, 9, '1.000', '50.00', '2018-08-04 22:53:40'),
+(3, 11, '2.000', '110.00', '2018-08-05 15:11:14'),
+(4, 14, '1.000', '100.00', '2018-08-05 15:11:14'),
+(5, 8, '1.000', '100.00', '2018-08-05 15:11:14'),
+(6, 7, '1.000', '135.00', '2018-08-05 15:11:14'),
+(7, 3, '1.000', '80.00', '2018-08-05 15:11:14'),
+(8, 12, '10.000', '500.00', '2018-08-05 17:39:42'),
+(9, 19, '1.000', '80.00', '2018-08-05 23:13:35'),
+(10, 14, '1.000', '100.00', '2018-08-05 23:13:35'),
+(11, 16, '1.000', '65.00', '2018-08-05 23:13:35'),
+(12, 21, '1.000', '60.00', '2018-08-05 23:13:35'),
+(13, 12, '2.000', '100.00', '2018-08-05 23:13:35'),
+(14, 4, '2.000', '120.00', '2018-08-05 23:13:35'),
+(15, 21, '2.000', '120.00', '2018-08-06 11:17:09'),
+(16, 16, '1.000', '65.00', '2018-08-06 11:17:09'),
+(17, 20, '0.500', '20.00', '2018-08-06 11:17:09'),
+(18, 9, '6.000', '300.00', '2018-08-06 11:17:09'),
+(19, 20, '1.000', '40.00', '2018-08-06 19:39:26'),
+(20, 14, '0.500', '50.00', '2018-08-06 19:39:26'),
+(21, 10, '0.500', '20.00', '2018-08-06 19:39:26'),
+(22, 5, '2.000', '240.00', '2018-08-06 19:39:26'),
+(23, 4, '2.000', '120.00', '2018-08-06 19:39:26'),
+(24, 3, '1.000', '80.00', '2018-08-06 19:39:26'),
+(25, 19, '1.000', '80.00', '2018-08-07 00:38:14'),
+(26, 14, '2.000', '200.00', '2018-08-07 00:38:14'),
+(27, 9, '2.000', '100.00', '2018-08-07 00:38:14'),
+(28, 6, '1.000', '80.00', '2018-08-07 00:38:14'),
+(29, 21, '1.000', '60.00', '2018-08-07 00:38:14'),
+(30, 20, '3.000', '120.00', '2018-08-07 21:42:20'),
+(31, 16, '1.000', '65.00', '2018-08-07 21:42:20'),
+(32, 15, '2.000', '120.00', '2018-08-07 21:42:20'),
+(33, 12, '3.000', '150.00', '2018-08-07 21:42:20'),
+(34, 4, '23.000', '1380.00', '2018-08-07 21:42:20'),
+(35, 8, '2.000', '200.00', '2018-08-07 21:59:10'),
+(36, 21, '2.000', '120.00', '2018-08-07 21:59:10'),
+(37, 3, '1.000', '80.00', '2018-08-07 21:59:10'),
+(38, 20, '2.000', '80.00', '2018-08-07 21:59:10'),
+(39, 12, '1.000', '50.00', '2018-08-07 21:59:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblshippingfee`
+--
+
+CREATE TABLE `tblshippingfee` (
+  `feeid` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `fee` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblshippingfee`
+--
+
+INSERT INTO `tblshippingfee` (`feeid`, `title`, `fee`) VALUES
+(1, 'Shipping Fee', '60.00');
 
 -- --------------------------------------------------------
 
@@ -3102,13 +3147,13 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `phone`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'first1', 'mid1', 'last1', '2000-02-14', '2018-06-07 04:44:35', 'useremail1@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-06 18:42:01', 121),
-(2, 'seller1', '5f4dcc3b5aa765d61d8327deb882cf99', 'first2', 'mid2', 'last2', '2000-04-10', '2018-06-07 04:47:31', 'useremail2@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-06 16:32:56', 190),
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'first1', 'mid1', 'last1', '2000-02-14', '2018-06-07 04:44:35', 'useremail1@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-07 14:00:38', 121),
+(2, 'seller1', '5f4dcc3b5aa765d61d8327deb882cf99', 'first2', 'mid2', 'last2', '2000-04-10', '2018-06-07 04:47:31', 'useremail2@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-07 14:01:13', 194),
 (3, 'user3', '5488d6d6f37a311a1085daf41f2e990c', 'first3', 'mid3', 'last3', '2000-07-15', '2018-06-07 01:56:37', 'useremail3@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(4, 'user4', '5f4dcc3b5aa765d61d8327deb882cf99', 'first4', 'mid4', 'last4', '2000-12-04', '2018-06-07 01:56:37', 'useremail4@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-02 13:47:42', 29),
-(5, 'seller2', '5f4dcc3b5aa765d61d8327deb882cf99', 'first5', 'mid5', 'last5', '2000-09-19', '2018-06-07 01:56:37', 'useremail5@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-04 09:05:06', 27),
+(4, 'user4', '5f4dcc3b5aa765d61d8327deb882cf99', 'first4', 'mid4', 'last4', '2000-12-04', '2018-06-07 01:56:37', 'useremail4@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-07 13:57:46', 29),
+(5, 'seller2', '5f4dcc3b5aa765d61d8327deb882cf99', 'first5', 'mid5', 'last5', '2000-09-19', '2018-06-07 01:56:37', 'useremail5@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-07 14:01:43', 28),
 (6, 'user6', '5f4dcc3b5aa765d61d8327deb882cf99', 'first6', 'mid6', 'last6', '2000-03-15', '2018-06-07 15:32:53', 'useremail6@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-04 08:07:37', 21),
-(7, 'user7', '5f4dcc3b5aa765d61d8327deb882cf99', 'first7', 'mid7', 'last7', '2000-07-15', '2018-06-07 14:08:15', 'useremail7@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-08-01 16:13:30', 58),
+(7, 'user7', '5f4dcc3b5aa765d61d8327deb882cf99', 'first7', 'mid7', 'last7', '2000-07-15', '2018-06-07 14:08:15', 'useremail7@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-08-01 16:13:30', 59),
 (8, 'user8', '5f4dcc3b5aa765d61d8327deb882cf99', 'first8', 'mid8', 'last8', '2000-01-31', '2018-06-07 15:31:06', 'useremail8@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:01', 41),
 (9, 'user9', '5f4dcc3b5aa765d61d8327deb882cf99', 'first9', 'mid9', 'last9', '2000-08-03', '2018-06-07 01:56:37', 'useremail9@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-06 17:30:09', 2),
 (10, 'user10', '5f4dcc3b5aa765d61d8327deb882cf99', 'first10', 'mid10', 'last10', '2004-04-01', '2018-06-07 15:29:14', 'useremail10@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-30 08:48:26', 12),
@@ -3191,7 +3236,7 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (87, 'user87', '5f4dcc3b5aa765d61d8327deb882cf99', 'first87', 'mid87', 'last87', '', '2018-07-25 06:41:01', 'useremail87@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:42:02', 0),
 (88, 'user88', '5f4dcc3b5aa765d61d8327deb882cf99', 'first88', 'mid88', 'last88', '', '2018-07-25 06:42:43', 'useremail88@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-07-25 06:46:53', 2),
 (89, 'user89', '5f4dcc3b5aa765d61d8327deb882cf99', 'first89', 'mid89', 'last89', '', '2018-07-25 17:22:42', 'useremail89@gmail.com', '', '', 1, 1, '', '', 1, 0, '2018-07-25 17:23:21', '2018-08-06 03:12:36', 0),
-(90, 'seller3', '5f4dcc3b5aa765d61d8327deb882cf99', 'first90', 'mid90', 'last90', '', '2018-07-27 05:25:27', 'useremail90@gmail.com', '', 'Tagaytay', 3, 1, 'upload/FXU2NrXO_400x400.jpg', 'Seller from Tagaytay', 1, 4, '0000-00-00 00:00:00', '2018-08-05 07:38:52', 5),
+(90, 'seller3', '5f4dcc3b5aa765d61d8327deb882cf99', 'first90', 'mid90', 'last90', '', '2018-07-27 05:25:27', 'useremail90@gmail.com', '', 'Tagaytay', 3, 1, 'upload/FXU2NrXO_400x400.jpg', 'Seller from Tagaytay', 1, 4, '0000-00-00 00:00:00', '2018-08-07 14:03:03', 6),
 (91, 'user91', '5f4dcc3b5aa765d61d8327deb882cf99', 'first91', 'mid91', 'last91', '', '2018-08-04 08:40:52', 'useremail91@gmail.com', '', '', 1, 1, '', '', 1, 0, '0000-00-00 00:00:00', '2018-08-04 13:50:20', 0),
 (92, 'user92', '5f4dcc3b5aa765d61d8327deb882cf99', 'first92', 'mid92', 'last92', '', '2018-08-05 07:06:14', 'useremail92@gmail.com', '090909090', 'Cubao', 1, 1, '', '', 1, 4, '0000-00-00 00:00:00', '2018-08-06 11:38:49', 0);
 
@@ -3240,12 +3285,6 @@ ALTER TABLE `tblcommentann`
 --
 ALTER TABLE `tblfarm`
   ADD PRIMARY KEY (`farmid`);
-
---
--- Indexes for table `tblfee`
---
-ALTER TABLE `tblfee`
-  ADD PRIMARY KEY (`feeid`);
 
 --
 -- Indexes for table `tblfriend`
@@ -3314,6 +3353,12 @@ ALTER TABLE `tblsales`
   ADD PRIMARY KEY (`salesid`);
 
 --
+-- Indexes for table `tblshippingfee`
+--
+ALTER TABLE `tblshippingfee`
+  ADD PRIMARY KEY (`feeid`);
+
+--
 -- Indexes for table `tbluser`
 --
 ALTER TABLE `tbluser`
@@ -3366,12 +3411,6 @@ ALTER TABLE `tblfarm`
   MODIFY `farmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tblfee`
---
-ALTER TABLE `tblfee`
-  MODIFY `feeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `tblfriend`
 --
 ALTER TABLE `tblfriend`
@@ -3387,25 +3426,25 @@ ALTER TABLE `tbllikes`
 -- AUTO_INCREMENT for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=377;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=392;
 
 --
 -- AUTO_INCREMENT for table `tblorder`
 --
 ALTER TABLE `tblorder`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tblordersummary`
 --
 ALTER TABLE `tblordersummary`
-  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `tblpm`
 --
 ALTER TABLE `tblpm`
-  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1858;
+  MODIFY `pmid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1863;
 
 --
 -- AUTO_INCREMENT for table `tblproduct`
@@ -3435,7 +3474,13 @@ ALTER TABLE `tblreviews`
 -- AUTO_INCREMENT for table `tblsales`
 --
 ALTER TABLE `tblsales`
-  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `tblshippingfee`
+--
+ALTER TABLE `tblshippingfee`
+  MODIFY `feeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbluser`

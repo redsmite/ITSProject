@@ -170,7 +170,6 @@ if(isset($_POST['select'])){
 
 	}else{
 
-
 	$sql = "INSERT INTO tblreport (reason,datecreated,userid,reporter)
 	VALUES ('$reason',NOW(),'$id','$reporter')";
 	$result = $conn->query($sql);
@@ -196,15 +195,13 @@ if(isset($_POST['title'])){
 
 	$sql = "INSERT INTO tblannouncement (title,content,author,datecreated) VALUES ('$title','$content','$author',NOW())";
 	$result = $conn->query($sql);
-	echo $sql;
-
 }
 
 // Price Monitoring
 if(isset($_POST['updateFee'])){
 	$fee = $_POST['updateFee'];
 
-	$sql = "UPDATE tblfee SET fee = '$fee' WHERE feeid=1";
+	$sql = "UPDATE tblshippingfee SET fee = '$fee' WHERE feeid=1";
 	$result = $conn->query($sql);
 
 	$log = 'Update price of Shipping fee';
@@ -212,7 +209,6 @@ if(isset($_POST['updateFee'])){
 	$sql = "INSERT INTO tblchangelog (log,datecreated) VALUES ('$log',NOW())";
 	$result= $conn->query($sql);
 }
-
 
 if(isset($_POST['addCat'])){
 	$category = $conn->real_escape_string($_POST['addCat']);
@@ -406,7 +402,7 @@ function salesReport($where,$format,$weekly){
 	echo'</th></tr>
 	<tr><th>Product</th><th>Unit</th><th>Sales</th></tr>';
 
-	$sql = "SELECT t1.productid, productname, weight, sales FROM tblsales AS t1
+	$sql = "SELECT t1.productid, productname, SUM(weight) AS weight, SUM(sales) AS sales FROM tblsales AS t1
 	LEFT JOIN tblproduct AS t2
 		ON t1.productid = t2.productid
 	$where

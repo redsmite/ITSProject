@@ -147,9 +147,9 @@ if(isset($_GET['search-text'])){
 		
 		$userid = $row->userid;
 
-		// Check if the user own the order / if user is admin
+		// Check if the user own the order / if user is admin / if user is seller
 
-		if($userid == $_SESSION['id'] or $_SESSION['type']==4){
+		if($userid == $_SESSION['id'] or $_SESSION['type']==4 or $_SESSION['type']==3){
 		
 			$orderid = $row->orderid;
 			$ordernum = $row->ordernumber;
@@ -161,7 +161,7 @@ if(isset($_GET['search-text'])){
 			$total = $row->total;
 			$status = $row->status;
 			if($status==0){
-				$status = '<font style="color:orangered;">Reviewing...</font>';
+				$status = '<font style="color:orangered;">Pending...</font>';
 			}else if($status == 1){
 				$status = '<font style="color:green;">On delivery...</font>';
 			}else if($status == 2){
@@ -210,9 +210,11 @@ if(isset($_GET['search-text'])){
 	}
 
 			echo'</table></div>
+			<div class="checkout-final">
 			<p>Subtotal: <b>₱'.number_format($total-$fee,2).'</b></p>
 			<p>Shipping Fee: <b>+₱'.number_format($fee,2).'</b></p>
 			<p>Total: <b>₱'.number_format($total,2).'</b></p>
+			</div>
 			</div>';
 		}
 	}	

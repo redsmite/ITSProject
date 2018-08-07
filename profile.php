@@ -160,7 +160,7 @@ if($imgpath==''){
 							}else{
 								echo'
 								<li>
-								<a href="inbox.php?id='.$_GET["id"].'"><i class="fas fa-comments"></i> Chat with '.$user.'</a>
+								<a href="inbox.php?id='.$_GET["id"].'"><i class="fas fa-comments"></i> Chat</a>
 								</li>
 								<li><a id="report" onclick="showreport()"><i class="far fa-flag"></i> Report this User</a>
 								</li>';
@@ -181,7 +181,7 @@ if($testR->num_rows!=0){
 	if($accepted==1){
 	echo'<li><p><i class="fas fa-user-plus"></i> Pending request...</p></li>';
 	} else if ($accepted==2){
-		echo'<li><a id="rmv-fr" value="'.$fid.'" onclick="friendremove()"><i class="fas fa-ban"></i> Remove Friend</a></li>';
+		echo'<li><a id="rmv-fr" value="'.$fid.'" onclick="friendremove()"><i class="fas fa-user-slash"></i> Unfriend</a></li>';
 	} else if ($accepted==3 && $friendsince==''){
 		echo'<li><a id="fr-btn" value="'.$id.'" onclick="friendprocess()"><i class="fas fa-user-plus"></i> Add as friend</a></li>';
 	}
@@ -196,6 +196,15 @@ echo'<li><a href="myproducts.php?id='.$id.'"><i class="far fa-bookmark"></i> My 
 }
 						echo'</ul>
 						<table id="profilestats">';
+						// Review Count
+						$sql="SELECT reviewid FROM tblreviews WHERE userid= '$id'";
+						$result=$conn->query($sql);
+						$reviews = $result->num_rows;
+
+						echo'<tr>
+						<th><i class="fas fa-book-open"></i> Reviews:</th>
+						<th>'.number_format($reviews).'</th>
+						</tr>';
 						// Comment Count
 						$sql="SELECT commentid FROM tblcomment WHERE userid = '$id'";
 						$result=$conn->query($sql);
@@ -289,7 +298,7 @@ echo'<li><a href="myproducts.php?id='.$id.'"><i class="far fa-bookmark"></i> My 
 		ON tblcomment.userid = tbluser.userid
 	WHERE receiver='$id'
 	ORDER BY commentid DESC
-	LIMIT 15";
+	LIMIT 10";
 
 	$result3=$conn->query($sql3);
 	while($rows2=$result3->fetch_object()){

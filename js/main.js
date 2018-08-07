@@ -73,7 +73,7 @@ function showLogin(){
 
 function scrollOpacity(){
 	let header = document.querySelector('.subheader');
-	header.style.opacity=0;
+	header.style.opacity=0.4;
 
 	let body = document.getElementsByTagName("BODY")[0];
 	if(body.scrollTop==0){
@@ -2571,11 +2571,11 @@ function starLeave(){
 	let star4 = document.getElementById('star4');
 	let star5 = document.getElementById('star5');
 
-	star1.style.color='#222';
-	star2.style.color='#222';
-	star3.style.color='#222';
-	star4.style.color='#222';
-	star5.style.color='#222';	
+	star1.style.color='gold';
+	star2.style.color='gold';
+	star3.style.color='gold';
+	star4.style.color='gold';
+	star5.style.color='gold';	
 }
 
 function clickstar(clicked){

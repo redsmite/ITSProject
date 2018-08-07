@@ -153,7 +153,7 @@ $sql = "SELECT categoryid,status,category FROM tblcategory";
 						<h1>Set Shipping Fee</h1>
 						<form align="center" id="update-fee-form">
 <?php
-$sql = "SELECT fee FROM tblfee WHERE feeid=1";
+$sql = "SELECT fee FROM tblshippingfee WHERE feeid=1";
 $result = $conn->query($sql);
 $fetch = $result->fetch_object();
 $fee = $fetch->fee;

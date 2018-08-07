@@ -32,19 +32,36 @@ if(isset($_POST['placeOrder'])){
 			$orderid = $fetch->orderid;
 
 			$values = '';
+
+			$seller_array = array();
+			array_push($seller_array, 1);
 			foreach ($array as $key => $value) {
 				$product = $array[$key]['productid'];
 				$weight = $array[$key]['weight'];
 				$price= $array[$key]['price'];
 
 				$values .= "('$orderid','$product','$weight',$price),";
+
+				$seller = $array[$key]['seller'];
+				if(in_array($seller, $seller_array)){
+
+				}else{
+					array_push($seller_array, $seller);
+				}
 			}
 			$values = rtrim($values,',');
 
 			$sql = "INSERT INTO tblordersummary (orderid,productid,weight,price) VALUES $values";
 			$result = $conn->query($sql);
 
-			$sql = "INSERT INTO tblnotif (userid, receiverid, notifdate, notiftype, details) VALUES ('$userid', 1, NOW(), 7,'$ordernum')";
+			//Send Notification to admin and Sellers
+			$values = '';
+
+			foreach ($seller_array as $key => $value) {
+				$values .= "('$userid', $value, NOW(), 7,'$ordernum'),";
+			}
+			$values = rtrim($values,',');
+			$sql = "INSERT INTO tblnotif (userid, receiverid, notifdate, notiftype, details) VALUES $values";
 			$result = $conn->query($sql);
 
 			unset($_SESSION['checkout']);
@@ -73,7 +90,7 @@ function orderMonitoring($where,$condition){
 		$total = $row->total;
 		$status = $row->status;
 		if($status==0){
-			$Sstatus = '<font style="color:orangered;">Reviewing...</font>';
+			$Sstatus = '<font style="color:orangered;">Pending...</font>';
 		}else if($status == 1){
 			$Sstatus = '<font style="color:green;">On delivery...</font>';
 		}else if($status == 2){
@@ -122,9 +139,11 @@ function orderMonitoring($where,$condition){
 	}
 
 		echo'</table></div>
+		<div class="checkout-final">
 		<p>Subtotal: <b>₱'.number_format($total-$fee,2).'</b></p>
 		<p>Shipping Fee: <b>+₱'.number_format($fee,2).'</b></p>
-		<p>Total: <b>₱'.number_format($total,2).'</b></p>';
+		<p>Total: <b>₱'.number_format($total,2).'</b></p>
+		</div>';
 		if($condition==0){
 		echo'<div id="order-approve-'.$orderid.'" class="add-product-button">
 			<div onclick="approveOrder(this)" receiver="'.$userid.'" number="'.$ordernum.'" value="'.$orderid.'">
@@ -165,7 +184,6 @@ if(isset($_POST['showApproveOrders'])){
 	$string = "WHERE status = 1";
 	orderMonitoring($string,true);
 }
-
 
 if(isset($_POST['approve'])){
 	$id = $_POST['approve'];

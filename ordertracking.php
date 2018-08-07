@@ -94,7 +94,7 @@ if($last != 1){
 		$total = $row->total;
 		$status = $row->status;
 		if($status==0){
-			$status = '<font style="color:orangered;">Reviewing...</font>';
+			$status = '<font style="color:orangered;">Pending...</font>';
 		}else if($status == 1){
 			$status = '<font style="color:green;">On delivery...</font>';
 		}else if($status == 2){
@@ -142,10 +142,11 @@ while($row2 = $result2->fetch_object()){
 }
 
 		echo'</table></div>
+		<div class="checkout-final">
 		<p>Subtotal: <b>₱'.number_format($total-$fee,2).'</b></p>
 		<p>Shipping Fee: <b>+₱'.number_format($fee,2).'</b></p>
 		<p>Total: <b>₱'.number_format($total,2).'</b></p>
-		</div>';
+		</div></div>';
 	}
 ?>
 	</div>

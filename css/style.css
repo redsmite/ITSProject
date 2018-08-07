@@ -742,10 +742,10 @@ li{
 .main-content-grid{
 	grid-area:content;
 	display:grid;
-	grid-template-columns: 1fr 3fr;
+	grid-template-columns: 1fr 3fr 1fr;
 	grid-template-areas: 
-	"advertisement announcement"
-	"main main";
+	"advertisement announcement farms"
+	"main main main";
 }
 
 .announcement{
@@ -794,6 +794,26 @@ li{
 #announcement-text{
 	width:95%;
 	height:100px;
+}
+
+.farm-select-div{
+	grid-area: farms;
+	margin: 10px 0;
+	text-align: center;
+	padding: 20px 0;
+}
+
+.farm-select-div li{
+	line-height: 1.5em;
+	font-size: 1.5em;
+}
+
+.farm-select-div li:hover{
+	background: var(--lightblue);
+}
+
+.farm-select-div a{
+	color: var(--black);
 }
 
 .button-control{
@@ -2318,7 +2338,7 @@ li{
 }
 
 .select-farm{
-	float:right;
+	display: inline-block;
 	margin-right: 10px;
 	font-size: 1.2em;
 	font-weight: bold;
@@ -2344,6 +2364,7 @@ li{
 
 #star1,#star2,#star3,#star4,#star5{
 	cursor:pointer;
+	color: var(--sunflower);
 }
 
 #reviews{
@@ -2489,6 +2510,13 @@ li{
 	font-size: 1.2em;
 }
 
+.cart-notice{
+	background: var(--darkgray);
+	color: var(--light-color);
+	padding: 5px;
+	font-size: 0.8em;
+}
+
 #cart-panel ul{
 	padding: 10px 0;
 	margin: 0 8px;
@@ -2552,7 +2580,8 @@ li{
 
 .checkout-final{
 	margin-top: 10px;
-	text-align: center;
+	text-align: right;
+	margin-right: 150px;
 }
 
 .checkout-right{
@@ -2760,14 +2789,7 @@ li{
 		padding: 5px;
 	}
 	.main-content-grid{
-		grid-template-columns: 1fr;
-		grid-template-areas: 
-		"announcement"
-		"advertisement"
-		"main"
-		"sidebar2"
-		"sidebar"
-		"sidebar3";
+		display: block;
 		align-items:center;
 	}
 
