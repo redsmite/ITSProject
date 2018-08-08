@@ -63,11 +63,124 @@
 				</div>
 			</form>
 		</div>
-<!-- Main-Search Modal -->
-<div id="main-search-panel">
-	
-</div>
-<div id="main-search-modal" onclick="hideSearchPanel()"></div>
+	<!-- Main-Search Modal -->
+		<div id="main-search-panel"></div>
+		<div id="main-search-modal" onclick="hideSearchPanel()"></div>
+	<!-- Featured Products -->
+		<div class="featured-product-grid">
+<?php
+	$sql = "SELECT t1.productid,img, productname FROM tblsales AS t1
+	LEFT JOIN tblproduct AS t2
+		ON t1.productid = t2.productid
+	GROUP BY t1.productid
+	ORDER BY SUM(weight) DESC
+	LIMIT 6";
+	$result = $conn->query($sql);
+	$count = 1;
+	while($row = $result->fetch_object()){
+		if($row){
+		if($count==1){
+			$productid1 = $row->productid;
+			$product1= $row->productname;
+			$img1=$row->img;
+		}else if($count==2){
+			$productid2 = $row->productid;
+			$product2= $row->productname;
+			$img2=$row->img;
+		}else if($count==3){
+			$productid3 = $row->productid;
+			$product3= $row->productname;
+			$img3=$row->img;
+		}else if($count==4){
+			$productid4 = $row->productid;
+			$product4= $row->productname;
+			$img4=$row->img;
+		}else if($count==5){
+			$productid5 = $row->productid;
+			$product5= $row->productname;
+			$img5=$row->img;
+		}else if($count==6){
+			$productid6 = $row->productid;
+			$product6= $row->productname;
+			$img6=$row->img;
+		}
+		$count++;
+		}
+	}
+	if($count!=1){
+	echo'<div id="showcase">
+		<a href="product.php?id='.$productid1.'">
+			<div>
+				<div class="featured-img-wrap">	
+					<img class="featured-img" src="'.$img1.'">
+				</div>
+				<div class="featured-desc">
+					<h3><i class="fas fa-leaf"></i> Best Seller: '.$product1.'</h3>
+				</div>
+			</div></a>
+		</div>
+		<div id="top1">
+			<a href="product.php?id='.$productid2.'">
+			<div>
+				<div class="featured-img-wrap">	
+					<img class="featured-img" src="'.$img2.'">
+				</div>
+				<div class="featured-desc">
+					<h3>'.$product2.'</h3>
+				</div>
+			</div>
+			</a>
+		</div>
+		<div id="top2">
+		<a href="product.php?id='.$productid3.'">
+			<div>
+				<div class="featured-img-wrap">	
+					<img class="featured-img" src="'.$img3.'">
+				</div>
+				<div class="featured-desc">
+					<h3>'.$product3.'</h3>
+				</div>
+			</div>
+		</a>
+		</div>
+		<div id="bottom">
+			<a href="product.php?id='.$productid4.'">
+			<div id="top3">
+				<div>
+				<div class="featured-img-wrap">	
+					<img class="featured-img" src="'.$img4.'">
+				</div>
+				<div class="featured-desc">
+					<h3>'.$product4.'</h3>
+				</div>
+			</div>
+			</div></a>
+			<a href="product.php?id='.$productid5.'">
+			<div id="top4">
+				<div>
+				<div class="featured-img-wrap">	
+					<img class="featured-img" src="'.$img5.'">
+				</div>
+				<div class="featured-desc">
+					<h3>'.$product5.'</h3>
+				</div>
+			</div>
+			</div></a>
+			<a href="product.php?id='.$productid6.'">
+			<div id="top5">
+				<div>
+				<div class="featured-img-wrap">	
+					<img class="featured-img" src="'.$img6.'">
+				</div>
+				<div class="featured-desc">
+					<h3>'.$product6.'</h3>
+				</div>
+			</div>
+			</div></a>
+		</div>';
+	}
+?>
+		</div>
 	<!-- Content -->
 		<div class="main-content">
 			<div class="main-content-grid">
@@ -87,9 +200,9 @@ $row=$result->fetch_object();
 	$userid = $row->author;
 	$author = $row->username;
 
-	echo '<h2 id="announcement-title">'.$title.'</h2>
+	echo '<h3 id="announcement-title">'.$title.'</h3>
 	<p>Posted on: '.$date.' by: <a href="profile.php?id='.$userid.'">'.$author.'</a></p>
-	<div class="announce-content">'.substr(nl2br($content), 0, 450);
+	<div class="announce-content">'.substr(nl2br($content), 0, 420);
 	if(strlen($content) > 450 ){
 		echo'...';
 	}
@@ -110,6 +223,8 @@ echo'<p>Comments ('.number_format($comments).')</p>
 						<img src="img/logo.jpg" alt="advertisement">
 					</div>
 					</a>
+					<a class="black" href="about.php#how-to-order"">How to Order?</a><br>
+					<a class="black" href="contact.php">Feedback</a>
 				</div>
 				<div class="farm-select-div">
 					<h3><i class="fas fa-leaf"></i> Farms</h3>

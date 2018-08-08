@@ -48,7 +48,7 @@ $farmname = $fetch->farmname;
 
 echo '<h3>'.$farmname.' Farm</h3>';
 
-$string = "WHERE t1.farmid = '$id'";
+$string = "WHERE t1.farmid = '$id' AND is_available = 1 AND is_approved = 1";
 showProduct($string);
 echo'</div>';
 ?>

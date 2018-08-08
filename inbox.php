@@ -91,7 +91,7 @@ while($row=$result->fetch_object()){
 	<a class="sender" href="profile.php?id='.$Sid.'">
 		<div class="comment-tn">
 			<img src="'.$imgpath.'">
-		</div>'.$Sname.'</a><span class="inbox-date">'.time_elapsed_string($date).'</span><br>
+		</div>'.$Sname.'</a><span class="inbox-date">'.time_elapsed_string_chat($date).'</span><br>
 	<div class="chat-div"> 
 		<p class="inbxmsg">'.createlink(nl2br($message)).'</p>
 	</div>
@@ -101,7 +101,7 @@ while($row=$result->fetch_object()){
 	<a class="sender" href="profile.php?id='.$Sid.'">
 		<div class="comment-tn">
 			<img src="'.$imgpath.'">
-		</div>'.$Sname.'</a><span class="inbox-date">'.time_elapsed_string($date).'</span><br>
+		</div>'.$Sname.'</a><span class="inbox-date">'.time_elapsed_string_chat($date).'</span><br>
 	<div class="chat-div"> 
 		<p class="inbxmsg">'.createlink(nl2br($message)).'</p>
 	</div>
