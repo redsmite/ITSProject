@@ -244,4 +244,34 @@ if(isset($_POST['complete'])){
 	$result = $conn->query($sql);
 }
 
+// Cut off
+
+if(isset($_POST['setCutoff'])){
+	$sql = "SELECT cutoff FROM tblcutoff";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$cutoff = $fetch->cutoff;
+
+	$cutoff = strtotime($cutoff);
+	$now = strtotime('now');
+	if($now>$cutoff){
+
+		$diff = $now - $cutoff;
+
+		$days = ceil($diff / (60*60*24));
+
+		$new_cutoff = $cutoff + (60*60*24*$days);
+
+		$new_cutoff = date('Y-m-d H:i:s',$new_cutoff);
+
+
+		$sql = "UPDATE tblcutoff SET cutoff = '$new_cutoff'";
+		$result = $conn->query($sql);
+
+		echo $new_cutoff;
+	}else{
+		echo 'No change';
+	}
+}
+
 ?>

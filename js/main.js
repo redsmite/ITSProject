@@ -69,6 +69,7 @@ function showLogin(){
 	let modal = document.getElementById('simpleModal');
 
 	modal.style.display='block';
+	document.getElementById('log-user').focus();
 }
 
 function scrollOpacity(){
@@ -1340,6 +1341,58 @@ function showOrders(){
 		document.getElementById('order-body-content').innerHTML=response;
 	}
 	myRequest.send(formData);
+}
+
+function setCutoff(){
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'transactionprocess.php';
+
+	var formData = "setCutoff='hello'";
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		if(response=='No change'){
+			alert('No changes are made');
+		}else{
+			alert('Set Cut off time to '+response);
+		}
+	}
+	myRequest.send(formData);
+}
+
+function cutoffCountdown(){
+	time = document.getElementById('cutoff-time');
+	time = time.getAttribute('value');
+	var countDownDate = new Date(time).getTime();
+
+	// Update the count down every 1 second
+	var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    document.getElementById("cutoff-time").innerHTML = "Next Cut Off Time: "+ days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
+
+    // If the count down is finished, write some text 
+    if (distance < 0) {
+     	clearInterval(x);
+    	document.getElementById("cutoff-time").innerHTML = 'EXPIRED';
+    }
+	}, 1000);
 }
 
 function showApproveProduct(){

@@ -89,7 +89,21 @@ if($new_products!=0){
 				<div class="empty"></div>
 				<div class="right-monitoring">
 					<div id="order-body">
-						<h1>New Orders</h1>
+					<h1>New Orders</h1>
+<?php
+	$sql = "SELECT cutoff FROM tblcutoff";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$cutoff = $fetch->cutoff;
+
+	$cutoff2 = strtotime($cutoff);
+	$datenow = date('Y-m-d H:i:s');
+	$now = strtotime('now');
+	$diff = $cutoff2 - $now;
+	$diff = gmdate("H:i:s", $diff);
+	echo '<h3 id="cutoff-time" value="'.$cutoff.'" now="'.$datenow.'">Next Cut Off Time: '.$diff.' </h3>';
+?>
+						<div class="cutoff" onclick="setCutoff()"><h3><i class="far fa-clock"></i><br> Cut off</h3></div>
 						<div id="order-body-content">
 						</div>
 					</div>
@@ -435,6 +449,7 @@ if($last != 1){
 	</div>
 	<script src="js/main.js"></script>
 	<script>
+		cutoffCountdown();
 		updateFee();
 		sendAllUser();
 		showMonitoringTab();

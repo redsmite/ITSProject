@@ -626,6 +626,7 @@ function showProduct($where){
 		</p>
 
 		<p class="product-category">'.$category.'</p>
+		<p class="product-farm">'.$farm.'</p>
 		<p class="product-desc">Description: '.substr($desc,0,30).' ...</p>
 		</a>
 		<p class="product-price">₱'.number_format($price,2).' / kg</p>

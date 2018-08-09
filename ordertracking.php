@@ -29,6 +29,7 @@
 	<div class="other-content">
 		<h1><a class="btp" href="profile.php?id=<?php echo $_SESSION['id'] ?>">Back to Your Profile</a></h1>
 <?php
+// Order Tracking
 	$userid = $_SESSION['id'];
 	$sql="SELECT orderid FROM tblorder WHERE userid = '$userid'";
 	$result=$conn->query($sql);
@@ -105,7 +106,6 @@ if($last != 1){
 			$status = '<font style="color:green;">Completed</font>';
 		}
 		$date = $row->datecommit;
-
 		echo '<div class="orders">
 		<p>Order No: '.$ordernum.'</p>
 		<p>Status: <b>'.$status.'</b></p>
@@ -158,8 +158,6 @@ while($row2 = $result2->fetch_object()){
 	</div>
 	<script src="js/main.js"></script>
 	<script>
-		modal();
-		ajaxLogin();
 	</script>
 </body>
 </html>

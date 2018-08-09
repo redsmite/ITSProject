@@ -69,45 +69,53 @@
 	<!-- Featured Products -->
 		<div class="featured-product-grid">
 <?php
-	$sql = "SELECT t1.productid,img, productname FROM tblsales AS t1
-	LEFT JOIN tblproduct AS t2
+	$sql = "SELECT t1.productid,img, productname, farmname FROM tblsales AS t1
+	RIGHT JOIN tblproduct AS t2
 		ON t1.productid = t2.productid
+	LEFT JOIN tblfarm AS t3
+		ON t2.farmid = t3.farmid
+	WHERE is_available = 1 AND is_approved = 1
 	GROUP BY t1.productid
 	ORDER BY SUM(weight) DESC
 	LIMIT 6";
 	$result = $conn->query($sql);
+	$salescount = $result->num_rows;
+	if($salescount ==6){
 	$count = 1;
 	while($row = $result->fetch_object()){
-		if($row){
 		if($count==1){
 			$productid1 = $row->productid;
-			$product1= $row->productname;
+			$product1 = $row->productname;
+			$farm1 = $row->farmname;
 			$img1=$row->img;
 		}else if($count==2){
 			$productid2 = $row->productid;
-			$product2= $row->productname;
+			$product2 = $row->productname;
+			$farm2 = $row->farmname;
 			$img2=$row->img;
 		}else if($count==3){
 			$productid3 = $row->productid;
 			$product3= $row->productname;
+			$farm3 = $row->farmname;
 			$img3=$row->img;
 		}else if($count==4){
 			$productid4 = $row->productid;
 			$product4= $row->productname;
+			$farm4 = $row->farmname;
 			$img4=$row->img;
 		}else if($count==5){
 			$productid5 = $row->productid;
 			$product5= $row->productname;
+			$farm5 = $row->farmname;
 			$img5=$row->img;
 		}else if($count==6){
 			$productid6 = $row->productid;
 			$product6= $row->productname;
+			$farm6 = $row->farmname;
 			$img6=$row->img;
 		}
 		$count++;
-		}
 	}
-	if($count!=1){
 	echo'<div id="showcase">
 		<a href="product.php?id='.$productid1.'">
 			<div>
@@ -115,7 +123,9 @@
 					<img class="featured-img" src="'.$img1.'">
 				</div>
 				<div class="featured-desc">
-					<h3><i class="fas fa-leaf"></i> Best Seller: '.$product1.'</h3>
+					<h2>'.$product1.'</h2>
+					<p>Best Seller</p>
+					<p>'.$farm1.'</p>
 				</div>
 			</div></a>
 		</div>
@@ -127,6 +137,7 @@
 				</div>
 				<div class="featured-desc">
 					<h3>'.$product2.'</h3>
+					<p>'.$farm2.'</p>
 				</div>
 			</div>
 			</a>
@@ -139,6 +150,7 @@
 				</div>
 				<div class="featured-desc">
 					<h3>'.$product3.'</h3>
+					<p>'.$farm3.'</p>
 				</div>
 			</div>
 		</a>
@@ -152,6 +164,7 @@
 				</div>
 				<div class="featured-desc">
 					<h3>'.$product4.'</h3>
+					<p>'.$farm4.'</p>
 				</div>
 			</div>
 			</div></a>
@@ -163,6 +176,7 @@
 				</div>
 				<div class="featured-desc">
 					<h3>'.$product5.'</h3>
+					<p>'.$farm5.'</p>
 				</div>
 			</div>
 			</div></a>
@@ -174,6 +188,7 @@
 				</div>
 				<div class="featured-desc">
 					<h3>'.$product6.'</h3>
+					<p>'.$farm6.'</p>
 				</div>
 			</div>
 			</div></a>
@@ -217,10 +232,10 @@ echo'<p>Comments ('.number_format($comments).')</p>
 		';
 ?>
 				</div>
-				<div class="advertisement">
+				<div class="about">
 					<a href="about.php">
-					<div class="advertisement-inner">
-						<img src="img/logo.jpg" alt="advertisement">
+					<div class="about-inner">
+						<img src="img/logo.jpg" alt="company logo">
 					</div>
 					</a>
 					<a class="black" href="about.php#how-to-order"">How to Order?</a><br>

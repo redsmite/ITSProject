@@ -249,6 +249,8 @@ if(isset($_POST['showcat'])){
 
 	$sql = "UPDATE tblcategory SET status=1 WHERE categoryid='$id'";
 	$result = $conn->query($sql);
+	$sql = "UPDATE tblproduct SET is_approved = 1 WHERE categoryid = '$id'";
+	$result = $conn->query($sql);
 	echo 'oke-oke-okay';
 }
 
@@ -257,6 +259,9 @@ if(isset($_POST['hidecat'])){
 	$id = $_POST['hidecat'];
 
 	$sql = "UPDATE tblcategory SET status=0 WHERE categoryid='$id'";
+	$result = $conn->query($sql);
+
+	$sql = "UPDATE tblproduct SET is_approved = 0 WHERE categoryid = '$id'";
 	$result = $conn->query($sql);
 	echo 'oke-oke-okay';
 }
@@ -369,6 +374,14 @@ if(isset($_POST['updatefarm'])){
 
 	$sql = "UPDATE tblfarm SET farmname='$name', address='$address', status='$status' WHERE farmid = '$id'";
 	$result = $conn->query($sql);
+
+	if($status == 1){
+		$sql = "UPDATE tblproduct SET is_approved = 1 WHERE farmid = '$id'";
+		$result = $conn->query($sql);
+	}else{
+		$sql = "UPDATE tblproduct SET is_approved = 0 WHERE farmid = '$id'";
+		$result = $conn->query($sql);
+	}
 	echo 'success';
 }
 
@@ -548,5 +561,4 @@ if(isset($_POST['dateYearly'])){
 	$format = $date;
 	salesReport($string,$format,false);
 }
-
 ?>

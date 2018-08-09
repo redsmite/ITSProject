@@ -475,7 +475,7 @@ li{
 	height:100%;
 	width:0;
 	position:fixed;
-	z-index:200;
+	z-index:2000;
 	top:0;
 	left:0;
 	background-color:var(--dark-color);
@@ -491,7 +491,7 @@ li{
 #sidebarmodal{
 	display:none;
 	position:fixed;
-	z-index:100;
+	z-index:1900;
 	left:0;
 	top:0;
 	height:100%;
@@ -749,12 +749,14 @@ li{
 	"bottom bottom";
 	width: 95%;
 	margin: auto;
-	border: 5px solid var(--dark-color);
+	background: var(--darkgray);
+	border-radius: 30px;
+	padding: 5px;
 	box-sizing: border-box;
 }
 
 .featured-product-grid a{
-	color: var(--dark-color);
+	color: var(--light-color);
 }
 
 .top-label{
@@ -793,21 +795,28 @@ li{
 }
 
 #top1,#top2,#top3,#top4,#top5,#showcase{
-	background: var(--lightblue);
-	border: 1px solid var(--dark-color);
+	background: var(--dark-blue);
+	border: 1px solid var(--light-color);
 	text-align: center;
 	padding: 10px;
 	cursor: pointer;
+	border-radius: 10%;
+}
+
+#top1:hover,#top2:hover,#top3:hover,#top4:hover,#top5:hover,#showcase:hover{
+	background: var(--dark-color);
 }
 
 #showcase{
-	background: var(--twitterlogo);
+	background: var(--darkgray);
+	border: 2px solid var(--light-color);
 }
 
 .featured-img-wrap{
 	overflow: hidden;
 	width: 300px;
 	height: 250px;
+	margin: 0 auto;
 }
 
 #showcase .featured-img-wrap{
@@ -817,6 +826,12 @@ li{
 }
 
 .featured-img{
+	position:relative;
+	opacity:0.80;
+	background-position:center;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-attachment: fixed;
 	max-height: 100%;
 }
 
@@ -829,7 +844,7 @@ li{
 	display:grid;
 	grid-template-columns: 1fr 3fr 1fr;
 	grid-template-areas: 
-	"advertisement announcement farms"
+	"about announcement farms"
 	"main main main";
 }
 
@@ -887,7 +902,9 @@ li{
 	color: var(--light-color);
 	text-align: center;
 	padding: 20px 0;
-	border-left: 1px solid var(--light-color);
+	border: 1px solid var(--light-color);
+	border-radius: 8px; 
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .farm-select-div h3{
@@ -918,13 +935,13 @@ li{
 	color: var(--light-color);
 }
 
-.advertisement{
-	grid-area:advertisement;
+.about{
+	grid-area:about;
 	border: 1px solid var(--darkgray);
 	padding: 5px;
 }
 
-.advertisement-inner{
+.about-inner{
 	color: var(--light-color);
 	width: 90%;
 	text-align: center;
@@ -932,7 +949,7 @@ li{
 	overflow:hidden;
 }
 
-.advertisement-inner img{
+.about-inner img{
 	margin:auto;
 	max-width: 95%;
 	max-height: 95%;
@@ -1016,6 +1033,10 @@ li{
 
 .product-content a{
 	color: var(--light-color);
+}
+
+.product-farm{
+	color: var(--dark-color);
 }
 
 .product-desc{
@@ -2173,6 +2194,26 @@ li{
 	padding:1em 2em;
 	background: var(--dark-color);
 	color: var(--light-color);
+}
+
+.cutoff{
+	padding: 0.8em;
+	background: var(--secondary-contrast);
+	color: var(--light-color);
+	width: 100px;
+	margin: 10px auto;
+	cursor: pointer;
+	border-radius: 8px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
+	border: 1px solid var(--light-color);
+}
+
+#cutoff-time{
+	background: var(--secondary-contrast);
+	color: var(--light-color);
+	padding: 10px;
+	font-size: 1.5em;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Sales */
