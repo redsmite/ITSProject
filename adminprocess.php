@@ -235,11 +235,18 @@ if(isset($_POST['log'])){
 
 	$sql="SELECT log,datecreated FROM tblchangelog ORDER BY logid DESC LIMIT 100";
 	$result=$conn->query($sql);
+	$registerDate = '';
 	while($row=$result->fetch_object()){
 		$log = $row->log;
-		$date = date('D, F j Y g:i A',strtotime($row->datecreated));
+		$date = strtotime($row->datecreated);		
+		$datefull = date('D, F j, Y',$date);
 
-		echo'<p>'.$date.': '.$log.'</p>';
+		if($datefull != $registerDate){
+			$registerDate = $datefull;
+			echo '<h3>=== '.$datefull.' ===</h3>';
+		}
+
+		echo'<p>'.date('g:i A',$date).': '.$log.'</p>';
 	}
 }
 

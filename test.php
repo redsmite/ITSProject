@@ -2,21 +2,21 @@
 	session_start();
 	require_once'connection.php';
 	include'functions.php';
-	$time = 1533888000;
+	// $time = 1533888000;
 
-	$time = date('Y-m-d H:i:s',$time);
-	echo $time.'<br>';
+	// $time = date('Y-m-d H:i:s',$time);
+	// echo $time.'<br>';
 
-	$sql = "UPDATE tblcutoff SET cutoff ='$time'";
-	$result = $conn->query($sql);
+	// $sql = "UPDATE tblcutoff SET cutoff ='$time'";
+	// $result = $conn->query($sql);
 
-	$sql = "SELECT cutoff FROM tblcutoff";
-	$result = $conn->query($sql);
-	$fetch = $result->fetch_object();
-	$cutoff = $fetch->cutoff;
+	// $sql = "SELECT cutoff FROM tblcutoff";
+	// $result = $conn->query($sql);
+	// $fetch = $result->fetch_object();
+	// $cutoff = $fetch->cutoff;
 
-	$cutoff = strtotime($cutoff);
-	$now = strtotime('now');
+	// $cutoff = strtotime($cutoff);
+	// $now = strtotime('now');
 	// if($now>$cutoff){
 
 	// 	$diff = $now - $cutoff;

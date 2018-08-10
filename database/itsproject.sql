@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2018 at 07:26 PM
+-- Generation Time: Aug 10, 2018 at 10:31 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -89,20 +89,20 @@ CREATE TABLE `tblcategory` (
 
 INSERT INTO `tblcategory` (`categoryid`, `category`, `status`, `low`, `high`, `prevailing`) VALUES
 (1, 'Amargoso', 1, '90.00', '160.00', '120.00'),
-(2, 'Sitao', 1, '80.00', '160.00', '120.00'),
-(3, 'Cabbage (Scorpio)', 1, '50.00', '100.00', '80.00'),
-(4, 'Carrots', 1, '50.00', '130.00', '100.00'),
-(5, 'Habitchuelas', 1, '70.00', '140.00', '80.00'),
-(6, 'Tomato', 1, '70.00', '120.00', '100.00'),
+(2, 'Sitao', 1, '50.00', '160.00', '100.00'),
+(3, 'Cabbage (Scorpio)', 1, '60.00', '100.00', '100.00'),
+(4, 'Carrots', 1, '75.00', '130.00', '100.00'),
+(5, 'Habitchuelas', 1, '50.00', '120.00', '80.00'),
+(6, 'Tomato', 1, '65.00', '120.00', '80.00'),
 (7, 'Onion Red', 1, '80.00', '120.00', '100.00'),
 (8, 'White Potato', 1, '40.00', '80.00', '60.00'),
-(9, 'Eggplant', 1, '70.00', '120.00', '80.00'),
-(10, 'Pechay, Native', 1, '45.00', '100.00', '80.00'),
+(9, 'Eggplant', 1, '70.00', '120.00', '100.00'),
+(10, 'Pechay, Native', 1, '50.00', '120.00', '80.00'),
 (11, 'Banana, Lakatan', 1, '45.00', '70.00', '60.00'),
 (12, 'Banana, Latundan', 1, '35.00', '60.00', '40.00'),
-(13, 'Calamansi', 1, '40.00', '90.00', '60.00'),
+(13, 'Calamansi', 1, '40.00', '100.00', '60.00'),
 (14, 'Papaya', 1, '35.00', '70.00', '60.00'),
-(15, 'Mango, Carabao', 1, '100.00', '180.00', '120.00'),
+(15, 'Mango, Carabao', 1, '100.00', '200.00', '120.00'),
 (16, 'Orange', 0, '0.00', '0.00', '0.00'),
 (17, 'Apple', 0, '0.00', '0.00', '0.00');
 
@@ -195,7 +195,16 @@ INSERT INTO `tblchangelog` (`logid`, `log`, `datecreated`) VALUES
 (70, 'Update price of Pechay, Native', '2018-08-02 04:32:52'),
 (71, 'Update price of Calamansi', '2018-08-02 04:33:19'),
 (72, 'Update price of Shipping fee', '2018-08-05 17:46:37'),
-(73, 'Update price of Shipping fee', '2018-08-05 17:46:50');
+(73, 'Update price of Shipping fee', '2018-08-05 17:46:50'),
+(74, 'Update price of Sitao', '2018-08-10 15:06:45'),
+(75, 'Update price of Cabbage (Scorpio)', '2018-08-10 15:07:07'),
+(76, 'Update price of Carrots', '2018-08-10 15:07:21'),
+(77, 'Update price of Habitchuelas', '2018-08-10 15:07:42'),
+(78, 'Update price of Tomato', '2018-08-10 15:08:00'),
+(79, 'Update price of Eggplant', '2018-08-10 15:08:33'),
+(80, 'Update price of Pechay, Native', '2018-08-10 15:08:59'),
+(81, 'Update price of Calamansi', '2018-08-10 15:09:23'),
+(82, 'Update price of Mango, Carabao', '2018-08-10 15:09:42');
 
 -- --------------------------------------------------------
 
@@ -403,7 +412,7 @@ CREATE TABLE `tblcutoff` (
 --
 
 INSERT INTO `tblcutoff` (`cutoffid`, `cutoff`) VALUES
-(1, '2018-08-10 16:00:00');
+(1, '2018-08-11 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -940,7 +949,20 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (394, 4, 2, '2018-08-08 22:21:38', 1, 7, '201808081021374', 0),
 (395, 0, 4, '2018-08-08 22:21:59', 0, 4, '201808081021374', 0),
 (396, 15, 1, '2018-08-10 01:05:18', 1, 7, '2018081001051815', 0),
-(397, 0, 15, '2018-08-10 01:18:08', 0, 4, '2018081001051815', 0);
+(397, 0, 15, '2018-08-10 01:18:08', 0, 4, '2018081001051815', 0),
+(398, 20, 1, '2018-08-10 14:21:25', 1, 7, '2018081002212520', 0),
+(399, 20, 90, '2018-08-10 14:21:25', 0, 7, '2018081002212520', 0),
+(400, 20, 5, '2018-08-10 14:21:25', 0, 7, '2018081002212520', 0),
+(401, 20, 1, '2018-08-10 14:22:28', 1, 7, '2018081002222820', 0),
+(402, 20, 1, '2018-08-10 14:57:11', 1, 7, '2018081002571120', 0),
+(403, 20, 2, '2018-08-10 14:57:11', 0, 7, '2018081002571120', 0),
+(404, 20, 5, '2018-08-10 14:57:11', 0, 7, '2018081002571120', 0),
+(405, 25, 1, '2018-08-10 15:12:43', 1, 7, '2018081003124325', 0),
+(406, 25, 2, '2018-08-10 15:12:43', 0, 7, '2018081003124325', 0),
+(407, 26, 1, '2018-08-10 16:19:07', 1, 7, '2018081004190726', 0),
+(408, 26, 5, '2018-08-10 16:19:07', 0, 7, '2018081004190726', 0),
+(409, 0, 25, '2018-08-10 16:24:40', 0, 4, '2018081003124325', 0),
+(410, 0, 20, '2018-08-10 16:28:51', 1, 4, '2018081002571120', 0);
 
 -- --------------------------------------------------------
 
@@ -958,29 +980,34 @@ CREATE TABLE `tblorder` (
   `fee` decimal(10,2) NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `status` int(11) NOT NULL,
-  `datecommit` datetime DEFAULT NULL
+  `datecommit` datetime DEFAULT NULL,
+  `cutoff` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblorder`
 --
 
-INSERT INTO `tblorder` (`orderid`, `ordernumber`, `userid`, `billingaddress`, `email`, `phone`, `fee`, `total`, `status`, `datecommit`) VALUES
-(1, '2018080409485289', 89, 'Quezon City', 'sample@gmail.com', '90090900990', '60.00', '620.00', 3, '2018-08-04 21:48:52'),
-(2, '2018080409501891', 91, 'Quezon City', 'mangjuan@gmail.com', '0909090909090', '60.00', '605.00', 4, '2018-08-04 21:50:18'),
-(3, '2018080410065189', 89, 'Quezon City', 'sample@gmail.com', '0909009090909', '160.00', '670.00', 2, '2018-08-04 22:06:51'),
-(4, '2018080503093992', 92, 'Quezon City', 'user@gmail.com', '09090909090', '60.00', '585.00', 4, '2018-08-05 15:09:39'),
-(5, '2018080505383989', 89, 'Quezon City', 'sample@gmail.com', '0909090909', '60.00', '560.00', 4, '2018-08-05 17:38:39'),
-(6, '2018080511112292', 92, 'Quezon City', 'user@gmail.com', '090909090', '60.00', '585.00', 4, '2018-08-05 23:11:22'),
-(7, '2018080611123389', 89, 'Quezon City', 'sample@gmail.com', '0909090909090', '60.00', '565.00', 4, '2018-08-06 11:12:33'),
-(8, '2018080607383992', 92, 'Cubao', 'user@gmail.com', '090909090', '60.00', '610.00', 4, '2018-08-06 19:38:39'),
-(9, '201808071237379', 9, 'Quezon City', 'useremail9@gmail.com', '0909900009090', '60.00', '580.00', 4, '2018-08-07 00:37:37'),
-(10, '201808070247121', 1, 'Quezon City', 'useremail1@gmail.com', '099909090', '60.00', '1895.00', 4, '2018-08-07 14:47:12'),
-(11, '201808070938124', 4, 'Quezon City', 'useremail4@gmail.com', '00909090909', '60.00', '670.00', 2, '2018-08-07 21:38:12'),
-(12, '201808070956024', 4, 'Quezon City', 'useremail4@gmail.com', '09090909090', '60.00', '635.00', 2, '2018-08-07 21:56:02'),
-(13, '201808070957444', 4, 'Quezon City', 'useremail4@gmail.com', '090909000909', '60.00', '590.00', 4, '2018-08-07 21:57:44'),
-(14, '201808081021374', 4, 'Quezon City', 'useremail4@gmail.com', '0909090909090', '60.00', '580.00', 4, '2018-08-08 22:21:37'),
-(15, '2018081001051815', 15, 'Quezon City', 'useremail15@gmail.com', '090909099090', '60.00', '560.00', 4, '2018-08-10 01:05:18');
+INSERT INTO `tblorder` (`orderid`, `ordernumber`, `userid`, `billingaddress`, `email`, `phone`, `fee`, `total`, `status`, `datecommit`, `cutoff`) VALUES
+(1, '2018080409485289', 89, 'Quezon City', 'sample@gmail.com', '90090900990', '60.00', '620.00', 3, '2018-08-04 21:48:52', '2018-08-10 16:00:00'),
+(2, '2018080409501891', 91, 'Quezon City', 'mangjuan@gmail.com', '0909090909090', '60.00', '605.00', 4, '2018-08-04 21:50:18', '2018-08-10 16:00:00'),
+(3, '2018080410065189', 89, 'Quezon City', 'sample@gmail.com', '0909009090909', '160.00', '670.00', 2, '2018-08-04 22:06:51', '2018-08-10 16:00:00'),
+(4, '2018080503093992', 92, 'Quezon City', 'user@gmail.com', '09090909090', '60.00', '585.00', 4, '2018-08-05 15:09:39', '2018-08-10 16:00:00'),
+(5, '2018080505383989', 89, 'Quezon City', 'sample@gmail.com', '0909090909', '60.00', '560.00', 4, '2018-08-05 17:38:39', '2018-08-10 16:00:00'),
+(6, '2018080511112292', 92, 'Quezon City', 'user@gmail.com', '090909090', '60.00', '585.00', 4, '2018-08-05 23:11:22', '2018-08-10 16:00:00'),
+(7, '2018080611123389', 89, 'Quezon City', 'sample@gmail.com', '0909090909090', '60.00', '565.00', 4, '2018-08-06 11:12:33', '2018-08-10 16:00:00'),
+(8, '2018080607383992', 92, 'Cubao', 'user@gmail.com', '090909090', '60.00', '610.00', 4, '2018-08-06 19:38:39', '2018-08-10 16:00:00'),
+(9, '201808071237379', 9, 'Quezon City', 'useremail9@gmail.com', '0909900009090', '60.00', '580.00', 4, '2018-08-07 00:37:37', '2018-08-10 16:00:00'),
+(10, '201808070247121', 1, 'Quezon City', 'useremail1@gmail.com', '099909090', '60.00', '1895.00', 4, '2018-08-07 14:47:12', '2018-08-10 16:00:00'),
+(11, '201808070938124', 4, 'Quezon City', 'useremail4@gmail.com', '00909090909', '60.00', '670.00', 2, '2018-08-07 21:38:12', '2018-08-10 16:00:00'),
+(12, '201808070956024', 4, 'Quezon City', 'useremail4@gmail.com', '09090909090', '60.00', '635.00', 2, '2018-08-07 21:56:02', '2018-08-10 16:00:00'),
+(13, '201808070957444', 4, 'Quezon City', 'useremail4@gmail.com', '090909000909', '60.00', '590.00', 4, '2018-08-07 21:57:44', '2018-08-10 16:00:00'),
+(14, '201808081021374', 4, 'Quezon City', 'useremail4@gmail.com', '0909090909090', '60.00', '580.00', 4, '2018-08-08 22:21:37', '2018-08-10 16:00:00'),
+(15, '2018081001051815', 15, 'Quezon City', 'useremail15@gmail.com', '090909099090', '60.00', '560.00', 4, '2018-08-10 01:05:18', '2018-08-10 16:00:00'),
+(16, '2018081002222820', 20, 'Quezon City', 'useremail20@gmail.com', '09090909090909', '60.00', '600.00', 3, '2018-08-10 14:22:28', '2018-08-10 16:00:00'),
+(17, '2018081002571120', 20, 'Quezon City', 'useremail20@gmail.com', '0909090909', '60.00', '575.00', 4, '2018-08-10 14:57:11', '2018-08-10 16:00:00'),
+(18, '2018081003124325', 25, 'Quezon City', 'useremail25@gmail.com', '09090909090', '60.00', '560.00', 4, '2018-08-10 15:12:43', '2018-08-10 16:00:00'),
+(19, '2018081004190726', 26, 'Quezon City', 'useremail26@gmail.com', '09090909090', '60.00', '590.00', 0, '2018-08-10 16:19:07', '2018-08-11 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -1048,7 +1075,29 @@ INSERT INTO `tblordersummary` (`summaryid`, `orderid`, `productid`, `weight`, `p
 (45, 14, 3, '1.000', '80.00'),
 (46, 14, 5, '1.000', '120.00'),
 (47, 14, 6, '2.000', '80.00'),
-(48, 15, 18, '5.000', '100.00');
+(48, 15, 18, '5.000', '100.00'),
+(49, 15, 20, '1.000', '40.00'),
+(50, 15, 19, '2.000', '80.00'),
+(51, 15, 16, '3.000', '65.00'),
+(52, 15, 8, '1.000', '100.00'),
+(53, 15, 4, '1.000', '60.00'),
+(54, 16, 19, '6.000', '80.00'),
+(55, 16, 15, '1.000', '60.00'),
+(56, 17, 14, '1.000', '100.00'),
+(57, 17, 6, '1.000', '80.00'),
+(58, 17, 7, '1.000', '135.00'),
+(59, 17, 8, '1.000', '100.00'),
+(60, 17, 12, '2.000', '50.00'),
+(61, 18, 20, '1.000', '40.00'),
+(62, 18, 2, '2.000', '80.00'),
+(63, 18, 14, '1.000', '100.00'),
+(64, 18, 3, '1.000', '80.00'),
+(65, 18, 5, '1.000', '120.00'),
+(66, 19, 7, '2.000', '135.00'),
+(67, 19, 21, '1.000', '60.00'),
+(68, 19, 4, '1.000', '60.00'),
+(69, 19, 8, '1.000', '100.00'),
+(70, 19, 20, '1.000', '40.00');
 
 -- --------------------------------------------------------
 
@@ -2079,14 +2128,14 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1016, 71, 17, 'message', '2018-06-24 10:46:09', 1),
 (1017, 71, 18, 'message', '2018-06-24 10:46:09', 0),
 (1018, 71, 19, 'message', '2018-06-24 10:46:09', 1),
-(1019, 71, 20, 'message', '2018-06-24 10:46:09', 0),
+(1019, 71, 20, 'message', '2018-06-24 10:46:09', 1),
 (1020, 71, 21, 'message', '2018-06-24 10:46:09', 1),
 (1021, 71, 22, 'message', '2018-06-24 10:46:09', 0),
 (1022, 71, 23, 'message', '2018-06-24 10:46:09', 0),
 (1023, 71, 24, 'message', '2018-06-24 10:46:09', 0);
 INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `checked`) VALUES
-(1024, 71, 25, 'message', '2018-06-24 10:46:10', 0),
-(1025, 71, 26, 'message', '2018-06-24 10:46:10', 0),
+(1024, 71, 25, 'message', '2018-06-24 10:46:10', 1),
+(1025, 71, 26, 'message', '2018-06-24 10:46:10', 1),
 (1026, 71, 27, 'message', '2018-06-24 10:46:10', 0),
 (1027, 71, 28, 'message', '2018-06-24 10:46:10', 0),
 (1028, 71, 29, 'message', '2018-06-24 10:46:10', 0),
@@ -2279,13 +2328,13 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1215, 71, 17, 'message', '2018-06-28 13:22:48', 0),
 (1216, 71, 18, 'message', '2018-06-28 13:22:48', 0),
 (1217, 71, 19, 'message', '2018-06-28 13:22:48', 0),
-(1218, 71, 20, 'message', '2018-06-28 13:22:48', 0),
+(1218, 71, 20, 'message', '2018-06-28 13:22:48', 1),
 (1219, 71, 21, 'message', '2018-06-28 13:22:48', 1),
 (1220, 71, 22, 'message', '2018-06-28 13:22:48', 0),
 (1221, 71, 23, 'message', '2018-06-28 13:22:48', 0),
 (1222, 71, 24, 'message', '2018-06-28 13:22:48', 0),
-(1223, 71, 25, 'message', '2018-06-28 13:22:48', 0),
-(1224, 71, 26, 'message', '2018-06-28 13:22:48', 0),
+(1223, 71, 25, 'message', '2018-06-28 13:22:48', 1),
+(1224, 71, 26, 'message', '2018-06-28 13:22:48', 1),
 (1225, 71, 27, 'message', '2018-06-28 13:22:48', 0),
 (1226, 71, 28, 'message', '2018-06-28 13:22:49', 0),
 (1227, 71, 29, 'message', '2018-06-28 13:22:49', 0),
@@ -2365,13 +2414,13 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1301, 71, 17, 'message', '2018-07-01 17:41:08', 0),
 (1302, 71, 18, 'message', '2018-07-01 17:41:08', 0),
 (1303, 71, 19, 'message', '2018-07-01 17:41:08', 0),
-(1304, 71, 20, 'message', '2018-07-01 17:41:08', 0),
+(1304, 71, 20, 'message', '2018-07-01 17:41:08', 1),
 (1305, 71, 21, 'message', '2018-07-01 17:41:08', 1),
 (1306, 71, 22, 'message', '2018-07-01 17:41:08', 0),
 (1307, 71, 23, 'message', '2018-07-01 17:41:08', 0),
 (1308, 71, 24, 'message', '2018-07-01 17:41:08', 0),
-(1309, 71, 25, 'message', '2018-07-01 17:41:08', 0),
-(1310, 71, 26, 'message', '2018-07-01 17:41:08', 0),
+(1309, 71, 25, 'message', '2018-07-01 17:41:08', 1),
+(1310, 71, 26, 'message', '2018-07-01 17:41:08', 1),
 (1311, 71, 27, 'message', '2018-07-01 17:41:08', 0),
 (1312, 71, 28, 'message', '2018-07-01 17:41:08', 0),
 (1313, 71, 29, 'message', '2018-07-01 17:41:08', 0),
@@ -2509,13 +2558,13 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1445, 71, 17, 'message', '2018-07-10 22:54:44', 0),
 (1446, 71, 18, 'message', '2018-07-10 22:54:44', 0),
 (1447, 71, 19, 'message', '2018-07-10 22:54:44', 0),
-(1448, 71, 20, 'message', '2018-07-10 22:54:44', 0),
+(1448, 71, 20, 'message', '2018-07-10 22:54:44', 1),
 (1449, 71, 21, 'message', '2018-07-10 22:54:44', 1),
 (1450, 71, 22, 'message', '2018-07-10 22:54:44', 0),
 (1451, 71, 23, 'message', '2018-07-10 22:54:45', 0),
 (1452, 71, 24, 'message', '2018-07-10 22:54:45', 0),
-(1453, 71, 25, 'message', '2018-07-10 22:54:45', 0),
-(1454, 71, 26, 'message', '2018-07-10 22:54:45', 0),
+(1453, 71, 25, 'message', '2018-07-10 22:54:45', 1),
+(1454, 71, 26, 'message', '2018-07-10 22:54:45', 1),
 (1455, 71, 27, 'message', '2018-07-10 22:54:45', 0),
 (1456, 71, 28, 'message', '2018-07-10 22:54:45', 0),
 (1457, 71, 29, 'message', '2018-07-10 22:54:45', 0),
@@ -2597,13 +2646,13 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1533, 71, 17, 'message', '2018-07-20 15:04:16', 0),
 (1534, 71, 18, 'message', '2018-07-20 15:04:16', 0),
 (1535, 71, 19, 'message', '2018-07-20 15:04:16', 0),
-(1536, 71, 20, 'message', '2018-07-20 15:04:16', 0),
+(1536, 71, 20, 'message', '2018-07-20 15:04:16', 1),
 (1537, 71, 21, 'message', '2018-07-20 15:04:16', 1),
 (1538, 71, 22, 'message', '2018-07-20 15:04:16', 0),
 (1539, 71, 23, 'message', '2018-07-20 15:04:16', 0),
 (1540, 71, 24, 'message', '2018-07-20 15:04:16', 0),
-(1541, 71, 25, 'message', '2018-07-20 15:04:16', 0),
-(1542, 71, 26, 'message', '2018-07-20 15:04:17', 0),
+(1541, 71, 25, 'message', '2018-07-20 15:04:16', 1),
+(1542, 71, 26, 'message', '2018-07-20 15:04:17', 1),
 (1543, 71, 27, 'message', '2018-07-20 15:04:17', 0),
 (1544, 71, 28, 'message', '2018-07-20 15:04:17', 0),
 (1545, 71, 29, 'message', '2018-07-20 15:04:17', 0),
@@ -2735,13 +2784,13 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1671, 71, 17, 'message', '2018-07-26 00:24:42', 0),
 (1672, 71, 18, 'message', '2018-07-26 00:24:42', 0),
 (1673, 71, 19, 'message', '2018-07-26 00:24:42', 0),
-(1674, 71, 20, 'message', '2018-07-26 00:24:42', 0),
+(1674, 71, 20, 'message', '2018-07-26 00:24:42', 1),
 (1675, 71, 21, 'message', '2018-07-26 00:24:42', 1),
 (1676, 71, 22, 'message', '2018-07-26 00:24:42', 0),
 (1677, 71, 23, 'message', '2018-07-26 00:24:42', 0),
 (1678, 71, 24, 'message', '2018-07-26 00:24:42', 0),
-(1679, 71, 25, 'message', '2018-07-26 00:24:42', 0),
-(1680, 71, 26, 'message', '2018-07-26 00:24:42', 0),
+(1679, 71, 25, 'message', '2018-07-26 00:24:42', 1),
+(1680, 71, 26, 'message', '2018-07-26 00:24:42', 1),
 (1681, 71, 27, 'message', '2018-07-26 00:24:43', 0),
 (1682, 71, 28, 'message', '2018-07-26 00:24:43', 0),
 (1683, 71, 29, 'message', '2018-07-26 00:24:43', 0),
@@ -2846,13 +2895,13 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1782, 71, 17, 'message', '2018-08-02 23:22:41', 0),
 (1783, 71, 18, 'message', '2018-08-02 23:22:41', 0),
 (1784, 71, 19, 'message', '2018-08-02 23:22:41', 0),
-(1785, 71, 20, 'message', '2018-08-02 23:22:41', 0),
+(1785, 71, 20, 'message', '2018-08-02 23:22:41', 1),
 (1786, 71, 21, 'message', '2018-08-02 23:22:41', 1),
 (1787, 71, 22, 'message', '2018-08-02 23:22:41', 0),
 (1788, 71, 23, 'message', '2018-08-02 23:22:41', 0),
 (1789, 71, 24, 'message', '2018-08-02 23:22:41', 0),
-(1790, 71, 25, 'message', '2018-08-02 23:22:41', 0),
-(1791, 71, 26, 'message', '2018-08-02 23:22:41', 0),
+(1790, 71, 25, 'message', '2018-08-02 23:22:41', 1),
+(1791, 71, 26, 'message', '2018-08-02 23:22:41', 1),
 (1792, 71, 27, 'message', '2018-08-02 23:22:41', 0),
 (1793, 71, 28, 'message', '2018-08-02 23:22:41', 0),
 (1794, 71, 29, 'message', '2018-08-02 23:22:41', 0),
@@ -2961,9 +3010,9 @@ CREATE TABLE `tblproduct` (
 
 INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description`, `farmid`, `userid`, `dateposted`, `price`, `img`, `view`, `rating`, `is_approved`, `is_available`) VALUES
 (1, 1, 'XYZ Amargoso', 'the balsam apple of the Philippines', 1, 2, '2018-07-18 20:23:54', '90.00', 'product/213500944001201.jpg', 13, '60.00', 1, 1),
-(2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '80.00', 'product/food-healthy-summer-green.jpeg', 6, '80.00', 1, 1),
+(2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '80.00', 'product/food-healthy-summer-green.jpeg', 7, '80.00', 1, 1),
 (3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 15, '50.00', 1, 1),
-(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 25, '100.00', 1, 1),
+(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 26, '100.00', 1, 1),
 (5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 14, '100.00', 1, 1),
 (6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 1, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 7, '50.00', 1, 1),
 (7, 15, 'Philippine Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mango.jpg', 7, '50.00', 1, 1),
@@ -3137,7 +3186,17 @@ INSERT INTO `tblsales` (`salesid`, `productid`, `weight`, `sales`, `datecommit`)
 (41, 3, '1.000', '80.00', '2018-08-08 22:22:03'),
 (42, 5, '1.000', '120.00', '2018-08-08 22:22:03'),
 (43, 6, '2.000', '160.00', '2018-08-08 22:22:03'),
-(44, 18, '5.000', '500.00', '2018-08-10 01:18:11');
+(44, 18, '5.000', '500.00', '2018-08-10 01:18:11'),
+(45, 20, '1.000', '40.00', '2018-08-10 16:28:46'),
+(46, 2, '2.000', '160.00', '2018-08-10 16:28:46'),
+(47, 14, '1.000', '100.00', '2018-08-10 16:28:46'),
+(48, 3, '1.000', '80.00', '2018-08-10 16:28:46'),
+(49, 5, '1.000', '120.00', '2018-08-10 16:28:46'),
+(50, 14, '1.000', '100.00', '2018-08-10 16:28:54'),
+(51, 6, '1.000', '80.00', '2018-08-10 16:28:54'),
+(52, 7, '1.000', '135.00', '2018-08-10 16:28:54'),
+(53, 8, '1.000', '100.00', '2018-08-10 16:28:54'),
+(54, 12, '2.000', '100.00', '2018-08-10 16:28:54');
 
 -- --------------------------------------------------------
 
@@ -3192,13 +3251,13 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `phone`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'first1', 'mid1', 'last1', '2000-02-14', '2018-06-07 04:44:35', 'useremail1@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-09 17:26:06', 124),
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'first1', 'mid1', 'last1', '2000-02-14', '2018-06-07 04:44:35', 'useremail1@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 3, '2018-07-25 06:29:20', '2018-08-10 08:29:26', 124),
 (2, 'seller1', '5f4dcc3b5aa765d61d8327deb882cf99', 'first2', 'mid2', 'last2', '2000-04-10', '2018-06-07 04:47:31', 'useremail2@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-08 15:38:56', 195),
 (3, 'user3', '5488d6d6f37a311a1085daf41f2e990c', 'first3', 'mid3', 'last3', '2000-07-15', '2018-06-07 01:56:37', 'useremail3@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
 (4, 'user4', '5f4dcc3b5aa765d61d8327deb882cf99', 'first4', 'mid4', 'last4', '2000-12-04', '2018-06-07 01:56:37', 'useremail4@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-08 14:21:39', 29),
 (5, 'seller2', '5f4dcc3b5aa765d61d8327deb882cf99', 'first5', 'mid5', 'last5', '2000-09-19', '2018-06-07 01:56:37', 'useremail5@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-07 14:01:43', 29),
 (6, 'user6', '5f4dcc3b5aa765d61d8327deb882cf99', 'first6', 'mid6', 'last6', '2000-03-15', '2018-06-07 15:32:53', 'useremail6@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-04 08:07:37', 21),
-(7, 'user7', '5f4dcc3b5aa765d61d8327deb882cf99', 'first7', 'mid7', 'last7', '2000-07-15', '2018-06-07 14:08:15', 'useremail7@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-08-01 16:13:30', 59),
+(7, 'user7', '5f4dcc3b5aa765d61d8327deb882cf99', 'first7', 'mid7', 'last7', '2000-07-15', '2018-06-07 14:08:15', 'useremail7@gmail.com', '', 'Quezon City', 1, 1, 'upload/ysera.jpg', '', 1, 2, '0000-00-00 00:00:00', '2018-08-01 16:13:30', 60),
 (8, 'user8', '5f4dcc3b5aa765d61d8327deb882cf99', 'first8', 'mid8', 'last8', '2000-01-31', '2018-06-07 15:31:06', 'useremail8@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:01', 41),
 (9, 'user9', '5f4dcc3b5aa765d61d8327deb882cf99', 'first9', 'mid9', 'last9', '2000-08-03', '2018-06-07 01:56:37', 'useremail9@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-06 17:30:09', 2),
 (10, 'user10', '5f4dcc3b5aa765d61d8327deb882cf99', 'first10', 'mid10', 'last10', '2004-04-01', '2018-06-07 15:29:14', 'useremail10@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-30 08:48:26', 12),
@@ -3211,13 +3270,13 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (17, 'user17', '5f4dcc3b5aa765d61d8327deb882cf99', 'first17', 'mid17', 'last17', '1999-05-15', '2018-06-07 15:17:15', 'useremail17@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-26 06:30:22', 4),
 (18, 'user18', '5f4dcc3b5aa765d61d8327deb882cf99', 'first18', 'mid18', 'last18', '2006-07-20', '2018-06-07 15:16:46', 'useremail18@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-17 19:06:28', 2),
 (19, 'user19', '5f4dcc3b5aa765d61d8327deb882cf99', 'first19', 'mid19', 'last19', '2002-01-01', '2018-06-08 05:00:27', 'useremail19@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:28:01', 5),
-(20, 'user20', '5f4dcc3b5aa765d61d8327deb882cf99', 'first20', 'mid20', 'last20', '1995-01-15', '2018-06-08 05:14:22', 'useremail20@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 20:44:18', 1),
+(20, 'user20', '5f4dcc3b5aa765d61d8327deb882cf99', 'first20', 'mid20', 'last20', '1995-01-15', '2018-06-08 05:14:22', 'useremail20@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-10 08:30:41', 1),
 (21, 'user21', '5f4dcc3b5aa765d61d8327deb882cf99', 'first21', 'mid21', 'last21', '1992-03-27', '2018-06-08 05:18:01', 'useremail21@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-09 08:43:25', 1),
 (22, 'user22', '5f4dcc3b5aa765d61d8327deb882cf99', 'first22', 'mid22', 'last22', '1996-10-23', '2018-06-08 05:28:17', 'useremail22@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-08 05:29:38', '2018-06-15 05:07:51', 0),
 (23, 'user23', '5f4dcc3b5aa765d61d8327deb882cf99', 'first23', 'mid23', 'last23', '1997-04-26', '2018-06-08 21:03:43', 'useremail23@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-16 00:00:26', 0),
 (24, 'user24', '5f4dcc3b5aa765d61d8327deb882cf99', 'first24', 'mid24', 'last24', '1996-12-01', '2018-06-08 21:10:39', 'useremail24@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
-(25, 'user25', '5f4dcc3b5aa765d61d8327deb882cf99', 'first25', 'mid25', 'last25', '2002-12-14', '2018-06-09 01:37:59', 'useremail25@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-16 06:41:06', 1),
-(26, 'user26', '5f4dcc3b5aa765d61d8327deb882cf99', 'first26', 'mid26', 'last26', '', '2018-06-09 23:49:52', 'useremail26@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
+(25, 'user25', '5f4dcc3b5aa765d61d8327deb882cf99', 'first25', 'mid25', 'last25', '2002-12-14', '2018-06-09 01:37:59', 'useremail25@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-10 08:01:59', 1),
+(26, 'user26', '5f4dcc3b5aa765d61d8327deb882cf99', 'first26', 'mid26', 'last26', '', '2018-06-09 23:49:52', 'useremail26@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-08-10 08:20:04', 0),
 (27, 'user27', '5f4dcc3b5aa765d61d8327deb882cf99', 'first27', 'mid27', 'last27', '', '2018-06-09 23:52:55', 'useremail27@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
 (28, 'user28', '5f4dcc3b5aa765d61d8327deb882cf99', 'first28', 'mid28', 'last28', '', '2018-06-09 23:54:40', 'useremail28@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 1, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
 (29, 'user29', '5f4dcc3b5aa765d61d8327deb882cf99', 'first29', 'mid29', 'last29', '', '2018-06-09 23:55:56', 'useremail29@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 0),
@@ -3262,7 +3321,7 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (68, 'user68', '5f4dcc3b5aa765d61d8327deb882cf99', 'first68', 'mid68', 'last68', '', '2018-06-21 06:01:06', 'useremail68@gmail.com', '', 'Quezon City', 1, 1, '', '', 0, 4, '0000-00-00 00:00:00', '2018-06-21 15:25:19', 7),
 (69, 'user69', '5f4dcc3b5aa765d61d8327deb882cf99', 'first69', 'mid69', 'last69', '2000-07-07', '2018-06-21 15:47:24', 'useremail69@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-25 10:11:15', 3),
 (70, 'user70', '5f4dcc3b5aa765d61d8327deb882cf99', 'first70', 'mid70', 'last70', '1993-07-07', '2018-06-22 04:45:25', 'useremail70@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-22 22:48:59', 2),
-(71, 'Mang Celso', '5f4dcc3b5aa765d61d8327deb882cf99', 'first71', 'mid71', 'last71', '', '2018-06-22 20:41:16', 'useremail71@gmail.com', '', 'Quezon City', 2, 1, 'upload/manwithrooster-Navarro.jpg', 'I am a bot...\r\n\r\nCommand\r\n\r\n!hello\r\n!thanks\r\n!time\r\n!bye', 0, 4, '2018-07-25 17:29:26', '2018-08-02 13:49:36', 41),
+(71, 'Mang Celso', '5f4dcc3b5aa765d61d8327deb882cf99', 'first71', 'mid71', 'last71', '', '2018-06-22 20:41:16', 'useremail71@gmail.com', '', 'Quezon City', 2, 1, 'upload/manwithrooster-Navarro.jpg', 'I am a bot...\r\n\r\nCommand\r\n\r\n!hello\r\n!thanks\r\n!time\r\n!bye', 0, 4, '2018-07-25 17:29:26', '2018-08-02 13:49:36', 42),
 (72, 'user72', '5f4dcc3b5aa765d61d8327deb882cf99', 'first72', 'mid72', 'last72', '1995-10-03', '2018-06-22 21:19:59', 'useremail72@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-23 20:11:44', 1),
 (73, 'user73', '5f4dcc3b5aa765d61d8327deb882cf99', 'first73', 'mid73', 'last73', '2002-10-01', '2018-06-24 03:17:01', 'useremail73@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-08 11:57:19', 5),
 (74, 'user74', '5f4dcc3b5aa765d61d8327deb882cf99', 'first74', 'mid74', 'last74', '2003-09-19', '2018-06-24 08:08:28', 'useremail74@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:34:51', 8),
@@ -3441,7 +3500,7 @@ ALTER TABLE `tblcategory`
 -- AUTO_INCREMENT for table `tblchangelog`
 --
 ALTER TABLE `tblchangelog`
-  MODIFY `logid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `logid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `tblcomment`
@@ -3477,19 +3536,19 @@ ALTER TABLE `tbllikes`
 -- AUTO_INCREMENT for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=398;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=411;
 
 --
 -- AUTO_INCREMENT for table `tblorder`
 --
 ALTER TABLE `tblorder`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tblordersummary`
 --
 ALTER TABLE `tblordersummary`
-  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `tblpm`
@@ -3525,7 +3584,7 @@ ALTER TABLE `tblreviews`
 -- AUTO_INCREMENT for table `tblsales`
 --
 ALTER TABLE `tblsales`
-  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `tblshippingfee`

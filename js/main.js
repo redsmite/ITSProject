@@ -1355,11 +1355,6 @@ function setCutoff(){
 
 	myRequest.onload = function(){
 		var response= this.responseText;
-		if(response=='No change'){
-			alert('No changes are made');
-		}else{
-			alert('Set Cut off time to '+response);
-		}
 	}
 	myRequest.send(formData);
 }
@@ -1385,12 +1380,13 @@ function cutoffCountdown(){
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in the element with id="demo"
-    document.getElementById("cutoff-time").innerHTML = "Next Cut Off Time: "+ days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
+    document.getElementById("cutoff-time").innerHTML = "Cut Off Time in: "+ days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
 
     // If the count down is finished, write some text 
     if (distance < 0) {
      	clearInterval(x);
     	document.getElementById("cutoff-time").innerHTML = 'EXPIRED';
+    	setCutoff();
     }
 	}, 1000);
 }
@@ -2406,6 +2402,7 @@ function placeOrder(){
 
 	form.addEventListener('submit',(e)=>{
 		e.preventDefault();
+		setCutoff();
 
 		let button = document.getElementById('place-order');
 
@@ -2473,6 +2470,8 @@ function rejectOrder(clicked){
 	let button2id = 'order-approve-'+id;
 	let button2 = document.getElementById(button2id);
 
+	addSpinners();
+
 	button.innerHTML = 'Rejecting...';
 	button2.style.display = 'none';
 
@@ -2500,6 +2499,8 @@ function cancelOrder(clicked){
 	let button2id = 'order-cancel-'+id;
 	let button2 = document.getElementById(button2id);
 
+	addSpinners();
+
 	button.style.display = 'none';
 	button2.innerHTML = 'Cancelling...';
 
@@ -2518,6 +2519,28 @@ function cancelOrder(clicked){
 	myRequest.send(formData);
 }
 
+function cancelThisOrder(){
+	let id = document.getElementById('cancelOrder').getAttribute('value');
+	var myRequest = new XMLHttpRequest();
+	var url = 'transactionprocess.php';
+
+	var formData = "userCancel="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		if(response == 'success'){
+			alert('You cancelled this order');
+		}else{
+			alert(response);
+		}
+		location.reload();
+	}
+	myRequest.send(formData);
+}
+
 function completeOrder(clicked){
 	let id = clicked.getAttribute('value');
 	let number = clicked.getAttribute('number');
@@ -2526,6 +2549,8 @@ function completeOrder(clicked){
 	let button = document.getElementById(buttonid);
 	let button2id = 'order-cancel-'+id;
 	let button2 = document.getElementById(button2id);
+
+	addSpinners();
 
 	button.innerHTML = 'Saving...';
 	button2.style.display = 'none';

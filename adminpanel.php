@@ -101,9 +101,8 @@ if($new_products!=0){
 	$now = strtotime('now');
 	$diff = $cutoff2 - $now;
 	$diff = gmdate("H:i:s", $diff);
-	echo '<h3 id="cutoff-time" value="'.$cutoff.'" now="'.$datenow.'">Next Cut Off Time: '.$diff.' </h3>';
+	echo '<h3 id="cutoff-time" value="'.$cutoff.'" now="'.$datenow.'">Cut Off Time in: '.$diff.' </h3>';
 ?>
-						<div class="cutoff" onclick="setCutoff()"><h3><i class="far fa-clock"></i><br> Cut off</h3></div>
 						<div id="order-body-content">
 						</div>
 					</div>

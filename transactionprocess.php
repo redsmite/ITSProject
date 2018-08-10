@@ -13,6 +13,11 @@ if(isset($_POST['placeOrder'])){
 		}else if($_SESSION['total']<500){
 			echo'<i class="fas fa-exclamation-circle"></i> Orders should be a minimum of ₱500.00 worth of purchase.';
 		}else{
+			$sql = "SELECT cutoff FROM tblcutoff";
+			$result = $conn->query($sql);
+			$fetch = $result->fetch_object();
+			$cutoff = $fetch->cutoff;
+
 			$total = $_POST['placeOrder'];
 			$userid = $_SESSION['id'];
 			$fee = $_POST['fee'];
@@ -23,7 +28,7 @@ if(isset($_POST['placeOrder'])){
 
 			$array = $_SESSION['trans'];
 
-			$sql = "INSERT INTO tblorder (userid, ordernumber, billingaddress, email, phone, fee, total, status, datecommit) VALUES ('$userid','$ordernum','$address','$email','$phone','$fee','$total',0,NOW())";
+			$sql = "INSERT INTO tblorder (userid, ordernumber, billingaddress, email, phone, fee, total, status, datecommit,cutoff) VALUES ('$userid','$ordernum','$address','$email','$phone','$fee','$total',0,NOW(),'$cutoff')";
 			$result = $conn->query($sql);
 
 			$sql='SELECT orderid FROM tblorder ORDER BY orderid DESC LIMIT 1';
@@ -72,7 +77,7 @@ if(isset($_POST['placeOrder'])){
 
 function orderMonitoring($where,$condition){
 	$conn = new mysqli('localhost','root','','itsproject');
-	$sql = "SELECT orderid, ordernumber, t1.userid, username, billingaddress, t1.email, t1.phone, fee, total, status, datecommit FROM tblorder AS t1
+	$sql = "SELECT orderid, ordernumber, t1.userid, username, billingaddress, t1.email, t1.phone, fee, total, status, datecommit,cutoff FROM tblorder AS t1
 	LEFT JOIN tbluser AS t2
 		ON t1.userid = t2.userid
 	$where
@@ -92,7 +97,7 @@ function orderMonitoring($where,$condition){
 		if($status==0){
 			$Sstatus = '<font style="color:orangered;">Pending...</font>';
 		}else if($status == 1){
-			$Sstatus = '<font style="color:green;">On delivery...</font>';
+			$Sstatus = '<font style="color:green;">Approved</font>';
 		}else if($status == 2){
 			$Sstatus = '<font style="color:red;">Rejected</font>';
 		}else if($status == 3){
@@ -101,9 +106,17 @@ function orderMonitoring($where,$condition){
 			$Sstatus = '<font style="color:green;">Completed</font>';
 		}
 		$date = $row->datecommit;
+		$cutoff = $row->cutoff;
+		$now = strtotime('now');
+		$cutofftime = strtotime($cutoff);
 
-		echo '<div class="orders">
-		<p>Order No: '.$ordernum.'</p>
+		echo '<div class="orders">';
+		if($now < $cutofftime){
+			echo '<p>Cut off: <font style="color:green;">ONGOING...</font></p>';
+		}else{
+			echo '<p>Cut off: <font style="color:red;">EXPIRED</font></p>';
+		}
+		echo'<p>Order No: '.$ordernum.'</p>
 		<p>User: <a class="black" href=profile.php?id='.$userid.'>'.$username.'</a></p>
 		<p>Status: <b>'.$Sstatus.'</b></p>
 		<p>Submitted: '.date('M j, Y g:i A',strtotime($date)).'</p>
@@ -219,6 +232,27 @@ if(isset($_POST['cancel'])){
 	$result = $conn->query($sql);
 }
 
+if(isset($_POST['userCancel'])){
+	$id = $_POST['userCancel'];
+	
+	$sql = "SELECT datecommit,cutoff FROM tblorder WHERE orderid = '$id'";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	
+	$date = $fetch->datecommit;
+	$cutoff = $fetch->cutoff;
+	$datetime = strtotime($date);
+	$cutofftime = strtotime($cutoff);
+
+	if($datetime > $cutofftime){
+		$sql = "UPDATE tblorder SET status = 3 WHERE orderid = '$id'";
+		$result = $conn->query($sql);
+		echo 'success';
+	}else{
+		echo 'This order has reached its cut off time. Cancel request denied';
+	}
+}
+
 if(isset($_POST['complete'])){
 	$id = $_POST['complete'];
 	$number = $_POST['completeNum'];
@@ -269,8 +303,6 @@ if(isset($_POST['setCutoff'])){
 		$result = $conn->query($sql);
 
 		echo $new_cutoff;
-	}else{
-		echo 'No change';
 	}
 }
 

@@ -163,7 +163,7 @@ if(isset($_GET['search-text'])){
 			if($status==0){
 				$status = '<font style="color:orangered;">Pending...</font>';
 			}else if($status == 1){
-				$status = '<font style="color:green;">On delivery...</font>';
+				$status = '<font style="color:green;">Approved</font>';
 			}else if($status == 2){
 				$status = '<font style="color:red;">Rejected</font>';
 			}else if($status == 3){

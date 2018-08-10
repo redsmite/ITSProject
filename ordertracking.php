@@ -29,6 +29,18 @@
 	<div class="other-content">
 		<h1><a class="btp" href="profile.php?id=<?php echo $_SESSION['id'] ?>">Back to Your Profile</a></h1>
 <?php
+// Countdown timer
+$sql = "SELECT cutoff FROM tblcutoff";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$cutoff = $fetch->cutoff;
+
+	$cutoff2 = strtotime($cutoff);
+	$datenow = date('Y-m-d H:i:s');
+	$now = strtotime('now');
+	$diff = $cutoff2 - $now;
+	$diff = gmdate("H:i:s", $diff);
+	echo '<h3 id="cutoff-time" value="'.$cutoff.'" now="'.$datenow.'">Cut Off Time in: '.$diff.' </h3>';
 // Order Tracking
 	$userid = $_SESSION['id'];
 	$sql="SELECT orderid FROM tblorder WHERE userid = '$userid'";
@@ -51,7 +63,7 @@
 	}
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
 
-	$sql = "SELECT orderid, ordernumber, billingaddress, email, phone, fee, total, status, datecommit FROM tblorder WHERE userid = '$userid' ORDER BY datecommit DESC $limit";
+	$sql = "SELECT orderid, ordernumber, billingaddress, email, phone, fee, total, status, datecommit, cutoff FROM tblorder WHERE userid = '$userid' ORDER BY datecommit DESC $limit";
 
 	$textline1 = "Order Tracking (<b>".number_format($rows)."</b>)";
 $textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
@@ -93,11 +105,11 @@ if($last != 1){
 		$phone = $row->phone;
 		$fee = $row->fee;
 		$total = $row->total;
-		$status = $row->status;
+		$status = $row->status; 
 		if($status==0){
 			$status = '<font style="color:orangered;">Pending...</font>';
 		}else if($status == 1){
-			$status = '<font style="color:green;">On delivery...</font>';
+			$status = '<font style="color:green;">Approved</font>';
 		}else if($status == 2){
 			$status = '<font style="color:red;">Rejected</font>';
 		}else if($status == 3){
@@ -106,8 +118,23 @@ if($last != 1){
 			$status = '<font style="color:green;">Completed</font>';
 		}
 		$date = $row->datecommit;
-		echo '<div class="orders">
-		<p>Order No: '.$ordernum.'</p>
+		$orderCutoff = $row->cutoff;
+
+		echo '<div class="orders">';
+
+		//Cancel Order
+		$datetime = strtotime($date);
+		$ordercutofftime = strtotime($orderCutoff);
+		$warningtime = $ordercutofftime - (60*60);
+		$now = strtotime('now');
+		if($warningtime < $now AND $ordercutofftime > $now){
+			echo '<h3>The cut off time is about to expire. This your last chance to cancel this order.</h3>';
+		}
+		if($datetime < $ordercutofftime AND $status == '<font style="color:orangered;">Pending...</font>' AND $now < $ordercutofftime){
+			echo'<div id="cancelOrder" onclick="cancelThisOrder()" value="'.$orderid.'"><h3><i class="far fa-clock"></i><br> Cancel</h3></div>';
+		}
+
+		echo'<p>Order No: '.$ordernum.'</p>
 		<p>Status: <b>'.$status.'</b></p>
 		<p>Submitted: '.date('M j, Y g:i A',strtotime($date)).'</p>
 		<p>Submitted info:</p> 
@@ -158,6 +185,7 @@ while($row2 = $result2->fetch_object()){
 	</div>
 	<script src="js/main.js"></script>
 	<script>
+		cutoffCountdown();
 	</script>
 </body>
 </html>

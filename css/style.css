@@ -749,9 +749,9 @@ li{
 	"bottom bottom";
 	width: 95%;
 	margin: auto;
-	background: var(--darkgray);
-	border-radius: 30px;
+	background: var(--dark-color);
 	padding: 5px;
+	border: 3px solid var(--darkgray);
 	box-sizing: border-box;
 }
 
@@ -800,7 +800,6 @@ li{
 	text-align: center;
 	padding: 10px;
 	cursor: pointer;
-	border-radius: 10%;
 }
 
 #top1:hover,#top2:hover,#top3:hover,#top4:hover,#top5:hover,#showcase:hover{
@@ -2196,9 +2195,9 @@ li{
 	color: var(--light-color);
 }
 
-.cutoff{
+#cancelOrder{
 	padding: 0.8em;
-	background: var(--secondary-contrast);
+	background: red;
 	color: var(--light-color);
 	width: 100px;
 	margin: 10px auto;
