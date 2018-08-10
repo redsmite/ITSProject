@@ -113,6 +113,28 @@ if(isset($_POST['deactivateProduct'])){
 	$result = $conn->query($sql);
 }
 
+// Favorite
+if(isset($_POST['favorite'])){
+	$userid = $_SESSION['id'];
+	$productid = $_POST['favorite']; 
+	$sql = "SELECT favid FROM tblfavorite WHERE userid = '$userid' AND productid = '$productid'";
+	$result = $conn->query($sql);
+	$count = $result->num_rows;
+
+	if($count == 0){
+		$sql = "INSERT INTO tblfavorite (userid,productid) VALUES ('$userid','$productid')";
+		$result = $conn->query($sql);
+	}
+}
+
+if(isset($_POST['removeFavorite'])){
+	$userid = $_SESSION['id'];
+	$productid = $_POST['removeFavorite'];
+
+	$sql = "DELETE FROM tblfavorite WHERE userid = '$userid' AND productid = '$productid'";
+	$result = $conn->query($sql);
+}
+
 // Review
 if(isset($_POST['star'])){
 	$userid=$_POST['star'];

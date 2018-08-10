@@ -110,6 +110,12 @@ li{
 	text-decoration: underline;
 }
 
+.red{
+	color:red;
+	text-decoration: underline;
+}
+
+
 .center{
 	text-align: center;
 }

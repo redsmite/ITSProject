@@ -149,7 +149,7 @@ if(isset($_POST['notseller'])){
 	$sql = "UPDATE tbluser SET usertypeid = 1 WHERE userid = '$id'";
 	$result = $conn->query($sql);
 
-	$sql ="UPDATE tblproduct SET is_available = 0 WHERE userid = '$id'";
+	$sql ="UPDATE tblproduct SET is_approved = 0 WHERE userid = '$id'";
 	$result = $conn->query($sql);
 
 	echo 'oke-oke-okay';
@@ -382,10 +382,7 @@ if(isset($_POST['updatefarm'])){
 	$sql = "UPDATE tblfarm SET farmname='$name', address='$address', status='$status' WHERE farmid = '$id'";
 	$result = $conn->query($sql);
 
-	if($status == 1){
-		$sql = "UPDATE tblproduct SET is_approved = 1 WHERE farmid = '$id'";
-		$result = $conn->query($sql);
-	}else{
+	if($status == 0){
 		$sql = "UPDATE tblproduct SET is_approved = 0 WHERE farmid = '$id'";
 		$result = $conn->query($sql);
 	}

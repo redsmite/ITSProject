@@ -132,7 +132,6 @@ if(isset($_POST['sendall'])){
 	echo 'oke-oke-okay';
 }
 
-
 //reset div every time
 
 if(isset($_POST['load'])){
@@ -187,7 +186,5 @@ while($row=$result->fetch_object()){
 
 	echo $data;
 }
-
-
 
 ?>

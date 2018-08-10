@@ -2234,6 +2234,46 @@ function hideCartPanel(){
 	panel.style.display='none';
 }
 
+function addToFavorite(click){
+	let id = click.getAttribute('value');
+	button = document.getElementById('favorite-button');
+	button.innerHTML = 'Adding...';
+	addSpinners();
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'productprocess.php';
+
+	var formData = "favorite="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+	myRequest.onload = function(){
+		removeSpinners();
+		var response= this.responseText;
+	}
+	myRequest.send(formData);
+}
+
+function removeFavorite(click){
+	let id = click.getAttribute('value');
+	button = document.getElementById('favorite-button');
+	button.innerHTML = 'Removing...';
+	addSpinners();
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'productprocess.php';
+
+	var formData = "removeFavorite="+id;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+	myRequest.onload = function(){
+		removeSpinners();
+		var response= this.responseText;
+	}
+	myRequest.send(formData);
+}
+
 function addThistoCart(click){
 	let id = click.getAttribute('value');
 	addSpinners();

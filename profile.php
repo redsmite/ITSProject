@@ -156,7 +156,8 @@ if($imgpath==''){
 									<li><a href="insertphoto.php"><i class="fas fa-camera"></i> Change Profile Picture</a></li>
 									<li><a href="editinfo.php"><i class="fas fa-pen-square"></i> Edit Personal Info</a></li>
 									<li><a href="accountsetting.php"><i class="fas fa-cog"></i> Account Settings</a></li>
-									<li><a href="ordertracking.php"><i class="fas fa-shoe-prints"></i> Order Tracking</a></li>';
+									<li><a href="ordertracking.php"><i class="fas fa-shoe-prints"></i> Order Tracking</a></li>
+									<li><a href="favorites.php"><i class="fas fa-heart"></i> Favorites</a></li>';
 							}else{
 								echo'
 								<li>
@@ -348,10 +349,6 @@ echo'	<input type="submit" value="delete" name="deletebtn">
 </form>';
 
 }				
-
-
-		
-
 		echo'
 		</div>
 		</div>';

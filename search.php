@@ -190,7 +190,7 @@ if(isset($_GET['search-text'])){
 					<th>Price</th>
 				</tr>';
 	// Order Summary
-	$sql2 = "SELECT t1.productid,productname, t1.price, weight FROM tblordersummary AS t1
+	$sql2 = "SELECT t1.productid,productname, t1.price, weight, userid FROM tblordersummary AS t1
 	LEFT JOIN tblproduct AS t2
 		ON t1.productid = t2.productid
 	WHERE orderid = '$orderid'";
@@ -198,13 +198,21 @@ if(isset($_GET['search-text'])){
 	while($row2 = $result2->fetch_object()){
 		$productid = $row2->productid;
 		$product = $row2->productname;
+		$seller = $row2->userid;
 		$price = $row2->price;
 		$weight = $row2->weight;
-		$Ptotal = $price*$weight; 
+		$Ptotal = $price*$weight;
 		
-		echo'<tr>
-			<th><a class="black" href="product.php?id='.$productid.'">'.$product.'</a> (x '.$weight.'kg)
+		echo'<tr>';
+		if($seller == $_SESSION['id']){
+			echo'<th style="color:red;">
+			<a class="red" href="product.php?id='.$productid.'"><i class="fas fa-exclamation"></i> '.$product.'</a> (x '.$weight.'kg)
 			</th>';
+		}else{
+			echo'<th>
+			<a class="black" href="product.php?id='.$productid.'">'.$product.'</a> (x '.$weight.'kg)
+			</th>';
+		}
 		echo'<th>₱'.number_format($Ptotal,2).'</th>
 			</tr>';
 	}

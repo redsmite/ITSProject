@@ -145,10 +145,22 @@ chattab();
 						</li>
 					</ul>
 <?php
-// Add-to-Cart
 	if($available != 'Not Available' AND $approved != 0){
-	echo'<div class="add-to-cart" value="'. $id.'" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart
-					</div>';
+	// Add-to-Cart
+		echo'<div class="add-to-cart" value="'. $id.'" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart
+						</div>';
+
+	// Add to favorite
+
+		$Favuserid = $_SESSION['id'];
+		$sql = "SELECT favid FROM tblfavorite WHERE userid = '$Favuserid' AND productid = '$id'";
+		$result = $conn->query($sql);
+		$count = $result->num_rows;
+		if($count==0){
+			echo'<div class="red-cart" id="favorite-button" value="'. $id.'" onclick="addToFavorite(this)"><i class="far fa-heart"></i>  Favorite</div>';
+		}else{
+			echo'<div class="red-cart" id="favorite-button" value="'. $id.'" onclick="removeFavorite(this)"><i class="fas fa-heart"></i> Unfavorite</div>';
+		}
 	}
 // 5 star rating
 	if(isset($_SESSION['id'])){
