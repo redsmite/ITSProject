@@ -112,9 +112,9 @@ function orderMonitoring($where,$condition){
 
 		echo '<div class="orders">';
 		if($now < $cutofftime){
-			echo '<p>Cut off time: <font style="color:green;">ACTIVE</font></p>';
+			echo '<p>Cut off time: <font style="color:green;">Active</font></p>';
 		}else{
-			echo '<p>Cut off time: <font style="color:red;">EXPIRED</font></p>';
+			echo '<p>Cut off time: <font style="color:red;">Expired</font></p>';
 		}
 		echo'<p>Order No: '.$ordernum.'</p>
 		<p>User: <a class="black" href=profile.php?id='.$userid.'>'.$username.'</a></p>

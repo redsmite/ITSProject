@@ -148,7 +148,7 @@ li{
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-contrast); 
+    background: var(--twitterlogo); 
 }
 
 .main-container{
@@ -227,9 +227,10 @@ li{
 }
 
 #home{
+	position: relative;
 	padding: 0.5em;
 	background: var(--secondary-contrast);
-	font-size: 1.2em;
+	font-size: 1em;
 	color: var(--light-color);
 }
 
@@ -339,6 +340,7 @@ li{
 #main-header{
 	grid-area:header;
 	margin-top: 44px;
+	background: var(--light-color);
 	border: 1px solid var(--darkgray);
 	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 	margin-bottom: 5px;
@@ -637,6 +639,8 @@ li{
 	grid-area:main-search;
 	padding:10px;
 	box-sizing: border-box;
+	background: var(--primary-color);
+	box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
 }
 
 #browse-category{
@@ -757,12 +761,19 @@ li{
 	margin: auto;
 	background: var(--dark-color);
 	padding: 5px;
-	border: 3px solid var(--darkgray);
+	border: 2px solid var(--light-color);
 	box-sizing: border-box;
 }
 
 .featured-product-grid a{
 	color: var(--light-color);
+	transition-duration: 350ms;
+	transition-property: color;
+	transition-timing-function: ease-out;
+}
+
+.featured-product-grid a:hover{
+	color: var(--dark-color);
 }
 
 .top-label{
@@ -806,10 +817,14 @@ li{
 	text-align: center;
 	padding: 10px;
 	cursor: pointer;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+	transition-duration: 350ms;
+	transition-property: background;
+	transition-timing-function: ease-out;
 }
 
 #top1:hover,#top2:hover,#top3:hover,#top4:hover,#top5:hover,#showcase:hover{
-	background: var(--dark-color);
+	background: var(--sunflower);
 }
 
 #showcase{
@@ -840,9 +855,6 @@ li{
 	max-height: 100%;
 }
 
-.featured-desc{
-}
-
 /* Index Content */
 .main-content-grid{
 	grid-area:content;
@@ -868,14 +880,11 @@ li{
 }
 
 .announcement a{
-	color: var(--light-color);
+	color: var(--dark-color);
 	text-decoration: underline;
-	padding: 2px 5px;
-	font-weight: bold;
 }
 
 #announcement-comment{
-	background: var(--darkgray);
 	color: var(--dark-color);
 	padding: 0;
 	margin: 5px;
@@ -887,13 +896,14 @@ li{
 	border-top: 1px solid var(--darkgray);
 	border-bottom: 1px solid var(--darkgray);
 	display: block;
-	margin: 0 auto;
+	margin: 20px auto;
 	width: 95%;
 	min-height: 100px;
 	background: var(--light-color);
 	color: var(--dark-color);
 	padding:5px;
 	line-height: 1.2em;
+	font-size: 0.8em;
 }
 
 #announcement-text{
@@ -907,9 +917,6 @@ li{
 	color: var(--light-color);
 	text-align: center;
 	padding: 20px 0;
-	border: 1px solid var(--light-color);
-	border-radius: 8px; 
-	box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .farm-select-div h3{
@@ -942,8 +949,8 @@ li{
 
 .about{
 	grid-area:about;
-	border: 1px solid var(--darkgray);
 	padding: 5px;
+	background: var(--canvas);
 }
 
 .about-inner{
@@ -965,18 +972,20 @@ li{
 .content-body{
 	grid-area: main;
 	padding:10px;
-	background: var(--light-color);
-	color: var(--dark-color);
+	background: var(--secondary-contrast);
+	color: var(--light-color);
 	border: 1px solid var(--darkgray);
 	text-align: center;
+	border-top: 2px solid var(--contrast);
+	border-bottom: 2px solid var(--contrast);
 }
 
 .content-body h2{
 	padding: 2px;
 	margin: 2px;
 	font-size: 1.2em;
-	border-top: 1px solid var(--darkgray);
-	border-bottom: 1px solid var(--darkgray);
+	border-top: 1px solid var(--light-color);
+	border-bottom: 1px solid var(--light-color);
 }
 
 .content-body a{
@@ -991,19 +1000,9 @@ li{
 	color:var(--light-color);
 	display: inline-block;
 	background: var(--light-color);
-	border-top: 1px solid var(--darkgray);
-	border-right: 1px solid var(--darkgray);
 	border-radius: 8px;
-	transition-duration: 250ms;
-	transition-property: box-shadow;
-	transition-timing-function: ease-in-out;
 	box-sizing: border-box;
 	text-align: center;
-}
-
-.product:hover{
-	cursor: pointer;
-	box-shadow: 0 0 20px rgba(0,0,0,0.75);
 }
 
 .product-img-wrap{
@@ -1012,6 +1011,13 @@ li{
 	width: 200px;
 	height: 150px;
 	overflow: hidden;
+	transition-duration: 350ms;
+	transition-property: opacity;
+	transition-timing-function: ease-out;
+}
+
+.product-img-wrap:hover{
+	opacity: 0.8;
 }
 
 .product-img-wrap img{
@@ -1071,7 +1077,6 @@ li{
 
 .other-content{
 	box-sizing: border-box;
-	border-radius: 8px;
 	padding:5px;
 	background: var(--gray);
 	min-height:85vh;
@@ -1577,6 +1582,7 @@ li{
 
 .comment-body{
 	background: var(--light-color);
+	font-size: 0.9em;
 	padding-left: 5px;
 	min-height:80px;
 	border: 1px solid var(--dark-color);
@@ -2257,6 +2263,7 @@ li{
 	box-sizing: border-box;
 	border: 1px solid var(--darkgray);
 	padding: 5px 0;
+	font-size: 0.8em;
 }
 
 .sales-table tr:first-child{
@@ -2464,7 +2471,8 @@ li{
 
 .my-products{
 	text-align: center;
-	background: var(--light-color);
+	color: var(--light-color);
+	background: var(--secondary-contrast);
 	margin: 5px;
 	padding: 5px;
 	min-height: 100vh;
@@ -2542,6 +2550,7 @@ li{
 
 .review-list p{
 	line-height: 1.5em;
+	font-size: 0.9em;
 	margin-left: 10px;
 }
 

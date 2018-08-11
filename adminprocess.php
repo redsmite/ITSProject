@@ -392,6 +392,8 @@ if(isset($_POST['updatefarm'])){
 //Sales Report Function
 function salesReport($where,$format,$weekly){
 	$conn = new mysqli('localhost','root','','itsproject');
+	
+	//Product Sales
 	echo'<table class="sales-table">
 	<tr><th colspan="3">';
 	
@@ -438,6 +440,29 @@ function salesReport($where,$format,$weekly){
 		</tr>';
 	}
 	echo'</table>';
+
+	// Farm sales
+	echo '<br><table class="sales-table">
+	<tr><th colspan="2">Farm Sales</th></tr><tr><th>Farm</th><th>Sales</th></tr>';
+	$sql = "SELECT farmname, SUM(sales) AS total FROM tblsales AS t1
+	LEFT JOIN tblproduct AS t2
+		ON t1.productid = t2.productid
+	LEFT JOIN tblfarm AS t3
+		ON t2.farmid = t3.farmid
+	$where
+	GROUP BY t2.farmid
+	ORDER BY SUM(sales) DESC 
+	";
+	$result = $conn->query($sql);
+	while($row=$result->fetch_object()){
+		$farm = $row->farmname;
+		$sales = $row->total;
+
+		echo '<tr><th>'.$farm.'</th><th>₱'.number_format($sales,2).'</th><tr>';
+	}
+	echo '</table>';
+
+	// Total Sales
 	$sql = "SELECT SUM(sales) AS total FROM tblsales $where";
 	$result = $conn->query($sql);
 	$fetch = $result->fetch_object();

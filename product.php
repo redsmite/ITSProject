@@ -151,7 +151,7 @@ chattab();
 						</div>';
 
 	// Add to favorite
-
+	if(isset($_SESSION['id'])){
 		$Favuserid = $_SESSION['id'];
 		$sql = "SELECT favid FROM tblfavorite WHERE userid = '$Favuserid' AND productid = '$id'";
 		$result = $conn->query($sql);
@@ -160,6 +160,7 @@ chattab();
 			echo'<div class="red-cart" id="favorite-button" value="'. $id.'" onclick="addToFavorite(this)"><i class="far fa-heart"></i>  Favorite</div>';
 		}else{
 			echo'<div class="red-cart" id="favorite-button" value="'. $id.'" onclick="removeFavorite(this)"><i class="fas fa-heart"></i> Unfavorite</div>';
+		}
 		}
 	}
 // 5 star rating

@@ -82,7 +82,6 @@
 					<p>
 					With fresh market delivery at your convenience, you can now cut down trips to the grocery and spend those extra hours with family or that much desired Me time.
 					</p>
-					<p>Source: greengrocermanila</p>
 					<hr>
 					<center><h1 id="how-to-order"><span id="highlight-text" class="">How</span> to Order?</h1></center>
 					<p>Ordering here is pretty easy, all you need to do is click an item, add to the cart and checkout and choose a payment option for our great services. If these steps are unclear, please refer to the following steps.</p>
@@ -91,7 +90,7 @@
 					<p>2. Click the add-to-cart button</p>
 					<p> Click that green button with a <strong>Shopping Cart Icon</strong>. The item will be added on your shopping cart.</p>
 					<p>3. Checkout your order.</p>
-					<p> Click for the icon located at the top-right corner of the screen. The shopping cart will pop-out at the right of the screen. Choose the <strong>Weight</strong> the product in kilograms. Click the green <strong>Shopping Cart Button</strong> then 
+					<p> Click for the icon located at the top-right corner of the screen. The shopping cart will pop-out at the right of the screen. Choose the <strong>Unit</strong> for the product in kilograms. Click the green <strong>Shopping Cart Button</strong> then 
 <?php
 	// Show Login Modal
 	if(isset($_SESSION['id'])){
@@ -101,10 +100,10 @@
 	}
 ?>
 					, or <strong><a class="black" href="register.php" target="_blank">register</a></strong> if you doesn't have an account yet.</p>
-					<p>4. Choose payment options</p>
-					<p><strong>Cash-on-delivery</strong> is the only option as for now.</p>
+					<p>4. Type your payment info</p>
+					<p><strong>Cash-on-delivery</strong> - type your billing address, email and phone so we can verify your order.</p>
 					<p>5. Wait for the delivery</p>
-					<p>Wait for at least one day for the delivery. We don't deliver at places <strong>outside of Manila</strong> unfortunately.</p>
+					<p>Wait for at least one to four days for the delivery. We don't deliver at places <strong>outside of Manila</strong>. If you want to cancel, do so but you cannot cancel it after 4pm.</p>
 					<hr>
 					<center><h1>Feedbacks</h1></center>
 					<p>Please go <a class="black" href="contact.php" target="_blank">here</a> for feedbacks, or message the admin <a class="black" href="inbox.php?id=<?php echo $admin ?>" target="_blank">here</a> (you need to login / create an account).</p>

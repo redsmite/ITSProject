@@ -77,7 +77,7 @@
 					</div>
 					<div>
 						<label for="">Phone</label><br>
-						<input type="number" id="edit-phone" name="edit-phone" placeholder="<?php echo $phone?>">
+						<input type="number" id="edit-phone" name="edit-phone" value="<?php echo $phone?>">
 					</div>
 					<div>
 						<label for="">Location</label><br>

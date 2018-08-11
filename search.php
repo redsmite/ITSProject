@@ -205,8 +205,8 @@ if(isset($_GET['search-text'])){
 		
 		echo'<tr>';
 		if($seller == $_SESSION['id']){
-			echo'<th style="color:red;">
-			<a class="red" href="product.php?id='.$productid.'"><i class="fas fa-exclamation"></i> '.$product.'</a> (x '.$weight.'kg)
+			echo'<th style="color:red;"><i class="fas fa-exclamation"></i> 
+			<a class="red" href="product.php?id='.$productid.'"> '.$product.'</a> (x '.$weight.'kg)
 			</th>';
 		}else{
 			echo'<th>

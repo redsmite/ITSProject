@@ -368,14 +368,14 @@ if($last != 1){
 		<i class="fas fa-chart-bar"></i> Yearly Report
 	</div>
 	<div class="monitoring-option" onclick="showFarmTab()">
-		<i class="fab fa-pagelines"></i> Farms
+		<i class="fas fa-location-arrow"></i> Farms
 	</div>
 </div>
 <div class="empty"></div>
 
 <div id="sales-body">
 	<div id="farms">
-		<h1><i class="fab fa-pagelines"></i> Farms</h1>
+		<h1><i class="fas fa-location-arrow"></i> Farms</h1>
 		<div class="edit-form">
 			<form id="add-farm-form">
 				<h1><i class="fas fa-plus"></i> Add Farm</h1>

@@ -242,7 +242,7 @@ echo'<p>Comments ('.number_format($comments).')</p>
 					<a class="black" href="contact.php">Feedback</a>
 				</div>
 				<div class="farm-select-div">
-					<h3><i class="fas fa-leaf"></i> Farms</h3>
+					<h3><i class="fas fa-location-arrow"></i> Farms</h3>
 					<ul>
 <?php
 $sql = "SELECT farmid, farmname FROM tblfarm WHERE status=1";
