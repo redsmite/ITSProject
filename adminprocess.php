@@ -201,13 +201,40 @@ if(isset($_POST['title'])){
 if(isset($_POST['updateFee'])){
 	$fee = $_POST['updateFee'];
 
-	$sql = "UPDATE tblshippingfee SET fee = '$fee' WHERE feeid=1";
+	$sql = "SELECT fee FROM tblshippingfee WHERE feeid=1";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$feebefore = $fetch->fee;
+
+	if($fee!=$feebefore){
+		$sql = "UPDATE tblshippingfee SET fee = '$fee' WHERE feeid=1";
+		$result = $conn->query($sql);
+
+		$log = 'Update price of Shipping fee to ₱'.number_format($fee,2);
+
+		$sql = "INSERT INTO tblchangelog (log,datecreated) VALUES ('$log',NOW())";
+		$result= $conn->query($sql);
+	}
+}
+
+if(isset($_POST['updateMinimum'])){
+	$min = $_POST['updateMinimum'];
+
+	$sql = "SELECT minimumorder FROM tblminimumorder";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$minorder = $fetch->minimumorder;
+
+	if($min!=$minorder){
+
+	$sql = "UPDATE tblminimumorder SET minimumorder = '$min'";
 	$result = $conn->query($sql);
 
-	$log = 'Update price of Shipping fee';
+	$log = 'Update minimum order to ₱'.number_format($min,2);
 
 	$sql = "INSERT INTO tblchangelog (log,datecreated) VALUES ('$log',NOW())";
 	$result= $conn->query($sql);
+	}
 }
 
 if(isset($_POST['addCat'])){

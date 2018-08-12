@@ -379,6 +379,14 @@ if(isset($_POST['showcart'])){
 		}else{
 			echo'value="0"';
 		}
+
+	$sql = "SELECT minimumorder FROM tblminimumorder";
+	$result = $conn->query($sql);
+	$fetch = $result->fetch_object();
+	$minorder = $fetch->minimumorder;
+
+	echo'minimum="'.$minorder.'"';
+
 	echo'onclick="checkoutCart(this)"><i class="fas fa-cart-arrow-down"></i></div>
 	<div class="red-cart" onclick="deleteCart()"><i class="fas fa-trash-alt"></i></div>
 	<div id="error-message5"></div>';

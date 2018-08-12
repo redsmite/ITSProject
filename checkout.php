@@ -84,7 +84,13 @@
 			<div class="checkout-right">
 				<h1>Checkout Policy</h1>
 				<ol>
-					<li>1. Minimum of <b>₱500.00</b> worth of purchase.</li>
+<?php
+$sql = "SELECT minimumorder FROM tblminimumorder";
+$result = $conn->query($sql);
+$fetch = $result->fetch_object();
+$minorder = $fetch->minimumorder;
+?>
+					<li>1. Minimum of <b>₱<?php echo $minorder?></b> worth of purchase.</li>
 					<li>2. Delivery is limited only in <b>Metro Manila</b></li>
 					<li>3. Cut off time of 4:00 p.m.</li>
 				</ol>

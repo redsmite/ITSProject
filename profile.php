@@ -151,13 +151,11 @@ if($imgpath==''){
 						<?php
 						if(isset($_SESSION['id'])){
 							if($_SESSION['id']==$_GET['id']){
-								echo'
-									<li><a href="inbox.php?id='.$_GET["id"].'"><i class="fas fa-envelope"></i> Check Inbox</a></li>
+								echo'<li><a href="favorites.php"><i class="fas fa-heart"></i> Favorites</a></li>
+									<li><a href="ordertracking.php"><i class="fas fa-truck-moving"></i> Order Tracking</a></li>
 									<li><a href="insertphoto.php"><i class="fas fa-camera"></i> Change Profile Picture</a></li>
 									<li><a href="editinfo.php"><i class="fas fa-pen-square"></i> Edit Personal Info</a></li>
-									<li><a href="accountsetting.php"><i class="fas fa-cog"></i> Account Settings</a></li>
-									<li><a href="ordertracking.php"><i class="fas fa-shoe-prints"></i> Order Tracking</a></li>
-									<li><a href="favorites.php"><i class="fas fa-heart"></i> Favorites</a></li>';
+									<li><a href="accountsetting.php"><i class="fas fa-cog"></i> Account Settings</a></li>';
 							}else{
 								echo'
 								<li>

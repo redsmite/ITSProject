@@ -133,16 +133,12 @@ function hideNotif(){
 // Index Page
 
 function showCategory(){
-	document.getElementById('category-slide').style.display='block';
-	document.getElementById('category-slide').style.width='250px';
-	document.getElementById('category-slide').marginleft='250px';
+	document.getElementById('category-slide').style.height='100%';
 	document.getElementById('category-modal').style.display='block';
 }
 
 function hideCategory(){
-	document.getElementById('category-slide').style.display='none';
-	document.getElementById('category-slide').style.width='0';
-	document.getElementById('category-slide').marginleft='0';
+	document.getElementById('category-slide').style.height='0';
 	document.getElementById('category-modal').style.display='none';
 }
 
@@ -1557,6 +1553,33 @@ function updateFee(){
 	});
 }
 
+function updateMinimum(){
+	let form = document.getElementById('update-minimum-form');
+
+	form.addEventListener('submit',(e)=>{
+		e.preventDefault();
+		addSpinners();
+
+		let min = document.getElementById('minorder').value;
+
+		if(min>0){
+			var myRequest = new XMLHttpRequest();
+			var url = 'adminprocess.php';
+
+			var formData = "updateMinimum="+min;
+			
+			myRequest.open('POST', url ,true);
+			myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+			myRequest.onload = function(){
+				var response= this.responseText;
+				removeSpinners();
+			}
+			myRequest.send(formData);
+		}
+	});
+}
+
 function updatePrice(clicked){
 	addSpinners();
 
@@ -2203,7 +2226,7 @@ function deactivateProduct(clicked){
 function showCartPanel(){
 	let panel = document.getElementById('cart-panel');
 
-	panel.style.display='block';
+	panel.style.height='100%';
 
 	var myRequest = new XMLHttpRequest();
 	
@@ -2231,7 +2254,7 @@ function gotoBottomCart(){
 function hideCartPanel(){
 	let panel = document.getElementById('cart-panel');
 	
-	panel.style.display='none';
+	panel.style.height='0';
 }
 
 function addToFavorite(click){
@@ -2409,9 +2432,11 @@ function checkoutCart(clicked){
 	let login = clicked.getAttribute('value');
 	let ftotal = document.getElementById('total').innerHTML;
 	let ftotalint = parseFloat(ftotal.replace(/,/g, ''));
-	if(ftotalint<500){
-		let errorString = 'Orders should be a minimum of ₱500.00 worth of purchase.';
+	let minimum = clicked.getAttribute('minimum');
+	if(ftotalint<minimum){
+		let errorString = 'Orders should be a minimum of ₱'+minimum+' worth of purchase.';
 		document.getElementById('error-message5').innerHTML=errorString;
+		gotoBottomCart();
 	}else{
 		if(login==1){
 

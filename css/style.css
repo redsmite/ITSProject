@@ -148,7 +148,7 @@ li{
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--twitterlogo); 
+    background: var(--primary-color); 
 }
 
 .main-container{
@@ -658,21 +658,22 @@ li{
 }
 
 #category-slide{
-	display: none;
 	position:fixed;
 	z-index: 2000;
 	left: 0;
 	top: 0;
 	background: var(--light-color);
 	overflow: auto;
-	height:100%;
+	height:0;
+	width: 250px;
 	box-shadow: 0 0 20px rgba(0,0,0,0.5);
-	animation-name:modalopen;
-	animation-duration: 500ms;
+	transition-duration: 250ms;
+	transition-property: height;
+	transition-timing-function: ease-out;
 }
 
 #category-slide p{
-	font-size: 20px;
+	font-size: 1em;
 	line-height: 1.5em;
 	cursor: pointer;
 }
@@ -767,13 +768,6 @@ li{
 
 .featured-product-grid a{
 	color: var(--light-color);
-	transition-duration: 350ms;
-	transition-property: color;
-	transition-timing-function: ease-out;
-}
-
-.featured-product-grid a:hover{
-	color: var(--dark-color);
 }
 
 .top-label{
@@ -823,13 +817,13 @@ li{
 	transition-timing-function: ease-out;
 }
 
-#top1:hover,#top2:hover,#top3:hover,#top4:hover,#top5:hover,#showcase:hover{
-	background: var(--sunflower);
+#showcase{
+	background: var(--contrast);
+	border: 2px solid var(--light-color);
 }
 
-#showcase{
-	background: var(--darkgray);
-	border: 2px solid var(--light-color);
+#top1:hover,#top2:hover,#top3:hover,#top4:hover,#top5:hover,#showcase:hover{
+	background: var(--primary-color);
 }
 
 .featured-img-wrap{
@@ -974,10 +968,8 @@ li{
 	padding:10px;
 	background: var(--secondary-contrast);
 	color: var(--light-color);
-	border: 1px solid var(--darkgray);
 	text-align: center;
 	border-top: 2px solid var(--contrast);
-	border-bottom: 2px solid var(--contrast);
 }
 
 .content-body h2{
@@ -2626,22 +2618,21 @@ li{
 }
 
 #cart-panel{
-	display: none;
 	position:fixed;
 	z-index: 400;
 	right:0;
-	top: 0;
+	top: -1;
 	width: 340px;
-	height: 100%;
+	height: 0;
 	overflow: auto;
 	background: var(--light-color);
 	border: 1px solid var(--dark-color);
 	color: var(--dark-color);
 	text-align: center;
 	box-shadow: 0 0 20px rgba(0,0,0,0.5);
-	animation-name:modalopen;
-	animation-duration: 350ms;
-	transition-timing-function: ease-in;
+	transition-duration: 250ms;
+	transition-property: height;
+	transition-timing-function: ease-out;
 }
 
 #cart-panel h1{
@@ -2820,6 +2811,7 @@ li{
 	padding: 8px;
 	color:var(--light-color);
 	height: 60px;
+	border-top: 2px solid var(--contrast);
 }
 
 /* About */
@@ -2836,12 +2828,12 @@ li{
 .content-box p{
 	padding: 18px;
 	line-height: 1.5em;
-	font-size: 1.2em;
+	font-size: 0.8em;
 }
 
 
 .blogpic1{
-	width: 40%;
+	width: 20%;
 	height: auto;
 	overflow: hidden;
 	float: left;
@@ -2855,7 +2847,7 @@ li{
 }
 
 .blogpic2{
-	width: 40%;
+	width: 20%;
 	height: auto;
 	overflow: hidden;
 	float: right;

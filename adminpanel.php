@@ -163,7 +163,8 @@ $sql = "SELECT categoryid,status,category FROM tblcategory";
 						</div>
 					</div>
 					<div id="set-price">
-						<h1>Set Shipping Fee</h1>
+						<div class="edit-form">
+						<h3 align="center">Set Shipping Fee</h3>
 						<form align="center" id="update-fee-form">
 <?php
 $sql = "SELECT fee FROM tblshippingfee WHERE feeid=1";
@@ -171,9 +172,21 @@ $result = $conn->query($sql);
 $fetch = $result->fetch_object();
 $fee = $fetch->fee;
 ?>
-							<input type="number" id="fee" value="<?php echo $fee?>" step="any" min="0">
+							₱<input type="number" id="fee" value="<?php echo $fee?>" step="any" min="0">
 							<button class="price-button">Update</button>
 						</form>
+						<h3 align="center">Set Minimum Order</h3>
+						<form align="center" id="update-minimum-form">
+<?php
+$sql = "SELECT minimumorder FROM tblminimumorder";
+$result = $conn->query($sql);
+$fetch = $result->fetch_object();
+$minorder = $fetch->minimumorder;
+?>
+							₱<input type="number" id="minorder" value="<?php echo $minorder?>" step="any" min="0">
+							<button class="price-button">Update</button>
+						</form>
+						</div>
 						<h1>Price Monitoring</h1>
 						<div id="error-message3"></div>
 						<ul class="price-ul">
@@ -450,6 +463,7 @@ if($last != 1){
 	<script>
 		cutoffCountdown();
 		updateFee();
+		updateMinimum();
 		sendAllUser();
 		showMonitoringTab();
 		sendAnnounce();

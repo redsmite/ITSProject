@@ -177,14 +177,14 @@ function addSidebar(){
 					echo'<li><a title="Add Product" href="addproduct.php"><i class="fas fa-plus-circle"></i></a></li>';
 				}
 				echo'
+				<li><a title="Favorites" href="favorites.php"><i class="fas fa-heart"></i></a></li>
+				<li><a title="Order Tracking" href="ordertracking.php"><i class="fas fa-truck-moving"></i></a></li>
 				<li>
 				<a title="About us" href="about.php"><i class="fas fa-info-circle"></i></a></li>
 				<li>
 				<a title="Change your profile picture" href="insertphoto.php"><i class="fas fa-camera"></i></i></a></li>
 				<li><a title="Edit your personal info" href="editinfo.php"><i class="fas fa-pen-square"></i></a></li>
 				<li><a title="Change your account settings" href="accountsetting.php"><i class="fas fa-cog"></i></a></li>
-				<li><a title="Order Tracking" href="ordertracking.php"><i class="fas fa-shoe-prints"></i></a></li>
-				<li><a title="Favorites" href="favorites.php"><i class="fas fa-heart"></i></a></li>
 				<li><a title="Logout" href="logout.php"><i class="fas fa-power-off"></i></a></li>
 			</ul>
 		</div>';
