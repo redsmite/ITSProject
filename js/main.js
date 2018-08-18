@@ -142,6 +142,37 @@ function hideCategory(){
 	document.getElementById('category-modal').style.display='none';
 }
 
+function sliderChange(){
+	setInterval(function(){
+		var myRequest = new XMLHttpRequest();
+		var url = 'productprocess.php';
+
+		var formData = "changeSlide='oke-oke-okay'";
+		
+		myRequest.open('POST', url ,true);
+		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+		myRequest.onload = function(){
+			var response= this.responseText;
+			var dataArray= response.split('%|%');
+			
+			let link = document.getElementById('showcase-link');
+			let newlink = 'product.php?id='+dataArray[0];
+			link.setAttribute('href',newlink);
+
+			let name = document.getElementById('showcase-name');
+			name.innerHTML = dataArray[1];
+
+			let farm = document.getElementById('showcase-farm');
+			farm.innerHTML = dataArray[2];
+
+			let img = document.getElementById('showcase-img');
+			img.setAttribute('src',dataArray[3]);
+		}
+		myRequest.send(formData);	
+	},4000);
+}
+
 // Announcement
 
 function addAnnounceComment(){
@@ -255,10 +286,10 @@ function searchdropdown(){
 		myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
 		myRequest.onload = function(){
-			var dataArray= this.responseText.split('||');
+			var dataArray= this.responseText.split('%||%');
 				var output='';
 				for(i=0;i<dataArray.length-1;i++){
-					var itemArray = dataArray[i].split('|');
+					var itemArray = dataArray[i].split('%|%');
 					output+='<ul class="drop-ul"><a href="profile.php?id='+itemArray[0]+'"><li><div class="drop-tn"><img src="'+itemArray[2]+'"></div><p>'+itemArray[1]+'</p><small>Joined: '+itemArray[3]+'</small><li></a></ul>';
 				}
 			document.getElementById('search-dropdown').innerHTML = output;
@@ -1351,6 +1382,7 @@ function setCutoff(){
 
 	myRequest.onload = function(){
 		var response= this.responseText;
+		return response;
 	}
 	myRequest.send(formData);
 }
@@ -1383,6 +1415,9 @@ function cutoffCountdown(){
      	clearInterval(x);
     	document.getElementById("cutoff-time").innerHTML = 'EXPIRED';
     	setCutoff();
+    	setTimeout(function(){
+    		location.reload();
+    	},2000);
     }
 	}, 1000);
 }

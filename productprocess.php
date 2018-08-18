@@ -396,4 +396,78 @@ if(isset($_POST['showcart'])){
 if(isset($_POST['checkout'])){
 	$_SESSION['checkout']=1;
 }
+
+// Slider in Index Page
+if(isset($_POST['changeSlide'])){
+	if(!isset($_SESSION['slideNo'])){
+	$_SESSION['slideNo'] = 1;
+	}
+	$num = $_SESSION['slideNo'];
+	
+	$sql = "SELECT t1.productid,img, productname, farmname FROM tblsales AS t1
+	RIGHT JOIN tblproduct AS t2
+		ON t1.productid = t2.productid
+	LEFT JOIN tblfarm AS t3
+		ON t2.farmid = t3.farmid
+	WHERE is_available = 1 AND is_approved = 1
+	GROUP BY t1.productid
+	ORDER BY SUM(weight) DESC
+	LIMIT 5";
+	$result = $conn->query($sql);
+	$salescount = $result->num_rows;
+	if($salescount ==5){
+	$count = 1;
+	while($row = $result->fetch_object()){
+		if($count==1){
+			$productid1 = $row->productid;
+			$product1 = $row->productname;
+			$farm1 = $row->farmname;
+			$img1=$row->img;
+		}else if($count==2){
+			$productid2 = $row->productid;
+			$product2 = $row->productname;
+			$farm2 = $row->farmname;
+			$img2=$row->img;
+		}else if($count==3){
+			$productid3 = $row->productid;
+			$product3= $row->productname;
+			$farm3 = $row->farmname;
+			$img3=$row->img;
+		}else if($count==4){
+			$productid4 = $row->productid;
+			$product4= $row->productname;
+			$farm4 = $row->farmname;
+			$img4=$row->img;
+		}else if($count==5){
+			$productid5 = $row->productid;
+			$product5= $row->productname;
+			$farm5 = $row->farmname;
+			$img5=$row->img;
+		}
+		$count++;
+	}
+	$send = '';
+	if($num == 1){
+		$send = $productid1.'%|%'.$product1.'%|%'.$farm1.'%|%'.$img1;
+		echo $send;
+		$_SESSION['slideNo']= 2;
+	}else if ($num == 2){
+		$send = $productid2.'%|%'.$product2.'%|%'.$farm2.'%|%'.$img2;
+		echo $send;
+		$_SESSION['slideNo']= 3;
+	}else if ($num == 3){
+		$send = $productid3.'%|%'.$product3.'%|%'.$farm3.'%|%'.$img3;
+		echo $send;
+		$_SESSION['slideNo']= 4;
+	}else if ($num == 4){
+		$send = $productid4.'%|%'.$product4.'%|%'.$farm4.'%|%'.$img4;
+		echo $send;
+		$_SESSION['slideNo']= 5;
+	}else if ($num == 5){
+		$send = $productid5.'%|%'.$product5.'%|%'.$farm5.'%|%'.$img5;
+		echo $send;
+		$_SESSION['slideNo']= 1;
+	}
+	}
+}
 ?>

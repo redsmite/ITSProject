@@ -77,10 +77,10 @@
 	WHERE is_available = 1 AND is_approved = 1
 	GROUP BY t1.productid
 	ORDER BY SUM(weight) DESC
-	LIMIT 6";
+	LIMIT 5";
 	$result = $conn->query($sql);
 	$salescount = $result->num_rows;
-	if($salescount ==6){
+	if($salescount ==5){
 	$count = 1;
 	while($row = $result->fetch_object()){
 		if($count==1){
@@ -108,29 +108,37 @@
 			$product5= $row->productname;
 			$farm5 = $row->farmname;
 			$img5=$row->img;
-		}else if($count==6){
-			$productid6 = $row->productid;
-			$product6= $row->productname;
-			$farm6 = $row->farmname;
-			$img6=$row->img;
 		}
 		$count++;
 	}
 	echo'<div id="showcase">
-		<a href="product.php?id='.$productid1.'">
+		<a id="showcase-link" href="product.php?id='.$productid1.'">
+			<div>
+				<div class="featured-img-wrap">	
+					<img id="showcase-img" class="featured-img" src="'.$img1.'">
+				</div>
+				<div class="featured-desc">
+					<h2 id="showcase-name">'.$product1.'</h2>
+					<p>Best Seller</p>
+					<p id="showcase-farm">'.$farm1.'</p>
+				</div>
+			</div></a>
+		</div>
+		<div id="top1">
+			<a href="product.php?id='.$productid1.'">
 			<div>
 				<div class="featured-img-wrap">	
 					<img class="featured-img" src="'.$img1.'">
 				</div>
 				<div class="featured-desc">
-					<h2>'.$product1.'</h2>
-					<p>Best Seller</p>
+					<h3>'.$product1.'</h3>
 					<p>'.$farm1.'</p>
 				</div>
-			</div></a>
+			</div>
+			</a>
 		</div>
-		<div id="top1">
-			<a href="product.php?id='.$productid2.'">
+		<div id="top2">
+		<a href="product.php?id='.$productid2.'">
 			<div>
 				<div class="featured-img-wrap">	
 					<img class="featured-img" src="'.$img2.'">
@@ -140,11 +148,12 @@
 					<p>'.$farm2.'</p>
 				</div>
 			</div>
-			</a>
+		</a>
 		</div>
-		<div id="top2">
-		<a href="product.php?id='.$productid3.'">
-			<div>
+		<div id="bottom">
+			<a href="product.php?id='.$productid3.'">
+			<div id="top3">
+				<div>
 				<div class="featured-img-wrap">	
 					<img class="featured-img" src="'.$img3.'">
 				</div>
@@ -153,11 +162,9 @@
 					<p>'.$farm3.'</p>
 				</div>
 			</div>
-		</a>
-		</div>
-		<div id="bottom">
+			</div></a>
 			<a href="product.php?id='.$productid4.'">
-			<div id="top3">
+			<div id="top4">
 				<div>
 				<div class="featured-img-wrap">	
 					<img class="featured-img" src="'.$img4.'">
@@ -169,7 +176,7 @@
 			</div>
 			</div></a>
 			<a href="product.php?id='.$productid5.'">
-			<div id="top4">
+			<div id="top5">
 				<div>
 				<div class="featured-img-wrap">	
 					<img class="featured-img" src="'.$img5.'">
@@ -177,18 +184,6 @@
 				<div class="featured-desc">
 					<h3>'.$product5.'</h3>
 					<p>'.$farm5.'</p>
-				</div>
-			</div>
-			</div></a>
-			<a href="product.php?id='.$productid6.'">
-			<div id="top5">
-				<div>
-				<div class="featured-img-wrap">	
-					<img class="featured-img" src="'.$img6.'">
-				</div>
-				<div class="featured-desc">
-					<h3>'.$product6.'</h3>
-					<p>'.$farm6.'</p>
 				</div>
 			</div>
 			</div></a>
@@ -274,6 +269,7 @@ showProduct($string);
 	</div>
 	<script src="js/main.js"></script>
 	<script>
+		sliderChange();
 		modal();
 		ajaxLogin();
 	</script>

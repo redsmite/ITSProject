@@ -210,7 +210,7 @@ if(isset($_POST['updateFee'])){
 		$sql = "UPDATE tblshippingfee SET fee = '$fee' WHERE feeid=1";
 		$result = $conn->query($sql);
 
-		$log = 'Update price of Shipping fee to ₱'.number_format($fee,2);
+		$log = 'Set Shipping fee to ₱'.number_format($fee,2);
 
 		$sql = "INSERT INTO tblchangelog (log,datecreated) VALUES ('$log',NOW())";
 		$result= $conn->query($sql);
@@ -230,7 +230,7 @@ if(isset($_POST['updateMinimum'])){
 	$sql = "UPDATE tblminimumorder SET minimumorder = '$min'";
 	$result = $conn->query($sql);
 
-	$log = 'Update minimum order to ₱'.number_format($min,2);
+	$log = 'Set minimum order to ₱'.number_format($min,2);
 
 	$sql = "INSERT INTO tblchangelog (log,datecreated) VALUES ('$log',NOW())";
 	$result= $conn->query($sql);
@@ -260,7 +260,7 @@ if(isset($_POST['addCat'])){
 
 if(isset($_POST['log'])){
 
-	$sql="SELECT log,datecreated FROM tblchangelog ORDER BY logid DESC LIMIT 100";
+	$sql="SELECT log,datecreated FROM tblchangelog ORDER BY logid DESC";
 	$result=$conn->query($sql);
 	$registerDate = '';
 	while($row=$result->fetch_object()){

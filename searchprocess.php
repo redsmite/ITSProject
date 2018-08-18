@@ -18,7 +18,7 @@ if(isset($_POST['search'])){
 		}
 		$date = date("M j, Y", strtotime($row->datecreated));
 
-		$data.= $id.'|'.$name.'|'.$img.'|'.$date.'||';
+		$data.= $id.'%|%'.$name.'%|%'.$img.'%|%'.$date.'%||%';
 	}
 	echo $data;
 }

@@ -594,6 +594,7 @@ function showProduct($where){
 		ON t1.farmid = t4.farmid
 	$where";
 	$result = $conn->query($sql);
+	if($result){
 	while($row = $result->fetch_object()){
 		$id = $row->productid;
 		$category = $row->category;
@@ -634,6 +635,7 @@ function showProduct($where){
 		<div class="add-to-cart" value="'.$id.'" onclick="addThistoCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart</div>
 		</div>
 		</div>';
+	}
 	}
 }
 
