@@ -14,6 +14,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  	<link rel="icon" href="favicon.ico" type="image/ico">
   	<link rel="stylesheet" href="css/style.css">
   	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<title><?php companytitle()?></title>
@@ -131,7 +132,7 @@
 					<img class="featured-img" src="'.$img1.'">
 				</div>
 				<div class="featured-desc">
-					<h3>'.$product1.'</h3>
+					<h3><i class="fas fa-trophy gold"></i> '.$product1.'</h3>
 					<p>'.$farm1.'</p>
 				</div>
 			</div>
@@ -144,7 +145,7 @@
 					<img class="featured-img" src="'.$img2.'">
 				</div>
 				<div class="featured-desc">
-					<h3>'.$product2.'</h3>
+					<h3><i class="fas fa-trophy silver"></i> '.$product2.'</h3>
 					<p>'.$farm2.'</p>
 				</div>
 			</div>
@@ -158,7 +159,7 @@
 					<img class="featured-img" src="'.$img3.'">
 				</div>
 				<div class="featured-desc">
-					<h3>'.$product3.'</h3>
+					<h3><i class="fas fa-trophy bronze"></i> '.$product3.'</h3>
 					<p>'.$farm3.'</p>
 				</div>
 			</div>

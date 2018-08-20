@@ -164,7 +164,7 @@ while($row2 = $result2->fetch_object()){
 	echo'<tr>
 		<th><a class="black" href="product.php?id='.$productid.'">'.$product.'</a> (x '.$weight.'kg)
 		</th>';
-	echo'<th>₱'.number_format($Ptotal,2).'</th>
+	echo'<th><span class="left">₱</span><span class="right">'.number_format($Ptotal,2).'</span></th>
 		</tr>';
 }
 

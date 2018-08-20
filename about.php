@@ -40,10 +40,11 @@
 			<h1><i class="fas fa-info-circle"></i> About</h1>
 			<div class="container">
 				<div class="content-box">
-					<h2><span id="highlight-text">What</span> is BahayKubo ni Mang Celso?</h2>
+					<h2 class="blogheader"><span id="highlight-text">What</span> is BahayKubo ni Mang Celso?</h2>
 					<div class="blogpic1">
 						<img src="img/logo.jpg">
 					</div>
+					<div class="blogtext1">
 					<p>Home delivery of fruits and vegetables as well as other groceries is a new concept to most.
 					Those of us who do our own groceries like the control of picking out our produce and making sure what we pay for is exactly what we want.
 					</p>
@@ -73,24 +74,28 @@
 	}
 ?>
 					</p>
+					</div>
 					<div class="blogpic2">
 						<img src="img/farm.jpg">
 					</div>
+					<div class="blogtext2">
 					<p>
 					We synchronize with the harvest schedules of our farms and ensure that the produce you receive is within hours of its harvest. We know where our products come from and vouch for their integrity. We also screen new partners and continually add to our roster for a more consistent availability.
 					</p>
 					<p>
 					With fresh market delivery at your convenience, you can now cut down trips to the grocery and spend those extra hours with family or that much desired Me time.
 					</p>
-					<hr>
+					</div>
+				</div>
+				<div class="howtoOrder">
 					<center><h1 id="how-to-order"><span id="highlight-text" class="">How</span> to Order?</h1></center>
-					<p>Ordering here is pretty easy, all you need to do is click an item, add to the cart and checkout and choose a payment option for our great services. If these steps are unclear, please refer to the following steps.</p>
-					<p>1. Search for the product you want.</p>
-					<p>There are plenty of ways to <strong>Search</strong> for the items you want like searching for keywords or browse categories.</p>
-					<p>2. Click the add-to-cart button</p>
-					<p> Click that green button with a <strong>Shopping Cart Icon</strong>. The item will be added on your shopping cart.</p>
-					<p>3. Checkout your order.</p>
-					<p> Click for the icon located at the top-right corner of the screen. The shopping cart will pop-out at the right of the screen. Choose the <strong>Unit</strong> for the product in kilograms. Click the green <strong>Shopping Cart Button</strong> then 
+					<p>Ordering here is pretty easy, all you need to do is click an item, add to the cart and checkout and enter your billing information like email, phone and address. If these steps are unclear, please refer to the following steps.</p>
+					<p class="about-left"><i class="fas fa-search"></i> Search for the product you want.</p>
+					<p class="about-right">There are plenty of ways to <strong>Search</strong> for the items you want like searching for keywords, browse categories, browse farms and you can sort by price.</p>
+					<p class="about-left"><i class="fas fa-shopping-cart"></i> Click the add-to-cart button</p>
+					<p class="about-right"> Click that green button with a <strong>Shopping Cart Icon</strong>. The item will be added on your shopping cart.</p>
+					<p class="about-left"><i class="fas fa-cart-arrow-down"></i> Checkout your order.</p>
+					<p class="about-right"> Click for the icon located at the top-right corner of the screen. The shopping cart will pop-out at the right of the screen. Choose the <strong>Unit</strong> for the product in kilograms. Click the green <strong>Shopping Cart Button</strong> then 
 <?php
 	// Show Login Modal
 	if(isset($_SESSION['id'])){
@@ -100,19 +105,42 @@
 	}
 ?>
 					, or <strong><a class="black" href="register.php" target="_blank">register</a></strong> if you doesn't have an account yet.</p>
-					<p>4. Type your payment info</p>
-					<p><strong>Cash-on-delivery</strong> - type your billing address, email and phone so we can verify your order.</p>
-					<p>5. Wait for the delivery</p>
-					<p>Wait for at least one to four days for the delivery. We don't deliver at places <strong>outside of Manila</strong>. If you want to cancel, do so but you cannot cancel it after 4pm.</p>
-					<hr>
+					<p class="about-left"><i class="fas fa-clipboard"></i> Enter your payment info</p>
+					<p class="about-right"><strong>Cash-on-delivery</strong> - enter your billing address, email.</p>
+					<p class="about-left"><i class="far fa-clock"></i> Wait for the delivery</p>
+					<p class="about-right">Wait for at least one to four days for the delivery. We don't deliver at places <strong>outside of Manila</strong>. If you want to cancel, do so but you cannot cancel it after 4pm.</p>
+				</div>
+				<div class="feedbacks">
 					<center><h1>Feedbacks</h1></center>
 					<p>Please go <a class="black" href="contact.php" target="_blank">here</a> for feedbacks, or message the admin <a class="black" href="inbox.php?id=<?php echo $admin ?>" target="_blank">here</a> (you need to login / create an account).</p>
 					<hr>
 					<center><h1>Developers</h1></center>
-					<p>Carabeo, Kym</p>
-					<p>Cerigo, Kimberly</p>
-					<p>Paguio, Kevin</p>
-					<p>Prado, Felimer</p>
+					<div class="developers-grid">
+						<div class="developers">
+							<div class="developer-img">
+								<img src="img/default.png">
+							</div>
+							<p>Carabeo, Kym</p>
+						</div>
+						<div class="developers">
+							<div class="developer-img">
+								<img src="img/default.png">
+							</div>	
+							<p>Cerigo, Kimberly</p>
+						</div>
+						<div class="developers">
+							<div class="developer-img">
+								<img src="img/default.png">
+							</div>
+							<p>Paguio, Kevin</p>
+						</div>
+						<div class="developers">
+							<div class="developer-img">
+								<img src="img/default.png">
+							</div>
+							<p>Prado, Felimer</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

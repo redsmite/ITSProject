@@ -59,7 +59,7 @@
 			echo'<tr>
 				<th>'.$array[$key]['product'].' (x '.$array[$key]['weight'].')
 				</th>';
-			echo'<th>₱'.number_format($array[$key]['unitprice'],2).'</th>
+			echo'<th><span class="left">₱</span><span class="right">'.number_format($array[$key]['unitprice'],2).'</span></th>
 				</tr>';
 		}
 		echo'</table>
@@ -73,7 +73,7 @@
 			$subtotal = 0;
 		}
 		echo '</p>
-		<p>+ '.$title.': '.$fee.'</p>
+		<p>+ '.$title.': ₱'.number_format($fee,2).'</p>
 		<hr>';
 		$checkoutFinal = $subtotal+$fee;
 		echo'<p><b>Total: ₱'.number_format($checkoutFinal,2).'</b></p>
