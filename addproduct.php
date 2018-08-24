@@ -28,7 +28,7 @@
 	?>
 	<!-- Content -->
 	<div class="other-content">
-		<h1>Add Product</h1>
+		<h1><i class="fas fa-plus-circle"></i> Add Product</h1>
 		<div class="edit-form">
 			<form method="post" id="add-product-form">
 				<h1>Add Product</h1>

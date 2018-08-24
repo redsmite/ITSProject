@@ -34,6 +34,19 @@
 	// 	echo $new_cutoff;
 	// }
 
+	// $sql = "SELECT fee,datecommit FROM tblorder";
+	// $result = $conn->query($sql);
+	// $values = "";
+	// while($row = $result->fetch_object()){
+	// 	$fee = $row->fee;
+	// 	$date = $row->datecommit;
+
+	// 	$values .= "('$fee','$date'),";
+	// }
+	// $values = rtrim($values,',');
+	// $sql = "INSERT INTO tblshippingrevenue (srevenue,datecommit) VALUES $values";
+	// $result = $conn->query($sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

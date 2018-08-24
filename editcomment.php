@@ -44,21 +44,19 @@ mysqli_close($conn);
 		<div class="other-content">
 			<h1>Edit Comment</h1>
 			<div class="container">
-				<div class="content-box">
-					<div class="editcmt-form">
-						<p>Edit Comment</p>
-						<center>
-							<form action="commentprocess.php" method="POST">
-								<textarea id="cmt-val" name="comment"><?php echo nl2br($comment); ?></textarea>
-								<br>
-								<input type="hidden" name="hidden" <?php echo 'value="'.$cid.'"'?> />
+				<div class="editcmt-form">
+					<p>Edit Comment</p>
+					<center>
+						<form action="commentprocess.php" method="POST">
+							<textarea id="cmt-val" name="comment"><?php echo nl2br($comment); ?></textarea>
+							<br>
+							<input type="hidden" name="hidden" <?php echo 'value="'.$cid.'"'?> />
 
-								<input type="hidden" name="hidden2" <?php echo 'value="'.$pid.'"'?> />
-								
-								<input type="submit" value="Ok" name="submit"> <input type="submit" value="Cancel" name="back">
-							</form>
-						</center>	
-					</div>
+							<input type="hidden" name="hidden2" <?php echo 'value="'.$pid.'"'?> />
+							
+							<input type="submit" value="Ok" name="submit"> <input type="submit" value="Cancel" name="back">
+						</form>
+					</center>	
 				</div>
 			</div>
 		</div>

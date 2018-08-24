@@ -281,6 +281,14 @@ if(isset($_POST['complete'])){
 	$values = rtrim($values,',');
 	$sql = "INSERT INTO tblsales (productid, weight, sales, datecommit) VALUES $values";
 	$result = $conn->query($sql);
+	// Shipping revenues
+	$sql = "SELECT fee,datecommit FROM tblorder WHERE orderid=$id";
+	$result = $conn->query($sql);
+	$row = $result->fetch_object();
+	$fee = $row->fee;
+	$date = $row->datecommit;
+	$sql = "INSERT INTO tblshippingrevenue (srevenue,datecommit) VALUES ('$fee','$date')";
+	$result = $conn->query($sql);
 }
 
 // Cut off

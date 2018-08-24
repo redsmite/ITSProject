@@ -185,7 +185,6 @@ while($row2 = $result2->fetch_object()){
 	</div>
 	<script src="js/main.js"></script>
 	<script>
-		setCutoff();
 		cutoffCountdown();
 	</script>
 </body>

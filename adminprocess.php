@@ -453,7 +453,7 @@ function salesReport($where,$format,$weekly){
 		ON t1.productid = t2.productid
 	$where
 	GROUP BY t1.productid
-	ORDER BY sales DESC";
+	ORDER BY SUM(sales) DESC";
 	$result = $conn->query($sql);
 	while($row=$result->fetch_object()){
 		$productid = $row->productid;
@@ -494,7 +494,7 @@ function salesReport($where,$format,$weekly){
 	$result = $conn->query($sql);
 	$fetch = $result->fetch_object();
 	echo '<h3>Total Sales: ₱'.number_format($fetch->total,2).'</h3><br>';
-	$sql = "SELECT SUM(fee) AS shipping FROM tblorder $where AND status = 4";
+	$sql = "SELECT SUM(srevenue) AS shipping FROM tblshippingrevenue $where";
 	$result = $conn->query($sql);
 	$fetch = $result->fetch_object();
 	echo '<h3>Shipping Revenue: ₱'.number_format($fetch->shipping,2).'</h3>';

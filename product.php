@@ -350,7 +350,7 @@ while($row = $result->fetch_object()){
 		// Add Product
 		if($_SESSION['type']==3 OR $_SESSION['type']==4){
 			echo'<a href="addproduct.php" class="white"><div class="add-product-button">
-			<i class="fas fa-plus"></i> Add Product
+			<i class="fas fa-plus-circle"></i> Add Product
 			</div></a>';
 		}
 

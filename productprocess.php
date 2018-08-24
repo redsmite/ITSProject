@@ -411,7 +411,7 @@ if(isset($_POST['changeSlide'])){
 		ON t2.farmid = t3.farmid
 	WHERE is_available = 1 AND is_approved = 1
 	GROUP BY t1.productid
-	ORDER BY SUM(weight) DESC
+	ORDER BY SUM(sales) DESC
 	LIMIT 5";
 	$result = $conn->query($sql);
 	$salescount = $result->num_rows;

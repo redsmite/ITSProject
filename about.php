@@ -88,7 +88,7 @@
 					</div>
 				</div>
 				<div class="howtoOrder">
-					<center><h1 id="how-to-order"><span id="highlight-text" class="">How</span> to Order?</h1></center>
+					<center><h1 id="how-to-order"><span id="highlight-text">How</span> to Order?</h1></center>
 					<p>Ordering here is pretty easy, all you need to do is click an item, add to the cart and checkout and enter your billing information like email, phone and address. If these steps are unclear, please refer to the following steps.</p>
 					<p class="about-left"><i class="fas fa-search"></i> Search for the product you want.</p>
 					<p class="about-right">There are plenty of ways to <strong>Search</strong> for the items you want like searching for keywords, browse categories, browse farms and you can sort by price.</p>
@@ -108,35 +108,35 @@
 					<p class="about-left"><i class="fas fa-clipboard"></i> Enter your payment info</p>
 					<p class="about-right"><strong>Cash-on-delivery</strong> - enter your billing address, email.</p>
 					<p class="about-left"><i class="far fa-clock"></i> Wait for the delivery</p>
-					<p class="about-right">Wait for at least one to four days for the delivery. We don't deliver at places <strong>outside of Manila</strong>. If you want to cancel, do so but you cannot cancel it after 4pm.</p>
+					<p class="about-right">Wait for at least one to four days for the delivery. We don't deliver at places <strong>outside of Manila</strong>. You <strong>cannot cancel</strong> your order after every next 4pm.</p>
 				</div>
 				<div class="feedbacks">
 					<center><h1>Feedbacks</h1></center>
-					<p>Please go <a class="black" href="contact.php" target="_blank">here</a> for feedbacks, or message the admin <a class="black" href="inbox.php?id=<?php echo $admin ?>" target="_blank">here</a> (you need to login / create an account).</p>
+					<p>Please go <a class="white" href="contact.php" target="_blank">here</a> for feedbacks, or message the admin <a class="white" href="inbox.php?id=<?php echo $admin ?>" target="_blank">here</a> (you need to login / create an account).</p>
 					<hr>
 					<center><h1>Developers</h1></center>
 					<div class="developers-grid">
 						<div class="developers">
 							<div class="developer-img">
-								<img src="img/default.png">
+								<img src="img/kym.jpg">
 							</div>
 							<p>Carabeo, Kym</p>
 						</div>
 						<div class="developers">
 							<div class="developer-img">
-								<img src="img/default.png">
+								<img src="img/kim_perez.jpg">
 							</div>	
 							<p>Cerigo, Kimberly</p>
 						</div>
 						<div class="developers">
 							<div class="developer-img">
-								<img src="img/default.png">
+								<img src="img/kevin paguio.jpg">
 							</div>
 							<p>Paguio, Kevin</p>
 						</div>
 						<div class="developers">
 							<div class="developer-img">
-								<img src="img/default.png">
+								<img src="img/felimer prado.jpg">
 							</div>
 							<p>Prado, Felimer</p>
 						</div>

@@ -5,6 +5,7 @@ require_once'connection.php';
 user_access();
 adminaccess();
 admingoback();
+addSidebar();
 chattab();
 ?>
 <!DOCTYPE html>
@@ -26,24 +27,22 @@ chattab();
 		<div class="other-content">
 			<h1>Site Admin</h1>
 			<div class="container">
-				<div class="content-box">
-					<h2><span id="highlight-text">Admin</span> Login</h2>
-					<div class="form">
-						<center>
-							<form id="admin-login" method="post">
-								<div>
-									<label for="name">Name</label><br>
-									<input type="text" autocomplete="off" id="admin-name">
-								</div>
-								<div>
-									<label for="email">Password</label><br>
-									<input type="password" id="admin-password">
-								</div>
-								<button type="submit" name="submit">Submit</button>
-								<div id="error-message3"></div>
-							</form>
-						</center>	
-					</div>
+				<h2><span id="highlight-text">Admin</span> Login</h2>
+				<div class="form">
+					<center>
+						<form id="admin-login" method="post">
+							<div>
+								<label for="name">Name</label><br>
+								<input type="text" autocomplete="off" id="admin-name">
+							</div>
+							<div>
+								<label for="email">Password</label><br>
+								<input type="password" id="admin-password">
+							</div>
+							<button type="submit" name="submit">Submit</button>
+							<div id="error-message3"></div>
+						</form>
+					</center>	
 				</div>
 			</div>
 		</div>

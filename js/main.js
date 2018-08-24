@@ -2346,6 +2346,8 @@ function addThistoCart(click){
 	myRequest.onload = function(){
 		removeSpinners();
 		var response= this.responseText;
+		let header = document.querySelector('.subheader');
+		header.style.opacity=1;
 		showCartPanel();
 	}
 	myRequest.send(formData);
