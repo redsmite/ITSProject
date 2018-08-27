@@ -27,7 +27,7 @@ chattab();
 	<!-- Admin Panel -->
 		<div class="other-content">
 			<h1 class="center"><i class="fas fa-unlock-alt"></i> Admin Panel</h1>
-			<h1 class="center">Hello <?php echo '<a class="black" href="profile.php?id='.$_SESSION['id'].'">'.$_SESSION['name'].'!</a>'?> - <a href="adminsetting.php" class="black"><i class="fas fa-cog"></i> Admin Settings</a></h1>
+			<h1 class="center">Hello <?php echo '<a class="white" href="profile.php?id='.$_SESSION['id'].'">'.$_SESSION['name'].'!</a>'?> - <a href="adminsetting.php" class="white"><i class="fas fa-cog"></i> Admin Settings</a></h1>
 			<div id="admin-tab">
 				<a id="monitoring-tab" onclick="showMonitoringTab()">Monitoring</a>
 				<a id="sales-tab" onclick="showSalesTab()">Sales</a>

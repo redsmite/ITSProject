@@ -249,7 +249,7 @@ if(isset($_POST['userCancel'])){
 	$datetime = strtotime($date);
 	$cutofftime = strtotime($cutoff);
 
-	if($datetime > $cutofftime){
+	if($datetime < $cutofftime){
 		$sql = "UPDATE tblorder SET status = 3 WHERE orderid = '$id'";
 		$result = $conn->query($sql);
 		echo 'success';

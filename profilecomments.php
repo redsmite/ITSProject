@@ -70,7 +70,7 @@ WHERE receiver='$id'
 ORDER BY commentid DESC $limit";
 
 $textline1 = "<i class='fas fa-comments'></i>Comments (<b>".number_format($rows)."</b>)";
-$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
+$textline2 = "<font style='color:white'>Page <b>$pagenum</b> of <b>$last</b>";
 $paginationCtrls = '';
 if($last != 1){
 	if ($pagenum > 1) {
@@ -96,7 +96,7 @@ if($last != 1){
     }
 }
  echo'<h2>  '.$textline1.'</h2>
-  <p>  '.$textline2.' </p>
+  <p>  '.$textline2.' </p></font>
   <div id="pagination_controls"> '.$paginationCtrls.'</div>';
 
 $result3=$conn->query($sql3);

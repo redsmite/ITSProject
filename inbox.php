@@ -143,7 +143,7 @@ while($row=$result->fetch_object()){
 	}
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
 	$textline1 = "<i class='fas fa-comments'></i>Conversations (<b>".number_format($rows)."</b>)";
-	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
+	$textline2 = "<font style='color:white'>Page <b>$pagenum</b> of <b>$last</b>";
 	$paginationCtrls = '';
 	if($last != 1){
 		if ($pagenum > 1) {
@@ -168,7 +168,7 @@ while($row=$result->fetch_object()){
 	    }
 	}
 	echo'<h2>  '.$textline1.'</h2>
-	<p>  '.$textline2.' </p>
+	<p>  '.$textline2.' </p></font>
 	<div id="pagination_controls"> '.$paginationCtrls.'</div>';
 
 	$sql="SELECT senderid,username,imgpath,message,pmdate,checked FROM tblpm

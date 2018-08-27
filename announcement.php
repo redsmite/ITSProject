@@ -44,8 +44,8 @@ $date = date('D, F j Y g:i A',strtotime($row->datecreated));
 $author = $row->username;
 $userid = $row->userid;
 
-echo '<h2 id="announcement-title">'.$title.'</h2>
-<p>Posted on: '.$date.' by: <a class="black" href="profile.php?id='.$userid.'">'.$author.'</a></p>
+echo '<h2 style="color:white" id="announcement-title">'.$title.'</h2>
+<p style="color:white">Posted on: '.$date.' by: <a class="white" href="profile.php?id='.$userid.'">'.$author.'</a></p>
 <div class="announce-content">'.nl2br($content);
 
 echo'</div>
@@ -54,7 +54,7 @@ echo'</div>
 $sql = "SELECT commentannid FROM tblcommentann WHERE announceid = '$id'";
 $result= $conn->query($sql);
 $comments = $result->num_rows;
-echo'<p>Comments ('.number_format($comments).')</p>
+echo'<p style="color:white">Comments ('.number_format($comments).')</p>
 ';
 
 

@@ -64,7 +64,7 @@ $page_rows = 8;
 	}
 	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
 	$textline1 = $name."'s Friends (<b>".number_format($rows)."</b>)";
-	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
+	$textline2 = "<font style='color:white'>Page <b>$pagenum</b> of <b>$last</b>";
 	$paginationCtrls = '';
 	if($last != 1){
 		if ($pagenum > 1) {
@@ -89,7 +89,7 @@ $page_rows = 8;
 	    }
 	}
 	echo'<h2>  '.$textline1.'</h2>
-	<p>  '.$textline2.' </p>
+	<p>  '.$textline2.' </p></font>
 	<div id="pagination_controls"> '.$paginationCtrls.'</div>';
 
 $sql="SELECT userid,friendsince,username,imgpath,lastonline FROM tblfriend
@@ -112,7 +112,7 @@ if(!$imgpath){
 	echo'<div class="fr-div">
 	<div class="showfr-tn">
 			<a href="profile.php?id='.$userid.'"><img src="'.$imgpath.'"></a></div>
-		<p><a href="profile.php?id='.$userid.'">'.$username.'</a></p>
+		<p><a href="profile.php?id='.$userid.'" class="white">'.$username.'</a></p>
 		<p>Friend Since: '.$since.'</p>';
 		if($time-strtotime($online)< 300){
 			echo'<h5><font color="#98fb98">Online</font></h5>';

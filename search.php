@@ -77,7 +77,7 @@ if(isset($_GET['search-text'])){
 
 	$sql="SELECT userid,username,imgpath,datecreated FROM tbluser WHERE username LIKE '%$search%' ORDER BY lastonline DESC $limit";
 	
-	$textline1 = "Result (<b>".number_format($rows)."</b>)";
+	$textline1 = "<font style='color:white'>Result (<b>".number_format($rows)."</b>)";
 	$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
 	$paginationCtrls = '';
 	if($last != 1){
@@ -103,7 +103,7 @@ if(isset($_GET['search-text'])){
 		    }
 		}
 	 echo'<h2>  '.$textline1.'</h2>
-	  <p>  '.$textline2.' </p>
+	  <p>  '.$textline2.' </p></font>
 	  <div id="pagination_controls"> '.$paginationCtrls.'</div>';
 
 

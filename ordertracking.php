@@ -66,7 +66,7 @@ $sql = "SELECT cutoff FROM tblcutoff";
 	$sql = "SELECT orderid, ordernumber, billingaddress, email, phone, fee, total, status, datecommit, cutoff FROM tblorder WHERE userid = '$userid' ORDER BY datecommit DESC $limit";
 
 	$textline1 = "Order Tracking (<b>".number_format($rows)."</b>)";
-$textline2 = "Page <b>$pagenum</b> of <b>$last</b>";
+$textline2 = "<font style='color:white'>Page <b>$pagenum</b> of <b>$last</b>";
 $paginationCtrls = '';
 if($last != 1){
 	if ($pagenum > 1) {
@@ -92,7 +92,7 @@ if($last != 1){
     }
 }
  echo'<h2>  '.$textline1.'</h2>
-  <p>  '.$textline2.' </p>
+  <p>  '.$textline2.' </p></font>
   <div id="pagination_controls"> '.$paginationCtrls.'</div>';
 
 
