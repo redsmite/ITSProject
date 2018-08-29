@@ -310,40 +310,6 @@ function searchdropdown(){
 	}
 }
 
-function searchProduct(){
-	let panel = document.getElementById('main-search-panel');
-	let modal = document.getElementById('main-search-modal');
-
-	panel.style.display= 'block';
-	modal.style.display= 'block';
-
-	var myRequest = new XMLHttpRequest();
-	var url = 'searchprocess.php';
-
-	let mainsearch = document.getElementById('main-search').value;
-	let criteria = document.getElementById('main-select').value;
-
-
-	var formData = "mainsearch="+mainsearch+"&criteria="+criteria;
-	
-	myRequest.open('POST', url ,true);
-	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-
-	myRequest.onload = function(){
-		var response= this.responseText;
-		document.getElementById('main-search-panel').innerHTML=response;
-	}
-	myRequest.send(formData);
-}
-
-function hideSearchPanel(){
-	let panel = document.getElementById('main-search-panel');
-	let modal = document.getElementById('main-search-modal');
-
-	panel.style.display= 'none';
-	modal.style.display= 'none';
-}
-
 function browseCategory(click){
 	let id = click.getAttribute('value');
 
@@ -2667,6 +2633,24 @@ function completeOrder(clicked){
 
 	myRequest.onload = function(){
 		var response= this.responseText;
+		removeSpinners();
+	}
+	myRequest.send(formData);
+}
+
+function selectOrderStatus(){
+	let select = document.getElementById('selectStatus').value;
+	var myRequest = new XMLHttpRequest();
+	var url = 'transactionprocess.php';
+
+	var formData = "selectStatus="+select;
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		document.getElementById('orderTrackingBody').innerHTML=response;
 		removeSpinners();
 	}
 	myRequest.send(formData);

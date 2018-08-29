@@ -319,4 +319,89 @@ if(isset($_POST['setCutoff'])){
 	}
 }
 
+if(isset($_POST['selectStatus'])){
+	$status = $_POST['selectStatus'];
+	$userid = $_SESSION['id'];
+	$sql = "SELECT orderid, ordernumber, billingaddress, email, phone, fee, total, status, datecommit, cutoff FROM tblorder WHERE userid = '$userid' AND status = $status ORDER BY datecommit DESC";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_object()){
+		$orderid = $row->orderid;
+		$ordernum = $row->ordernumber;
+		$address = $row->billingaddress;
+		$email = $row->email;
+		$phone = $row->phone;
+		$fee = $row->fee;
+		$total = $row->total;
+		$status = $row->status; 
+		if($status==0){
+			$status = '<font style="color:orangered;">Pending...</font>';
+		}else if($status == 1){
+			$status = '<font style="color:green;">Approved</font>';
+		}else if($status == 2){
+			$status = '<font style="color:red;">Rejected</font>';
+		}else if($status == 3){
+			$status = '<font style="color:red;">Cancelled</font>';
+		}else if($status == 4){
+			$status = '<font style="color:green;">Completed</font>';
+		}
+		$date = $row->datecommit;
+		$orderCutoff = $row->cutoff;
+
+		echo '<div class="orders">';
+
+		//Cancel Order
+		$datetime = strtotime($date);
+		$ordercutofftime = strtotime($orderCutoff);
+		$warningtime = $ordercutofftime - (60*60);
+		$now = strtotime('now');
+		if($warningtime < $now AND $ordercutofftime > $now){
+			echo '<h3>The cut off time is about to expire. This your last chance to cancel this order.</h3>';
+		}
+		if($datetime < $ordercutofftime AND $status == '<font style="color:orangered;">Pending...</font>' AND $now < $ordercutofftime){
+			echo'<div id="cancelOrder" onclick="cancelThisOrder()" value="'.$orderid.'"><h3><i class="far fa-clock"></i><br> Cancel</h3></div>';
+		}
+
+		echo'<p>Order No: '.$ordernum.'</p>
+		<p>Status: <b>'.$status.'</b></p>
+		<p>Submitted: '.date('M j, Y g:i A',strtotime($date)).'</p>
+		<p>Submitted info:</p> 
+		<p class="submitted-info">Billing Address: '.$address.'<br>
+		Email: '.$email.'<br>
+		Phone: '.$phone.'</p>
+		<p>Order Summary</p>
+		<div class="order-summary">
+		<table>
+			<tr>
+				<th>Product</th>
+				<th>Price</th>
+			</tr>';
+// Order Summary
+$sql2 = "SELECT t1.productid, productname, t1.price, weight FROM tblordersummary AS t1
+LEFT JOIN tblproduct AS t2
+	ON t1.productid = t2.productid
+WHERE orderid = '$orderid'";
+$result2 = $conn->query($sql2);
+while($row2 = $result2->fetch_object()){
+	$productid = $row2->productid;
+	$product = $row2->productname;
+	$price = $row2->price;
+	$weight = $row2->weight;
+	$Ptotal = $price*$weight; 
+	
+	echo'<tr>
+		<th><a class="black" href="product.php?id='.$productid.'">'.$product.'</a> (x '.$weight.'kg)
+		</th>';
+	echo'<th><span class="left">₱</span><span class="right">'.number_format($Ptotal,2).'</span></th>
+		</tr>';
+}
+
+		echo'</table></div>
+		<div class="checkout-final">
+		<p>Subtotal: <b>₱'.number_format($total-$fee,2).'</b></p>
+		<p>Shipping Fee: <b>+₱'.number_format($fee,2).'</b></p>
+		<p>Total: <b>₱'.number_format($total,2).'</b></p>
+		</div></div>';
+	}
+}
+
 ?>

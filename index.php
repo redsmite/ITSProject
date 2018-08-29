@@ -43,30 +43,9 @@
 	}
 ?>
 			</div>
-			<form action="searchproduct.php" method="get" id="main-search-form">
-				<div>
-					<input type="text" name="search" id="main-search" autocomplete="off" placeholder="Search for Products..." onkeyup="searchProduct()">
-					<select  id="main-select" name="select">
-						<option disabled selected>Select Category</option>
-<?php
-// Select Category
-	$sql = "SELECT categoryid,category FROM tblcategory WHERE status =1 ORDER BY category";
-	$result = $conn->query($sql);
-	while($row = $result->fetch_object()){
-		$category = $row->category;
-		$id = $row->categoryid;
-
-		echo '<option value="'.$id.'">'.$category.'</option>';
-	}
-?>
-					</select>
-					<i class="fas fa-search"></i>
-				</div>
-			</form>
+			<!-- Marquee -->
+			<marquee><div class="marquee"> BAHAY  KUBO ni MANG CELSO </div></marquee>
 		</div>
-	<!-- Main-Search Modal -->
-		<div id="main-search-panel"></div>
-		<div id="main-search-modal" onclick="hideSearchPanel()"></div>
 	<!-- Featured Products -->
 		<div class="featured-product-grid">
 <?php
@@ -151,43 +130,44 @@
 			</div>
 		</a>
 		</div>
-		<div id="bottom">
-			<a href="product.php?id='.$productid3.'">
-			<div id="top3">
-				<div>
-				<div class="featured-img-wrap">	
-					<img class="featured-img" src="'.$img3.'">
-				</div>
-				<div class="featured-desc">
-					<h3><i class="fas fa-trophy bronze"></i> '.$product3.'</h3>
-					<p>'.$farm3.'</p>
-				</div>
+		<div id="top3">
+		<a href="product.php?id='.$productid3.'">
+			<div>
+			<div class="featured-img-wrap">	
+				<img class="featured-img" src="'.$img3.'">
 			</div>
-			</div></a>
-			<a href="product.php?id='.$productid4.'">
-			<div id="top4">
-				<div>
-				<div class="featured-img-wrap">	
-					<img class="featured-img" src="'.$img4.'">
-				</div>
-				<div class="featured-desc">
-					<h3>'.$product4.'</h3>
-					<p>'.$farm4.'</p>
-				</div>
+			<div class="featured-desc">
+				<h3><i class="fas fa-trophy bronze"></i> '.$product3.'</h3>
+				<p>'.$farm3.'</p>
 			</div>
-			</div></a>
-			<a href="product.php?id='.$productid5.'">
-			<div id="top5">
-				<div>
-				<div class="featured-img-wrap">	
-					<img class="featured-img" src="'.$img5.'">
-				</div>
-				<div class="featured-desc">
-					<h3>'.$product5.'</h3>
-					<p>'.$farm5.'</p>
-				</div>
+		</div>
+		</a>
+		</div>
+		<div id="top4">
+		<a href="product.php?id='.$productid4.'">
+			<div>
+			<div class="featured-img-wrap">	
+				<img class="featured-img" src="'.$img4.'">
 			</div>
-			</div></a>
+			<div class="featured-desc">
+				<h3>'.$product4.'</h3>
+				<p>'.$farm4.'</p>
+			</div>
+		</div>
+		</a>
+		</div>
+		<div id="top5">
+		<a href="product.php?id='.$productid5.'">
+			<div>
+			<div class="featured-img-wrap">	
+				<img class="featured-img" src="'.$img5.'">
+			</div>
+			<div class="featured-desc">
+				<h3>'.$product5.'</h3>
+				<p>'.$farm5.'</p>
+			</div>
+		</div>
+		</a>
 		</div>';
 	}
 ?>
@@ -238,7 +218,7 @@ echo'<p>Comments ('.number_format($comments).')</p>
 					<a class="black" href="contact.php">Feedback</a>
 				</div>
 				<div class="farm-select-div">
-					<h3><i class="fas fa-location-arrow"></i> Farms</h3>
+					<h3><i class="fas fa-location-arrow"></i> Farm Location</h3>
 					<ul>
 <?php
 $sql = "SELECT farmid, farmname FROM tblfarm WHERE status=1";

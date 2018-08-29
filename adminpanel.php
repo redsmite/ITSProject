@@ -391,7 +391,7 @@ if($last != 1){
 		<h1><i class="fas fa-location-arrow"></i> Farms</h1>
 		<div class="edit-form">
 			<form id="add-farm-form">
-				<h1><i class="fas fa-plus"></i> Add Farm</h1>
+				<h2><i class="fas fa-plus"></i> Add Farm</h2>
 				<div>
 					<p>Farm Name</p>
 					<input type="text" id="farm-name">
