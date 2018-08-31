@@ -1246,6 +1246,7 @@ function addNewCategory(){
 	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
 	let body6= document.getElementById('transaction-body');
+	let body7= document.getElementById('transaction-history');
 
 	body1.style.display ='block';
 	body2.style.display ='none';
@@ -1253,6 +1254,7 @@ function addNewCategory(){
 	body4.style.display ='none';
 	body5.style.display ='none';
 	body6.style.display ='none';
+	body7.style.display ='none';
 }
 
 function setPrice(){
@@ -1262,6 +1264,7 @@ function setPrice(){
 	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
 	let body6= document.getElementById('transaction-body');
+	let body7= document.getElementById('transaction-history');
 
 	body1.style.display ='none';
 	body2.style.display ='block';
@@ -1269,6 +1272,7 @@ function setPrice(){
 	body4.style.display ='none';
 	body5.style.display ='none';
 	body6.style.display ='none';
+	body7.style.display ='none';
 }
 
 function priceHistory(){
@@ -1278,6 +1282,7 @@ function priceHistory(){
 	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
 	let body6= document.getElementById('transaction-body');
+	let body7= document.getElementById('transaction-history');
 
 	body1.style.display ='none';
 	body2.style.display ='none';
@@ -1285,6 +1290,7 @@ function priceHistory(){
 	body4.style.display ='none';
 	body5.style.display ='none';
 	body6.style.display ='none';
+	body7.style.display ='none';
 
 	var myRequest = new XMLHttpRequest();
 
@@ -1312,13 +1318,15 @@ function showOrders(){
 	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
 	let body6= document.getElementById('transaction-body');
+	let body7= document.getElementById('transaction-history');
 
 	body1.style.display ='none';
 	body2.style.display ='none';
 	body3.style.display ='none';
 	body4.style.display ='block';
 	body5.style.display ='none';
-	body6.style.display ='none';	
+	body6.style.display ='none';
+	body7.style.display ='none';	
 
 	var myRequest = new XMLHttpRequest();
 
@@ -1395,6 +1403,7 @@ function showApproveProduct(){
 	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
 	let body6= document.getElementById('transaction-body');
+	let body7= document.getElementById('transaction-history');
 
 	body1.style.display ='none';
 	body2.style.display ='none';
@@ -1402,6 +1411,7 @@ function showApproveProduct(){
 	body4.style.display ='none';
 	body5.style.display ='block';
 	body6.style.display ='none';
+	body7.style.display ='none';
 
 	var myRequest = new XMLHttpRequest();
 
@@ -1426,6 +1436,7 @@ function showTransaction(){
 	let body4= document.getElementById('order-body');
 	let body5= document.getElementById('product-monitoring');
 	let body6= document.getElementById('transaction-body');
+	let body7= document.getElementById('transaction-history');
 
 	body1.style.display ='none';
 	body2.style.display ='none';
@@ -1433,6 +1444,7 @@ function showTransaction(){
 	body4.style.display ='none';
 	body5.style.display ='none';
 	body6.style.display ='block';
+	body7.style.display ='none';
 
 	var myRequest = new XMLHttpRequest();
 
@@ -1445,8 +1457,43 @@ function showTransaction(){
 
 	myRequest.onload = function(){
 		var response= this.responseText;
-		console.log(response);
 		document.getElementById('transaction-body-content').innerHTML=response;
+	}
+	myRequest.send(formData);
+}
+
+
+function transactionHistory(){
+	let body1= document.getElementById('add-category');
+	let body2= document.getElementById('set-price');
+	let body3= document.getElementById('history');
+	let body4= document.getElementById('order-body');
+	let body5= document.getElementById('product-monitoring');
+	let body6= document.getElementById('transaction-body');
+	let body7= document.getElementById('transaction-history');
+
+	body1.style.display ='none';
+	body2.style.display ='none';
+	body3.style.display ='none';
+	body4.style.display ='none';
+	body5.style.display ='none';
+	body6.style.display ='none';
+	body7.style.display ='block';
+
+	addSpinners();
+	var myRequest = new XMLHttpRequest();
+
+	var url = 'transactionprocess.php';
+
+	var formData = "transactionHistory='hello'";
+	
+	myRequest.open('POST', url ,true);
+	myRequest.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+	myRequest.onload = function(){
+		var response= this.responseText;
+		removeSpinners();
+		document.getElementById('transaction-history-content').innerHTML=response;
 	}
 	myRequest.send(formData);
 }

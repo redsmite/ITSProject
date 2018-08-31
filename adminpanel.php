@@ -72,6 +72,7 @@ if($ordercount != 0){
 }
 ?>
 					 Transactions</div>
+					 <div class="monitoring-option" onclick="transactionHistory()"><i class="fas fa-book"></i> Transaction History</div>
 					<div class="monitoring-option" onclick="showApproveProduct()"><i class="fas fa-clipboard-check"></i>
 <?php
 $sql = "SELECT productid FROM tblproduct WHERE is_approved = 0";
@@ -109,6 +110,11 @@ if($new_products!=0){
 					<div id="transaction-body">
 						<h1>Transactions</h1>
 						<div id="transaction-body-content">
+						</div>
+					</div>
+					<div id="transaction-history">
+						<h1>Transaction History</h1>
+						<div id="transaction-history-content">
 						</div>
 					</div>
 					<div id="product-monitoring">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2018 at 07:34 PM
+-- Generation Time: Aug 30, 2018 at 09:31 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -417,7 +417,7 @@ CREATE TABLE `tblcutoff` (
 --
 
 INSERT INTO `tblcutoff` (`cutoffid`, `cutoff`) VALUES
-(1, '2018-08-28 16:00:00');
+(1, '2018-08-31 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -589,7 +589,8 @@ INSERT INTO `tbllikes` (`likeid`, `reviewid`, `userid`) VALUES
 (11, 20, 90),
 (12, 19, 89),
 (13, 20, 49),
-(14, 18, 49);
+(14, 18, 49),
+(15, 21, 2);
 
 -- --------------------------------------------------------
 
@@ -1024,7 +1025,7 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (418, 24, 5, '2018-08-11 20:11:13', 1, 7, '2018081108111324', 0),
 (419, 11, 1, '2018-08-12 05:24:28', 1, 7, '2018081205242811', 0),
 (420, 11, 90, '2018-08-12 05:24:28', 0, 7, '2018081205242811', 0),
-(421, 11, 2, '2018-08-12 05:24:28', 0, 7, '2018081205242811', 0),
+(421, 11, 2, '2018-08-12 05:24:28', 1, 7, '2018081205242811', 0),
 (422, 11, 5, '2018-08-12 05:24:28', 0, 7, '2018081205242811', 0),
 (423, 0, 24, '2018-08-12 17:19:16', 0, 4, '2018081108111324', 0),
 (424, 0, 11, '2018-08-12 17:19:17', 0, 4, '2018081205242811', 0),
@@ -1035,10 +1036,10 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (429, 0, 27, '2018-08-19 04:06:26', 0, 4, '2018081206340127', 0),
 (430, 0, 30, '2018-08-19 04:06:29', 0, 4, '2018081206303230', 0),
 (431, 40, 1, '2018-08-19 04:13:01', 1, 7, '2018081904130040', 0),
-(432, 40, 2, '2018-08-19 04:13:01', 0, 7, '2018081904130040', 0),
+(432, 40, 2, '2018-08-19 04:13:01', 1, 7, '2018081904130040', 0),
 (433, 0, 40, '2018-08-19 04:13:41', 0, 4, '2018081904130040', 0),
 (434, 45, 1, '2018-08-19 04:14:50', 1, 7, '2018081904144945', 0),
-(435, 45, 2, '2018-08-19 04:14:50', 0, 7, '2018081904144945', 0),
+(435, 45, 2, '2018-08-19 04:14:50', 1, 7, '2018081904144945', 0),
 (436, 0, 45, '2018-08-19 04:16:36', 0, 4, '2018081904144945', 0),
 (437, 47, 1, '2018-08-20 18:59:03', 1, 7, '2018082006590347', 0),
 (438, 47, 5, '2018-08-20 18:59:03', 0, 7, '2018082006590347', 0),
@@ -1047,18 +1048,34 @@ INSERT INTO `tblnotif` (`notifid`, `userid`, `receiverid`, `notifdate`, `checked
 (441, 0, 47, '2018-08-20 20:15:56', 0, 4, '2018082008115147', 0),
 (442, 0, 47, '2018-08-20 20:15:57', 0, 4, '2018082006590347', 0),
 (443, 35, 1, '2018-08-20 20:24:49', 1, 7, '2018082008244835', 0),
-(444, 35, 2, '2018-08-20 20:24:49', 0, 7, '2018082008244835', 0),
+(444, 35, 2, '2018-08-20 20:24:49', 1, 7, '2018082008244835', 0),
 (445, 35, 5, '2018-08-20 20:24:49', 0, 7, '2018082008244835', 0),
 (446, 0, 35, '2018-08-21 17:57:19', 0, 4, '2018082008244835', 0),
 (447, 49, 1, '2018-08-21 17:58:19', 1, 7, '2018082105581949', 0),
 (448, 49, 5, '2018-08-21 17:58:19', 0, 7, '2018082105581949', 0),
-(449, 49, 2, '2018-08-21 17:58:19', 0, 7, '2018082105581949', 0),
+(449, 49, 2, '2018-08-21 17:58:19', 1, 7, '2018082105581949', 0),
 (450, 0, 49, '2018-08-24 02:39:09', 0, 4, '2018082105581949', 0),
 (451, 33, 1, '2018-08-24 23:16:20', 1, 7, '2018082411162033', 0),
 (452, 0, 33, '2018-08-24 23:17:15', 0, 4, '2018082411162033', 0),
 (453, 78, 1, '2018-08-27 23:38:42', 1, 7, '2018082711384278', 0),
 (454, 78, 5, '2018-08-27 23:38:42', 0, 7, '2018082711384278', 0),
-(455, 69, 1, '2018-08-28 00:46:32', 1, 7, '2018082812463169', 0);
+(455, 69, 1, '2018-08-28 00:46:32', 1, 7, '2018082812463169', 0),
+(456, 20, 1, '2018-08-28 14:37:34', 1, 7, '2018082802373420', 0),
+(457, 20, 5, '2018-08-28 14:37:34', 0, 7, '2018082802373420', 0),
+(458, 20, 2, '2018-08-28 14:37:34', 1, 7, '2018082802373420', 0),
+(459, 0, 20, '2018-08-28 14:47:58', 1, 4, '2018082802373420', 0),
+(460, 0, 78, '2018-08-28 16:04:49', 0, 4, '2018082711384278', 0),
+(461, 12, 1, '2018-08-30 03:15:48', 1, 7, '2018083003154712', 0),
+(462, 12, 1, '2018-08-30 03:16:10', 1, 7, '2018083003160912', 0),
+(463, 12, 90, '2018-08-30 03:16:10', 0, 7, '2018083003160912', 0),
+(464, 12, 2, '2018-08-30 03:16:10', 1, 7, '2018083003160912', 0),
+(465, 12, 1, '2018-08-30 03:16:25', 1, 7, '2018083003162412', 0),
+(466, 12, 2, '2018-08-30 03:16:25', 1, 7, '2018083003162412', 0),
+(467, 12, 1, '2018-08-30 03:16:37', 1, 7, '2018083003163712', 0),
+(468, 12, 5, '2018-08-30 03:16:37', 0, 7, '2018083003163712', 0),
+(469, 0, 12, '2018-08-30 03:32:04', 1, 5, '2018083003162412', 0),
+(470, 0, 12, '2018-08-30 03:32:06', 1, 4, '2018083003160912', 0),
+(471, 0, 12, '2018-08-30 03:32:10', 1, 4, '2018083003154712', 0);
 
 -- --------------------------------------------------------
 
@@ -1116,8 +1133,13 @@ INSERT INTO `tblorder` (`orderid`, `ordernumber`, `userid`, `billingaddress`, `e
 (29, '2018082008244835', 35, 'Quezon City', 'useremail35@gmail.com', '00909090909', '60.00', '365.00', 4, '2018-08-20 20:24:48', '2018-08-21 16:00:00'),
 (30, '2018082105581949', 49, 'Quezon City', 'useremail49@gmail.com', '090909090909', '60.00', '410.00', 4, '2018-08-21 17:58:19', '2018-08-22 16:00:00'),
 (31, '2018082411162033', 33, 'Quezon City', 'useremail33@gmail.com', '00909090990', '60.00', '360.00', 4, '2018-08-24 23:16:20', '2018-08-25 16:00:00'),
-(32, '2018082711384278', 78, 'Quezon City', 'useremail78@gmail.com', '090909090909090', '60.00', '1735.00', 0, '2018-08-27 23:38:42', '2018-08-28 16:00:00'),
-(33, '2018082812463169', 69, 'Quezon City', 'useremail69@gmail.com', '0909090900909', '60.00', '340.00', 3, '2018-08-28 00:46:31', '2018-08-28 16:00:00');
+(32, '2018082711384278', 78, 'Quezon City', 'useremail78@gmail.com', '090909090909090', '60.00', '1735.00', 4, '2018-08-27 23:38:42', '2018-08-28 16:00:00'),
+(33, '2018082812463169', 69, 'Quezon City', 'useremail69@gmail.com', '0909090900909', '60.00', '340.00', 3, '2018-08-28 00:46:31', '2018-08-28 16:00:00'),
+(34, '2018082802373420', 20, 'Quezon City', 'useremail20@gmail.com', '09993345567', '60.00', '600.00', 4, '2018-08-28 14:37:34', '2018-08-28 16:00:00'),
+(35, '2018083003154712', 12, 'Quezon City', 'useremail12@gmail.com', '9898899808080', '60.00', '500.00', 4, '2018-08-30 03:15:47', '2018-08-30 16:00:00'),
+(36, '2018083003160912', 12, 'Quezon City', 'useremail12@gmail.com', '998787878787', '60.00', '455.00', 4, '2018-08-30 03:16:09', '2018-08-30 16:00:00'),
+(37, '2018083003162412', 12, 'Quezon City', 'useremail12@gmail.com', '000998098', '60.00', '310.00', 2, '2018-08-30 03:16:24', '2018-08-30 16:00:00'),
+(38, '2018083003163712', 12, 'Quezon City', 'useremail12@gmail.com', '89898989880808', '60.00', '600.00', 3, '2018-08-30 03:16:37', '2018-08-30 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -1251,7 +1273,16 @@ INSERT INTO `tblordersummary` (`summaryid`, `orderid`, `productid`, `weight`, `p
 (111, 32, 18, '10.000', '100.00'),
 (112, 32, 7, '5.000', '135.00'),
 (113, 33, 19, '3.000', '80.00'),
-(114, 33, 20, '1.000', '40.00');
+(114, 33, 20, '1.000', '40.00'),
+(115, 34, 21, '5.000', '60.00'),
+(116, 34, 20, '3.000', '40.00'),
+(117, 34, 10, '3.000', '40.00'),
+(118, 35, 19, '5.000', '80.00'),
+(119, 35, 20, '1.000', '40.00'),
+(120, 36, 16, '3.000', '65.00'),
+(121, 36, 12, '4.000', '50.00'),
+(122, 37, 12, '5.000', '50.00'),
+(123, 38, 7, '4.000', '135.00');
 
 -- --------------------------------------------------------
 
@@ -2481,7 +2512,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1214, 71, 16, 'message', '2018-06-28 13:22:48', 0),
 (1215, 71, 17, 'message', '2018-06-28 13:22:48', 0),
 (1216, 71, 18, 'message', '2018-06-28 13:22:48', 0),
-(1217, 71, 19, 'message', '2018-06-28 13:22:48', 0),
+(1217, 71, 19, 'message', '2018-06-28 13:22:48', 1),
 (1218, 71, 20, 'message', '2018-06-28 13:22:48', 1),
 (1219, 71, 21, 'message', '2018-06-28 13:22:48', 1),
 (1220, 71, 22, 'message', '2018-06-28 13:22:48', 0),
@@ -2567,7 +2598,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1300, 71, 16, 'message', '2018-07-01 17:41:08', 0),
 (1301, 71, 17, 'message', '2018-07-01 17:41:08', 0),
 (1302, 71, 18, 'message', '2018-07-01 17:41:08', 0),
-(1303, 71, 19, 'message', '2018-07-01 17:41:08', 0),
+(1303, 71, 19, 'message', '2018-07-01 17:41:08', 1),
 (1304, 71, 20, 'message', '2018-07-01 17:41:08', 1),
 (1305, 71, 21, 'message', '2018-07-01 17:41:08', 1),
 (1306, 71, 22, 'message', '2018-07-01 17:41:08', 0),
@@ -2676,7 +2707,7 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1409, 71, 1, 'message', '2018-07-04 20:28:44', 1),
 (1410, 2, 1, 'message', '2018-07-05 12:51:49', 1),
 (1411, 12, 71, 'message', '2018-07-07 22:12:46', 0),
-(1412, 71, 12, 'message', '2018-07-07 22:12:47', 0),
+(1412, 71, 12, 'message', '2018-07-07 22:12:47', 1),
 (1413, 71, 81, 'message', '2018-07-08 08:59:09', 1),
 (1414, 13, 71, 'message', '2018-07-08 17:34:27', 0),
 (1415, 71, 13, 'message', '2018-07-08 17:34:27', 0),
@@ -2704,14 +2735,14 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1437, 71, 9, 'message', '2018-07-10 22:54:44', 1),
 (1438, 71, 10, 'message', '2018-07-10 22:54:44', 0),
 (1439, 71, 11, 'message', '2018-07-10 22:54:44', 1),
-(1440, 71, 12, 'message', '2018-07-10 22:54:44', 0),
+(1440, 71, 12, 'message', '2018-07-10 22:54:44', 1),
 (1441, 71, 13, 'message', '2018-07-10 22:54:44', 0),
 (1442, 71, 14, 'message', '2018-07-10 22:54:44', 0),
 (1443, 71, 15, 'message', '2018-07-10 22:54:44', 1),
 (1444, 71, 16, 'message', '2018-07-10 22:54:44', 0),
 (1445, 71, 17, 'message', '2018-07-10 22:54:44', 0),
 (1446, 71, 18, 'message', '2018-07-10 22:54:44', 0),
-(1447, 71, 19, 'message', '2018-07-10 22:54:44', 0),
+(1447, 71, 19, 'message', '2018-07-10 22:54:44', 1),
 (1448, 71, 20, 'message', '2018-07-10 22:54:44', 1),
 (1449, 71, 21, 'message', '2018-07-10 22:54:44', 1),
 (1450, 71, 22, 'message', '2018-07-10 22:54:44', 0),
@@ -2792,14 +2823,14 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1525, 71, 9, 'message', '2018-07-20 15:04:16', 1),
 (1526, 71, 10, 'message', '2018-07-20 15:04:16', 0),
 (1527, 71, 11, 'message', '2018-07-20 15:04:16', 1),
-(1528, 71, 12, 'message', '2018-07-20 15:04:16', 0),
+(1528, 71, 12, 'message', '2018-07-20 15:04:16', 1),
 (1529, 71, 13, 'message', '2018-07-20 15:04:16', 0),
 (1530, 71, 14, 'message', '2018-07-20 15:04:16', 0),
 (1531, 71, 15, 'message', '2018-07-20 15:04:16', 1),
 (1532, 71, 16, 'message', '2018-07-20 15:04:16', 0),
 (1533, 71, 17, 'message', '2018-07-20 15:04:16', 0),
 (1534, 71, 18, 'message', '2018-07-20 15:04:16', 0),
-(1535, 71, 19, 'message', '2018-07-20 15:04:16', 0),
+(1535, 71, 19, 'message', '2018-07-20 15:04:16', 1),
 (1536, 71, 20, 'message', '2018-07-20 15:04:16', 1),
 (1537, 71, 21, 'message', '2018-07-20 15:04:16', 1),
 (1538, 71, 22, 'message', '2018-07-20 15:04:16', 0),
@@ -2930,14 +2961,14 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1663, 71, 9, 'message', '2018-07-26 00:24:42', 1),
 (1664, 71, 10, 'message', '2018-07-26 00:24:42', 0),
 (1665, 71, 11, 'message', '2018-07-26 00:24:42', 1),
-(1666, 71, 12, 'message', '2018-07-26 00:24:42', 0),
+(1666, 71, 12, 'message', '2018-07-26 00:24:42', 1),
 (1667, 71, 13, 'message', '2018-07-26 00:24:42', 0),
 (1668, 71, 14, 'message', '2018-07-26 00:24:42', 0),
 (1669, 71, 15, 'message', '2018-07-26 00:24:42', 1),
 (1670, 71, 16, 'message', '2018-07-26 00:24:42', 0),
 (1671, 71, 17, 'message', '2018-07-26 00:24:42', 0),
 (1672, 71, 18, 'message', '2018-07-26 00:24:42', 0),
-(1673, 71, 19, 'message', '2018-07-26 00:24:42', 0),
+(1673, 71, 19, 'message', '2018-07-26 00:24:42', 1),
 (1674, 71, 20, 'message', '2018-07-26 00:24:42', 1),
 (1675, 71, 21, 'message', '2018-07-26 00:24:42', 1),
 (1676, 71, 22, 'message', '2018-07-26 00:24:42', 0),
@@ -3041,14 +3072,14 @@ INSERT INTO `tblpm` (`pmid`, `senderid`, `receiverid`, `message`, `pmdate`, `che
 (1774, 71, 9, 'message', '2018-08-02 23:22:41', 1),
 (1775, 71, 10, 'message', '2018-08-02 23:22:41', 0),
 (1776, 71, 11, 'message', '2018-08-02 23:22:41', 1),
-(1777, 71, 12, 'message', '2018-08-02 23:22:41', 0),
+(1777, 71, 12, 'message', '2018-08-02 23:22:41', 1),
 (1778, 71, 13, 'message', '2018-08-02 23:22:41', 0),
 (1779, 71, 14, 'message', '2018-08-02 23:22:41', 0),
 (1780, 71, 15, 'message', '2018-08-02 23:22:41', 1),
 (1781, 71, 16, 'message', '2018-08-02 23:22:41', 0),
 (1782, 71, 17, 'message', '2018-08-02 23:22:41', 0),
 (1783, 71, 18, 'message', '2018-08-02 23:22:41', 0),
-(1784, 71, 19, 'message', '2018-08-02 23:22:41', 0),
+(1784, 71, 19, 'message', '2018-08-02 23:22:41', 1),
 (1785, 71, 20, 'message', '2018-08-02 23:22:41', 1),
 (1786, 71, 21, 'message', '2018-08-02 23:22:41', 1),
 (1787, 71, 22, 'message', '2018-08-02 23:22:41', 0),
@@ -3166,24 +3197,25 @@ INSERT INTO `tblproduct` (`productid`, `categoryid`, `productname`, `description
 (1, 1, 'XYZ Amargoso', 'the balsam apple of the Philippines', 1, 2, '2018-07-18 20:23:54', '90.00', 'product/213500944001201.jpg', 15, '60.00', 1, 1),
 (2, 2, 'Exquisite Sitao', 'Sitao is the most popularly produced vegetable among edible legumes', 1, 2, '2018-07-18 20:30:53', '80.00', 'product/food-healthy-summer-green.jpeg', 9, '80.00', 1, 1),
 (3, 6, 'Delightful Tomato', 'Tomato is consumed in diverse ways, including raw, as an ingredient in many dishes, sauces, salads, and drinks.', 2, 2, '2018-07-18 20:32:34', '80.00', 'product/red-tomato-vegetable.jpg', 16, '50.00', 1, 1),
-(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 45, '100.00', 1, 1),
+(4, 14, 'Ripe Papaya', 'The papaya is a small, sparsely branched tree, usually with a single stem growing from 5 to 10 m (16 to 33 ft) tall, with spirally arranged leaves confined to the top of the trunk.', 2, 5, '2018-07-20 04:49:06', '60.00', 'product/pexels-photo-701969.jpeg', 52, '100.00', 1, 1),
 (5, 15, 'Philippine Mango', 'The Philippine mango is one of the most important varieties of mango cultivated in the Philippines. The variety is reputed internationally due to its sweetness and exotic taste.', 1, 2, '2018-07-21 12:49:08', '120.00', 'product/mango.jpg', 16, '100.00', 1, 1),
 (6, 5, 'Habitchuelas', 'Habichuela is a herbaceous annual plant grown worldwide for its edible dry seeds or unripe fruit (both commonly called beans)', 1, 2, '2018-07-21 12:49:10', '80.00', 'product/330px-Snijboon_peulen_Phaseolus_vulgaris.jpg', 10, '50.00', 1, 1),
 (7, 15, 'Philippine Mango', 'â€œThe king of the fruits,\" mango fruit is one of the most popular, nutritionally rich fruits with unique flavor, fragrance, taste, and heath promoting qualities, making it numero-uno among new functional foods, often labeled as â€œsuper fruits.\"', 2, 5, '2018-07-22 23:18:13', '135.00', 'product/mango.jpg', 10, '80.00', 1, 1),
-(8, 3, 'Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 2, 5, '2018-07-23 00:25:06', '100.00', 'product/cabbage-vegetable-power-green.jpg', 18, '80.00', 1, 1),
+(8, 3, 'Purple Cabbage', 'The purple cabbage (purple-leaved varieties of Brassica oleracea Capitata Group) is a kind of cabbage, also known as red cabbage, red kraut, or blue kraut after preparation. The plant changes its colour according to the pH value of the soil, due to a pigment belonging to anthocyanins. In acidic soils, the leaves grow more reddish, in neutral soils they will grow more purple, while an alkaline soil will produce rather greenish-yellow coloured cabbages. This explains the fact that the same plant is known by different colours in various regions.', 2, 5, '2018-07-23 00:25:06', '100.00', 'product/cabbage-vegetable-power-green.jpg', 19, '80.00', 1, 1),
 (9, 13, 'Calamansi Grade A', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 1, 2, '2018-07-24 15:56:10', '50.00', 'product/Calamansi.jpg', 8, '100.00', 1, 1),
 (10, 13, 'Calamansi Grade B', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 1, 2, '2018-07-24 15:56:36', '40.00', 'product/Calamansi.jpg', 5, '50.00', 1, 1),
 (11, 13, 'Calamansi Grade C', 'Calamansi Calamansi Calamansi Calamansi Calamansi Calamansi', 1, 2, '2018-07-24 15:57:47', '55.00', 'product/Calamansi.jpg', 43, '80.00', 1, 1),
-(12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 1, 2, '2018-07-24 15:59:23', '50.00', 'product/potato.jpg', 25, '100.00', 1, 1),
+(12, 8, 'Potato', 'Potato Potato Potato Potato Potato Potato Potato', 1, 2, '2018-07-24 15:59:23', '50.00', 'product/potato.jpg', 26, '100.00', 1, 1),
 (13, 11, 'Lakatan na Saging', 'Banana Banana Banana Banana Banana', 1, 2, '2018-07-24 16:01:44', '60.00', 'product/IMG_20160601_171127-840x473.jpg', 33, '70.00', 1, 1),
 (14, 7, 'Sibuyas na Pula', 'Onion Onion Onion Onion Onion Onion Onion Onion Onion ', 1, 2, '2018-07-25 03:17:09', '100.00', 'product/71sRtyZtRLL._SY450_.jpg', 26, '80.00', 1, 1),
 (15, 8, 'Potato', 'The potato is a starchy, tuberous crop from the perennial nightshade Solanum tuberosum. Potato may be applied to both the plant and the edible tuber. Potatoes have become a staple food in many parts of the world and an integral part of much of the world\'s food supply. Potatoes are the world\'s fourth-largest food crop, following maize (corn), wheat, and rice. Tubers produce glycoalkaloids in small amounts. If green sections (sprouts and skins) of the plant are exposed to light the tuber can produce a high enough concentration of glycoalkaloids to affect human health.', 3, 1, '2018-07-26 14:30:26', '60.00', 'product/potato.jpg', 105, '75.00', 1, 1),
 (16, 10, 'Pechay Baguio', 'Baguio Pechay has light green leaves and a white stalk. It tastes milder than Bok Choy (Pechay Tagalog). Pechay Tagalog has smooth, dark green leaves that look like mustard leaves. ', 3, 90, '2018-07-30 14:47:42', '65.00', 'product/pechay-baguio.jpg', 18, '80.00', 1, 1),
 (17, 10, 'Pechay', 'masarap mura pa kaya bilina kau parang awa nyo na\r\n', 1, 2, '2018-07-30 16:09:03', '60.00', 'product/pechay-n.jpg', 16, '50.00', 1, 1),
 (18, 4, 'Carrot', 'Carrots Carrots Carrots Carrots Carrots Carrots Carrots Carrots', 1, 1, '2018-07-31 16:37:55', '100.00', 'product/storecarrots.jpg', 2, '50.00', 1, 1),
-(19, 9, 'Talong', 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 3, 1, '2018-07-31 16:41:58', '80.00', 'product/talong.jpg', 12, '80.00', 1, 1),
+(19, 9, 'Talong', 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 3, 1, '2018-07-31 16:41:58', '80.00', 'product/talong.jpg', 15, '73.33', 1, 1),
 (20, 12, 'Latundan na Saging', 'Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan Saging na Latundan', 3, 1, '2018-07-31 17:05:46', '40.00', 'product/latundan.jpg', 14, '93.33', 1, 1),
-(21, 10, 'Pechay', 'There has been such a craze over kale in the past years, but did you know that the lowly pechay (chinese chard or bok choy) contains one of the highest nutrients per calorie, second to kale?\r\n\r\nDr. Fuhrmanâ€™s Aggregate Nutrient Density Index (ANDI) ranks the nutrient value of many common foods on the basis of how many nutrients they deliver to your body for each calorie consumed. Foods are ranked on a scale of 1-1000, with the most nutrient-dense cruciferous leafy green vegetables scoring 1000. Pechay has an ANDI rating of 865, higher than spinach (707), carrots (458) and broccoli (340)!\r\n\r\nPhenols and other phytonutrients in pechay represent what is now known to be a full spectrum of over 70 antioxidants in this cruciferous vegetable. The antioxidant richness of pechay also partly explains the ongoing investigation of this leafy green in relationship to cancer prevention since prevention and reduction of oxidative stress has often been linked to decreased cancer risk.\r\n\r\nBecause of its strong beta-carotene content, pechay also ranks as the 11th richest food in vitamin A. This vitamin A richness places pechay ahead of some of its fellow cruciferous vegetables, including cauliflower, cabbage, Brussels sprouts, and broccoli.', 2, 5, '2018-08-02 03:48:04', '60.00', 'product/pechay-n.jpg', 24, '50.00', 1, 1);
+(21, 10, 'Pechay', 'There has been such a craze over kale in the past years, but did you know that the lowly pechay (chinese chard or bok choy) contains one of the highest nutrients per calorie, second to kale?\r\n\r\nDr. Fuhrmanâ€™s Aggregate Nutrient Density Index (ANDI) ranks the nutrient value of many common foods on the basis of how many nutrients they deliver to your body for each calorie consumed. Foods are ranked on a scale of 1-1000, with the most nutrient-dense cruciferous leafy green vegetables scoring 1000. Pechay has an ANDI rating of 865, higher than spinach (707), carrots (458) and broccoli (340)!\r\n\r\nPhenols and other phytonutrients in pechay represent what is now known to be a full spectrum of over 70 antioxidants in this cruciferous vegetable. The antioxidant richness of pechay also partly explains the ongoing investigation of this leafy green in relationship to cancer prevention since prevention and reduction of oxidative stress has often been linked to decreased cancer risk.\r\n\r\nBecause of its strong beta-carotene content, pechay also ranks as the 11th richest food in vitamin A. This vitamin A richness places pechay ahead of some of its fellow cruciferous vegetables, including cauliflower, cabbage, Brussels sprouts, and broccoli.', 2, 5, '2018-08-02 03:48:04', '60.00', 'product/pechay-n.jpg', 26, '50.00', 1, 1),
+(22, 9, 'Cavite Eggplant', 'Eggsfsfs sf sdfs df sdf sdf sdfsdf sdf sf', 2, 1, '2018-08-28 15:00:42', '78.00', 'product/talong.jpg', 0, '50.00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -3226,7 +3258,8 @@ INSERT INTO `tblrating` (`ratingid`, `productid`, `userid`, `rating`) VALUES
 (21, 20, 89, 5),
 (22, 16, 49, 4),
 (23, 19, 49, 3),
-(24, 7, 1, 4);
+(24, 7, 1, 4),
+(25, 19, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -3253,7 +3286,8 @@ INSERT INTO `tblreport` (`reportid`, `userid`, `reporter`, `reason`, `datecreate
 (3, 20, 1, 'none', '2018-07-26 00:18:52', 1),
 (4, 10, 1, 'none', '2018-07-26 00:22:46', 1),
 (5, 5, 1, '5', '2018-07-27 13:46:34', 1),
-(6, 90, 2, '3', '2018-07-31 14:51:35', 1);
+(6, 90, 2, '3', '2018-07-31 14:51:35', 1),
+(7, 20, 1, '4', '2018-08-28 16:07:17', 1);
 
 -- --------------------------------------------------------
 
@@ -3279,7 +3313,8 @@ INSERT INTO `tblreviews` (`reviewid`, `review`, `productid`, `userid`, `datepost
 (14, 'Potato contains several phytochemicals such as phenolics, flavonoids, polyamines, and carotenoids, which are highly desirable in diet because of their beneficial effects on human health. The concentration and stability of these constituents are affected by several factors such as genotype, agronomic factors, postharvest storage, cooking and processing conditions. The advances in analytical techniques have made possible the identification and understanding the functions of phytochemicals, particularly their antioxidant properties. The potatoes are stored and processed into a variety of products before consumption. In the present review, phytochemicals present in potatoes, factors affecting their content, stability and health benefits are discussed. Processing the potatoes rich in phytochemicals can play an important role in promoting the health of a large segment of population in the countries where potatoes form a substantial part of daily diet.', 15, 7, '2018-07-29 00:24:24', 1),
 (18, 'Ang talong ay isang uri ng gulay na pangkaraniwang kulay lila ang mga bunga, bagaman mayroon ding lunti at puti na uri. Maaari itong mahaba, bilugan, malaki, maliit o maikli.', 19, 1, '2018-07-31 16:48:29', 1),
 (19, 'According to the Department of Agriculture website, there are 57 cultivars of banana in Southeast Asia but only five are common in the Philippines: saba, latundan, lacatan, bungulan and cavendish.\n\nI donâ€™t know where the seÃ±orita bananas went as they seem to be very common in the southern part of Luzon, from Cavite to Batangas, especially, yet they didnâ€™t make it to the list. I remember those trips to Tagaytay when I was young and we would buy a whole piling (arm) of seÃ±orita bananas and tie the handle at the back of the Land Rover so that the bananas were suspended in mid-air all the way back to Manila. SeÃ±orita bananas have very thin skin and they fall off the piling very easily. If left on the floor of the truck, they got bruised easily too.\n\nAll that trouble for seÃ±orita bananas? They were my favorite. My least favorite is the pale latundan. Truth be told, I wasnâ€™t really familiar with banana cultivars until I became a mommy. The girlsâ€™ pediatrician prescribed mashed latundan bananas as a cure for diarrhea. So I learned to tell the difference between lacatan and latundan just by looking at them.\n\n\nTo this day, however, I have not developed any affection for the latundan. I prefer the creamier and sweeter lacatan when seÃ±orita bananas are not available. As for saba bananas, well, they arenâ€™t eaten raw so they fall under a different category. They are cooking bananas and we love them. See the following recipes with saba bananas as an ingredient:\n\nMinatamis na saging (sweetened bananas)\nArroz a la Cubana\nCheesy turon\nGinataang halo-halo\nHalo-halo', 20, 1, '2018-07-31 17:07:23', 2),
-(20, 'Baguio Pechay is one of my favorite vegetables. I was at the grocery Saturday morning when I came upon a beautiful display of Baguio Pechay (also called Pechay Lombok, Wom Bok, or Chinese Cabbage). I like Baguio Pechay because it has a mild, delicate taste. Itâ€™s been quite a while since Iâ€™ve cooked with Baguio Pechay, so I was super excited to cook it for dinner.', 16, 90, '2018-08-02 04:23:46', 2);
+(20, 'Baguio Pechay is one of my favorite vegetables. I was at the grocery Saturday morning when I came upon a beautiful display of Baguio Pechay (also called Pechay Lombok, Wom Bok, or Chinese Cabbage). I like Baguio Pechay because it has a mild, delicate taste. Itâ€™s been quite a while since Iâ€™ve cooked with Baguio Pechay, so I was super excited to cook it for dinner.', 16, 90, '2018-08-02 04:23:46', 2),
+(21, 'ffaa sfas sfa sfa sf asf', 4, 2, '2018-08-28 15:59:46', 1);
 
 -- --------------------------------------------------------
 
@@ -3398,7 +3433,16 @@ INSERT INTO `tblsales` (`salesid`, `productid`, `weight`, `sales`, `datecommit`)
 (96, 18, '1.000', '100.00', '2018-08-24 02:39:13'),
 (97, 12, '1.000', '50.00', '2018-08-24 02:39:13'),
 (98, 8, '1.000', '100.00', '2018-08-24 02:39:13'),
-(99, 15, '5.000', '300.00', '2018-08-24 23:17:18');
+(99, 15, '5.000', '300.00', '2018-08-24 23:17:18'),
+(100, 21, '5.000', '300.00', '2018-08-28 14:50:41'),
+(101, 20, '3.000', '120.00', '2018-08-28 14:50:41'),
+(102, 10, '3.000', '120.00', '2018-08-28 14:50:41'),
+(103, 18, '10.000', '1000.00', '2018-08-30 03:32:21'),
+(104, 7, '5.000', '675.00', '2018-08-30 03:32:21'),
+(105, 19, '5.000', '400.00', '2018-08-30 03:32:25'),
+(106, 20, '1.000', '40.00', '2018-08-30 03:32:25'),
+(107, 16, '3.000', '195.00', '2018-08-30 03:34:22'),
+(108, 12, '4.000', '200.00', '2018-08-30 03:34:22');
 
 -- --------------------------------------------------------
 
@@ -3466,7 +3510,11 @@ INSERT INTO `tblshippingrevenue` (`srid`, `srevenue`, `datecommit`) VALUES
 (28, '60.00', '2018-08-20 20:11:51'),
 (29, '60.00', '2018-08-20 20:24:48'),
 (30, '60.00', '2018-08-21 17:58:19'),
-(31, '60.00', '2018-08-24 23:16:20');
+(31, '60.00', '2018-08-24 23:16:20'),
+(32, '60.00', '2018-08-28 14:37:34'),
+(33, '60.00', '2018-08-27 23:38:42'),
+(34, '60.00', '2018-08-30 03:15:47'),
+(35, '60.00', '2018-08-30 03:16:09');
 
 -- --------------------------------------------------------
 
@@ -3502,8 +3550,8 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlename`, `lastname`, `birthday`, `datecreated`, `email`, `phone`, `location`, `usertypeid`, `access`, `imgpath`, `bio`, `is_show_email`, `gender`, `lastupdate`, `lastonline`, `profileviews`) VALUES
-(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'first1', 'mid1', 'last1', '2000-02-14', '2018-06-07 04:44:35', 'useremail1@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 1, '2018-07-25 06:29:20', '2018-08-27 17:30:13', 129),
-(2, 'seller1', '5f4dcc3b5aa765d61d8327deb882cf99', 'first2', 'mid2', 'last2', '2000-04-10', '2018-06-07 04:47:31', 'useremail2@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-11 12:13:07', 198),
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'first1', 'mid1', 'last1', '2000-02-14', '2018-06-07 04:44:35', 'useremail1@gmail.com', '099909090', 'Quezon City', 4, 1, 'upload/400px-Malygos_full.jpg', '', 1, 1, '2018-07-25 06:29:20', '2018-08-30 19:29:41', 129),
+(2, 'seller1', '5f4dcc3b5aa765d61d8327deb882cf99', 'first2', 'mid2', 'last2', '2000-04-10', '2018-06-07 04:47:31', 'useremail2@gmail.com', '', 'Quezon City', 3, 1, 'upload/alexstrasza.jpg', '', 1, 2, '2018-07-11 04:43:33', '2018-08-30 17:37:51', 198),
 (3, 'user3', '5488d6d6f37a311a1085daf41f2e990c', 'first3', 'mid3', 'last3', '2000-07-15', '2018-06-07 01:56:37', 'useremail3@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-14 12:12:54', 1),
 (4, 'user4', '5f4dcc3b5aa765d61d8327deb882cf99', 'first4', 'mid4', 'last4', '2000-12-04', '2018-06-07 01:56:37', 'useremail4@gmail.com', '', 'Quezon City', 1, 1, 'upload/400px-Nozdormu_full.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-08 14:21:39', 29),
 (5, 'seller2', '5f4dcc3b5aa765d61d8327deb882cf99', 'first5', 'mid5', 'last5', '2000-09-19', '2018-06-07 01:56:37', 'useremail5@gmail.com', '', 'Quezon City', 3, 1, 'upload/Earthwarder.jpg', '', 1, 1, '0000-00-00 00:00:00', '2018-08-11 12:13:57', 29),
@@ -3513,16 +3561,16 @@ INSERT INTO `tbluser` (`userid`, `username`, `password`, `firstname`, `middlenam
 (9, 'user9', '5f4dcc3b5aa765d61d8327deb882cf99', 'first9', 'mid9', 'last9', '2000-08-03', '2018-06-07 01:56:37', 'useremail9@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-06 17:30:09', 2),
 (10, 'user10', '5f4dcc3b5aa765d61d8327deb882cf99', 'first10', 'mid10', 'last10', '2004-04-01', '2018-06-07 15:29:14', 'useremail10@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-30 08:48:26', 12),
 (11, 'user11', '5f4dcc3b5aa765d61d8327deb882cf99', 'first11', 'mid11', 'last11', '1998-03-15', '2018-06-07 15:24:03', 'useremail11@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-10 00:36:50', '2018-08-11 21:24:29', 12),
-(12, 'user12', '5f4dcc3b5aa765d61d8327deb882cf99', 'first12', 'mid12', 'last12', '2002-03-03', '2018-06-07 15:21:12', 'useremail12@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-09 12:38:45', 16),
+(12, 'user12', '5f4dcc3b5aa765d61d8327deb882cf99', 'first12', 'mid12', 'last12', '2002-03-03', '2018-06-07 15:21:12', 'useremail12@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-29 19:33:12', 16),
 (13, 'user13', '5f4dcc3b5aa765d61d8327deb882cf99', 'first13', 'mid13', 'last13', '1998-07-22', '2018-06-07 14:51:46', 'useremail13@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-08 09:34:46', 24),
 (14, 'user14', '5f4dcc3b5aa765d61d8327deb882cf99', 'first14', 'mid14', 'last14', '1998-08-03', '2018-06-07 15:12:55', 'useremail14@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-07-07 11:19:43', 48),
 (15, 'user15', '5f4dcc3b5aa765d61d8327deb882cf99', 'first15', 'mid15', 'last15', '1999-04-19', '2018-06-07 15:20:30', 'useremail15@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-09 17:06:24', 6),
 (16, 'user16', '5f4dcc3b5aa765d61d8327deb882cf99', 'first16', 'mid16', 'last16', '1997-10-21', '2018-06-07 15:22:29', 'useremail16@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-07-25 06:35:08', '2018-07-25 06:35:23', 6),
 (17, 'user17', '5f4dcc3b5aa765d61d8327deb882cf99', 'first17', 'mid17', 'last17', '1999-05-15', '2018-06-07 15:17:15', 'useremail17@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-26 06:30:22', 4),
 (18, 'user18', '5f4dcc3b5aa765d61d8327deb882cf99', 'first18', 'mid18', 'last18', '2006-07-20', '2018-06-07 15:16:46', 'useremail18@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-17 19:06:28', 2),
-(19, 'user19', '5f4dcc3b5aa765d61d8327deb882cf99', 'first19', 'mid19', 'last19', '2002-01-01', '2018-06-08 05:00:27', 'useremail19@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-24 08:28:01', 5),
-(20, 'user20', '5f4dcc3b5aa765d61d8327deb882cf99', 'first20', 'mid20', 'last20', '1995-01-15', '2018-06-08 05:14:22', 'useremail20@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-10 08:30:41', 1),
-(21, 'user21', '5f4dcc3b5aa765d61d8327deb882cf99', 'first21', 'mid21', 'last21', '1992-03-27', '2018-06-08 05:18:01', 'useremail21@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-09 08:43:25', 1),
+(19, 'user19', '5f4dcc3b5aa765d61d8327deb882cf99', 'first19', 'mid19', 'last19', '2002-01-01', '2018-06-08 05:00:27', 'useremail19@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-28 16:13:51', 5),
+(20, 'user20', '5f4dcc3b5aa765d61d8327deb882cf99', 'first20', 'mid20', 'last20', '1995-01-15', '2018-06-08 05:14:22', 'useremail20@gmail.com', '', 'Quezon City', 1, 0, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-28 06:50:15', 2),
+(21, 'user21', '5f4dcc3b5aa765d61d8327deb882cf99', 'first21', 'mid21', 'last21', '1992-03-27', '2018-06-08 05:18:01', 'useremail21@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-28 08:23:57', 1),
 (22, 'user22', '5f4dcc3b5aa765d61d8327deb882cf99', 'first22', 'mid22', 'last22', '1996-10-23', '2018-06-08 05:28:17', 'useremail22@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '2018-06-08 05:29:38', '2018-06-15 05:07:51', 0),
 (23, 'user23', '5f4dcc3b5aa765d61d8327deb882cf99', 'first23', 'mid23', 'last23', '1997-04-26', '2018-06-08 21:03:43', 'useremail23@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-06-16 00:00:26', 0),
 (24, 'user24', '5f4dcc3b5aa765d61d8327deb882cf99', 'first24', 'mid24', 'last24', '1996-12-01', '2018-06-08 21:10:39', 'useremail24@gmail.com', '', 'Quezon City', 1, 1, '', '', 1, 2, '0000-00-00 00:00:00', '2018-08-11 12:15:32', 0),
@@ -3805,25 +3853,25 @@ ALTER TABLE `tblfriend`
 -- AUTO_INCREMENT for table `tbllikes`
 --
 ALTER TABLE `tbllikes`
-  MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tblnotif`
 --
 ALTER TABLE `tblnotif`
-  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=456;
+  MODIFY `notifid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=472;
 
 --
 -- AUTO_INCREMENT for table `tblorder`
 --
 ALTER TABLE `tblorder`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `tblordersummary`
 --
 ALTER TABLE `tblordersummary`
-  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `summaryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `tblpm`
@@ -3835,31 +3883,31 @@ ALTER TABLE `tblpm`
 -- AUTO_INCREMENT for table `tblproduct`
 --
 ALTER TABLE `tblproduct`
-  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tblrating`
 --
 ALTER TABLE `tblrating`
-  MODIFY `ratingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ratingid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tblreport`
 --
 ALTER TABLE `tblreport`
-  MODIFY `reportid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `reportid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tblreviews`
 --
 ALTER TABLE `tblreviews`
-  MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `reviewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tblsales`
 --
 ALTER TABLE `tblsales`
-  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `tblshippingfee`
@@ -3871,7 +3919,7 @@ ALTER TABLE `tblshippingfee`
 -- AUTO_INCREMENT for table `tblshippingrevenue`
 --
 ALTER TABLE `tblshippingrevenue`
-  MODIFY `srid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `srid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbluser`

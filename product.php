@@ -485,10 +485,6 @@ $high = $fetch->high;
 		&& $filetype != "image/gif") {
 		     $error .= '<div id="error-message2"><i class="fas fa-exclamation-circle"></i>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</div>';
 		}
-
-		if (filesize($filetemp) > 500000) {
-		    $error .= '<div id="error-message2"><i class="fas fa-exclamation-circle"></i>Sorry, your file is too large. <strong>Maximum: 500kb.</strong></div>';
-		}
 	}
 
 

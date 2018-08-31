@@ -24,6 +24,10 @@
 		addheader();
 	?>
 	<!-- Contact Form -->
+		<div class="about-header">
+			<h1>BAHAY KUBO NI MANG CELSO</h1>
+			<p>Contact</p>
+		</div>
 		<div class="other-content">
 			<h1>Contact Us</h1>
 			<h2><span id="highlight-text">Get</span> in Touch</h2>	

@@ -25,6 +25,10 @@
 	<?php
 		addheader();
 	?>
+		<div class="about-header">
+			<h1>BAHAY KUBO NI MANG CELSO</h1>
+			<p>Home</p>
+		</div>
 	<!-- Main Search -->
 		<div class="main-search">
 			<div id="browse-category" onclick="showCategory()">Browse Category
@@ -44,7 +48,7 @@
 ?>
 			</div>
 			<!-- Marquee -->
-			<marquee><div class="marquee"> BAHAY  KUBO ni MANG CELSO </div></marquee>
+			<marquee><div class="marquee">WELCOME TO BAHAY  KUBO ni MANG CELSO</div></marquee>
 		</div>
 	<!-- Featured Products -->
 		<div class="featured-product-grid">
@@ -111,7 +115,7 @@
 					<img class="featured-img" src="'.$img1.'">
 				</div>
 				<div class="featured-desc">
-					<h3><i class="fas fa-trophy gold"></i> '.$product1.'</h3>
+				<h3>'.$product1.'</h3>
 					<p>'.$farm1.'</p>
 				</div>
 			</div>
@@ -124,7 +128,7 @@
 					<img class="featured-img" src="'.$img2.'">
 				</div>
 				<div class="featured-desc">
-					<h3><i class="fas fa-trophy silver"></i> '.$product2.'</h3>
+					<h3>'.$product2.'</h3>
 					<p>'.$farm2.'</p>
 				</div>
 			</div>
@@ -137,7 +141,7 @@
 				<img class="featured-img" src="'.$img3.'">
 			</div>
 			<div class="featured-desc">
-				<h3><i class="fas fa-trophy bronze"></i> '.$product3.'</h3>
+				<h3>'.$product3.'</h3>
 				<p>'.$farm3.'</p>
 			</div>
 		</div>
@@ -174,70 +178,13 @@
 		</div>
 	<!-- Content -->
 		<div class="main-content">
-			<div class="main-content-grid">
-				<div class="announcement">
-<?php
-$sql="SELECT announceid,title,content,t1.datecreated,author,username FROM tblannouncement AS t1
-LEFT JOIN tbluser
-	ON userid = author
-ORDER BY announceid DESC
-LIMIT 1";
-$result= $conn->query($sql);
-$row=$result->fetch_object();
-	$announceid = $row->announceid;
-	$title = $row->title;
-	$content = $row->content;
-	$date = date('D, F j Y g:i A',strtotime($row->datecreated));
-	$userid = $row->author;
-	$author = $row->username;
-
-	echo '<h3 id="announcement-title">'.$title.'</h3>
-	<p>Posted on: '.$date.' by: <a href="profile.php?id='.$userid.'">'.$author.'</a></p>
-	<div class="announce-content">'.substr(nl2br($content), 0, 420);
-	if(strlen($content) > 450 ){
-		echo'...';
-	}
-
-	echo'<br>
-		<a class="center" id="announcement-comment" href="announcement.php">Read More</a>';
-$sql = "SELECT commentannid FROM tblcommentann WHERE announceid = '$announceid'";
-$result= $conn->query($sql);
-$comments = $result->num_rows;
-echo'<p>Comments ('.number_format($comments).')</p>
-		</div>
-		';
-?>
-				</div>
-				<div class="about">
-					<a href="about.php">
-					<div class="about-inner">
-						<img src="img/logo.jpg" alt="company logo">
-					</div>
-					</a>
-					<a class="black" href="about.php#how-to-order"">How to Order?</a><br>
-					<a class="black" href="contact.php">Feedback</a>
-				</div>
-				<div class="farm-select-div">
-					<h3><i class="fas fa-location-arrow"></i> Farm Location</h3>
-					<ul>
-<?php
-$sql = "SELECT farmid, farmname FROM tblfarm WHERE status=1";
-$result = $conn->query($sql);
-while($row = $result->fetch_object()){
-	$farmid = $row->farmid;
-	$farmname = $row->farmname;
-	echo '<li><a href="searchfarm.php?id='.$farmid.'">'.$farmname.'</a></li>';
-}
-?>
-					</ul>
-				</div>
-				<div class="content-body">
-					<h2><i class="fas fa-leaf"></i> Freshly Picked<br>
-					<small>What's New</small></h2>
+			<div class="content-body">
+				<h2><i class="fas fa-leaf"></i> Freshly Picked<br>
+				<small>What's New</small></h2>
 <?php
 $string = 'WHERE is_approved = 1 AND is_available = 1
-	ORDER BY dateposted DESC
-	LIMIT 16';
+ORDER BY dateposted DESC
+LIMIT 16';
 showProduct($string);
 ?>
 				</div>

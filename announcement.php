@@ -28,6 +28,10 @@
 		addheader();
 	?>
 	<div class="other-content">
+		<div class="about-header">
+			<h1>BAHAY KUBO NI MANG CELSO</h1>
+			<p>Announcement</p>
+		</div>
 <?php
 $sql="SELECT announceid,title,content,t1.datecreated,username,userid FROM tblannouncement AS t1
 LEFT JOIN tbluser

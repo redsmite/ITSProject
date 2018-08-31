@@ -75,7 +75,10 @@ function addheader(){
 					</p>
 				</div>
 				<div class="nav">
-					<a id="Home" href="index.php"><i class="fas fa-home"></i> HOME</a>
+					<a id="Home" href="index.php">HOME</a>
+					<a id="Home" href="about.php">ABOUT</a>
+					<a id="Home" href="contact.php">CONTACT</a>
+					<a id="Home" href="announcement.php">ANNOUNCEMENT</a>
 				</div>
 				<div class="profile-grid">';
 					

@@ -237,6 +237,40 @@ if(isset($_POST['cancel'])){
 	$result = $conn->query($sql);
 }
 
+if(isset($_POST['transactionHistory'])){
+	echo'<ul>';
+	$sql = "SELECT ordernumber,status,datecommit FROM tblorder ORDER BY datecommit DESC";
+	$result = $conn->query($sql);
+	$Sdate='';
+	while($row = $result->fetch_object()){
+		$ordernum = $row->ordernumber;
+		$status = $row->status;
+		$date = strtotime($row->datecommit);
+		$dateday = date('D, F j, Y',$date);
+
+		$Sstatus = '';
+		if($status==0){
+			$Sstatus = '<font style="color:orangered;">Pending...</font>';
+		}else if($status == 1){
+			$Sstatus = '<font style="color:green;">Approved</font>';
+		}else if($status == 2){
+			$Sstatus = '<font style="color:red;">Rejected</font>';
+		}else if($status == 3){
+			$Sstatus = '<font style="color:red;">Cancelled</font>';
+		}else if($status == 4){
+			$Sstatus = '<font style="color:green;">Completed</font>';
+		}
+
+
+		if($Sdate != $dateday){
+		$Sdate = $dateday;
+		echo '<h3>== '.$Sdate.' ==</h3>';
+		}
+		echo '<li>'.date('g:i A',$date).': <a target="_blank" class="black" href="search.php?criteria=3&search-text='.$ordernum.'">#'.$ordernum.'</a>  Status: '.$Sstatus.'</li>';
+	}
+	echo'</ul>';
+}
+
 if(isset($_POST['userCancel'])){
 	$id = $_POST['userCancel'];
 	
