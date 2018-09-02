@@ -95,7 +95,7 @@ function addfooter(){
 			<div class="container">
 				<a target="_blank" title="Like us on Facebook" href="https://www.facebook.com/BahayKuboniMangCelso/?ref=page_internal"><i class="fab fa-facebook-square"></i></a>
 				<a target="_blank" title="Follow us on Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-				<a target="_blank" title="Follow us on Instagram" href="https://www.instagram.com/?hl=ens"><i class="fab fa-instagram"></i></a>
+				<a target="_blank" title="Follow us on Instagram" href="https://www.instagram.com/bahaykubonimangcelso/"><i class="fab fa-instagram"></i></a>
 				<p><a href="about.php">About Us</a>
 				<a href="contact.php">Contact Us</a>
 				</p>
@@ -201,7 +201,7 @@ function addSidebar(){
 				<li>
 				<li><a target="_blank" title="Like us on Facebook" href="https://www.facebook.com/BahayKuboniMangCelso/?ref=page_internal"><i class="fab fa-facebook-square"></i></a></li>
 				<li><a target="_blank" title="Follow us on Twitter" href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
-				<li><a target="_blank" title="Follow us on Instagram" href="https://www.instagram.com/?hl=ens"><i class="fab fa-instagram"></i></a></li>
+				<li><a target="_blank" title="Follow us on Instagram" href="https://www.instagram.com/bahaykubonimangcelso/"><i class="fab fa-instagram"></i></a></li>
 			</ul>
 		</div>';
 	}

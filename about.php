@@ -55,6 +55,21 @@
 				<p>Vision is to contribute to a heathier Philippines. Not just for its people, for its economy as well. Let us bring back our country’s golden age. Wherein our produce is the envy of many. Turning farming in to a career not just a devotion. </p>
 			</div>
 		</section>
+		<section class="map">
+			<h1>Map</h1>
+			<div class="map-img"></div>
+		</section>
+		<section class="activities">
+			<h1>Activities</h1>
+			<div class="act1"></div>
+			<div class="act2"></div>
+			<div class="act3"></div>
+			<div class="act4"></div>
+			<div class="act5"></div>
+			<div class="act6"></div>
+			<div class="act7"></div>
+			<div class="act8"></div>
+		</section>
 		<section class="farm-section">
 			<h2>Farm Location and Produce</h2>
 <?php
@@ -75,13 +90,13 @@ echo '<div class="farm-div"><h1>'.$farmname.'</h1><p>'.$desc.'</p>
 		</section>
 		<section class="how-to-order">
 			<h1 class="how-to">How to Order</h1>
-			<p>Ordering here is pretty easy, all you need to do is click an item, add to the cart and checkout and enter your billing information like email, phone and address. If these steps are unclear, please refer to the following steps.</p>
-			<p class="how-to"><i class="fas fa-search"></i> Search for the product you want.</p>
-			<p>There are plenty of ways to <strong>Search</strong> for the items you want like searching for keywords, browse categories, browse farms and you can sort by price.</p>
-			<p class="how-to"><i class="fas fa-shopping-cart"></i> Click the add-to-cart button</p>
-			<p> Click that green button with a <strong>Shopping Cart Icon</strong>. The item will be added on your shopping cart.</p>
-			<p class="how-to"><i class="fas fa-cart-arrow-down"></i> Checkout your order.</p>
-			<p> Click for the icon located at the top-right corner of the screen. The shopping cart will pop-out at the right of the screen. Choose the <strong>Unit</strong> for the product in kilograms. Click the green <strong>Shopping Cart Button</strong> then 
+			<p class="how-to-right">Ordering here is pretty easy, all you need to do is click an item, add to the cart and checkout and enter your billing information like email, phone and address. If these steps are unclear, please refer to the following steps.</p>
+			<p class="how-to"><span><i class="fas fa-search"></i> Search for the product you want.</span></p>
+			<p class="how-to-right">There are plenty of ways to <strong>Search</strong> for the items you want like searching for keywords, browse categories, browse farms and you can sort by price.</p>
+			<p class="how-to"><span><i class="fas fa-shopping-cart"></i> Click the add-to-cart button</span></p>
+			<p class="how-to-right"> Click that green button with a <strong>Shopping Cart Icon</strong>. The item will be added on your shopping cart.</p>
+			<p class="how-to"><span><i class="fas fa-cart-arrow-down"></i> Checkout your order.</span></p>
+			<p class="how-to-right"> Click for the icon located at the top-right corner of the screen. The shopping cart will pop-out at the right of the screen. Choose the <strong>Unit</strong> for the product in kilograms. Click the green <strong>Shopping Cart Button</strong> then 
 <?php
 // Show Login Modal
 if(isset($_SESSION['id'])){
@@ -91,10 +106,10 @@ echo'<strong onclick="showLogin()"><a class="black cathover">login</a></strong>'
 }
 ?>
 			, or <strong><a class="black" href="register.php" target="_blank">register</a></strong> if you doesn't have an account yet.</p>
-			<p class="how-to"><i class="fas fa-clipboard"></i> Enter your payment info</p>
-			<p><strong>Cash-on-delivery</strong> - enter your billing address, email.</p>
-			<p class="how-to"><i class="far fa-clock"></i> Wait for the delivery</p>
-			<p>Wait for at least one to four days for the delivery. We don't deliver at places <strong>outside of Manila</strong>. You <strong>cannot cancel</strong> your order after every next 4pm.</p>
+			<p class="how-to"><span><i class="fas fa-clipboard"></i> Enter your payment info</span></p>
+			<p class="how-to-right"><strong>Cash-on-delivery</strong> - enter your billing address, email.</p>
+			<p class="how-to"><span><i class="far fa-clock"></i> Wait for the delivery</span></p>
+			<p class="how-to-right"><span>Wait for at least one to four days for the delivery. We don't deliver at places <strong>outside of Manila</strong>. You <strong>cannot cancel</strong> your order after 4pm.</span></p>
 		</section>
 	</div>
 	<!-- Footer -->
