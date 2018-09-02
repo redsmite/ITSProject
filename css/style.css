@@ -764,12 +764,13 @@ li{
 }
 
 #showcase{
-	background: linear-gradient(var(--light-color),var(--darkgray));
+	background: var(--light-color);
 	border-radius: 20% 0;
+	box-shadow: none;
 }
 
 #showcase a{
-	color: var(--light-color);
+	color: var(--dark-color);
 }
 
 #top1:hover,#top2:hover,#top3:hover,#top4:hover,#top5:hover,#showcase:hover{
@@ -2826,35 +2827,37 @@ li{
 
 .company-desc{
 	grid-area: company-desc;
-	background: var(--primary-color);
-	box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+	background: radial-gradient(var(--darkgray),transparent);
+	border-radius: 20px;
 }
 
 .mission{
 	grid-area: mission;
 	margin:20px;
 	border: 2px solid var(--light-color);
-	transition-duration: 350ms;
-	transition-property: background, color;
+	font-size: 0.8em;
 }
 
 .vision{
 	grid-area: vision;
 	margin:20px;
 	border: 2px solid var(--light-color);
-	transition-duration: 350ms;
-	transition-property: background, color, border;
+	font-size: 0.8em;
 }
 
-.mission:hover,.vision:hover{
-	color: var(--dark-color);
-	background: var(--gray);
-	border: 2px solid var(--darkgray);
+.mission h2,.vision h2{
+	text-decoration: underline;
 }
 
 .company-desc,.mission,.vision{
 	color: var(--light-color);
 	padding: 30px 50px;
+	transition-duration: 350ms;
+	transition-property: box-shadow;
+}
+
+.company-desc:hover,.mission:hover,.vision:hover{
+	box-shadow: 0 0 20px rgba(255,255,255,0.8);
 }
 
 .map{
@@ -2873,17 +2876,22 @@ li{
 	background: url('../img/map.jpg');
 	background-size: cover;
 	margin: 8px auto;
+	box-shadow: 5px 5px rgba(0,0,0,0.8);
 }
 
 .activities{
 	background: var(--secondary-contrast);
-	padding: 10px;
+	padding: 10px 10px 20px 10px;
 	text-align: center;
-	box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+	box-shadow: inset 0 0 15px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.8);
+	border: 10px solid var(--light-color);
 }
 
 .activities h1{
 	color: var(--light-color);
+	font-family: 'lucida handwriting', cursive;
+	text-decoration: underline;
+	opacity: 0.8;
 	text-align: left;
 	margin-bottom: 20px;
 }
@@ -2894,6 +2902,17 @@ li{
 	margin: 20px;
 	display: inline-block;
 	border: 3px solid var(--light-color);
+	box-shadow: 5px 5px rgba(0,0,0,0.8);
+}
+
+.act1::before,.act2::before,.act3::before,.act4::before,.act5::before,.act6::before,.act7::before,.act8::before{
+	content:'';
+	position: relative;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: var(--dark-red);
 	box-shadow: 5px 5px rgba(0,0,0,0.8);
 }
 
@@ -2998,6 +3017,8 @@ li{
 	margin-left: 20px;
 	margin-top:50px;
 	margin-bottom:50px;
+	transition-duration: 350ms;
+	transition-property: transform;
 }
 
 .parallax-img h1{
@@ -3006,11 +3027,22 @@ li{
 	color: var(--light-color);
 	background: var(--secondary-contrast);
 	color: var(--gray);
+	transform: rotate(5deg);
 	width: 250px;
 	padding: 1em;
 	border: 2px solid var(--gray);
 	text-align: center;
 	opacity: 0.8;
+	transition-duration: 350ms;
+	transition-property: transform;
+}
+
+.parallax-img:hover{
+	transform: rotate(5deg);
+}
+
+.parallax-img h1:hover{
+	transform: rotate(-5deg);
 }
 
 .how-to-order{
@@ -3030,6 +3062,12 @@ li{
 	border-radius: 0 0 0 20%;
 	margin-left: 5px;
 	background-size: cover;
+	transition-duration: 350ms;
+	transition-property: transform;
+}
+
+.how-to:hover{
+	transform: rotateX(360deg);
 }
 
 .how-to span{
@@ -3067,10 +3105,6 @@ li{
 
 .how-to:nth-child(11){
 	background: url(../img/time.jpg);
-}
-
-.how-to-right:hover{
-	opacity: 0.8;
 }
 
 /* Footer */

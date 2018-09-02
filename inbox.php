@@ -66,9 +66,9 @@ if($Rimage==''){
 	$Rimage='img/default.png';
 }
 
-			echo'<div class="right-inbox"
-	background-attachment: fixed;">';
-
+			echo'
+			<h3>Please don\'t ask for discount or you will die.</h3>
+			<div class="right-inbox">';
 $sql="SELECT senderid,username,imgpath,message,pmdate FROM tblpm
 LEFT JOIN tbluser
 	ON senderid=userid
