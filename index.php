@@ -48,7 +48,7 @@
 ?>
 			</div>
 			<!-- Marquee -->
-			<marquee><div class="marquee">WELCOME TO BAHAY  KUBO ni MANG CELSO</div></marquee>
+			<marquee><div class="marquee"><span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span><span> </span><span>T</span><span>O</span><span> </span><span>B</span><span>A</span><span>H</span><span>A</span><span>Y</span><span> </span><span>K</span><span>U</span><span>B</span><span>O</span><span> </span><span>n</span><span>i</span><span> </span><span>M</span><span>A</span><span>N</span><span>G</span><span> </span><span>C</span><span>E</span><span>L</span><span>S</span><span>O</span></div></marquee>
 		</div>
 	<!-- Featured Products -->
 		<div class="featured-product-grid">

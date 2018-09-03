@@ -67,7 +67,7 @@ if($Rimage==''){
 }
 
 			echo'
-			<h3>Please don\'t ask for discount or you will die.</h3>
+			<h3>Please don\'t ask for discount or you will get banned.</h3>
 			<div class="right-inbox">';
 $sql="SELECT senderid,username,imgpath,message,pmdate FROM tblpm
 LEFT JOIN tbluser
