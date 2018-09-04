@@ -44,11 +44,10 @@ if($id!=$_SESSION['id']){
 			<div class="left-inbox">
 				<div class="inboxform-div">
 					<form action="#" id="chatform" method="post">
-						<div>
+						<input placeholder="Send message to '.$name.'"type="text" autocomplete="off" id="sendmsg" name="message" required>
+						<button>Enter</button>
 						<input type="hidden" id="hidden" name="hidden" value="'.$_GET["id"].'" />
 						<input type="hidden" id="hidden2" name="hidden2" value="'.$_SESSION["id"].'" />
-							<input placeholder="Send message to '.$name.'"type="text" autocomplete="off" id="sendmsg" name="message" required>Enter
-						</div>
 					</form>
 				</div>
 			</div>';

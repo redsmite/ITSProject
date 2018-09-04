@@ -60,17 +60,14 @@ $result= $conn->query($sql);
 $comments = $result->num_rows;
 echo'<p style="color:white">Comments ('.number_format($comments).')</p>
 ';
-
-
 if(isset($_SESSION['id'])){
 echo'<form id="comment-form">
-	<textarea id="announcement-text" required></textarea>
+	<center><textarea id="announcement-text" required></textarea></center>
 	<br>
 	<input type="hidden" value="'.$_SESSION['id'].'" id="user-id">
 	<input type="hidden" value="'.$id.'" id="announce-id">
-	<center><input type="submit" value="submit"></center>
+	<input class="announcement-comment-submit" type="submit" value="submit">
 </form>
-<hr><br>
 ';
 }else{
 	echo'<form id="comment-form">
@@ -78,9 +75,8 @@ echo'<form id="comment-form">
 	<br>
 	<input type="hidden" id="user-id">
 	<input type="hidden" id="announce-id">
-	<center><input type="submit" value="submit"></center>
+	<input type="submit" class="announcement-comment-submit" value="submit">
 </form>
-<hr><br>
 ';
 }
 

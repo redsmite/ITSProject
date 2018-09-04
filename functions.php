@@ -231,7 +231,7 @@ function addLogin(){
 					<div id="error-message"></div>	
 				</div>
 				<div class="modal-footer">
-					<a href="register.php">Doesn\'t have an account?</a>
+					<a href="register.php">Don\'t have an account?</a>
 				</div>
 			</div>
 		</div>

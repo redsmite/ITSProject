@@ -18,12 +18,12 @@ if(isset($_SESSION['id'])){
 	$tusertype = 'none';
 }
 
-$sql = "SELECT productid,category, productname, description, farmname, username, t1.userid, dateposted, price, view, img, rating, is_approved, is_available, low, prevailing, high FROM tblproduct as t1
-LEFT JOIN tblcategory as t2
+$sql = "SELECT productid,category, productname, description, farmname, username, t1.userid, dateposted, price, view, img, rating, is_approved, is_available, low, prevailing, high FROM tblproduct AS t1
+LEFT JOIN tblcategory AS t2
 	ON t1.categoryid = t2.categoryid
-LEFT JOIN tbluser as t3
+LEFT JOIN tbluser AS t3
 	ON t1.userid = t3.userid
-LEFT JOIN tblfarm as t4
+LEFT JOIN tblfarm AS t4
 	ON t1.farmid = t4.farmid
 WHERE productid='$id'";
 $result = $conn->query($sql);

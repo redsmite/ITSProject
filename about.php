@@ -61,14 +61,14 @@
 		</section>
 		<section class="activities">
 			<h1>Activities</h1>
-			<div class="act1"></div>
-			<div class="act2"></div>
-			<div class="act3"></div>
-			<div class="act4"></div>
-			<div class="act5"></div>
-			<div class="act6"></div>
-			<div class="act7"></div>
-			<div class="act8"></div>
+			<div class="act1" title="pruning and planting"></div>
+			<div class="act2" title="transplanting"></div>
+			<div class="act3" title="tilling the soil"></div>
+			<div class="act4" title="tree planting"></div>
+			<div class="act5" title="feeding livestocks"></div>
+			<div class="act6" title="sowing the seeds"></div>
+			<div class="act7" title="farmer for a day experience"></div>
+			<div class="act8" title="follow us on..."></div>
 		</section>
 		<section class="farm-section">
 			<h2>Farm Location and Produce</h2>

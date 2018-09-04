@@ -173,6 +173,30 @@ function sliderChange(){
 	},4000);
 }
 
+function mainTab1(){
+	let tab1 = document.getElementById('main-tab1');
+	let tab2 = document.getElementById('main-tab2');
+	let feature = document.querySelector('.featured-product-grid');
+	let product = document.querySelector('.content-body');
+	
+	tab1.classList.add('main-control-selected');
+	tab2.classList.remove('main-control-selected');
+	feature.style.display = 'grid';
+	product.style.display = 'none';
+}
+
+function mainTab2(){
+	let tab1 = document.getElementById('main-tab1');
+	let tab2 = document.getElementById('main-tab2');
+	let feature = document.querySelector('.featured-product-grid');
+	let product = document.querySelector('.content-body');
+	
+	tab1.classList.remove('main-control-selected');
+	tab2.classList.add('main-control-selected');
+	feature.style.display = 'none';
+	product.style.display = 'block';
+}
+
 // Announcement
 
 function addAnnounceComment(){
