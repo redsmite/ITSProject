@@ -20,11 +20,13 @@
 </head>
 <body>
 	<div class="main-container">
-		<div id="thanks-message">
-			<h1><i class="far fa-check-circle"></i>See you again!</h1>
-			<p>You have successfully logout.</p>
-			<p>This page will be redirected shortly.</p>
-			<a href="#" id='redirectlink'>Click here to redirect</a>
+		<div class="thanks-page">
+			<div id="thanks-message">
+				<h1><i class="far fa-check-circle"></i>See you again!</h1>
+				<p>You have successfully logout.</p>
+				<p>This page will be redirected shortly.</p>
+				<a href="#" id='redirectlink'>Click here to redirect</a>
+			</div>
 		</div>
 	</div>
 	<script src="js/main.js"></script>

@@ -58,6 +58,8 @@
 	</div>
 	<!-- Featured Products -->
 		<div class="featured-product-grid">
+			<h2 class="cream"><i class="fas fa-leaf"></i> Cream of the Crop<br>
+				<small>What's Hot</small></h2>
 <?php
 	$sql = "SELECT t1.productid,img, productname, farmname FROM tblsales AS t1
 	RIGHT JOIN tblproduct AS t2
